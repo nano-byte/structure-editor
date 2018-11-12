@@ -1,0 +1,21 @@
+PROJECT_NAME = "NanoByte Structure Editor"
+
+INPUT = . ../src
+USE_MDFILE_AS_MAINPAGE = main.md
+STRIP_FROM_PATH = ../src
+RECURSIVE = YES
+EXCLUDE_PATTERNS = */UnitTests/* */Properties/* */obj/* */bin/*
+TAGFILES = nanobyte-common.tag=https://common.nano-byte.net/
+
+OUTPUT_DIRECTORY = ../artifacts/Documentation
+GENERATE_TAGFILE = ../artifacts/Documentation/nanobyte-structure-editor.tag
+HTML_OUTPUT = .
+
+GENERATE_LATEX = NO
+CASE_SENSE_NAMES = NO
+
+EXTRACT_PACKAGE = YES
+EXTRACT_STATIC = YES
+AUTOLINK_SUPPORT = NO
+WARN_IF_UNDOCUMENTED = NO
+QUIET = YES
