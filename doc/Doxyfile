@@ -1,6 +1,7 @@
 PROJECT_NAME = "NanoByte Structure Editor"
 
 INPUT = . ../src
+IMAGE_PATH = .
 USE_MDFILE_AS_MAINPAGE = main.md
 STRIP_FROM_PATH = ../src
 RECURSIVE = YES
