@@ -1,7 +1,6 @@
 // Copyright Bastian Eicher
 // Licensed under the MIT License
 
-using System.Drawing;
 using System.Windows.Forms;
 using NanoByte.Common.Controls;
 using NanoByte.Common.Native;
@@ -17,18 +16,23 @@ namespace NanoByte.StructureEditor.WinForms
     {
         public PropertyGridEditor()
         {
+            SuspendLayout();
+            SetupControls();
+            ResumeLayout(performLayout: false);
+        }
+
+        private void SetupControls()
+        {
             var propertyGrid = new ResettablePropertyGrid
             {
                 ToolbarVisible = false,
                 Dock = DockStyle.Fill
             };
             Controls.Add(propertyGrid);
-            Controls.SetChildIndex(propertyGrid, 0);
-
-            TargetChanged += () => propertyGrid.SelectedObject = Target;
-            OnRefresh += propertyGrid.Refresh;
 
             SetupUndoTracking(propertyGrid);
+            TargetChanged += () => propertyGrid.SelectedObject = Target;
+            OnRefresh += propertyGrid.Refresh;
         }
 
         private void SetupUndoTracking(PropertyGrid propertyGrid)

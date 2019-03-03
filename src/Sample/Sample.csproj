@@ -4,7 +4,7 @@
     <AssemblyName>NanoByte.StructureEditor.Sample</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor.Sample</RootNamespace>
     <LangVersion>7.2</LangVersion>
-    <TargetFrameworks>net461</TargetFrameworks>
+    <TargetFrameworks>net40</TargetFrameworks>
     <OutputType>WinExe</OutputType>
     <IsPackable>False</IsPackable>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>

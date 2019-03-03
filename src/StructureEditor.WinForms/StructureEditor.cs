@@ -54,6 +54,13 @@ namespace NanoByte.StructureEditor.WinForms
 
         public StructureEditor()
         {
+            SuspendLayout();
+            SetupControls();
+            ResumeLayout(performLayout: false);
+        }
+
+        private void SetupControls()
+        {
             _buttonAdd.DropDownOpening += buttonAdd_DropDownOpening;
             _buttonRemove.Click += buttonRemove_Click;
             _treeView.AfterSelect += treeView_AfterSelect;
@@ -63,8 +70,8 @@ namespace NanoByte.StructureEditor.WinForms
             {
                 Dock = DockStyle.Fill,
                 Orientation = Orientation.Horizontal,
-                SplitterWidth = 12,
-                SplitterDistance = 103,
+                SplitterWidth = 9,
+                SplitterDistance = 100,
                 Panel1 =
                 {
                     Controls =
@@ -73,8 +80,8 @@ namespace NanoByte.StructureEditor.WinForms
                         {
                             Dock = DockStyle.Fill,
                             Orientation = Orientation.Vertical,
-                            SplitterWidth = 12,
-                            SplitterDistance = 79,
+                            SplitterWidth = 9,
+                            SplitterDistance = 80,
                             Panel1 =
                             {
                                 Controls =

@@ -1,6 +1,7 @@
 // Copyright Bastian Eicher
 // Licensed under the MIT License
 
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 using NanoByte.Common.Undo;
@@ -18,47 +19,50 @@ namespace NanoByte.StructureEditor.Sample
 
         public MainForm()
         {
-            InitializeComponent();
+            SuspendLayout();
+            SetupComponents();
+            ResumeLayout(performLayout: false);
 
             _editor.Open(CommandManager.For(SampleData.AddressBook));
         }
 
-        private void InitializeComponent()
+        private void SetupComponents()
         {
             Text = "Structure Editor Sample";
-            Size = new Size(800, 600);
-
+            AutoScaleDimensions = new SizeF(6F, 13F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 600);
             FormClosing += (sender, e) => { e.Cancel = !_editor.Closing(); };
 
-            var buttonOpen = new ToolStripMenuItem {Text = "&Open...", ShortcutKeys = Keys.Control | Keys.O};
-            buttonOpen.Click += delegate { _editor.Open(); };
-
-            var buttonSave = new ToolStripMenuItem {Text = "&Save...", ShortcutKeys = Keys.Control | Keys.S};
-            buttonSave.Click += delegate { _editor.Save(); };
-
-            var buttonSaveAs = new ToolStripMenuItem {Text = "Save &As..."};
-            buttonSaveAs.Click += delegate { _editor.SaveAs(); };
-
-            var buttonUndo = new ToolStripMenuItem {Text = "&Undo", ShortcutKeys = Keys.Control | Keys.Z};
-            buttonUndo.Click += delegate { _editor.Undo(); };
-
-            var buttonRedo = new ToolStripMenuItem {Text = "&Redo", ShortcutKeys = Keys.Control | Keys.Y};
-            buttonRedo.Click += delegate { _editor.Redo(); };
-
             Controls.Add(_editor);
+
+            ToolStripMenuItem MenuItem(string text, Action action, Keys hotKey = Keys.None)
+            {
+                var button = new ToolStripMenuItem {Text = text, ShortcutKeys = hotKey};
+                button.Click += delegate { action(); };
+                return button;
+            }
+
             Controls.Add(new MenuStrip
             {
                 Items =
                 {
-                    new ToolStripMenuItem
+                    new ToolStripMenuItem("&File")
                     {
-                        Text = "&File",
-                        DropDownItems = {buttonOpen, buttonSave, buttonSaveAs}
+                        DropDownItems =
+                        {
+                            MenuItem("&Open...", _editor.Open, hotKey: Keys.Control | Keys.O),
+                            MenuItem("&Save...", () => _editor.Save(), hotKey: Keys.Control | Keys.S),
+                            MenuItem("Save &As...", () => _editor.SaveAs())
+                        }
                     },
-                    new ToolStripMenuItem
+                    new ToolStripMenuItem("&Edit")
                     {
-                        Text = "&Edit",
-                        DropDownItems = {buttonUndo, buttonRedo}
+                        DropDownItems =
+                        {
+                            MenuItem("&Undo", _editor.Undo, hotKey: Keys.Control | Keys.Z),
+                            MenuItem("&Redo", _editor.Redo, hotKey: Keys.Control | Keys.Y)
+                        }
                     }
                 }
             });

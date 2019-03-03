@@ -18,7 +18,6 @@ namespace NanoByte.StructureEditor.WinForms
     /// <typeparam name="T">The type of element to edit.</typeparam>
     public abstract class EditorControlBase<T> : UserControl, IEditorControl<T> where T : class
     {
-        #region Properties
         private T _target;
 
         /// <inheritdoc/>
@@ -59,19 +58,13 @@ namespace NanoByte.StructureEditor.WinForms
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "Is not really an event but rather a hook.")]
         protected event Action CommandExecutorChanged;
-        #endregion
 
-        #region Constructor
         protected EditorControlBase()
         {
-            // ReSharper disable once DoNotCallOverridableMethodsInConstructor
+            // ReSharper disable once VirtualMemberCallInConstructor
             AutoScroll = true;
         }
-        #endregion
 
-        //--------------------//
-
-        #region Refresh
         /// <summary>
         /// Is raised when <see cref="Refresh"/> is called.
         /// </summary>
@@ -83,9 +76,7 @@ namespace NanoByte.StructureEditor.WinForms
             OnRefresh?.Invoke();
             base.Refresh();
         }
-        #endregion
 
-        #region Register
         /// <summary>
         /// Hooks a WinForms control in to the live editing and Undo system.
         /// </summary>
@@ -194,6 +185,5 @@ namespace NanoByte.StructureEditor.WinForms
 
             OnRefresh += () => control.Checked = pointer.Value;
         }
-        #endregion
     }
 }

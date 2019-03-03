@@ -30,10 +30,9 @@ namespace NanoByte.StructureEditor.WinForms
         private readonly StatusStrip _statusStrip = new StatusStrip
         {
             Location = new Point(0, 128),
-            Size = new Size(150, 22),
             SizingGrip = false
         };
-        private readonly ToolStripStatusLabel _labelStatus = new ToolStripStatusLabel {Size = new Size(47, 17)};
+        private readonly ToolStripStatusLabel _labelStatus = new ToolStripStatusLabel();
         private readonly Timer _timer = new Timer {Interval = 250};
 
         /// <summary>
@@ -43,18 +42,17 @@ namespace NanoByte.StructureEditor.WinForms
 
         public ValidatingTextEditor()
         {
+            SuspendLayout();
+            SetupControls();
+            ResumeLayout(performLayout: false);
+        }
+
+        private void SetupControls()
+        {
             _timer.Tick += timer_Tick;
 
-            _statusStrip.SuspendLayout();
-            SuspendLayout();
             _statusStrip.Items.Add(_labelStatus);
-            AutoScaleDimensions = new SizeF(6F, 13F);
-            AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(_statusStrip);
-            _statusStrip.ResumeLayout(false);
-            _statusStrip.PerformLayout();
-            ResumeLayout(false);
-            PerformLayout();
         }
 
         protected override void Dispose(bool disposing)

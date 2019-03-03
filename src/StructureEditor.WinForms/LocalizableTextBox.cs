@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
+using System.Windows.Forms;
 using NanoByte.Common.Collections;
+using NanoByte.Common.Controls;
 using NanoByte.Common.Undo;
 using NanoByte.Common.Values;
 
@@ -16,21 +18,21 @@ namespace NanoByte.StructureEditor.WinForms
     /// </summary>
     public class LocalizableTextBox : EditorControlBase<LocalizableStringCollection>
     {
-        private readonly System.Windows.Forms.ComboBox _comboBoxLanguage = new System.Windows.Forms.ComboBox
+        private readonly ComboBox _comboBoxLanguage = new ComboBox
         {
-            DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList,
+            DropDownStyle = ComboBoxStyle.DropDownList,
             DropDownWidth = 86,
             FormattingEnabled = true,
             Location = new Point(0, 0),
             Size = new Size(60, 21)
         };
 
-        public Common.Controls.HintTextBox TextBox { get; } = new Common.Controls.HintTextBox
+        public HintTextBox TextBox { get; } = new HintTextBox
         {
-            Anchor = System.Windows.Forms.AnchorStyles.Top
-                   | System.Windows.Forms.AnchorStyles.Bottom
-                   | System.Windows.Forms.AnchorStyles.Left
-                   | System.Windows.Forms.AnchorStyles.Right,
+            Anchor = AnchorStyles.Top
+                   | AnchorStyles.Bottom
+                   | AnchorStyles.Left
+                   | AnchorStyles.Right,
             Location = new Point(66, 0),
             Multiline = true,
             ShowClearButton = true,
@@ -55,14 +57,23 @@ namespace NanoByte.StructureEditor.WinForms
 
         public LocalizableTextBox()
         {
+            SuspendLayout();
+            SetupControls();
+            ResumeLayout(performLayout: false);
+        }
+
+        private void SetupControls()
+        {
+            MinimumSize = new Size(65, 22);
+
             _comboBoxLanguage.SelectionChangeCommitted += (sender, e) =>
             {
-                _selectedLanguage = (CultureInfo)_comboBoxLanguage.SelectedItem;
+                _selectedLanguage = (CultureInfo) _comboBoxLanguage.SelectedItem;
                 FillTextBox();
             };
+            Controls.Add(_comboBoxLanguage);
 
             TextBox.TextChanged += (sender, e) => _textBoxDirty = true;
-
             TextBox.Validating += (sender, e) =>
             {
                 if (_selectedLanguage == null) return;
@@ -73,13 +84,7 @@ namespace NanoByte.StructureEditor.WinForms
                     _textBoxDirty = false;
                 }
             };
-
-            SuspendLayout();
-            Controls.Add(_comboBoxLanguage);
             Controls.Add(TextBox);
-            MinimumSize = new Size(65, 22);
-            ResumeLayout(false);
-            PerformLayout();
         }
 
         private void FillComboBox()
