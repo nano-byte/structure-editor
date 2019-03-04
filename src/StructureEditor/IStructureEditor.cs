@@ -30,6 +30,6 @@ namespace NanoByte.StructureEditor
         /// <param name="name">The name of the root element.</param>
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification = "Generics used as type-safe reflection replacement.")]
         IContainerDescription<T> DescribeRoot<TEditor>(string name)
-            where TEditor : IEditorControl<T>, new();
+            where TEditor : INodeEditor<T>, new();
     }
 }

@@ -27,7 +27,7 @@ namespace NanoByte.StructureEditor
         /// <inheritdoc/>
         public IContainerDescription<TContainer> AddPlainList<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, TEditor editor)
             where TElement : class, IEquatable<TElement>, new()
-            where TEditor : IEditorControl<TElement>, new()
+            where TEditor : INodeEditor<TElement>, new()
         {
             var listDescription = new ListDescription<TElement>(getList);
             listDescription.AddElement(name, new TElement(), editor);
@@ -38,7 +38,7 @@ namespace NanoByte.StructureEditor
         /// <inheritdoc/>
         public IContainerDescription<TContainer> AddPlainListContainerRef<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, TEditor editor)
             where TElement : class, IEquatable<TElement>, new()
-            where TEditor : IEditorControlContainerRef<TElement, TContainer>, new()
+            where TEditor : INodeEditorContainerRef<TElement, TContainer>, new()
         {
             var listDescription = new ListDescription<TElement>(getList);
             listDescription.AddElementContainerRef(name, new TElement(), editor);
@@ -54,15 +54,15 @@ namespace NanoByte.StructureEditor
 
             public ListDescription(Func<TContainer, IList<TList>> getList) => _getList = getList;
 
-            public override IEnumerable<EntryInfo> GetEntriesIn(TContainer container) => _getList(container)
+            public override IEnumerable<Node> GetNodesIn(TContainer container) => _getList(container)
                 .Select(element => _descriptions
-                    .Select(x => x.TryGetEntry(container, _getList(container), element))
+                    .Select(x => x.TryGetNode(container, _getList(container), element))
                     .WhereNotNull()
                     .FirstOrDefault())
-                .Where(entry => entry != null);
+                .Where(node => node != null);
 
-            public override IEnumerable<ChildInfo> GetPossibleChildrenFor(TContainer container)
-                => _descriptions.Select(description => description.GetPossibleChildFor(_getList(container)));
+            public override IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container)
+                => _descriptions.Select(description => description.GetCandidatesFor(_getList(container)));
         }
     }
 }

@@ -7,31 +7,31 @@ using NanoByte.Common.Undo;
 namespace NanoByte.StructureEditor
 {
     /// <summary>
-    /// Information and callbacks for a potential new child node in the structure.
+    /// Information and callbacks for a potential new node in the structure.
     /// </summary>
-    public class ChildInfo : IEquatable<ChildInfo>
+    public class NodeCandidate : IEquatable<NodeCandidate>
     {
         public string Name { get; }
         public string Description { get; }
-        public Func<IValueCommand> Create { get; }
+        public Func<IValueCommand> GetCreateCommand { get; }
 
-        public ChildInfo(string name, string description, Func<IValueCommand> create)
+        public NodeCandidate(string name, string description, Func<IValueCommand> getCreateCommand)
         {
             Name = name;
             Description = description;
-            Create = create;
+            GetCreateCommand = getCreateCommand;
         }
 
         public override string ToString()
             => string.IsNullOrEmpty(Description) ? Name : Name + " (" + Description + ")";
 
-        public bool Equals(ChildInfo other)
+        public bool Equals(NodeCandidate other)
             => other != null
             && Name == other.Name
             && Description == other.Description;
 
         public override bool Equals(object obj)
-            => obj != null && obj is ChildInfo other && Equals(other);
+            => obj != null && obj is NodeCandidate other && Equals(other);
 
         public override int GetHashCode()
         {

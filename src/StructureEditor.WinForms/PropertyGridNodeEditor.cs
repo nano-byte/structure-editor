@@ -9,12 +9,12 @@ using NanoByte.Common.Undo;
 namespace NanoByte.StructureEditor.WinForms
 {
     /// <summary>
-    /// Edits arbitrary types of elements using a <see cref="PropertyGrid"/>. Provides optional <see cref="Common.Undo"/> support.
+    /// Edits a node in the structure using a <see cref="PropertyGrid"/>.
     /// </summary>
     /// <typeparam name="T">The type of element to edit.</typeparam>
-    public class PropertyGridEditor<T> : EditorControlBase<T> where T : class
+    public class PropertyGridNodeEditor<T> : NodeEditorBase<T> where T : class
     {
-        public PropertyGridEditor()
+        public PropertyGridNodeEditor()
         {
             SuspendLayout();
             SetupControls();

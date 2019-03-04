@@ -14,9 +14,9 @@ using NanoByte.Common.Values;
 namespace NanoByte.StructureEditor.WinForms
 {
     /// <summary>
-    /// A control for editing a <see cref="LocalizableStringCollection"/>.
+    /// Exposes a <see cref="LocalizableStringCollection"/> as a text box with a drop-down box for language switching.
     /// </summary>
-    public class LocalizableTextBox : EditorControlBase<LocalizableStringCollection>
+    public class LocalizableTextBox : NodeEditorBase<LocalizableStringCollection>
     {
         private readonly ComboBox _comboBoxLanguage = new ComboBox
         {

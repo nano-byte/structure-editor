@@ -6,8 +6,8 @@
 NanoByte Structure Editor is a WinForms library that helps you build split-screen editors for your data structures, consisting of:
 
 1. a collapsible tree-view of the data structure,
-2. a graphical editor for the currently selected element in the tree (PropertyGrid or custom) and
-3. a text editor (based on [ICSharpCode.TextEditor](https://github.com/nano-byte/ICSharpCode.TextEditor)) with a serialized (XML, JSON, etc.) representation of the currently selected element.
+2. a graphical editor for the currently selected node in the tree (`PropertyGrid` or custom) and
+3. a text editor (based on [ICSharpCode.TextEditor](https://github.com/nano-byte/ICSharpCode.TextEditor)) with a serialized (XML) representation of the currently selected node.
 
 This allows you to create an IDE-like experience for your users when editing complex domain specific languages, configuration files, etc..
 
@@ -31,7 +31,7 @@ public class MyDataEditor : StructureEditor<MyData>
 {}
 ```
 
-You need to "describe" your data structure to the Editor. You can do this directly after instatiating the editor or in the constructor of your derived class.
+You need to "describe" your data structure to the Editor. You can do this directly after instantiating the editor or in the constructor of your derived class.
 - Call `DescribeRoot()` and then use the fluent API provided as a return value to describe the properties on your main data type.
 - Call `Describe<TContainer>()` to describe the properties on a data type `TContainer` exposed by another property. You can use multiple calls with different type parameters to describe arbitrarily deep hierarchies.  
 

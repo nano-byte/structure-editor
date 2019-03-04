@@ -7,7 +7,7 @@ using NanoByte.Common.Undo;
 namespace NanoByte.StructureEditor
 {
     /// <summary>
-    /// Provides an interface to a control that edits a single object.
+    /// Provides an interface to a control that edits a node in the structure.
     /// </summary>
     public interface IEditorControl
     {
@@ -18,10 +18,10 @@ namespace NanoByte.StructureEditor
     }
 
     /// <summary>
-    /// Provides an interface to a control that edits a single object.
+    /// Provides an interface to a control that edits a node in the structure.
     /// </summary>
     /// <typeparam name="T">The type of object to edit.</typeparam>
-    public interface IEditorControl<T> : IEditorControl
+    public interface INodeEditor<T> : IEditorControl
     {
         /// <summary>
         /// The element to be edited.

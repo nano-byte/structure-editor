@@ -8,39 +8,39 @@ using ICommandExecutor = NanoByte.Common.Undo.ICommandExecutor;
 namespace NanoByte.StructureEditor
 {
     /// <summary>
-    /// Information and callbacks for a specific entry in the structure.
+    /// Information and callbacks for a specific node in the structure.
     /// </summary>
-    public class EntryInfo : IEquatable<EntryInfo>
+    public class Node : IEquatable<Node>
     {
         public string Name { get; }
         public string Description { get; }
         public object Target { get; }
         public Func<ICommandExecutor, IEditorControl> GetEditorControl { get; }
-        public Func<string> ToXmlString { get; }
-        public Func<string, IValueCommand> FromXmlString { get; }
+        public Func<string> GetSerialized { get; }
+        public Func<string, IValueCommand> GetUpdateCommand { get; }
         public IUndoCommand RemoveCommand { get; }
 
-        public EntryInfo(string name, string description, object target, Func<ICommandExecutor, IEditorControl> getEditorControl, Func<string> toXmlString, Func<string, IValueCommand> fromXmlString, IUndoCommand removeCommand)
+        public Node(string name, string description, object target, Func<ICommandExecutor, IEditorControl> getEditorControl, Func<string> getSerialized, Func<string, IValueCommand> getUpdateCommand, IUndoCommand removeCommand)
         {
             Name = name;
             Description = description;
             Target = target;
             GetEditorControl = getEditorControl;
-            ToXmlString = toXmlString;
-            FromXmlString = fromXmlString;
+            GetSerialized = getSerialized;
+            GetUpdateCommand = getUpdateCommand;
             RemoveCommand = removeCommand;
         }
 
         public override string ToString() => $"{Name}: {Target}";
 
-        public bool Equals(EntryInfo other)
+        public bool Equals(Node other)
             => other != null
             && Name == other.Name
             && Description == other.Description
             && Target == other.Target;
 
         public override bool Equals(object obj)
-            => obj != null && obj is EntryInfo other && Equals(other);
+            => obj != null && obj is Node other && Equals(other);
 
         public override int GetHashCode()
         {

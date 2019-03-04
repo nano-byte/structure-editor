@@ -28,7 +28,7 @@ namespace NanoByte.StructureEditor
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification = "Generics used as type-safe reflection replacement.")]
         IListDescription<TContainer, TList> AddElement<TElement, TEditor>(string name, TElement element, TEditor editor)
             where TElement : class, TList, IEquatable<TElement>, new()
-            where TEditor : IEditorControl<TElement>, new();
+            where TEditor : INodeEditor<TElement>, new();
 
         /// <summary>
         /// Adds a list element type to the description. Gives the <typeparamref name="TEditor"/> access to the <typeparamref name="TContainer"/>.
@@ -43,6 +43,6 @@ namespace NanoByte.StructureEditor
         [PublicAPI]
         IListDescription<TContainer, TList> AddElementContainerRef<TElement, TEditor>(string name, TElement element, TEditor editor)
             where TElement : class, TList, IEquatable<TElement>, new()
-            where TEditor : IEditorControlContainerRef<TElement, TContainer>, new();
+            where TEditor : INodeEditorContainerRef<TElement, TContainer>, new();
     }
 }

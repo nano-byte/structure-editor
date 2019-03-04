@@ -6,7 +6,7 @@ using NanoByte.Common;
 namespace NanoByte.StructureEditor
 {
     /// <summary>
-    /// Describes an object that contains properties and/or lists. Provides information about how to edit this content.
+    /// Describes an object that contains nodes (properties and/or lists). Provides information about how to edit this content.
     /// </summary>
     /// <typeparam name="TContainer">The type of the container to be described.</typeparam>
     public interface IContainerDescription<TContainer> where TContainer : class
@@ -23,7 +23,7 @@ namespace NanoByte.StructureEditor
         [NotNull]
         IContainerDescription<TContainer> AddProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, TEditor editor)
             where TProperty : class, IEquatable<TProperty>, new()
-            where TEditor : IEditorControl<TProperty>, new();
+            where TEditor : INodeEditor<TProperty>, new();
 
         /// <summary>
         /// Adds a property to the description. Gives the <typeparamref name="TEditor"/> access to the <typeparamref name="TContainer"/>.
@@ -37,7 +37,7 @@ namespace NanoByte.StructureEditor
         [NotNull]
         IContainerDescription<TContainer> AddPropertyContainerRef<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, TEditor editor)
             where TProperty : class, IEquatable<TProperty>, new()
-            where TEditor : IEditorControlContainerRef<TProperty, TContainer>, new();
+            where TEditor : INodeEditorContainerRef<TProperty, TContainer>, new();
 
         /// <summary>
         /// Adds a list to the description.
@@ -61,7 +61,7 @@ namespace NanoByte.StructureEditor
         [NotNull]
         IContainerDescription<TContainer> AddPlainList<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, TEditor editor)
             where TElement : class, IEquatable<TElement>, new()
-            where TEditor : IEditorControl<TElement>, new();
+            where TEditor : INodeEditor<TElement>, new();
 
         /// <summary>
         /// Adds a list with only one type of element to the description. Gives the <typeparamref name="TEditor"/> access to the <typeparamref name="TContainer"/>.
@@ -75,22 +75,20 @@ namespace NanoByte.StructureEditor
         [NotNull]
         IContainerDescription<TContainer> AddPlainListContainerRef<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, TEditor editor)
             where TElement : class, IEquatable<TElement>, new()
-            where TEditor : IEditorControlContainerRef<TElement, TContainer>, new();
+            where TEditor : INodeEditorContainerRef<TElement, TContainer>, new();
 
         /// <summary>
-        /// Returns information about entries found in a specific instance of <typeparamref name="TContainer"/>.
+        /// Returns information about nodes found in a specific instance of <typeparamref name="TContainer"/>.
         /// </summary>
         /// <param name="container">The container instance to look in to.</param>
-        /// <returns>A list of entry information structures.</returns>
         [NotNull, ItemNotNull]
-        IEnumerable<EntryInfo> GetEntriesIn(TContainer container);
+        IEnumerable<Node> GetNodesIn(TContainer container);
 
         /// <summary>
-        /// Returns information about possible new children for a specific instance of <typeparamref name="TContainer"/>.
+        /// Returns information about possible new child nodes for a specific instance of <typeparamref name="TContainer"/>.
         /// </summary>
         /// <param name="container">The container instance to look at.</param>
-        /// <returns>A list of child information structures.</returns>
         [NotNull, ItemNotNull]
-        IEnumerable<ChildInfo> GetPossibleChildrenFor(TContainer container);
+        IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container);
     }
 }

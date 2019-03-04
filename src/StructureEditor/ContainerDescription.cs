@@ -7,7 +7,7 @@ using System.Linq;
 namespace NanoByte.StructureEditor
 {
     /// <summary>
-    /// Describes an object that contains properties and/or lists. Provides information about how to edit this content.
+    /// Describes an object that contains nodes (properties and/or lists). Provides information about how to edit this content.
     /// </summary>
     /// <typeparam name="TContainer">The type of the container to be described.</typeparam>
     public partial class ContainerDescription<TContainer> : IContainerDescription<TContainer>
@@ -16,17 +16,17 @@ namespace NanoByte.StructureEditor
         private readonly List<DescriptionBase> _descriptions = new List<DescriptionBase>();
 
         /// <inheritdoc/>
-        public IEnumerable<EntryInfo> GetEntriesIn(TContainer container)
-            => _descriptions.SelectMany(description => description.GetEntriesIn(container));
+        public IEnumerable<Node> GetNodesIn(TContainer container)
+            => _descriptions.SelectMany(description => description.GetNodesIn(container));
 
         /// <inheritdoc/>
-        public IEnumerable<ChildInfo> GetPossibleChildrenFor(TContainer container)
-            => _descriptions.SelectMany(description => description.GetPossibleChildrenFor(container));
+        public IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container)
+            => _descriptions.SelectMany(description => description.GetCandidatesFor(container));
 
         private abstract class DescriptionBase
         {
-            public abstract IEnumerable<EntryInfo> GetEntriesIn(TContainer container);
-            public abstract IEnumerable<ChildInfo> GetPossibleChildrenFor(TContainer container);
+            public abstract IEnumerable<Node> GetNodesIn(TContainer container);
+            public abstract IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace NanoByte.StructureEditor
             /// <inheritdoc/>
             public IListDescription<TContainer, TList> AddElement<TElement, TEditor>(string name, TElement element, TEditor editor)
                 where TElement : class, TList, IEquatable<TElement>, new()
-                where TEditor : IEditorControl<TElement>, new()
+                where TEditor : INodeEditor<TElement>, new()
             {
                 _descriptions.Add(new ElementDescription<TElement, TEditor>(name));
                 return this;
@@ -29,7 +29,7 @@ namespace NanoByte.StructureEditor
             /// <inheritdoc/>
             public IListDescription<TContainer, TList> AddElementContainerRef<TElement, TEditor>(string name, TElement element, TEditor editor)
                 where TElement : class, TList, IEquatable<TElement>, new()
-                where TEditor : IEditorControlContainerRef<TElement, TContainer>, new()
+                where TEditor : INodeEditorContainerRef<TElement, TContainer>, new()
             {
                 _descriptions.Add(new ElementDescriptionContainerRef<TElement, TEditor>(name));
                 return this;
@@ -38,33 +38,33 @@ namespace NanoByte.StructureEditor
             private interface IElementDescription
             {
                 [CanBeNull]
-                EntryInfo TryGetEntry(TContainer container, IList<TList> list, TList candidate);
+                Node TryGetNode(TContainer container, IList<TList> list, TList candidate);
 
-                ChildInfo GetPossibleChildFor(IList<TList> list);
+                NodeCandidate GetCandidatesFor(IList<TList> list);
             }
 
             private class ElementDescription<TElement, TEditor> : IElementDescription
                 where TElement : class, TList, IEquatable<TElement>, new()
-                where TEditor : IEditorControl<TElement>, new()
+                where TEditor : INodeEditor<TElement>, new()
             {
                 private readonly string _name;
 
                 public ElementDescription(string name) => _name = name;
 
-                public EntryInfo TryGetEntry(TContainer container, IList<TList> list, TList candidate)
+                public Node TryGetNode(TContainer container, IList<TList> list, TList candidate)
                 {
                     if (!(candidate is TElement element)) return null;
 
                     var description = AttributeUtils.GetAttributes<DescriptionAttribute, TElement>().FirstOrDefault();
-                    return new EntryInfo(
+                    return new Node(
                         name: _name,
                         description: description?.Description,
                         target: element,
                         getEditorControl: executor => CreateEditor(container, element, executor),
-                        toXmlString: () => element.ToXmlString(),
-                        fromXmlString: xmlString =>
+                        getSerialized: () => element.ToXmlString(),
+                        getUpdateCommand: value =>
                         {
-                            var newValue = XmlStorage.FromXmlString<TElement>(xmlString);
+                            var newValue = XmlStorage.FromXmlString<TElement>(value);
                             return newValue.Equals(element) ? null : new ReplaceInList<TList>(list, element, newValue);
                         },
                         removeCommand: new RemoveFromCollection<TList>(list, element));
@@ -73,19 +73,19 @@ namespace NanoByte.StructureEditor
                 protected virtual TEditor CreateEditor(TContainer container, TElement value, ICommandExecutor executor)
                     => new TEditor {Target = value, CommandExecutor = executor};
 
-                public ChildInfo GetPossibleChildFor(IList<TList> list)
+                public NodeCandidate GetCandidatesFor(IList<TList> list)
                 {
                     var description = AttributeUtils.GetAttributes<DescriptionAttribute, TElement>().FirstOrDefault();
-                    return new ChildInfo(
+                    return new NodeCandidate(
                         name: _name,
                         description: description?.Description,
-                        create: () => new AddToCollection<TList>(list, new TElement()));
+                        getCreateCommand: () => new AddToCollection<TList>(list, new TElement()));
                 }
             }
 
             private class ElementDescriptionContainerRef<TElement, TEditor> : ElementDescription<TElement, TEditor>
                 where TElement : class, TList, IEquatable<TElement>, new()
-                where TEditor : IEditorControlContainerRef<TElement, TContainer>, new()
+                where TEditor : INodeEditorContainerRef<TElement, TContainer>, new()
             {
                 public ElementDescriptionContainerRef(string name)
                     : base(name)

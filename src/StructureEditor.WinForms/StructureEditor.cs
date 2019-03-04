@@ -2,6 +2,7 @@
 // Licensed under the MIT License
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using JetBrains.Annotations;
@@ -107,10 +108,10 @@ namespace NanoByte.StructureEditor.WinForms
 
         #region Describe
         [ItemNotNull]
-        private readonly AggregateDispatcher<object, EntryInfo> _getEntries = new AggregateDispatcher<object, EntryInfo>();
+        private readonly AggregateDispatcher<object, Node> _getNodes = new AggregateDispatcher<object, Node>();
 
         [ItemCanBeNull]
-        private readonly AggregateDispatcher<object, ChildInfo> _getPossibleChildren = new AggregateDispatcher<object, ChildInfo>();
+        private readonly AggregateDispatcher<object, NodeCandidate> _getCandidates = new AggregateDispatcher<object, NodeCandidate>();
 
         /// <summary>
         /// Adds a <see cref="ContainerDescription{TContainer}"/> used to describe the structure of the data being editing.
@@ -121,8 +122,8 @@ namespace NanoByte.StructureEditor.WinForms
             where TContainer : class
         {
             var description = new ContainerDescription<TContainer>();
-            _getEntries.Add<TContainer>(container => description.GetEntriesIn(container).ToList());
-            _getPossibleChildren.Add<TContainer>(container => description.GetPossibleChildrenFor(container).Append(null).ToList());
+            _getNodes.Add<TContainer>(container => description.GetNodesIn(container).ToList());
+            _getCandidates.Add<TContainer>(container => description.GetCandidatesFor(container).Append(null).ToList());
             return description;
         }
 
@@ -133,7 +134,7 @@ namespace NanoByte.StructureEditor.WinForms
         /// <param name="name">The name of the root element.</param>
         /// <returns>The <see cref="ContainerDescription{TContainer}"/> for use in a "Fluent API" style.</returns>
         public IContainerDescription<T> DescribeRoot<TEditor>(string name)
-            where TEditor : IEditorControl<T>, new()
+            where TEditor : INodeEditor<T>, new()
         {
             // Use CommandManager as root rather than Target, to allow the entire Target to be replaced during editing
             Describe<ICommandManager<T>>()
@@ -148,7 +149,7 @@ namespace NanoByte.StructureEditor.WinForms
         /// <param name="name">The name of the root element.</param>
         /// <returns>The <see cref="ContainerDescription{TContainer}"/> for use in a "Fluent API" style.</returns>
         public IContainerDescription<T> DescribeRoot(string name)
-            => DescribeRoot<PropertyGridEditor<T>>(name);
+            => DescribeRoot<PropertyGridNodeEditor<T>>(name);
         #endregion
 
         #region Target
@@ -190,24 +191,25 @@ namespace NanoByte.StructureEditor.WinForms
         /// </summary>
         private void RebuildTree()
         {
-            Node reselectNode = null;
+            TreeNode reselectNode = null;
+
+            IEnumerable<TreeNode> GetTreeNodes(object target)
+            {
+                foreach (var node in _getNodes.Dispatch(target))
+                {
+                    var treeNode = new StructureTreeNode(node, GetTreeNodes(node.Target).ToArray());
+                    if (node.Target == _selectedTarget) reselectNode = treeNode;
+                    yield return treeNode;
+                }
+            }
 
             _treeView.BeginUpdate();
             _treeView.Nodes.Clear();
-            _treeView.Nodes.AddRange(BuildNodes(CommandManager));
-            _treeView.SelectedNode = reselectNode ?? _treeView.Nodes.Cast<Node>().FirstOrDefault();
+            _treeView.Nodes.AddRange(GetTreeNodes(CommandManager).ToArray());
+            // ReSharper disable once ConstantNullCoalescingCondition
+            _treeView.SelectedNode = reselectNode ?? _treeView.Nodes.Cast<TreeNode>().FirstOrDefault();
             _treeView.SelectedNode?.Expand();
             _treeView.EndUpdate();
-
-            TreeNode[] BuildNodes(object target)
-            {
-                return _getEntries.Dispatch(target).Select(entry =>
-                {
-                    var node = new Node(entry, BuildNodes(entry.Target));
-                    if (entry.Target == _selectedTarget) reselectNode = node;
-                    return (TreeNode)node;
-                }).ToArray();
-            }
         }
         #endregion
 
@@ -238,24 +240,23 @@ namespace NanoByte.StructureEditor.WinForms
         {
             _buttonAdd.DropDownItems.Clear();
             if (SelectedNode != null)
-                BuildAddDropDownMenu(SelectedNode.Entry.Target);
+                BuildAddDropDownMenu(SelectedNode.Node.Target);
         }
 
         private void BuildAddDropDownMenu(object instance)
         {
-            foreach (var child in _getPossibleChildren.Dispatch(instance))
+            foreach (var candidate in _getCandidates.Dispatch(instance))
             {
-                if (child == null) _buttonAdd.DropDownItems.Add(new ToolStripSeparator());
+                if (candidate == null) _buttonAdd.DropDownItems.Add(new ToolStripSeparator());
                 else
                 {
-                    var child1 = child;
-                    _buttonAdd.DropDownItems.Add(new ToolStripMenuItem(child.Name, null, delegate
+                    _buttonAdd.DropDownItems.Add(new ToolStripMenuItem(candidate.Name, null, delegate
                         {
-                            var command = child1.Create();
+                            var command = candidate.GetCreateCommand();
                             _selectedTarget = command.Value;
                             CommandManager.Execute(command);
                         })
-                        {ToolTipText = child.Description});
+                        {ToolTipText = candidate.Description});
                 }
             }
         }
@@ -267,7 +268,7 @@ namespace NanoByte.StructureEditor.WinForms
         {
             if (SelectedNode == null || _treeView.SelectedNode == _treeView.Nodes[0]) return;
 
-            var deleteCommand = SelectedNode.Entry.RemoveCommand;
+            var deleteCommand = SelectedNode.Node.RemoveCommand;
             _treeView.SelectedNode = _treeView.SelectedNode.Parent; // Select parent before deleting
             CommandManager.Execute(deleteCommand);
         }
@@ -278,14 +279,14 @@ namespace NanoByte.StructureEditor.WinForms
         #region Selection
         private object _selectedTarget;
         private object _editingTarget;
-        private object _xmlTarget;
+        private object _serializedTarget;
 
-        private Node SelectedNode => (Node)_treeView.SelectedNode;
+        private StructureTreeNode SelectedNode => _treeView.SelectedNode as StructureTreeNode;
 
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             _buttonRemove.Enabled = _treeView.Nodes.Count > 0 && e.Node != _treeView.Nodes[0];
-            _selectedTarget = SelectedNode.Entry.Target;
+            _selectedTarget = SelectedNode.Node.Target;
 
             if (_selectedTarget == _editingTarget) _editorControl.Refresh();
             else
@@ -294,8 +295,8 @@ namespace NanoByte.StructureEditor.WinForms
                 _editingTarget = _selectedTarget;
             }
 
-            if (_selectedTarget != _xmlTarget) _textEditor.SetContent(ToXmlString(), "XML");
-            _xmlTarget = null;
+            if (_selectedTarget != _serializedTarget) _textEditor.SetContent(GetSerialized(), "XML");
+            _serializedTarget = null;
         }
 
         private Control _editorControl;
@@ -308,23 +309,23 @@ namespace NanoByte.StructureEditor.WinForms
                 _editorControl.Dispose();
             }
 
-            _editorControl = (Control)SelectedNode.Entry.GetEditorControl(CommandManager);
+            _editorControl = (Control)SelectedNode.Node.GetEditorControl(CommandManager);
             _editorControl.Dock = DockStyle.Fill;
             _editorPanel.Controls.Add(_editorControl);
         }
 
         /// <summary>
-        /// Returns the XML representation of the <see cref="SelectedNode"/>.
+        /// Returns the serialized representation of the <see cref="SelectedNode"/>.
         /// </summary>
-        protected virtual string ToXmlString() => SelectedNode.Entry.ToXmlString()
-            // Hide <?xml> header
+        protected virtual string GetSerialized() => SelectedNode.Node.GetSerialized()
+            // Trim off <?xml> header
             .GetRightPartAtFirstOccurrence('\n');
 
         private void TextEditorContentChanged(string text)
         {
-            var command = SelectedNode.Entry.FromXmlString(text);
+            var command = SelectedNode.Node.GetUpdateCommand(text);
             if (command == null) return;
-            _xmlTarget = _selectedTarget = command.Value;
+            _serializedTarget = _selectedTarget = command.Value;
             CommandManager.Execute(command);
             _textEditor.TextEditor.Document.UndoStack.ClearAll();
         }

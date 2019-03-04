@@ -13,10 +13,10 @@ using ICommandExecutor = NanoByte.Common.Undo.ICommandExecutor;
 namespace NanoByte.StructureEditor.WinForms
 {
     /// <summary>
-    /// Common base class for <see cref="IEditorControl{T}"/> implementations.
+    /// Common base class for controls that edits a node in the structure.
     /// </summary>
     /// <typeparam name="T">The type of element to edit.</typeparam>
-    public abstract class EditorControlBase<T> : UserControl, IEditorControl<T> where T : class
+    public abstract class NodeEditorBase<T> : UserControl, INodeEditor<T> where T : class
     {
         private T _target;
 
@@ -59,7 +59,7 @@ namespace NanoByte.StructureEditor.WinForms
         [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "Is not really an event but rather a hook.")]
         protected event Action CommandExecutorChanged;
 
-        protected EditorControlBase()
+        protected NodeEditorBase()
         {
             // ReSharper disable once VirtualMemberCallInConstructor
             AutoScroll = true;
@@ -150,14 +150,14 @@ namespace NanoByte.StructureEditor.WinForms
         }
 
         /// <summary>
-        /// Hooks up a <see cref="IEditorControl{T}"/> as child editor.
+        /// Hooks up a <see cref="INodeEditor{T}"/> as child editor.
         /// </summary>
-        /// <typeparam name="TControl">The specific <see cref="IEditorControl{T}"/> type.</typeparam>
+        /// <typeparam name="TControl">The specific <see cref="INodeEditor{T}"/> type.</typeparam>
         /// <typeparam name="TChild">The type the child editor handles.</typeparam>
         /// <param name="control">The control to hook up (is automatically added to <see cref="Control.Controls"/>).</param>
         /// <param name="getTarget">Callback to retrieve the (child) target of the <paramref name="control"/>.</param>
         protected void RegisterControl<TControl, TChild>(TControl control, Func<TChild> getTarget)
-            where TControl : Control, IEditorControl<TChild>
+            where TControl : Control, INodeEditor<TChild>
         {
             Controls.Add(control);
 

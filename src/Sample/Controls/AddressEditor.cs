@@ -9,7 +9,7 @@ using NanoByte.StructureEditor.WinForms;
 
 namespace NanoByte.StructureEditor.Sample.Controls
 {
-    public class AddressEditor : EditorControlBase<Address>
+    public class AddressEditor : NodeEditorBase<Address>
     {
         public AddressEditor()
         {
