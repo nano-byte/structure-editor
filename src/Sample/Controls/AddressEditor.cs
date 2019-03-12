@@ -9,6 +9,9 @@ using NanoByte.StructureEditor.WinForms;
 
 namespace NanoByte.StructureEditor.Sample.Controls
 {
+    /// <summary>
+    /// Editor for <see cref="Address"/> nodes in <see cref="AddressBook"/> structures.
+    /// </summary>
     public class AddressEditor : NodeEditorBase<Address>
     {
         public AddressEditor()

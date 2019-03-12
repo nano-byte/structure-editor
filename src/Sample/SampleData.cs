@@ -9,6 +9,7 @@ namespace NanoByte.StructureEditor.Sample
     {
         public static AddressBook AddressBook => new AddressBook
         {
+            Name = "My Address Book",
             Groups =
             {
                 new Group

@@ -9,13 +9,22 @@ using NanoByte.Common.Collections;
 
 namespace NanoByte.StructureEditor.Sample.Model
 {
-    [Description("Contact details of a person.")]
+    /// <summary>
+    /// Contact details of an individuals.
+    /// </summary>
+    [Description("Contact details of an individuals.")]
     public class Contact : IEquatable<Contact>
     {
+        /// <summary>
+        /// The first name of the contact.
+        /// </summary>
         [Description("The first name of the contact.")]
         [XmlAttribute]
         public string FirstName { get; set; }
 
+        /// <summary>
+        /// The last name of the contact.
+        /// </summary>
         [Description("The last name of the contact.")]
         [XmlAttribute]
         public string LastName { get; set; }
@@ -45,6 +54,15 @@ namespace NanoByte.StructureEditor.Sample.Model
             => obj is Contact other && Equals(other);
 
         public override int GetHashCode()
-            => 0;
+        {
+            unchecked
+            {
+                var hashCode = FirstName?.GetHashCode() ?? 0;
+                hashCode = (hashCode * 397) ^ (LastName?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (WorkAddress?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (HomeAddress?.GetHashCode() ?? 0);
+                return hashCode;
+            }
+        }
     }
 }

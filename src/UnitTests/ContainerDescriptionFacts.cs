@@ -25,8 +25,8 @@ namespace NanoByte.StructureEditor
 
             var container = new Contact();
             descriptor.GetCandidatesFor(container).Should().Equal(
-                new NodeCandidate("Home Address", null, null),
-                new NodeCandidate("Work Address", null, null),
+                new NodeCandidate("Home Address", "A postal address.", null),
+                new NodeCandidate("Work Address", "A postal address.", null),
                 new NodeCandidate("Landline Number", "A phone number for a landline.", null),
                 new NodeCandidate("Mobile Number", "A phone number for a mobile phone.", null));
         }
@@ -49,8 +49,8 @@ namespace NanoByte.StructureEditor
                 PhoneNumbers = {new LandlineNumber(), new MobileNumber()}
             };
             descriptor.GetNodesIn(container).Should().Equal(
-                new Node("Home Address", null, container.HomeAddress, null, null, null, null),
-                new Node("Work Address", null, container.WorkAddress, null, null, null, null),
+                new Node("Home Address", "A postal address.", container.HomeAddress, null, null, null, null),
+                new Node("Work Address", "A postal address.", container.WorkAddress, null, null, null, null),
                 new Node("Landline Number", "A phone number for a landline.", container.PhoneNumbers[0], null, null, null, null),
                 new Node("Mobile Number", "A phone number for a mobile phone.", container.PhoneNumbers[1], null, null, null, null));
         }

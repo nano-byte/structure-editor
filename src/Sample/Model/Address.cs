@@ -2,9 +2,14 @@
 // Licensed under the MIT License
 
 using System;
+using System.ComponentModel;
 
 namespace NanoByte.StructureEditor.Sample.Model
 {
+    /// <summary>
+    /// A postal address.
+    /// </summary>
+    [Description("A postal address.")]
     public class Address : IEquatable<Address>
     {
         public string Street { get; set; }

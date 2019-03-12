@@ -1,11 +1,11 @@
 // Copyright Bastian Eicher
 // Licensed under the MIT License
 
-using System;
-using System.Xml.Serialization;
-
 namespace NanoByte.StructureEditor.Sample.Model
 {
+    /// <summary>
+    /// Common base class for various types of phone numbers.
+    /// </summary>
     public abstract class PhoneNumber
     {
         public string CountryCode { get; set; }

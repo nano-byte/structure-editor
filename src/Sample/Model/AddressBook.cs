@@ -5,17 +5,27 @@ using System.Xml.Serialization;
 
 namespace NanoByte.StructureEditor.Sample.Model
 {
+    /// <summary>
+    /// An address book.
+    /// </summary>
     [Description("An address book.")]
     public class AddressBook : IContactContainer, IEquatable<AddressBook>
     {
+        /// <summary>
+        /// The name of the address book.
+        /// </summary>
         [Description("The name of the address book.")]
         [XmlAttribute]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Groups of multiple contacts.
+        /// </summary>
         [Browsable(false)]
         [XmlElement("Group")]
         public List<Group> Groups { get; } = new List<Group>();
 
+        /// <inheritdoc/>
         [Browsable(false)]
         [XmlElement("Contact")]
         public List<Contact> Contacts { get; } = new List<Contact>();
@@ -23,12 +33,13 @@ namespace NanoByte.StructureEditor.Sample.Model
         public override string ToString() => Name;
 
         public bool Equals(AddressBook other)
-            => false;
+            => other != null
+            && Name == other.Name;
 
         public override bool Equals(object obj)
             => obj is AddressBook other && Equals(other);
 
         public override int GetHashCode()
-            => 0;
+            => Name?.GetHashCode() ?? 0;
     }
 }
