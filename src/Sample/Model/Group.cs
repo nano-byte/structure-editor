@@ -24,7 +24,7 @@ namespace NanoByte.StructureEditor.Sample.Model
 
         /// <inheritdoc/>
         [Browsable(false)]
-        [XmlElement("Contact")]
+        [XmlElement(nameof(Contact))]
         public List<Contact> Contacts { get; } = new List<Contact>();
 
         public override string ToString() => Name;
