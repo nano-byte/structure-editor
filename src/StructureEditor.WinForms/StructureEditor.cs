@@ -62,7 +62,6 @@ namespace NanoByte.StructureEditor.WinForms
 
         private void SetupControls()
         {
-            _buttonAdd.DropDownOpening += buttonAdd_DropDownOpening;
             _buttonRemove.Click += buttonRemove_Click;
             _treeView.AfterSelect += treeView_AfterSelect;
             _textEditor.ContentChanged += TextEditorContentChanged;
@@ -236,33 +235,30 @@ namespace NanoByte.StructureEditor.WinForms
         //--------------------//
 
         #region Add/remove
-        private void buttonAdd_DropDownOpening(object sender, EventArgs e)
+        private void BuildAddDropDownMenu()
         {
-            _buttonAdd.DropDownItems.Clear();
-            if (SelectedNode != null)
-                BuildAddDropDownMenu(SelectedNode.Node.Target);
-        }
+            var menu = (SelectedNode == null)
+                ? new ToolStripItem[0]
+                : _getCandidates.Dispatch(SelectedNode.Node.Target)
+                                .Select(candidate => candidate == null
+                                     ? (ToolStripItem)new ToolStripSeparator()
+                                     : new ToolStripMenuItem(candidate.Name, null, delegate
+                                         {
+                                             var command = candidate.GetCreateCommand();
+                                             _selectedTarget = command.Value;
+                                             CommandManager.Execute(command);
+                                         })
+                                         {ToolTipText = candidate.Description})
+                                .ToArray();
 
-        private void BuildAddDropDownMenu(object instance)
-        {
-            foreach (var candidate in _getCandidates.Dispatch(instance))
-            {
-                if (candidate == null) _buttonAdd.DropDownItems.Add(new ToolStripSeparator());
-                else
-                {
-                    _buttonAdd.DropDownItems.Add(new ToolStripMenuItem(candidate.Name, null, delegate
-                        {
-                            var command = candidate.GetCreateCommand();
-                            _selectedTarget = command.Value;
-                            CommandManager.Execute(command);
-                        })
-                        {ToolTipText = candidate.Description});
-                }
-            }
+            _buttonAdd.DropDownItems.Clear();
+            _buttonAdd.DropDownItems.AddRange(menu.Take(menu.Length - 1).ToArray());
+
+            _buttonAdd.Enabled = _buttonAdd.DropDownItems.Count != 0;
         }
 
         /// <summary>
-        /// Removes the currently selected entry;
+        /// Removes the currently selected entry.
         /// </summary>
         public void Remove()
         {
@@ -285,6 +281,7 @@ namespace NanoByte.StructureEditor.WinForms
 
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            BuildAddDropDownMenu();
             _buttonRemove.Enabled = _treeView.Nodes.Count > 0 && e.Node != _treeView.Nodes[0];
             _selectedTarget = SelectedNode.Node.Target;
 
