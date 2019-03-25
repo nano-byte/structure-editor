@@ -4,8 +4,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Xml.Serialization;
-using NanoByte.Common.Collections;
 
 namespace NanoByte.StructureEditor.Sample.Model
 {
@@ -48,7 +48,7 @@ namespace NanoByte.StructureEditor.Sample.Model
             && LastName == other.LastName
             && Equals(WorkAddress, other.WorkAddress)
             && Equals(HomeAddress, other.HomeAddress)
-            && PhoneNumbers.SequencedEquals(other.PhoneNumbers);
+            && PhoneNumbers.SequenceEqual(other.PhoneNumbers);
 
         public override bool Equals(object obj)
             => obj is Contact other && Equals(other);

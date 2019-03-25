@@ -4,8 +4,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Xml.Serialization;
-using NanoByte.Common.Collections;
 
 namespace NanoByte.StructureEditor.Sample.Model
 {
@@ -32,7 +32,7 @@ namespace NanoByte.StructureEditor.Sample.Model
         public bool Equals(Group other)
             => other != null
             && Name == other.Name
-            && Contacts.SequencedEquals(other.Contacts);
+            && Contacts.SequenceEqual(other.Contacts);
 
         public override bool Equals(object obj)
             => obj is Group other && Equals(other);

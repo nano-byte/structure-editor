@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace NanoByte.StructureEditor.Sample.Model
@@ -34,7 +35,9 @@ namespace NanoByte.StructureEditor.Sample.Model
 
         public bool Equals(AddressBook other)
             => other != null
-            && Name == other.Name;
+            && Name == other.Name
+            && Groups.SequenceEqual(other.Groups)
+            && Contacts.SequenceEqual(other.Contacts);
 
         public override bool Equals(object obj)
             => obj is AddressBook other && Equals(other);
