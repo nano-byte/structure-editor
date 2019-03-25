@@ -3,7 +3,6 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
-using JetBrains.Annotations;
 
 namespace NanoByte.StructureEditor
 {
@@ -29,20 +28,5 @@ namespace NanoByte.StructureEditor
         IListDescription<TContainer, TList> AddElement<TElement, TEditor>(string name, TElement element, TEditor editor)
             where TElement : class, TList, IEquatable<TElement>, new()
             where TEditor : INodeEditor<TElement>, new();
-
-        /// <summary>
-        /// Adds a list element type to the description. Gives the <typeparamref name="TEditor"/> access to the <typeparamref name="TContainer"/>.
-        /// </summary>
-        /// <param name="name">The name of the element type.</param>
-        /// <param name="element">Dummy element used for type inference of <typeparamref name="TElement"/>.</param>
-        /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
-        /// <typeparam name="TElement">The type of a specific element type in the list.</typeparam>
-        /// <typeparam name="TEditor">An editor for modifying this type of element.</typeparam>
-        /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
-        [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification = "Generics used as type-safe reflection replacement.")]
-        [PublicAPI]
-        IListDescription<TContainer, TList> AddElementContainerRef<TElement, TEditor>(string name, TElement element, TEditor editor)
-            where TElement : class, TList, IEquatable<TElement>, new()
-            where TEditor : INodeEditorContainerRef<TElement, TContainer>, new();
     }
 }

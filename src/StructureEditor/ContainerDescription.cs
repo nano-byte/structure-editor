@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using NanoByte.Common.Undo;
 
 namespace NanoByte.StructureEditor
 {
@@ -27,6 +28,18 @@ namespace NanoByte.StructureEditor
         {
             public abstract IEnumerable<Node> GetNodesIn(TContainer container);
             public abstract IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container);
+        }
+
+        private static TEditor CreateEditor<TEditor, TElement>(TContainer container, TElement value, ICommandExecutor executor)
+            where TEditor : INodeEditor<TElement>, new()
+        {
+            var editor = new TEditor {Target = value, CommandExecutor = executor};
+
+            // ReSharper disable once SuspiciousTypeConversion.Global
+            if (editor is ITargetContainerInject<TContainer> inject)
+                inject.TargetContainer = container;
+
+            return editor;
         }
     }
 }

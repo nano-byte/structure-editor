@@ -26,15 +26,6 @@ namespace NanoByte.StructureEditor
                 return this;
             }
 
-            /// <inheritdoc/>
-            public IListDescription<TContainer, TList> AddElementContainerRef<TElement, TEditor>(string name, TElement element, TEditor editor)
-                where TElement : class, TList, IEquatable<TElement>, new()
-                where TEditor : INodeEditorContainerRef<TElement, TContainer>, new()
-            {
-                _descriptions.Add(new ElementDescriptionContainerRef<TElement, TEditor>(name));
-                return this;
-            }
-
             private interface IElementDescription
             {
                 [CanBeNull]
@@ -60,7 +51,7 @@ namespace NanoByte.StructureEditor
                         name: _name,
                         description: description?.Description,
                         target: element,
-                        getEditorControl: executor => CreateEditor(container, element, executor),
+                        getEditorControl: executor => CreateEditor<TEditor, TElement>(container, element, executor),
                         getSerialized: () => element.ToXmlString(),
                         getUpdateCommand: value =>
                         {
@@ -70,9 +61,6 @@ namespace NanoByte.StructureEditor
                         removeCommand: new RemoveFromCollection<TList>(list, element));
                 }
 
-                protected virtual TEditor CreateEditor(TContainer container, TElement value, ICommandExecutor executor)
-                    => new TEditor {Target = value, CommandExecutor = executor};
-
                 public NodeCandidate GetCandidatesFor(IList<TList> list)
                 {
                     var description = AttributeUtils.GetAttributes<DescriptionAttribute, TElement>().FirstOrDefault();
@@ -81,18 +69,6 @@ namespace NanoByte.StructureEditor
                         description: description?.Description,
                         getCreateCommand: () => new AddToCollection<TList>(list, new TElement()));
                 }
-            }
-
-            private class ElementDescriptionContainerRef<TElement, TEditor> : ElementDescription<TElement, TEditor>
-                where TElement : class, TList, IEquatable<TElement>, new()
-                where TEditor : INodeEditorContainerRef<TElement, TContainer>, new()
-            {
-                public ElementDescriptionContainerRef(string name)
-                    : base(name)
-                {}
-
-                protected override TEditor CreateEditor(TContainer container, TElement value, ICommandExecutor executor)
-                    => new TEditor {Target = value, ContainerRef = container, CommandExecutor = executor};
             }
         }
     }

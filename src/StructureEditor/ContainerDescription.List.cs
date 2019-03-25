@@ -35,17 +35,6 @@ namespace NanoByte.StructureEditor
             return this;
         }
 
-        /// <inheritdoc/>
-        public IContainerDescription<TContainer> AddPlainListContainerRef<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, TEditor editor)
-            where TElement : class, IEquatable<TElement>, new()
-            where TEditor : INodeEditorContainerRef<TElement, TContainer>, new()
-        {
-            var listDescription = new ListDescription<TElement>(getList);
-            listDescription.AddElementContainerRef(name, new TElement(), editor);
-            _descriptions.Add(listDescription);
-            return this;
-        }
-
         private partial class ListDescription<TList> : DescriptionBase, IListDescription<TContainer, TList>
             where TList : class
         {

@@ -24,15 +24,6 @@ namespace NanoByte.StructureEditor
             return this;
         }
 
-        /// <inheritdoc/>
-        public IContainerDescription<TContainer> AddPropertyContainerRef<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, TEditor editor)
-            where TProperty : class, IEquatable<TProperty>, new()
-            where TEditor : INodeEditorContainerRef<TProperty, TContainer>, new()
-        {
-            _descriptions.Add(new PropertyDescriptionContainerRef<TProperty, TEditor>(name, getPointer));
-            return this;
-        }
-
         private class PropertyDescription<TProperty, TEditor> : DescriptionBase
             where TProperty : class, IEquatable<TProperty>, new()
             where TEditor : INodeEditor<TProperty>, new()
@@ -56,7 +47,7 @@ namespace NanoByte.StructureEditor
                         name: _name,
                         description: description?.Description,
                         target: pointer.Value,
-                        getEditorControl: executor => CreateEditor(container, pointer.Value, executor),
+                        getEditorControl: executor => CreateEditor<TEditor, TProperty>(container, pointer.Value, executor),
                         getSerialized: () => pointer.Value.ToXmlString(),
                         getUpdateCommand: value =>
                         {
@@ -66,9 +57,6 @@ namespace NanoByte.StructureEditor
                         removeCommand: SetValueCommand.For(pointer, null));
                 }
             }
-
-            protected virtual TEditor CreateEditor(TContainer container, TProperty value, ICommandExecutor executor)
-                => new TEditor {Target = value, CommandExecutor = executor};
 
             public override IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container)
             {
@@ -81,18 +69,6 @@ namespace NanoByte.StructureEditor
                         getCreateCommand: () => SetValueCommand.For(_getPointer(container), new TProperty()))
                 };
             }
-        }
-
-        private class PropertyDescriptionContainerRef<TProperty, TEditor> : PropertyDescription<TProperty, TEditor>
-            where TProperty : class, IEquatable<TProperty>, new()
-            where TEditor : INodeEditorContainerRef<TProperty, TContainer>, new()
-        {
-            public PropertyDescriptionContainerRef(string name, Func<TContainer, PropertyPointer<TProperty>> getPointer)
-                : base(name, getPointer)
-            {}
-
-            protected override TEditor CreateEditor(TContainer container, TProperty value, ICommandExecutor executor)
-                => new TEditor {Target = value, ContainerRef = container, CommandExecutor = executor};
         }
     }
 }

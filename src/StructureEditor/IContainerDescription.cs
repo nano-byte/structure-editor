@@ -26,20 +26,6 @@ namespace NanoByte.StructureEditor
             where TEditor : INodeEditor<TProperty>, new();
 
         /// <summary>
-        /// Adds a property to the description. Gives the <typeparamref name="TEditor"/> access to the <typeparamref name="TContainer"/>.
-        /// </summary>
-        /// <typeparam name="TProperty">The type of the property.</typeparam>
-        /// <typeparam name="TEditor">An editor for modifying the content of the property.</typeparam>
-        /// <param name="name">The name of the property.</param>
-        /// <param name="getPointer">A function to retrieve a pointer to property in the container.</param>
-        /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
-        /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
-        [NotNull]
-        IContainerDescription<TContainer> AddPropertyContainerRef<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, TEditor editor)
-            where TProperty : class, IEquatable<TProperty>, new()
-            where TEditor : INodeEditorContainerRef<TProperty, TContainer>, new();
-
-        /// <summary>
         /// Adds a list to the description.
         /// </summary>
         /// <typeparam name="TList">The type of elements in the list.</typeparam>
@@ -62,20 +48,6 @@ namespace NanoByte.StructureEditor
         IContainerDescription<TContainer> AddPlainList<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, TEditor editor)
             where TElement : class, IEquatable<TElement>, new()
             where TEditor : INodeEditor<TElement>, new();
-
-        /// <summary>
-        /// Adds a list with only one type of element to the description. Gives the <typeparamref name="TEditor"/> access to the <typeparamref name="TContainer"/>.
-        /// </summary>
-        /// <typeparam name="TElement">The type of elements in the list.</typeparam>
-        /// <typeparam name="TEditor">An editor for modifying this type of element.</typeparam>
-        /// <param name="name">The name of the element type.</param>
-        /// <param name="getList">A function to retrieve the list from the container.</param>
-        /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
-        /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
-        [NotNull]
-        IContainerDescription<TContainer> AddPlainListContainerRef<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, TEditor editor)
-            where TElement : class, IEquatable<TElement>, new()
-            where TEditor : INodeEditorContainerRef<TElement, TContainer>, new();
 
         /// <summary>
         /// Returns information about nodes found in a specific instance of <typeparamref name="TContainer"/>.
