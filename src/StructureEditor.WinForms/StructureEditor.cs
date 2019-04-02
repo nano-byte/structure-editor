@@ -242,7 +242,7 @@ namespace NanoByte.StructureEditor.WinForms
                 : _getCandidates.Dispatch(SelectedNode.Node.Target)
                                 .Select(candidate => candidate == null
                                      ? (ToolStripItem)new ToolStripSeparator()
-                                     : new ToolStripMenuItem(candidate.Name, null, delegate
+                                     : new ToolStripMenuItem(candidate.NodeType, null, delegate
                                          {
                                              var command = candidate.GetCreateCommand();
                                              _selectedTarget = command.Value;
@@ -264,9 +264,9 @@ namespace NanoByte.StructureEditor.WinForms
         {
             if (SelectedNode == null || _treeView.SelectedNode == _treeView.Nodes[0]) return;
 
-            var deleteCommand = SelectedNode.Node.RemoveCommand;
+            var removeCommand = SelectedNode.Node.GetRemoveCommand();
             _treeView.SelectedNode = _treeView.SelectedNode.Parent; // Select parent before deleting
-            CommandManager.Execute(deleteCommand);
+            CommandManager.Execute(removeCommand);
         }
 
         private void buttonRemove_Click(object sender, EventArgs e) => Remove();

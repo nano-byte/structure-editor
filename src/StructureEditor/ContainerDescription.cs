@@ -1,9 +1,10 @@
 // Copyright Bastian Eicher
 // Licensed under the MIT License
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using NanoByte.Common.Undo;
+using NanoByte.Common;
 
 namespace NanoByte.StructureEditor
 {
@@ -11,10 +12,44 @@ namespace NanoByte.StructureEditor
     /// Describes an object that contains nodes (properties and/or lists). Provides information about how to edit this content.
     /// </summary>
     /// <typeparam name="TContainer">The type of the container to be described.</typeparam>
-    public partial class ContainerDescription<TContainer> : IContainerDescription<TContainer>
+    public class ContainerDescription<TContainer> : IContainerDescription<TContainer>
         where TContainer : class
     {
-        private readonly List<DescriptionBase> _descriptions = new List<DescriptionBase>();
+        private readonly List<Description<TContainer>> _descriptions = new List<Description<TContainer>>();
+
+        /// <inheritdoc/>
+        public IContainerDescription<TContainer> AddProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, TEditor editor)
+            where TProperty : class, IEquatable<TProperty>, new()
+            where TEditor : INodeEditor<TProperty>, new()
+        {
+            _descriptions.Add(new PropertyDescription<TContainer, TProperty, TEditor>(name, getPointer));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a list to the description.
+        /// </summary>
+        /// <typeparam name="TList">The type of elements in the list.</typeparam>
+        /// <param name="getList">A function to retrieve the list from the container.</param>
+        /// <returns>A list description, enabling you to specify explicit sub-types of <typeparamref name="TList"/> allowed in the list.</returns>
+        public IListDescription<TContainer, TList> AddList<TList>(Func<TContainer, IList<TList>> getList)
+            where TList : class
+        {
+            var listDescription = new ListDescription<TContainer, TList>(getList);
+            _descriptions.Add(listDescription);
+            return listDescription;
+        }
+
+        /// <inheritdoc/>
+        public IContainerDescription<TContainer> AddPlainList<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, TEditor editor)
+            where TElement : class, IEquatable<TElement>, new()
+            where TEditor : INodeEditor<TElement>, new()
+        {
+            var listDescription = new ListDescription<TContainer, TElement>(getList);
+            listDescription.AddElement(name, new TElement(), editor);
+            _descriptions.Add(listDescription);
+            return this;
+        }
 
         /// <inheritdoc/>
         public IEnumerable<Node> GetNodesIn(TContainer container)
@@ -23,23 +58,5 @@ namespace NanoByte.StructureEditor
         /// <inheritdoc/>
         public IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container)
             => _descriptions.SelectMany(description => description.GetCandidatesFor(container));
-
-        private abstract class DescriptionBase
-        {
-            public abstract IEnumerable<Node> GetNodesIn(TContainer container);
-            public abstract IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container);
-        }
-
-        private static TEditor CreateEditor<TEditor, TElement>(TContainer container, TElement value, ICommandExecutor executor)
-            where TEditor : INodeEditor<TElement>, new()
-        {
-            var editor = new TEditor {Target = value, CommandExecutor = executor};
-
-            // ReSharper disable once SuspiciousTypeConversion.Global
-            if (editor is ITargetContainerInject<TContainer> inject)
-                inject.TargetContainer = container;
-
-            return editor;
-        }
     }
 }

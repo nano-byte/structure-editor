@@ -1,56 +1,78 @@
 // Copyright Bastian Eicher
 // Licensed under the MIT License
 
-using System;
+using System.ComponentModel;
+using System.Linq;
+using JetBrains.Annotations;
 using NanoByte.Common.Undo;
+using NanoByte.Common.Values;
 using ICommandExecutor = NanoByte.Common.Undo.ICommandExecutor;
 
 namespace NanoByte.StructureEditor
 {
     /// <summary>
-    /// Information and callbacks for a specific node in the structure.
+    /// Describes a specific node in the structure.
     /// </summary>
-    public class Node : IEquatable<Node>
+    public abstract class Node
     {
-        public string Name { get; }
-        public string Description { get; }
-        public object Target { get; }
-        public Func<ICommandExecutor, IEditorControl> GetEditorControl { get; }
-        public Func<string> GetSerialized { get; }
-        public Func<string, IValueCommand> GetUpdateCommand { get; }
-        public IUndoCommand RemoveCommand { get; }
+        /// <summary>
+        /// The name of the node type.
+        /// </summary>
+        public string NodeType { get; }
 
-        public Node(string name, string description, object target, Func<ICommandExecutor, IEditorControl> getEditorControl, Func<string> getSerialized, Func<string, IValueCommand> getUpdateCommand, IUndoCommand removeCommand)
+        /// <summary>
+        /// A description of the node type.
+        /// </summary>
+        public string Description { get; }
+
+        /// <summary>
+        /// The object the node represents.
+        /// </summary>
+        public object Target { get; }
+
+        /// <summary>
+        /// Creates a new node.
+        /// </summary>
+        /// <param name="nodeType">The name of the node type.</param>
+        /// <param name="description">A description of the node type.</param>
+        /// <param name="target">The object the node represents.</param>
+        protected Node(string nodeType, string description, object target)
         {
-            Name = name;
+            NodeType = nodeType;
             Description = description;
             Target = target;
-            GetEditorControl = getEditorControl;
-            GetSerialized = getSerialized;
-            GetUpdateCommand = getUpdateCommand;
-            RemoveCommand = removeCommand;
         }
 
-        public override string ToString() => $"{Name}: {Target}";
+        public override string ToString()
+            => $"{NodeType}: {Target}";
 
-        public bool Equals(Node other)
-            => other != null
-            && Name == other.Name
-            && Description == other.Description
-            && Target == other.Target;
+        /// <summary>
+        /// Returns a serialized representation of the <see cref="Target"/>.
+        /// </summary>
+        public abstract string GetSerialized();
 
-        public override bool Equals(object obj)
-            => obj != null && obj is Node other && Equals(other);
+        /// <summary>
+        /// Gets a command for updating the node's target with a new value.
+        /// </summary>
+        /// <param name="serializedValue">A serialized representation of the new value.</param>
+        public abstract IValueCommand GetUpdateCommand(string serializedValue);
 
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hashCode = Name?.GetHashCode() ?? 0;
-                hashCode = (hashCode * 397) ^ (Description?.GetHashCode() ?? 0);
-                hashCode = (hashCode * 397) ^ (Target?.GetHashCode() ?? 0);
-                return hashCode;
-            }
-        }
+        /// <summary>
+        /// Gets a command for removing the node's target from the structure.
+        /// </summary>
+        public abstract IUndoCommand GetRemoveCommand();
+
+        /// <summary>
+        /// Gets a GUI control for editing the node's target.
+        /// </summary>
+        /// <param name="executor">Used to perform undo/redo operations.</param>
+        public abstract IEditorControl GetEditorControl(ICommandExecutor executor);
+
+        /// <summary>
+        /// Gets the <see cref="DescriptionAttribute.Description"/> of <typeparamref name="T"/>, if any.
+        /// </summary>
+        [CanBeNull]
+        public static string GetDescription<T>()
+            => AttributeUtils.GetAttributes<DescriptionAttribute, T>().FirstOrDefault()?.Description;
     }
 }

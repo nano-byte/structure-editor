@@ -7,38 +7,37 @@ using NanoByte.Common.Undo;
 namespace NanoByte.StructureEditor
 {
     /// <summary>
-    /// Information and callbacks for a potential new node in the structure.
+    /// Describes a potential new node in the structure.
     /// </summary>
-    public class NodeCandidate : IEquatable<NodeCandidate>
+    public abstract class NodeCandidate
     {
-        public string Name { get; }
-        public string Description { get; }
-        public Func<IValueCommand> GetCreateCommand { get; }
+        /// <summary>
+        /// The name of the node type.
+        /// </summary>
+        public string NodeType { get; }
 
-        public NodeCandidate(string name, string description, Func<IValueCommand> getCreateCommand)
+        /// <summary>
+        /// A description of the node type.
+        /// </summary>
+        public string Description { get; }
+
+        /// <summary>
+        /// Creates a new node candidate.
+        /// </summary>
+        /// <param name="nodeType">The name of the node type.</param>
+        /// <param name="description">A description of the node type.</param>
+        protected NodeCandidate(string nodeType, string description)
         {
-            Name = name;
+            NodeType = nodeType;
             Description = description;
-            GetCreateCommand = getCreateCommand;
         }
+
+        /// <summary>
+        /// Gets a command for creating the new node in the structure.
+        /// </summary>
+        public abstract IValueCommand GetCreateCommand();
 
         public override string ToString()
-            => string.IsNullOrEmpty(Description) ? Name : Name + " (" + Description + ")";
-
-        public bool Equals(NodeCandidate other)
-            => other != null
-            && Name == other.Name
-            && Description == other.Description;
-
-        public override bool Equals(object obj)
-            => obj != null && obj is NodeCandidate other && Equals(other);
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return ((Name?.GetHashCode() ?? 0) * 397) ^ (Description?.GetHashCode() ?? 0);
-            }
-        }
+            => string.IsNullOrEmpty(Description) ? NodeType : NodeType + " (" + Description + ")";
     }
 }

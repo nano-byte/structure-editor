@@ -1,6 +1,8 @@
 // Copyright Bastian Eicher
 // Licensed under the MIT License
 
+using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using NanoByte.Common;
 using NanoByte.StructureEditor.Sample.Controls;
@@ -24,11 +26,13 @@ namespace NanoByte.StructureEditor
                .AddElement("Mobile Number", new MobileNumber());
 
             var container = new Contact();
-            descriptor.GetCandidatesFor(container).Should().Equal(
-                new NodeCandidate("Home Address", "A postal address.", null),
-                new NodeCandidate("Work Address", "A postal address.", null),
-                new NodeCandidate("Landline Number", "A phone number for a landline.", null),
-                new NodeCandidate("Mobile Number", "A phone number for a mobile phone.", null));
+
+            var candidates = descriptor.GetCandidatesFor(container).ToArray();
+            ShouldBe(candidates,
+                ("Home Address", "A postal address."),
+                ("Work Address", "A postal address."),
+                ("Landline Number", "A phone number for a landline."),
+                ("Mobile Number", "A phone number for a mobile phone."));
         }
 
         [Fact]
@@ -42,17 +46,41 @@ namespace NanoByte.StructureEditor
                .AddElement("Landline Number", new LandlineNumber())
                .AddElement("Mobile Number", new MobileNumber());
 
+            var landlineNumber = new LandlineNumber();
+            var mobileNumber = new MobileNumber();
             var container = new Contact
             {
                 HomeAddress = new Address(),
                 WorkAddress = new Address(),
-                PhoneNumbers = {new LandlineNumber(), new MobileNumber()}
+                PhoneNumbers = {landlineNumber, mobileNumber}
             };
-            descriptor.GetNodesIn(container).Should().Equal(
-                new Node("Home Address", "A postal address.", container.HomeAddress, null, null, null, null),
-                new Node("Work Address", "A postal address.", container.WorkAddress, null, null, null, null),
-                new Node("Landline Number", "A phone number for a landline.", container.PhoneNumbers[0], null, null, null, null),
-                new Node("Mobile Number", "A phone number for a mobile phone.", container.PhoneNumbers[1], null, null, null, null));
+
+            var nodes = descriptor.GetNodesIn(container).ToArray();
+            ShouldBe(nodes,
+                ("Home Address",  container.HomeAddress),
+                ("Work Address", container.WorkAddress),
+                ("Landline Number", landlineNumber),
+                ("Mobile Number", mobileNumber));
+        }
+
+        private static void ShouldBe(IReadOnlyList<NodeCandidate> nodes, params (string name, string description)[] expectedValues)
+        {
+            for (int i = 0; i < expectedValues.Length; i++)
+            {
+                var node = nodes[i];
+                node.NodeType.Should().Be(expectedValues[i].name);
+                node.Description.Should().Be(expectedValues[i].description);
+            }
+        }
+
+        private static void ShouldBe(IReadOnlyList<Node> nodes, params (string nodeType, object target)[] expectedValues)
+        {
+            for (int i = 0; i < expectedValues.Length; i++)
+            {
+                var node = nodes[i];
+                node.NodeType.Should().Be(expectedValues[i].nodeType);
+                node.Target.Should().BeSameAs(expectedValues[i].target);
+            }
         }
     }
 }
