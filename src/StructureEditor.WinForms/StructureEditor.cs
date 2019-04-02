@@ -26,14 +26,13 @@ namespace NanoByte.StructureEditor.WinForms
         #region Controls
         private readonly ToolStripDropDownButton _buttonAdd = new ToolStripDropDownButton
         {
-            Text = "Add",
+            Text = "&Add",
             Image = Images.AddButton
         };
 
         private readonly ToolStripButton _buttonRemove = new ToolStripButton
         {
-            DisplayStyle = ToolStripItemDisplayStyle.Image,
-            Text = "Remove",
+            Text = "&Remove",
             Image = Images.DeleteButton
         };
 
@@ -62,7 +61,7 @@ namespace NanoByte.StructureEditor.WinForms
 
         private void SetupControls()
         {
-            _buttonRemove.Click += buttonRemove_Click;
+            _buttonRemove.Click += (sender, e) => Remove();
             _treeView.AfterSelect += treeView_AfterSelect;
             _textEditor.ContentChanged += TextEditorContentChanged;
 
@@ -268,8 +267,6 @@ namespace NanoByte.StructureEditor.WinForms
             _treeView.SelectedNode = _treeView.SelectedNode.Parent; // Select parent before deleting
             CommandManager.Execute(removeCommand);
         }
-
-        private void buttonRemove_Click(object sender, EventArgs e) => Remove();
         #endregion
 
         #region Selection
