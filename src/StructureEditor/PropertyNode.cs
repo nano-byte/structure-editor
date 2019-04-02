@@ -48,7 +48,7 @@ namespace NanoByte.StructureEditor
         public override IUndoCommand GetRemoveCommand() => SetValueCommand.For(_pointer, null);
 
         /// <inheritdoc/>
-        public override IEditorControl GetEditorControl(ICommandExecutor executor)
+        public override INodeEditor GetEditorControl(ICommandExecutor executor)
         {
             var editor = new TEditor {Target = _pointer.Value, CommandExecutor = executor};
 

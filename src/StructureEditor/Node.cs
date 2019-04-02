@@ -66,7 +66,7 @@ namespace NanoByte.StructureEditor
         /// Gets a GUI control for editing the node's target.
         /// </summary>
         /// <param name="executor">Used to perform undo/redo operations.</param>
-        public abstract IEditorControl GetEditorControl(ICommandExecutor executor);
+        public abstract INodeEditor GetEditorControl(ICommandExecutor executor);
 
         /// <summary>
         /// Gets the <see cref="DescriptionAttribute.Description"/> of <typeparamref name="T"/>, if any.

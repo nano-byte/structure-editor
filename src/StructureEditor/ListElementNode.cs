@@ -53,7 +53,7 @@ namespace NanoByte.StructureEditor
             => new RemoveFromCollection<TList>(_list, _element);
 
         /// <inheritdoc/>
-        public override IEditorControl GetEditorControl(ICommandExecutor executor)
+        public override INodeEditor GetEditorControl(ICommandExecutor executor)
         {
             var editor = new TEditor {Target = _element, CommandExecutor = executor};
 
