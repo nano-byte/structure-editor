@@ -9,6 +9,8 @@ if (Test-Path "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswher
   Write-Host -ForegroundColor yellow "WARNING: You need Visual Studio to perform a full Release build"
   $msBuild = "dotnet msbuild"
 }
+
 . $msBuild -v:Quiet -t:Restore -t:Build -p:Configuration=Release -p:Version=$Version
+if ($LASTEXITCODE -ne 0) {throw "Exit Code: $LASTEXITCODE"}
 
 popd
