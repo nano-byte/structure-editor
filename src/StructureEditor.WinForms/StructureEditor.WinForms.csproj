@@ -54,7 +54,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19367-01" PrivateAssets="All" />
-    <PackageReference Include="NanoByte.Common.WinForms" Version="2.3.3" />
+    <PackageReference Include="NanoByte.Common.WinForms" Version="2.3.4" />
   </ItemGroup>
 
   <!-- Bundle 3rd party libs in NuGet package -->
