@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>NanoByte.StructureEditor.WinForms</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor.WinForms</RootNamespace>
-    <LangVersion>7.2</LangVersion>
+    <LangVersion>8.0</LangVersion>
     <TargetFrameworks>net20;net35-client;net40-client;net45</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>

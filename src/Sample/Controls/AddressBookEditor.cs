@@ -32,11 +32,9 @@ namespace NanoByte.StructureEditor.Sample.Controls
 
         public void Open()
         {
-            using (var dialog = new OpenFileDialog {Filter = "XML File (*.xml)|*.xml"})
-            {
-                if (dialog.ShowDialog(this) == DialogResult.OK)
-                    Open(CommandManager<AddressBook>.Load(dialog.FileName));
-            }
+            using var dialog = new OpenFileDialog {Filter = "XML File (*.xml)|*.xml"};
+            if (dialog.ShowDialog(this) == DialogResult.OK)
+                Open(CommandManager<AddressBook>.Load(dialog.FileName));
         }
 
         public bool Save()
@@ -52,30 +50,25 @@ namespace NanoByte.StructureEditor.Sample.Controls
 
         public bool SaveAs()
         {
-            using (var dialog = new SaveFileDialog {Filter = "XML File (*.xml)|*.xml"})
+            using var dialog = new SaveFileDialog {Filter = "XML File (*.xml)|*.xml"};
+            if (dialog.ShowDialog(this) == DialogResult.OK)
             {
-                if (dialog.ShowDialog(this) == DialogResult.OK)
-                {
-                    CommandManager.Save(dialog.FileName);
-                    return true;
-                }
-                else return false;
+                CommandManager.Save(dialog.FileName);
+                return true;
             }
+            else return false;
         }
 
         public bool Closing()
         {
             if (!CommandManager.UndoEnabled) return true;
 
-            switch (Msg.YesNoCancel(this, "Save changes?", MsgSeverity.Warn))
+            return Msg.YesNoCancel(this, "Save changes?", MsgSeverity.Warn) switch
             {
-                case DialogResult.Yes:
-                    return Save();
-                case DialogResult.No:
-                    return true;
-                default:
-                    return false;
-            }
+                DialogResult.Yes => Save(),
+                DialogResult.No => true,
+                _ => false
+            };
         }
     }
 }
