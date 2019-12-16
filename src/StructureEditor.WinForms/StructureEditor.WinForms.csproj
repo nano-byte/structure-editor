@@ -1,10 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <AssemblyName>NanoByte.StructureEditor.WinForms</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor.WinForms</RootNamespace>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net20;net35-client;net40-client;net45</TargetFrameworks>
+    <TargetFrameworks>net20;net35-client;net40-client;net45;netcoreapp3.1</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
@@ -14,6 +14,10 @@
     <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
     <OutputType>Library</OutputType>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp3.1'">
+    <GenerateResourceUsePreserializedResources>True</GenerateResourceUsePreserializedResources>
   </PropertyGroup>
 
   <PropertyGroup>

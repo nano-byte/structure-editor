@@ -4,7 +4,7 @@
     <AssemblyName>NanoByte.StructureEditor.UnitTests</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor</RootNamespace>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net461</TargetFrameworks>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>Library</OutputType>
     <IsPackable>False</IsPackable>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>

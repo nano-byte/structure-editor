@@ -1,11 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <AssemblyName>NanoByte.StructureEditor.Sample</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor.Sample</RootNamespace>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net40</TargetFrameworks>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>WinExe</OutputType>
+    <UseWindowsForms>True</UseWindowsForms>
     <IsPackable>False</IsPackable>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <ApplicationManifest>app.manifest</ApplicationManifest>
