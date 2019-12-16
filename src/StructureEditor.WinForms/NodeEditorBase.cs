@@ -16,13 +16,14 @@ namespace NanoByte.StructureEditor.WinForms
     /// Common base class for controls that edits a node in the structure.
     /// </summary>
     /// <typeparam name="T">The type of element to edit.</typeparam>
-    public abstract class NodeEditorBase<T> : UserControl, INodeEditor<T> where T : class
+    public abstract class NodeEditorBase<T> : UserControl, INodeEditor<T>
+        where T : class
     {
-        private T _target;
+        private T? _target;
 
         /// <inheritdoc/>
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual T Target
+        public virtual T? Target
         {
             get => _target;
             set
@@ -37,13 +38,13 @@ namespace NanoByte.StructureEditor.WinForms
         /// Is raised when <see cref="Target"/> has been changed.
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "Is not really an event but rather a hook.")]
-        protected event Action TargetChanged;
+        protected event Action? TargetChanged;
 
-        private ICommandExecutor _commandExecutor;
+        private ICommandExecutor? _commandExecutor;
 
         /// <inheritdoc/>
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual ICommandExecutor CommandExecutor
+        public virtual ICommandExecutor? CommandExecutor
         {
             get => _commandExecutor;
             set
@@ -57,7 +58,7 @@ namespace NanoByte.StructureEditor.WinForms
         /// Is raised when <see cref="CommandExecutor"/> has been changed.
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "Is not really an event but rather a hook.")]
-        protected event Action CommandExecutorChanged;
+        protected event Action? CommandExecutorChanged;
 
         protected NodeEditorBase()
         {
@@ -69,7 +70,7 @@ namespace NanoByte.StructureEditor.WinForms
         /// Is raised when <see cref="Refresh"/> is called.
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "Is not really an event but rather a hook.")]
-        protected event Action OnRefresh;
+        protected event Action? OnRefresh;
 
         public override void Refresh()
         {
@@ -83,13 +84,13 @@ namespace NanoByte.StructureEditor.WinForms
         /// <param name="control">The control to hook up (is automatically added to <see cref="Control.Controls"/>).</param>
         /// <param name="pointer">Read/write access to the value the <paramref name="control"/> represents.</param>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "The set-value callback method may throw any kind of exception.")]
-        protected void RegisterControl(Control control, PropertyPointer<string> pointer)
+        protected void RegisterControl(Control control, PropertyPointer<string?> pointer)
         {
             Controls.Add(control);
 
             control.Validated += delegate
             {
-                string text = string.IsNullOrEmpty(control.Text) ? null : control.Text;
+                string? text = string.IsNullOrEmpty(control.Text) ? null : control.Text;
                 if (text == pointer.Value) return;
 
                 try
@@ -117,7 +118,7 @@ namespace NanoByte.StructureEditor.WinForms
         /// </summary>
         /// <param name="control">The control to hook up (is automatically added to <see cref="Control.Controls"/>).</param>
         /// <param name="pointer">Read/write access to the value the <paramref name="control"/> represents.</param>
-        protected void RegisterControl(ComboBox control, PropertyPointer<string> pointer)
+        protected void RegisterControl(ComboBox control, PropertyPointer<string?> pointer)
         {
             // Setting ComboBox.Text will only work reliably if the value is in the Items list
             OnRefresh += () =>
@@ -134,7 +135,7 @@ namespace NanoByte.StructureEditor.WinForms
         /// </summary>
         /// <param name="control">The control to hook up (is automatically added to <see cref="Control.Controls"/>).</param>
         /// <param name="pointer">Read/write access to the value the <paramref name="control"/> represents.</param>
-        protected void RegisterControl(UriTextBox control, PropertyPointer<Uri> pointer)
+        protected void RegisterControl(UriTextBox control, PropertyPointer<Uri?> pointer)
         {
             Controls.Add(control);
 
@@ -158,6 +159,7 @@ namespace NanoByte.StructureEditor.WinForms
         /// <param name="getTarget">Callback to retrieve the (child) target of the <paramref name="control"/>.</param>
         protected void RegisterControl<TControl, TChild>(TControl control, Func<TChild> getTarget)
             where TControl : Control, INodeEditor<TChild>
+            where TChild : class
         {
             Controls.Add(control);
 

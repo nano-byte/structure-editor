@@ -19,14 +19,14 @@ namespace NanoByte.StructureEditor
         /// <summary>
         /// A description of the node type.
         /// </summary>
-        public string Description { get; }
+        public string? Description { get; }
 
         /// <summary>
         /// Creates a new node candidate.
         /// </summary>
         /// <param name="nodeType">The name of the node type.</param>
         /// <param name="description">A description of the node type.</param>
-        protected NodeCandidate(string nodeType, string description)
+        protected NodeCandidate(string nodeType, string? description)
         {
             NodeType = nodeType;
             Description = description;

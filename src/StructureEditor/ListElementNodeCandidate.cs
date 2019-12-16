@@ -1,7 +1,6 @@
 // Copyright Bastian Eicher
 // Licensed under the MIT License
 
-using System;
 using System.Collections.Generic;
 using NanoByte.Common.Undo;
 
@@ -13,6 +12,7 @@ namespace NanoByte.StructureEditor
     /// <typeparam name="TList">The type of elements in the list.</typeparam>
     /// <typeparam name="TElement">The type of a specific element type to add to the list.</typeparam>
     public class ListElementNodeCandidate<TList, TElement> : NodeCandidate
+        where TList : notnull
         where TElement : TList, new()
     {
         private readonly IList<TList> _list;

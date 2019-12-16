@@ -17,7 +17,7 @@ namespace NanoByte.StructureEditor.Sample.Model
         /// </summary>
         [Description("The name of the address book.")]
         [XmlAttribute]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Groups of multiple contacts.
@@ -31,7 +31,7 @@ namespace NanoByte.StructureEditor.Sample.Model
         [XmlElement(nameof(Contact))]
         public List<Contact> Contacts { get; } = new List<Contact>();
 
-        public override string ToString() => Name;
+        public override string ToString() => Name ?? "";
 
         public bool Equals(AddressBook other)
             => other != null
@@ -39,7 +39,7 @@ namespace NanoByte.StructureEditor.Sample.Model
             && Groups.SequenceEqual(other.Groups)
             && Contacts.SequenceEqual(other.Contacts);
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
             => obj is AddressBook other && Equals(other);
 
         public override int GetHashCode()

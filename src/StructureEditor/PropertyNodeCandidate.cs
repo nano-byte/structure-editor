@@ -1,7 +1,6 @@
 // Copyright Bastian Eicher
 // Licensed under the MIT License
 
-using System;
 using NanoByte.Common;
 using NanoByte.Common.Undo;
 
@@ -12,16 +11,16 @@ namespace NanoByte.StructureEditor
     /// </summary>
     /// <typeparam name="TProperty">The type of the property.</typeparam>
     public class PropertyNodeCandidate<TProperty> : NodeCandidate
-        where TProperty : new()
+        where TProperty : class, new()
     {
-        private readonly PropertyPointer<TProperty> _pointer;
+        private readonly PropertyPointer<TProperty?> _pointer;
 
         /// <summary>
         /// Creates a new property node candidate.
         /// </summary>
         /// <param name="name">The name of the property.</param>
         /// <param name="pointer">A pointer to the property.</param>
-        public PropertyNodeCandidate(string name, PropertyPointer<TProperty> pointer)
+        public PropertyNodeCandidate(string name, PropertyPointer<TProperty?> pointer)
             : base(name, Node.GetDescription<TProperty>())
         {
             _pointer = pointer;

@@ -2,7 +2,6 @@
 // Licensed under the MIT License
 
 using System.Collections.Generic;
-using JetBrains.Annotations;
 
 namespace NanoByte.StructureEditor
 {
@@ -17,14 +16,12 @@ namespace NanoByte.StructureEditor
         /// Returns information about nodes of this type found in a specific instance of <typeparamref name="TContainer"/>.
         /// </summary>
         /// <param name="container">The container instance to look in to.</param>
-        [NotNull, ItemNotNull]
         public abstract IEnumerable<Node> GetNodesIn(TContainer container);
 
         /// <summary>
         /// Returns information about possible new child nodes of this type for a specific instance of <typeparamref name="TContainer"/>.
         /// </summary>
         /// <param name="container">The container instance to look at.</param>
-        [NotNull, ItemNotNull]
         public abstract IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container);
     }
 }

@@ -20,21 +20,21 @@ namespace NanoByte.StructureEditor.Sample.Model
         /// </summary>
         [Description("The name of the group.")]
         [XmlAttribute]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <inheritdoc/>
         [Browsable(false)]
         [XmlElement(nameof(Contact))]
         public List<Contact> Contacts { get; } = new List<Contact>();
 
-        public override string ToString() => Name;
+        public override string ToString() => Name ?? "";
 
         public bool Equals(Group other)
             => other != null
             && Name == other.Name
             && Contacts.SequenceEqual(other.Contacts);
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
             => obj is Group other && Equals(other);
 
         public override int GetHashCode()

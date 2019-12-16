@@ -20,20 +20,20 @@ namespace NanoByte.StructureEditor.Sample.Model
         /// </summary>
         [Description("The first name of the contact.")]
         [XmlAttribute]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         /// <summary>
         /// The last name of the contact.
         /// </summary>
         [Description("The last name of the contact.")]
         [XmlAttribute]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         [Browsable(false)]
-        public Address HomeAddress { get; set; }
+        public Address? HomeAddress { get; set; }
 
         [Browsable(false)]
-        public Address WorkAddress { get; set; }
+        public Address? WorkAddress { get; set; }
 
         [Browsable(false)]
         [XmlElement(nameof(LandlineNumber), typeof(LandlineNumber))]
@@ -50,7 +50,7 @@ namespace NanoByte.StructureEditor.Sample.Model
             && Equals(HomeAddress, other.HomeAddress)
             && PhoneNumbers.SequenceEqual(other.PhoneNumbers);
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
             => obj is Contact other && Equals(other);
 
         public override int GetHashCode()

@@ -25,7 +25,7 @@ namespace NanoByte.StructureEditor.WinForms
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "Cannot rename System.Action<T>")]
         [Description("Raised when changes have accumulated after a short period of no input.")]
-        public event Action<string> ContentChanged;
+        public event Action<string>? ContentChanged;
 
         private readonly StatusStrip _statusStrip = new StatusStrip
         {
@@ -107,7 +107,7 @@ namespace NanoByte.StructureEditor.WinForms
         //--------------------//
 
         #region Event handlers
-        private void TextEditor_TextChanged(object sender, EventArgs e)
+        private void TextEditor_TextChanged(object? sender, EventArgs e)
         {
             TextEditor.Document.MarkerStrategy.RemoveAll(marker => true);
 
@@ -117,7 +117,7 @@ namespace NanoByte.StructureEditor.WinForms
         }
 
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Invalid user input may cause arbitrary exceptions.")]
-        private void TextEditor_Validating(object sender, CancelEventArgs e)
+        private void TextEditor_Validating(object? sender, CancelEventArgs e)
         {
             if (_timer.Enabled)
             { // Ensure pending validation is not lost
@@ -134,7 +134,7 @@ namespace NanoByte.StructureEditor.WinForms
         }
 
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Invalid user input may cause arbitrary exceptions.")]
-        private void timer_Tick(object sender, EventArgs e)
+        private void timer_Tick(object? sender, EventArgs e)
         {
             try
             {
@@ -157,7 +157,7 @@ namespace NanoByte.StructureEditor.WinForms
             ContentChanged(TextEditor.Text);
             Log.Handler -= HandleLogEntry;
 
-            string warning = null;
+            string? warning = null;
 
             void HandleLogEntry(LogSeverity severity, string message)
             {
@@ -194,7 +194,7 @@ namespace NanoByte.StructureEditor.WinForms
             }
         }
 
-        private void SetStatus(Image image, string message)
+        private void SetStatus(Image? image, string message)
         {
             _labelStatus.Image = image;
             _labelStatus.Text = message;

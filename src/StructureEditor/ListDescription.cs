@@ -4,7 +4,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using NanoByte.Common.Collections;
 
 namespace NanoByte.StructureEditor
@@ -31,12 +30,16 @@ namespace NanoByte.StructureEditor
         }
 
         public override IEnumerable<Node> GetNodesIn(TContainer container)
-            => _getList(container)
-              .Select(element => _descriptions
-                                .Select(x => x.TryGetNode(container, _getList(container), element))
-                                .WhereNotNull()
-                                .FirstOrDefault())
-              .Where(node => node != null);
+        {
+            foreach (var element in _getList(container))
+            {
+                var node = _descriptions
+                   .Select(x => x.TryGetNode(container, _getList(container), element))
+                   .WhereNotNull()
+                   .FirstOrDefault();
+                if (node != null) yield return node;
+            }
+        }
 
         public override IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container)
             => _descriptions.Select(description => description.GetCandidateFor(_getList(container)));
@@ -52,8 +55,7 @@ namespace NanoByte.StructureEditor
 
         private interface IElementDescription
         {
-            [CanBeNull]
-            Node TryGetNode(TContainer container, IList<TList> list, TList candidate);
+            Node? TryGetNode(TContainer container, IList<TList> list, TList candidate);
 
             NodeCandidate GetCandidateFor(IList<TList> list);
         }
@@ -66,7 +68,7 @@ namespace NanoByte.StructureEditor
 
             public ElementDescription(string name) => _name = name;
 
-            public Node TryGetNode(TContainer container, IList<TList> list, TList candidate)
+            public Node? TryGetNode(TContainer container, IList<TList> list, TList candidate)
             {
                 return (candidate is TElement element)
                     ? new ListElementNode<TContainer, TList, TElement, TEditor>(_name, container, list, element)

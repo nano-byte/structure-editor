@@ -43,7 +43,7 @@ namespace NanoByte.StructureEditor.WinForms
                 propertyGrid.PropertyValueChanged += (sender, e) => CommandExecutor?.Execute(tracker.GetCommand(e.ChangedItem));
             }
             else
-                propertyGrid.PropertyValueChanged += (sender, e) => CommandExecutor?.Execute(new PropertyChangedCommand(Target, e));
+                propertyGrid.PropertyValueChanged += (sender, e) => CommandExecutor?.Execute(new PropertyChangedCommand(Target!, e));
         }
     }
 }

@@ -19,14 +19,14 @@ namespace NanoByte.StructureEditor
         where TEditor : INodeEditor<TProperty>, new()
     {
         private readonly string _name;
-        private readonly Func<TContainer, PropertyPointer<TProperty>> _getPointer;
+        private readonly Func<TContainer, PropertyPointer<TProperty?>> _getPointer;
 
         /// <summary>
         /// Creates a new property description.
         /// </summary>
         /// <param name="name">The name of the property.</param>
         /// <param name="getPointer">A callback for retrieving a pointer to the property in a container.</param>
-        public PropertyDescription(string name, Func<TContainer, PropertyPointer<TProperty>> getPointer)
+        public PropertyDescription(string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer)
         {
             _name = name;
             _getPointer = getPointer;

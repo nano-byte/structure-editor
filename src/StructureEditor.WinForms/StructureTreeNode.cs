@@ -14,7 +14,7 @@ namespace NanoByte.StructureEditor.WinForms
         {
             Node = node;
             ToolTipText = node.Description;
-            ContextMenu = new ContextMenu(new MenuItem[] {});
+            ContextMenuStrip = new ContextMenuStrip();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace NanoByte.StructureEditor.WinForms
         /// <param name="name">The name of the property.</param>
         /// <param name="getPointer">A function to retrieve a pointer to property in the container.</param>
         /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
-        public static IContainerDescription<TContainer> AddProperty<TContainer, TProperty>(this IContainerDescription<TContainer> description, string name, Func<TContainer, PropertyPointer<TProperty>> getPointer)
+        public static IContainerDescription<TContainer> AddProperty<TContainer, TProperty>(this IContainerDescription<TContainer> description, string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer)
             where TContainer : class
             where TProperty : class, IEquatable<TProperty>, new()
             => description.AddProperty(name, getPointer, new PropertyGridNodeEditor<TProperty>());

@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using JetBrains.Annotations;
 using NanoByte.Common;
 using NanoByte.Common.Collections;
 using NanoByte.Common.Dispatch;
@@ -19,7 +18,6 @@ namespace NanoByte.StructureEditor.WinForms
     /// </summary>
     /// <remarks>Derive and call <see cref="DescribeRoot"/> or <see cref="DescribeRoot{TEditor}"/> as well as <see cref="Describe{TContainer}"/> in the constructor.</remarks>
     /// <typeparam name="T">The type of object to edit.</typeparam>
-    [PublicAPI]
     public class StructureEditor<T> : UserControl, IStructureEditor<T>
         where T : class, IEquatable<T>, new()
     {
@@ -105,11 +103,9 @@ namespace NanoByte.StructureEditor.WinForms
         //--------------------//
 
         #region Describe
-        [ItemNotNull]
-        private readonly AggregateDispatcher<object, Node> _getNodes = new AggregateDispatcher<object, Node>();
+        private readonly AggregateDispatcher<object, Node?> _getNodes = new AggregateDispatcher<object, Node?>();
 
-        [ItemCanBeNull]
-        private readonly AggregateDispatcher<object, NodeCandidate> _getCandidates = new AggregateDispatcher<object, NodeCandidate>();
+        private readonly AggregateDispatcher<object, NodeCandidate?> _getCandidates = new AggregateDispatcher<object, NodeCandidate?>();
 
         /// <summary>
         /// Adds a <see cref="ContainerDescription{TContainer}"/> used to describe the structure of the data being editing.
@@ -121,7 +117,7 @@ namespace NanoByte.StructureEditor.WinForms
         {
             var description = new ContainerDescription<TContainer>();
             _getNodes.Add<TContainer>(container => description.GetNodesIn(container).ToList());
-            _getCandidates.Add<TContainer>(container => description.GetCandidatesFor(container).Append(null).ToList());
+            _getCandidates.Add<TContainer>(container => EnumerableExtensions.Append(description.GetCandidatesFor(container), null).ToList());
             return description;
         }
 
@@ -136,7 +132,7 @@ namespace NanoByte.StructureEditor.WinForms
         {
             // Use CommandManager as root rather than Target, to allow the entire Target to be replaced during editing
             Describe<ICommandManager<T>>()
-               .AddProperty(name, x => PropertyPointer.For(() => CommandManager.Target, value => CommandManager.Target = value), new TEditor());
+               .AddProperty(name, x => PropertyPointer.For(() => CommandManager.Target, value => CommandManager.Target = value!), new TEditor());
 
             return Describe<T>();
         }
@@ -160,7 +156,7 @@ namespace NanoByte.StructureEditor.WinForms
         /// Opens an object for editing using the specified <see cref="ICommandManager{T}"/>.
         /// </summary>
         /// <param name="commandManager">Holds the object being editing and manages undo/redo operations on it.</param>
-        public void Open([NotNull] ICommandManager<T> commandManager)
+        public void Open(ICommandManager<T> commandManager)
         {
             if (commandManager == null) throw new ArgumentNullException(nameof(commandManager));
 
@@ -174,7 +170,7 @@ namespace NanoByte.StructureEditor.WinForms
             {
                 Application.Idle += RebuildOnce;
 
-                void RebuildOnce(object sender, EventArgs e)
+                void RebuildOnce(object? sender, EventArgs e)
                 {
                     RebuildTree();
                     Application.Idle -= RebuildOnce;
@@ -189,11 +185,13 @@ namespace NanoByte.StructureEditor.WinForms
         /// </summary>
         private void RebuildTree()
         {
-            TreeNode reselectNode = null;
+            TreeNode? reselectNode = null;
 
-            IEnumerable<TreeNode> GetTreeNodes(object target)
+            IEnumerable<TreeNode> GetTreeNodes(object? target)
             {
-                foreach (var node in _getNodes.Dispatch(target))
+                if (target == null) yield break;
+
+                foreach (var node in _getNodes.Dispatch(target).WhereNotNull())
                 {
                     var treeNode = new StructureTreeNode(node, GetTreeNodes(node.Target).ToArray());
                     if (node.Target == _selectedTarget) reselectNode = treeNode;
@@ -236,7 +234,7 @@ namespace NanoByte.StructureEditor.WinForms
         #region Add/remove
         private void BuildAddDropDownMenu()
         {
-            var menu = (SelectedNode == null)
+            var menu = (SelectedNode?.Node.Target == null)
                 ? new ToolStripItem[0]
                 : _getCandidates.Dispatch(SelectedNode.Node.Target)
                                 .Select(candidate => candidate == null
@@ -270,19 +268,19 @@ namespace NanoByte.StructureEditor.WinForms
         #endregion
 
         #region Selection
-        private object _selectedTarget;
-        private object _editingTarget;
-        private object _serializedTarget;
+        private object? _selectedTarget;
+        private object? _editingTarget;
+        private object? _serializedTarget;
 
-        private StructureTreeNode SelectedNode => _treeView.SelectedNode as StructureTreeNode;
+        private StructureTreeNode? SelectedNode => _treeView?.SelectedNode as StructureTreeNode;
 
-        private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
+        private void treeView_AfterSelect(object? sender, TreeViewEventArgs e)
         {
             BuildAddDropDownMenu();
             _buttonRemove.Enabled = _treeView.Nodes.Count > 0 && e.Node != _treeView.Nodes[0];
-            _selectedTarget = SelectedNode.Node.Target;
+            _selectedTarget = SelectedNode?.Node.Target;
 
-            if (_selectedTarget == _editingTarget) _editorControl.Refresh();
+            if (_selectedTarget == _editingTarget) _editorControl?.Refresh();
             else
             {
                 UpdateEditorControl();
@@ -293,7 +291,7 @@ namespace NanoByte.StructureEditor.WinForms
             _serializedTarget = null;
         }
 
-        private Control _editorControl;
+        private Control? _editorControl;
 
         private void UpdateEditorControl()
         {
@@ -303,21 +301,27 @@ namespace NanoByte.StructureEditor.WinForms
                 _editorControl.Dispose();
             }
 
-            _editorControl = (Control)SelectedNode.Node.GetEditorControl(CommandManager);
-            _editorControl.Dock = DockStyle.Fill;
-            _editorPanel.Controls.Add(_editorControl);
+            if (SelectedNode != null)
+            {
+                _editorControl = (Control)SelectedNode.Node.GetEditorControl(CommandManager);
+                _editorControl.Dock = DockStyle.Fill;
+                _editorPanel.Controls.Add(_editorControl);
+            }
         }
 
         /// <summary>
         /// Returns the serialized representation of the <see cref="SelectedNode"/>.
         /// </summary>
-        protected virtual string GetSerialized() => SelectedNode.Node.GetSerialized()
-            // Trim off <?xml> header
-            .GetRightPartAtFirstOccurrence('\n');
+        protected virtual string GetSerialized()
+            => SelectedNode
+             ?.Node.GetSerialized()
+               // Trim off <?xml> header
+              .GetRightPartAtFirstOccurrence('\n')
+            ?? "";
 
         private void TextEditorContentChanged(string text)
         {
-            var command = SelectedNode.Node.GetUpdateCommand(text);
+            var command = SelectedNode?.Node.GetUpdateCommand(text);
             if (command == null) return;
             _serializedTarget = _selectedTarget = command.Value;
             CommandManager.Execute(command);

@@ -8,11 +8,11 @@ namespace NanoByte.StructureEditor.Sample.Model
     /// </summary>
     public abstract class PhoneNumber
     {
-        public string CountryCode { get; set; }
+        public string? CountryCode { get; set; }
 
-        public string AreaCode { get; set; }
+        public string? AreaCode { get; set; }
 
-        public string LocalNumber { get; set; }
+        public string? LocalNumber { get; set; }
 
         public override string ToString() => CountryCode + " " + AreaCode + " " + LocalNumber;
 
@@ -22,7 +22,7 @@ namespace NanoByte.StructureEditor.Sample.Model
             && AreaCode == other.AreaCode
             && LocalNumber == other.LocalNumber;
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
             => obj != null
             && obj.GetType() == GetType()
             && Equals((PhoneNumber)obj);

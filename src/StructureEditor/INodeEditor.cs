@@ -2,7 +2,6 @@
 // Licensed under the MIT License
 
 using System.ComponentModel;
-using NanoByte.Common.Undo;
 
 namespace NanoByte.StructureEditor
 {
@@ -11,11 +10,12 @@ namespace NanoByte.StructureEditor
     /// </summary>
     /// <typeparam name="T">The type of object to edit.</typeparam>
     public interface INodeEditor<T> : INodeEditor
+        where T : class
     {
         /// <summary>
         /// The element to be edited.
         /// </summary>
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        T Target { get; set; }
+        T? Target { get; set; }
     }
 }

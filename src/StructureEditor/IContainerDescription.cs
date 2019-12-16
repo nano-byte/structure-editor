@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using NanoByte.Common;
 
 namespace NanoByte.StructureEditor
@@ -20,8 +19,7 @@ namespace NanoByte.StructureEditor
         /// <param name="getPointer">A function to retrieve a pointer to property in the container.</param>
         /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
         /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
-        [NotNull]
-        IContainerDescription<TContainer> AddProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, TEditor editor)
+        IContainerDescription<TContainer> AddProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer, TEditor editor)
             where TProperty : class, IEquatable<TProperty>, new()
             where TEditor : INodeEditor<TProperty>, new();
 
@@ -31,7 +29,6 @@ namespace NanoByte.StructureEditor
         /// <typeparam name="TList">The type of elements in the list.</typeparam>
         /// <param name="getList">A function to retrieve the list from the container.</param>
         /// <returns>A list description, enabling you to specify explicit sub-types of <typeparamref name="TList"/> allowed in the list.</returns>
-        [NotNull]
         IListDescription<TContainer, TList> AddList<TList>(Func<TContainer, IList<TList>> getList)
             where TList : class;
 
@@ -44,7 +41,6 @@ namespace NanoByte.StructureEditor
         /// <param name="getList">A function to retrieve the list from the container.</param>
         /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
         /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
-        [NotNull]
         IContainerDescription<TContainer> AddPlainList<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, TEditor editor)
             where TElement : class, IEquatable<TElement>, new()
             where TEditor : INodeEditor<TElement>, new();
@@ -53,14 +49,12 @@ namespace NanoByte.StructureEditor
         /// Returns information about nodes found in a specific instance of <typeparamref name="TContainer"/>.
         /// </summary>
         /// <param name="container">The container instance to look in to.</param>
-        [NotNull, ItemNotNull]
         IEnumerable<Node> GetNodesIn(TContainer container);
 
         /// <summary>
         /// Returns information about possible new child nodes for a specific instance of <typeparamref name="TContainer"/>.
         /// </summary>
         /// <param name="container">The container instance to look at.</param>
-        [NotNull, ItemNotNull]
-        IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container);
+        IEnumerable<NodeCandidate?> GetCandidatesFor(TContainer container);
     }
 }

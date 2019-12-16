@@ -12,9 +12,9 @@ namespace NanoByte.StructureEditor.Sample.Model
     [Description("A postal address.")]
     public class Address : IEquatable<Address>
     {
-        public string Street { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
+        public string? Street { get; set; }
+        public string? City { get; set; }
+        public string? Country { get; set; }
 
         public override string ToString() => Street + ", " + City + ", " + Country;
 
@@ -24,7 +24,7 @@ namespace NanoByte.StructureEditor.Sample.Model
             && City == other.City
             && Country == other.Country;
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
             => obj is Address other && Equals(other);
 
         public override int GetHashCode()

@@ -2,6 +2,7 @@
 // Licensed under the MIT License
 
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using FluentAssertions;
 using NanoByte.Common;
@@ -63,11 +64,12 @@ namespace NanoByte.StructureEditor
                 ("Mobile Number", mobileNumber));
         }
 
-        private static void ShouldBe(IReadOnlyList<NodeCandidate> nodes, params (string name, string description)[] expectedValues)
+        private static void ShouldBe(IReadOnlyList<NodeCandidate?> nodes, params (string name, string description)[] expectedValues)
         {
             for (int i = 0; i < expectedValues.Length; i++)
             {
                 var node = nodes[i];
+                Debug.Assert(node != null);
                 node.NodeType.Should().Be(expectedValues[i].name);
                 node.Description.Should().Be(expectedValues[i].description);
             }

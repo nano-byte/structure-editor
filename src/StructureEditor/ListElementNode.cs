@@ -15,7 +15,8 @@ namespace NanoByte.StructureEditor
     /// <typeparam name="TElement">The type of a specific element type in the list.</typeparam>
     /// <typeparam name="TEditor">An editor for modifying the content of the element.</typeparam>
     public class ListElementNode<TContainer, TList, TElement, TEditor> : Node
-        where TElement : TList
+        where TList : notnull
+        where TElement : class, TList
         where TEditor : INodeEditor<TElement>, new()
     {
         private readonly TContainer _container;
@@ -42,7 +43,7 @@ namespace NanoByte.StructureEditor
             => _element.ToXmlString();
 
         /// <inheritdoc/>
-        public override IValueCommand GetUpdateCommand(string serializedValue)
+        public override IValueCommand? GetUpdateCommand(string serializedValue)
         {
             var newValue = XmlStorage.FromXmlString<TElement>(serializedValue);
             return newValue.Equals(_element) ? null : new ReplaceInList<TList>(_list, _element, newValue);

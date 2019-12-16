@@ -18,7 +18,7 @@ namespace NanoByte.StructureEditor
         where TEditor : INodeEditor<TProperty>, new()
     {
         private readonly TContainer _container;
-        private readonly PropertyPointer<TProperty> _pointer;
+        private readonly PropertyPointer<TProperty?> _pointer;
 
         /// <summary>
         /// Creates a new property node.
@@ -26,7 +26,7 @@ namespace NanoByte.StructureEditor
         /// <param name="name">The name of the property.</param>
         /// <param name="container">The container containing the property.</param>
         /// <param name="pointer">A pointer to the property.</param>
-        public PropertyNode(string name, TContainer container, PropertyPointer<TProperty> pointer)
+        public PropertyNode(string name, TContainer container, PropertyPointer<TProperty?> pointer)
             : base(name, GetDescription<TProperty>(), pointer.Value)
         {
             _pointer = pointer;
@@ -38,7 +38,7 @@ namespace NanoByte.StructureEditor
             => _pointer.Value.ToXmlString();
 
         /// <inheritdoc/>
-        public override IValueCommand GetUpdateCommand(string serializedValue)
+        public override IValueCommand? GetUpdateCommand(string serializedValue)
         {
             var newValue = XmlStorage.FromXmlString<TProperty>(serializedValue);
             return newValue.Equals(_pointer.Value) ? null : SetValueCommand.For(_pointer, newValue);

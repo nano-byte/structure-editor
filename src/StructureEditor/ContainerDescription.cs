@@ -18,7 +18,7 @@ namespace NanoByte.StructureEditor
         private readonly List<Description<TContainer>> _descriptions = new List<Description<TContainer>>();
 
         /// <inheritdoc/>
-        public IContainerDescription<TContainer> AddProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, TEditor editor)
+        public IContainerDescription<TContainer> AddProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer, TEditor editor)
             where TProperty : class, IEquatable<TProperty>, new()
             where TEditor : INodeEditor<TProperty>, new()
         {
@@ -56,7 +56,7 @@ namespace NanoByte.StructureEditor
             => _descriptions.SelectMany(description => description.GetNodesIn(container));
 
         /// <inheritdoc/>
-        public IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container)
+        public IEnumerable<NodeCandidate?> GetCandidatesFor(TContainer container)
             => _descriptions.SelectMany(description => description.GetCandidatesFor(container));
     }
 }

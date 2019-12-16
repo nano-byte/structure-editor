@@ -39,7 +39,7 @@ namespace NanoByte.StructureEditor.WinForms
             Size = new Size(84, 150)
         };
 
-        private CultureInfo _selectedLanguage;
+        private CultureInfo? _selectedLanguage;
         private bool _textBoxDirty;
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace NanoByte.StructureEditor.WinForms
             var unsetLanguages = new List<CultureInfo>();
             foreach (var language in Languages.AllKnown)
             {
-                if (Target.ContainsExactLanguage(language)) setLanguages.Add(language);
+                if (Target != null && Target.ContainsExactLanguage(language)) setLanguages.Add(language);
                 else unsetLanguages.Add(language);
             }
 
@@ -112,7 +112,7 @@ namespace NanoByte.StructureEditor.WinForms
         {
             try
             {
-                TextBox.Text = Target.GetExactLanguage(_selectedLanguage);
+                TextBox.Text = (_selectedLanguage == null) ? "" : Target?.GetExactLanguage(_selectedLanguage) ?? "";
             }
             catch (KeyNotFoundException)
             {
@@ -123,9 +123,9 @@ namespace NanoByte.StructureEditor.WinForms
 
         private void ApplyValue()
         {
-            string newValue = string.IsNullOrEmpty(TextBox.Text) ? null : TextBox.Text;
+            string? newValue = string.IsNullOrEmpty(TextBox.Text) ? null : TextBox.Text;
 
-            if (Target.GetExactLanguage(_selectedLanguage) == newValue) return;
+            if (_selectedLanguage == null || Target == null || Target.GetExactLanguage(_selectedLanguage) == newValue) return;
 
             if (CommandExecutor == null) Target.Set(_selectedLanguage, newValue);
             else CommandExecutor.Execute(new SetLocalizableString(Target, new LocalizableString {Language = _selectedLanguage, Value = newValue}));

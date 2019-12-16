@@ -13,6 +13,6 @@ namespace NanoByte.StructureEditor
         /// <summary>
         /// An optional undo system to use for editing.
         /// </summary>
-        ICommandExecutor CommandExecutor { get; set; }
+        ICommandExecutor? CommandExecutor { get; set; }
     }
 }
