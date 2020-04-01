@@ -18,6 +18,4 @@ Invoke-WebRequest https://common.nano-byte.net/nanobyte-common.tag -OutFile nano
 0install run --batch https://apps.0install.net/devel/doxygen.xml
 if ($LASTEXITCODE -ne 0) {throw "Exit Code: $LASTEXITCODE"}
 
-cp CNAME ..\artifacts\Documentation\
-
 popd
