@@ -1,4 +1,5 @@
 PROJECT_NAME = "NanoByte Structure Editor"
+PROJECT_BRIEF = "WinForms library for building split-screen editors for data structures"
 
 INPUT = . ../src
 IMAGE_PATH = .

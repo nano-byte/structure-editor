@@ -64,6 +64,4 @@ editor.CommandManager.Save(path);
 
 Take a look a the [sample project](https://github.com/nano-byte/structure-editor/tree/master/src/Sample) for a more complete setup, including undo/redo functionality.
 
-## Building and contributing
-
-See the [GitHub project](https://github.com/nano-byte/structure-editor) for more information.
+[**GitHub repository**](https://github.com/nano-byte/structure-editor)
