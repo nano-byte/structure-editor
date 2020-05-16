@@ -71,11 +71,9 @@ Take a look a the [sample project](src/Sample) for a more complete setup, includ
 
 ## Building
 
-The source code is in [`src/`](src/), a project for API documentation is in [`doc/`](doc/) and generated build artifacts are placed in `artifacts/`.
+The source code is in [`src/`](src/), config for building the API documentation is in [`doc/`](doc/) and generated build artifacts are placed in `artifacts/`. The source code does not contain version numbers. Instead the version is determined during CI using [GitVersion](http://gitversion.readthedocs.io/).
 
-You need [Visual Studio 2019](https://www.visualstudio.com/downloads/) to build this project.
-
-Run `.\build.ps1` in PowerShell to build everything. This script takes a version number as an input argument. The source code itself only contains dummy version numbers. The actual version is picked by continuous integration using [GitVersion](http://gitversion.readthedocs.io/).
+To build install [Visual Studio 2019 v16.5 or newer](https://www.visualstudio.com/downloads/) and run `.\build.ps1`.
 
 ## Contributing
 
