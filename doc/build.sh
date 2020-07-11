@@ -8,4 +8,4 @@ mkdir -p ../artifacts/Documentation
 # Download tag files for external references
 curl -o nanobyte-common.tag https://common.nano-byte.net/nanobyte-common.tag
 
-0install run https://apps.0install.net/devel/doxygen.xml
+VERSION=${1:-1.0-dev} 0install run https://apps.0install.net/devel/doxygen.xml
