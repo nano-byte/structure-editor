@@ -1,0 +1,83 @@
+name: Build
+on: [push, pull_request]
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      # Prepare
+      - name: Set up 0install
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends 0install-core
+      - name: Set up GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.4
+        with:
+          versionSpec: '5.3.x'
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: GitVersion
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.4
+
+      # Build
+      - name: Build documentation
+        run: ./doc/build.sh
+
+      # Publish (release only)
+      - name: Publish documentation
+        if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          force_orphan: true
+          publish_dir: artifacts/Documentation
+          cname: structure-editor.nano-byte.net
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      # Prepare
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Set up GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.4
+        with:
+          versionSpec: '5.3.x'
+      - name: GitVersion
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.4
+
+      # Build
+      - name: Build (release)
+        if: steps.gitversion.outputs.preReleaseLabel == ''
+        run: .\build.ps1 ${{steps.gitversion.outputs.nuGetVersion}}
+      - name: Build (pre-release)
+        if: steps.gitversion.outputs.preReleaseLabel != ''
+        run: .\build.ps1 ${{steps.gitversion.outputs.nuGetVersion}}-${{steps.gitversion.outputs.shortSha}}
+
+      # Publish
+      - name: NuGet authentication
+        if: github.event_name == 'push'
+        uses: actions/setup-dotnet@v1
+        with:
+          source-url: https://nuget.pkg.github.com/nano-byte/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Publish packages (GitHub)
+        if: github.event_name == 'push'
+        run: nuget push artifacts\Release\*.nupkg
+
+      # Publish (release only)
+      - name: Publish packages (NuGet.org)
+        if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
+        run: nuget push artifacts\Release\*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
+      - name: Create release
+        if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{github.ref}}
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
