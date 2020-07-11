@@ -42,7 +42,7 @@ namespace NanoByte.StructureEditor.Sample.Model
 
         public override string ToString() => FirstName + " " + LastName;
 
-        public bool Equals(Contact other)
+        public bool Equals(Contact? other)
             => other != null
             && FirstName == other.FirstName
             && LastName == other.LastName

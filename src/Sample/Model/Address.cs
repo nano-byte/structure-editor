@@ -18,7 +18,7 @@ namespace NanoByte.StructureEditor.Sample.Model
 
         public override string ToString() => Street + ", " + City + ", " + Country;
 
-        public bool Equals(Address other)
+        public bool Equals(Address? other)
             => other != null
             && Street == other.Street
             && City == other.City

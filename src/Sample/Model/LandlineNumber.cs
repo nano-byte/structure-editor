@@ -12,7 +12,7 @@ namespace NanoByte.StructureEditor.Sample.Model
     [Description("A phone number for a landline.")]
     public class LandlineNumber : PhoneNumber, IEquatable<LandlineNumber>
     {
-        public bool Equals(LandlineNumber other)
+        public bool Equals(LandlineNumber? other)
             => base.Equals(other);
     }
 }

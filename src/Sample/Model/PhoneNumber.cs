@@ -16,7 +16,7 @@ namespace NanoByte.StructureEditor.Sample.Model
 
         public override string ToString() => CountryCode + " " + AreaCode + " " + LocalNumber;
 
-        protected bool Equals(PhoneNumber other)
+        protected bool Equals(PhoneNumber? other)
             => other != null
             && CountryCode == other.CountryCode
             && AreaCode == other.AreaCode

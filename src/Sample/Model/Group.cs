@@ -29,7 +29,7 @@ namespace NanoByte.StructureEditor.Sample.Model
 
         public override string ToString() => Name ?? "";
 
-        public bool Equals(Group other)
+        public bool Equals(Group? other)
             => other != null
             && Name == other.Name
             && Contacts.SequenceEqual(other.Contacts);

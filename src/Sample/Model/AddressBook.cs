@@ -33,7 +33,7 @@ namespace NanoByte.StructureEditor.Sample.Model
 
         public override string ToString() => Name ?? "";
 
-        public bool Equals(AddressBook other)
+        public bool Equals(AddressBook? other)
             => other != null
             && Name == other.Name
             && Groups.SequenceEqual(other.Groups)
