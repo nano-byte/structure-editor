@@ -1,5 +1,19 @@
 {
   "extends": [
     "config:base"
+  ],
+  "packageRules": [
+    {
+      "packagePatterns": ["Microsoft.NET.Test.Sdk", "[Xx]unit.*", "FluentAssertions", "Moq"],
+      "groupName": "testing",
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "packagePatterns": ["NanoByte.*"],
+      "groupName": "nanobyte",
+      "automerge": true,
+      "automergeType": "branch"
+    }
   ]
 }
