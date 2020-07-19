@@ -4,14 +4,14 @@
   ],
   "packageRules": [
     {
-      "packagePatterns": ["Microsoft.NET.Test.Sdk", "[Xx]unit.*", "FluentAssertions", "Moq"],
-      "groupName": "testing",
+      "packagePatterns": ["Test", "Assert", "Mock", "[Xx]unit", "Moq"],
+      "groupName": "Testing deps",
       "automerge": true,
       "automergeType": "branch"
     },
     {
-      "packagePatterns": ["NanoByte.*"],
-      "groupName": "nanobyte",
+      "packagePatterns": ["^NanoByte\\.Common"],
+      "groupName": "NanoByte.Common",
       "automerge": true,
       "automergeType": "branch"
     }
