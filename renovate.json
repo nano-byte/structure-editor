@@ -14,6 +14,11 @@
       "groupName": "NanoByte.Common",
       "automerge": true,
       "automergeType": "branch"
+    },
+    {
+      "packagePatterns": ["SourceLink"],
+      "automerge": true,
+      "automergeType": "branch"
     }
   ]
 }
