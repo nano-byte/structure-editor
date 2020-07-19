@@ -73,7 +73,7 @@ jobs:
       # Publish (release only)
       - name: Publish packages (NuGet.org)
         if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
-        run: nuget push artifacts\Release\*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
+        run: nuget push artifacts\Release\*.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey ${{secrets.NUGET_API_KEY}}
       - name: Create release
         if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
         uses: actions/create-release@v1
