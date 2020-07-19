@@ -68,7 +68,7 @@ jobs:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Publish packages (GitHub)
         if: github.event_name == 'push'
-        run: nuget push artifacts\Release\*.nupkg
+        run: nuget push artifacts\Release\*.nupkg -SkipDuplicate
 
       # Publish (release only)
       - name: Publish packages (NuGet.org)
