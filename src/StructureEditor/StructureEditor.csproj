@@ -29,6 +29,7 @@
     <Copyright>Copyright Bastian Eicher</Copyright>
     <PackageProjectUrl>https://structure-editor.nano-byte.net/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>split-screen;editor;data structures</PackageTags>
     <RepositoryUrl>https://github.com/nano-byte/structure-editor</RepositoryUrl>
   </PropertyGroup>
 
