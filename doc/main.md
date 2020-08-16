@@ -8,6 +8,8 @@ This allows you to create an IDE-like experience for your users when editing com
 
 \image html screenshot.png
 
+[**GitHub repository**](https://github.com/nano-byte/structure-editor)
+
 ## Usage
 
 Add a reference to the [NanoByte.StructureEditor.WinForms](https://www.nuget.org/packages/NanoByte.StructureEditor.WinForms/) NuGet package to your project. It is available for .NET Framework 2.0+.
@@ -63,5 +65,3 @@ editor.CommandManager.Save(path);
 ```
 
 Take a look a the [sample project](https://github.com/nano-byte/structure-editor/tree/master/src/Sample) for a more complete setup, including undo/redo functionality.
-
-[**GitHub repository**](https://github.com/nano-byte/structure-editor)
