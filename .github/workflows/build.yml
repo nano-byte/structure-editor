@@ -30,6 +30,7 @@ jobs:
         if: steps.gitversion.outputs.preReleaseLabel == ''
         run: .\build.ps1 ${{steps.gitversion.outputs.nuGetVersion}}
       - name: Report test results
+        if: always()
         uses: scacap/action-surefire-report@v1
         with:
           github_token: ${{github.token}}
@@ -53,7 +54,7 @@ jobs:
           }
       - name: Publish packages (NuGet.org)
         if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
-        run: dotnet nuget push artifacts\Release\*.nupkg --api-key ${{secrets.NUGET_API_KEY}}
+        run: dotnet nuget push artifacts\Release\*.nupkg --source nuget.org --api-key ${{secrets.NUGET_API_KEY}}
       - name: Publish documentation
         if: github.event_name == 'push' && steps.gitversion.outputs.preReleaseLabel == ''
         uses: peaceiris/actions-gh-pages@v3
