@@ -59,7 +59,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-    <PackageReference Include="NanoByte.Common" Version="2.4.2" />
+    <PackageReference Include="NanoByte.Common" Version="2.4.3" />
   </ItemGroup>
 
 </Project>
