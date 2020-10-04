@@ -1,31 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
+  <!-- Build config -->
   <PropertyGroup>
     <AssemblyName>NanoByte.StructureEditor.WinForms</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor.WinForms</RootNamespace>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net20;net35-client;net40-client;net45;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net45;net461;netcoreapp3.1</TargetFrameworks>
+    <UseWindowsForms>True</UseWindowsForms>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
     <Nullable>annotations</Nullable>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <RunCodeAnalysis>False</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>..\CodeAnalysis.ruleset</CodeAnalysisRuleSet>
-    <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
     <OutputType>Library</OutputType>
-    <UseWindowsForms>True</UseWindowsForms>
+    <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\sgKey.snk</AssemblyOriginatorKeyFile>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
-
+  <PropertyGroup Condition="'$(MSBuildRuntimeType)'=='Core'">
+    <!-- .NET Core MSBuild does not support legacy ResGen -->
+    <TargetFrameworks>net461;netcoreapp3.1</TargetFrameworks>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp3.1'">
-    <GenerateResourceUsePreserializedResources>True</GenerateResourceUsePreserializedResources>
+    <!-- Run nullability analysis only on annotated frameworks -->
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net461'">
+    <!-- Support non-string resources -->
+    <GenerateResourceUsePreserializedResources>True</GenerateResourceUsePreserializedResources>
+  </PropertyGroup>
 
+  <!-- NuGet package metadata -->
   <PropertyGroup>
-    <Version>1.0-dev</Version>
     <Description>WinForms controls for building split-screen editors for data structures</Description>
     <Authors>Bastian Eicher</Authors>
     <Copyright>Copyright Bastian Eicher</Copyright>
@@ -35,56 +44,27 @@
     <RepositoryUrl>https://github.com/nano-byte/structure-editor</RepositoryUrl>
   </PropertyGroup>
 
-  <!-- Support old .NET Framework Client Profiles -->
-  <PropertyGroup Condition="'$(TargetFramework)'=='net35-client'">
-    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>client</TargetFrameworkProfile>
-    <DefineConstants>$(DefineConstants);NET35</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)'=='net40-client'">
-    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>client</TargetFrameworkProfile>
-    <DefineConstants>$(DefineConstants);NET40</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\sgKey.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-
+  <!-- Dependencies -->
   <ItemGroup>
     <ProjectReference Include="..\StructureEditor\StructureEditor.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="ICSharpCode.TextEditor" HintPath="..\..\lib\ICSharpCode.TextEditor.dll" />
   </ItemGroup>
-
   <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="NanoByte.Common.WinForms" Version="2.4.3" />
   </ItemGroup>
-
-  <!-- Bundle 3rd party libs in NuGet package -->
-  <ItemGroup>
-    <None Include="..\..\lib\ICSharpCode.TextEditor.*" Pack="true" PackagePath="lib/net20;" />
-    <None Include="..\..\lib\ICSharpCode.TextEditor.*" Pack="true" PackagePath="lib/net35-client" />
-    <None Include="..\..\lib\ICSharpCode.TextEditor.*" Pack="true" PackagePath="lib/net40-client" />
-    <None Include="..\..\lib\ICSharpCode.TextEditor.*" Pack="true" PackagePath="lib/net45" />
+  <ItemGroup Condition="'$(TargetFramework)'=='net461'">
+    <PackageReference Include="System.Resources.Extensions" Version="4.6.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\Images.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Images.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <Compile Update="Resources\Images.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Images.resx</DependentUpon>
-    </Compile>
+  <!-- Bundle 3rd party libs in NuGet package -->
+  <ItemGroup Condition="'$(MSBuildRuntimeType)'!='Core'">
+    <None Include="..\..\lib\ICSharpCode.TextEditor.*" Pack="true" PackagePath="lib/net45" />
+    <None Include="..\..\lib\ICSharpCode.TextEditor.*" Pack="true" PackagePath="lib/net461" />
+    <None Include="..\..\lib\ICSharpCode.TextEditor.*" Pack="true" PackagePath="lib/netcoreapp3.1" />
   </ItemGroup>
 
 </Project>

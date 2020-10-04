@@ -19,6 +19,10 @@
       "packagePatterns": ["SourceLink"],
       "automerge": true,
       "automergeType": "branch"
+    },
+    {
+      "packagePatterns": ["System.Resources.Extensions"],
+      "enabled": false
     }
   ]
 }
