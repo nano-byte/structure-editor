@@ -14,6 +14,7 @@ namespace NanoByte.StructureEditor
     /// <typeparam name="TProperty">The type of the property.</typeparam>
     /// <typeparam name="TEditor">An editor for modifying the content of the property.</typeparam>
     public class PropertyNode<TContainer, TProperty, TEditor> : Node
+        where TContainer : class
         where TProperty : class
         where TEditor : INodeEditor<TProperty>, new()
     {

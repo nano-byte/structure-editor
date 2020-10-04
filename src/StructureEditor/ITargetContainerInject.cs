@@ -10,11 +10,12 @@ namespace NanoByte.StructureEditor
     /// </summary>
     /// <typeparam name="T">The type of the container.</typeparam>
     public interface ITargetContainerInject<T>
+        where T : class
     {
         /// <summary>
         /// The <see cref="INodeEditor{T}.Target"/>'s container.
         /// </summary>
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        T TargetContainer { get; set; }
+        T? TargetContainer { get; set; }
     }
 }
