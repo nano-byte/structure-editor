@@ -20,9 +20,9 @@ namespace NanoByte.StructureEditor.Sample.Controls
             var textBoxCity = new HintTextBox {HintText = "City", Dock = DockStyle.Top};
             var textBoxCountry = new HintTextBox {HintText = "Country", Dock = DockStyle.Top};
 
-            RegisterControl(textBoxStreet, PropertyPointer.For(() => Target!.Street));
-            RegisterControl(textBoxCity, PropertyPointer.For(() => Target!.City));
-            RegisterControl(textBoxCountry, PropertyPointer.For(() => Target!.Country));
+            Bind(textBoxStreet, PropertyPointer.For(() => Target!.Street));
+            Bind(textBoxCity, PropertyPointer.For(() => Target!.City));
+            Bind(textBoxCountry, PropertyPointer.For(() => Target!.Country));
 
             // Reverse order for "Dock"
             Controls.Add(textBoxCountry);

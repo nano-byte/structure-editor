@@ -79,12 +79,12 @@ namespace NanoByte.StructureEditor.WinForms
         }
 
         /// <summary>
-        /// Hooks a WinForms control in to the live editing and Undo system.
+        /// Binds a WinForms control to a property through the live editing and Undo system.
         /// </summary>
         /// <param name="control">The control to hook up (is automatically added to <see cref="Control.Controls"/>).</param>
         /// <param name="pointer">Read/write access to the value the <paramref name="control"/> represents.</param>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "The set-value callback method may throw any kind of exception.")]
-        protected void RegisterControl(Control control, PropertyPointer<string?> pointer)
+        protected void Bind(Control control, PropertyPointer<string?> pointer)
         {
             Controls.Add(control);
 
@@ -114,11 +114,11 @@ namespace NanoByte.StructureEditor.WinForms
         }
 
         /// <summary>
-        /// Hooks a <see cref="ComboBox"/> in to the live editing and Undo system.
+        /// Binds a <see cref="ComboBox"/> to a <see cref="string"/> property through the live editing and Undo system.
         /// </summary>
         /// <param name="control">The control to hook up (is automatically added to <see cref="Control.Controls"/>).</param>
         /// <param name="pointer">Read/write access to the value the <paramref name="control"/> represents.</param>
-        protected void RegisterControl(ComboBox control, PropertyPointer<string?> pointer)
+        protected void Bind(ComboBox control, PropertyPointer<string?> pointer)
         {
             // Setting ComboBox.Text will only work reliably if the value is in the Items list
             OnRefresh += () =>
@@ -127,15 +127,15 @@ namespace NanoByte.StructureEditor.WinForms
                     control.Items.Add(pointer.Value);
             };
 
-            RegisterControl((Control)control, pointer);
+            Bind((Control)control, pointer);
         }
 
         /// <summary>
-        /// Hooks a <see cref="UriTextBox"/> in to the live editing and Undo system.
+        /// Binds a <see cref="UriTextBox"/> to an <see cref="Uri"/> property through the live editing and Undo system.
         /// </summary>
         /// <param name="control">The control to hook up (is automatically added to <see cref="Control.Controls"/>).</param>
         /// <param name="pointer">Read/write access to the value the <paramref name="control"/> represents.</param>
-        protected void RegisterControl(UriTextBox control, PropertyPointer<Uri?> pointer)
+        protected void Bind(UriTextBox control, PropertyPointer<Uri?> pointer)
         {
             Controls.Add(control);
 
@@ -151,13 +151,13 @@ namespace NanoByte.StructureEditor.WinForms
         }
 
         /// <summary>
-        /// Hooks up a <see cref="INodeEditor{T}"/> as child editor.
+        /// Binds a <see cref="INodeEditor{T}"/> as child editor through the live editing and Undo system.
         /// </summary>
         /// <typeparam name="TControl">The specific <see cref="INodeEditor{T}"/> type.</typeparam>
         /// <typeparam name="TChild">The type the child editor handles.</typeparam>
         /// <param name="control">The control to hook up (is automatically added to <see cref="Control.Controls"/>).</param>
         /// <param name="getTarget">Callback to retrieve the (child) target of the <paramref name="control"/>.</param>
-        protected void RegisterControl<TControl, TChild>(TControl control, Func<TChild> getTarget)
+        protected void Bind<TControl, TChild>(TControl control, Func<TChild> getTarget)
             where TControl : Control, INodeEditor<TChild>
             where TChild : class
         {
@@ -169,11 +169,11 @@ namespace NanoByte.StructureEditor.WinForms
         }
 
         /// <summary>
-        /// Hooks a <see cref="CheckBox"/> in to the live editing and Undo system.
+        /// Binds a <see cref="CheckBox"/> to a <see cref="bool"/> property through the live editing and Undo system.
         /// </summary>
         /// <param name="control">The control to hook up (is automatically added to <see cref="Control.Controls"/>).</param>
         /// <param name="pointer">Read/write access to the value the <paramref name="control"/> represents.</param>
-        protected void RegisterControl(CheckBox control, PropertyPointer<bool> pointer)
+        protected void Bind(CheckBox control, PropertyPointer<bool> pointer)
         {
             Controls.Add(control);
 
