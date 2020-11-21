@@ -15,7 +15,7 @@ This allows you to create an IDE-like experience for your users when editing com
 
 ## Usage
 
-Add a reference to the [NanoByte.StructureEditor.WinForms](https://www.nuget.org/packages/NanoByte.StructureEditor.WinForms/) NuGet package to your project. It is available for .NET Framework 2.0+.
+Add a reference to the [NanoByte.StructureEditor.WinForms](https://www.nuget.org/packages/NanoByte.StructureEditor.WinForms/) NuGet package to your project. It is available for .NET Framework 2.0+ and .NET 5.0+.
 
 ### Initialization
 
@@ -73,7 +73,7 @@ Take a look a the [sample project](src/Sample) for a more complete setup, includ
 
 The source code is in [`src/`](src/), config for building the API documentation is in [`doc/`](doc/) and generated build artifacts are placed in `artifacts/`. The source code does not contain version numbers. Instead the version is determined during CI using [GitVersion](http://gitversion.readthedocs.io/).
 
-To build install [Visual Studio 2019 v16.5 or newer](https://www.visualstudio.com/downloads/) and run `.\build.ps1`.
+To build install [Visual Studio 2019 v16.8 or newer](https://www.visualstudio.com/downloads/) and run `.\build.ps1`.
 
 ## Contributing
 

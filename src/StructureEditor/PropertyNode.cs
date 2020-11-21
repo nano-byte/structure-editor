@@ -36,7 +36,7 @@ namespace NanoByte.StructureEditor
 
         /// <inheritdoc/>
         public override string GetSerialized()
-            => _pointer.Value.ToXmlString();
+            => _pointer.Value?.ToXmlString() ?? "";
 
         /// <inheritdoc/>
         public override IValueCommand? GetUpdateCommand(string serializedValue)

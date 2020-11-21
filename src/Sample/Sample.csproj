@@ -5,7 +5,7 @@
     <AssemblyName>NanoByte.StructureEditor.Sample</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor.Sample</RootNamespace>
     <LangVersion>8.0</LangVersion>
-    <TargetFrameworks>net48;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net48;net5.0-windows</TargetFrameworks>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>True</UseWindowsForms>
     <IsPackable>False</IsPackable>
@@ -16,7 +16,7 @@
     <AssemblyOriginatorKeyFile>..\sgKey.snk</AssemblyOriginatorKeyFile>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp3.1'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='net5.0-windows'">
     <!-- Run nullability analysis only on annotated frameworks -->
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -24,9 +24,6 @@
   <!-- Dependencies -->
   <ItemGroup>
     <ProjectReference Include="..\StructureEditor.WinForms\StructureEditor.WinForms.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
