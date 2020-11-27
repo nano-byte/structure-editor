@@ -4,17 +4,13 @@
   <PropertyGroup>
     <AssemblyName>NanoByte.StructureEditor.Sample</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor.Sample</RootNamespace>
-    <LangVersion>8.0</LangVersion>
     <TargetFrameworks>net48;net5.0-windows</TargetFrameworks>
-    <OutputType>WinExe</OutputType>
     <UseWindowsForms>True</UseWindowsForms>
+    <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
+    <OutputType>WinExe</OutputType>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <IsPackable>False</IsPackable>
     <DeterministicSourcePaths>False</DeterministicSourcePaths>
-    <Nullable>annotations</Nullable>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\sgKey.snk</AssemblyOriginatorKeyFile>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net5.0-windows'">
     <!-- Run nullability analysis only on annotated frameworks -->

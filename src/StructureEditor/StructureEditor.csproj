@@ -4,19 +4,9 @@
   <PropertyGroup>
     <AssemblyName>NanoByte.StructureEditor</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor</RootNamespace>
-    <LangVersion>8.0</LangVersion>
+    <Description>Utility classes and data structures with an emphasis on integration with native Windows and Linux features, network and disk IO, advanced collections and undo/redo logic.</Description>
     <TargetFrameworks>net45;net461;netstandard2.1;net5.0</TargetFrameworks>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);1591</NoWarn>
-    <Nullable>annotations</Nullable>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <OutputType>Library</OutputType>
     <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\sgKey.snk</AssemblyOriginatorKeyFile>
-    <IncludeSymbols>True</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1' Or '$(TargetFramework)'=='net5.0'">
     <!-- Run nullability analysis only on annotated frameworks -->
@@ -36,7 +26,6 @@
 
   <!-- Dependencies -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="NanoByte.Common" Version="2.5.0" />
   </ItemGroup>
 
