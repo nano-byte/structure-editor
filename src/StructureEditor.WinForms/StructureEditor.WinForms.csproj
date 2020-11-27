@@ -4,20 +4,11 @@
   <PropertyGroup>
     <AssemblyName>NanoByte.StructureEditor.WinForms</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor.WinForms</RootNamespace>
-    <LangVersion>8.0</LangVersion>
+    <Description>WinForms controls for building split-screen editors for data structures</Description>
+    <PackageTags>WinForms;split-screen;editor;data structures</PackageTags>
     <TargetFrameworks>net45;net461;net5.0-windows7.0</TargetFrameworks>
     <UseWindowsForms>True</UseWindowsForms>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);1591</NoWarn>
-    <Nullable>annotations</Nullable>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <OutputType>Library</OutputType>
     <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\sgKey.snk</AssemblyOriginatorKeyFile>
-    <IncludeSymbols>True</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildRuntimeType)'=='Core'">
     <!-- .NET Core MSBuild does not support legacy ResGen -->
@@ -33,17 +24,6 @@
     <GenerateResourceUsePreserializedResources>True</GenerateResourceUsePreserializedResources>
   </PropertyGroup>
 
-  <!-- NuGet package metadata -->
-  <PropertyGroup>
-    <Description>WinForms controls for building split-screen editors for data structures</Description>
-    <Authors>Bastian Eicher</Authors>
-    <Copyright>Copyright Bastian Eicher</Copyright>
-    <PackageProjectUrl>https://structure-editor.nano-byte.net/</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>WinForms;split-screen;editor;data structures</PackageTags>
-    <RepositoryUrl>https://github.com/nano-byte/structure-editor</RepositoryUrl>
-  </PropertyGroup>
-
   <!-- Dependencies -->
   <ItemGroup>
     <ProjectReference Include="..\StructureEditor\StructureEditor.csproj" />
@@ -52,7 +32,6 @@
     <Reference Include="ICSharpCode.TextEditor" HintPath="..\..\lib\ICSharpCode.TextEditor.dll" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="NanoByte.Common.WinForms" Version="2.5.0" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net461'">
