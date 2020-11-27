@@ -4,7 +4,7 @@
   ],
   "packageRules": [
     {
-      "packagePatterns": ["Test", "Assert", "Mock", "[Xx]unit", "Moq"],
+      "packagePatterns": ["gittools", "Test", "Assert", "Mock", "[Xx]unit", "Moq"],
       "groupName": "Testing deps",
       "automerge": true,
       "automergeType": "branch"
