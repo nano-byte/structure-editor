@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <!-- Build configuration -->
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>9.0</LangVersion>
     <Nullable>annotations</Nullable>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <OutputType>Library</OutputType>

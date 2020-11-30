@@ -24,12 +24,12 @@ namespace NanoByte.StructureEditor.Sample.Model
         /// </summary>
         [Browsable(false)]
         [XmlElement(nameof(Group))]
-        public List<Group> Groups { get; } = new List<Group>();
+        public List<Group> Groups { get; } = new();
 
         /// <inheritdoc/>
         [Browsable(false)]
         [XmlElement(nameof(Contact))]
-        public List<Contact> Contacts { get; } = new List<Contact>();
+        public List<Contact> Contacts { get; } = new();
 
         public override string ToString() => Name ?? "";
 

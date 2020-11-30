@@ -7,7 +7,7 @@ namespace NanoByte.StructureEditor.Sample
 {
     public static class SampleData
     {
-        public static AddressBook AddressBook => new AddressBook
+        public static AddressBook AddressBook => new()
         {
             Name = "My Address Book",
             Groups =

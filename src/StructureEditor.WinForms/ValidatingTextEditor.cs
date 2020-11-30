@@ -27,18 +27,18 @@ namespace NanoByte.StructureEditor.WinForms
         [Description("Raised when changes have accumulated after a short period of no input.")]
         public event Action<string>? ContentChanged;
 
-        private readonly StatusStrip _statusStrip = new StatusStrip
+        private readonly StatusStrip _statusStrip = new()
         {
             Location = new Point(0, 128),
             SizingGrip = false
         };
-        private readonly ToolStripStatusLabel _labelStatus = new ToolStripStatusLabel();
-        private readonly Timer _timer = new Timer {Interval = 250};
+        private readonly ToolStripStatusLabel _labelStatus = new();
+        private readonly Timer _timer = new() {Interval = 250};
 
         /// <summary>
         /// The text editor control used internally.
         /// </summary>
-        public TextEditorControl TextEditor { get; private set; } = new TextEditorControl();
+        public TextEditorControl TextEditor { get; private set; } = new();
 
         public ValidatingTextEditor()
         {

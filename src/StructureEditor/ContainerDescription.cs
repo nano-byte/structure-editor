@@ -15,7 +15,7 @@ namespace NanoByte.StructureEditor
     public class ContainerDescription<TContainer> : IContainerDescription<TContainer>
         where TContainer : class
     {
-        private readonly List<Description<TContainer>> _descriptions = new List<Description<TContainer>>();
+        private readonly List<Description<TContainer>> _descriptions = new();
 
         /// <inheritdoc/>
         public IContainerDescription<TContainer> AddProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer, TEditor editor)

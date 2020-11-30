@@ -18,7 +18,7 @@ namespace NanoByte.StructureEditor
         where TList : class
     {
         private readonly Func<TContainer, IList<TList>> _getList;
-        private readonly List<IElementDescription> _descriptions = new List<IElementDescription>();
+        private readonly List<IElementDescription> _descriptions = new();
 
         /// <summary>
         /// Creates a new list description.

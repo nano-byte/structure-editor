@@ -22,30 +22,30 @@ namespace NanoByte.StructureEditor.WinForms
         where T : class, IEquatable<T>, new()
     {
         #region Controls
-        private readonly ToolStripDropDownButton _buttonAdd = new ToolStripDropDownButton
+        private readonly ToolStripDropDownButton _buttonAdd = new()
         {
             Text = "&Add",
             Image = Images.AddButton
         };
 
-        private readonly ToolStripButton _buttonRemove = new ToolStripButton
+        private readonly ToolStripButton _buttonRemove = new()
         {
             Text = "&Remove",
             Image = Images.DeleteButton
         };
 
-        private readonly TreeView _treeView = new TreeView
+        private readonly TreeView _treeView = new()
         {
             Dock = DockStyle.Fill,
             ShowNodeToolTips = true
         };
 
-        private readonly Panel _editorPanel = new Panel
+        private readonly Panel _editorPanel = new()
         {
             Dock = DockStyle.Fill
         };
 
-        private readonly ValidatingTextEditor _textEditor = new ValidatingTextEditor
+        private readonly ValidatingTextEditor _textEditor = new()
         {
             Dock = DockStyle.Fill
         };
@@ -103,9 +103,9 @@ namespace NanoByte.StructureEditor.WinForms
         //--------------------//
 
         #region Describe
-        private readonly AggregateDispatcher<object, Node?> _getNodes = new AggregateDispatcher<object, Node?>();
+        private readonly AggregateDispatcher<object, Node?> _getNodes = new();
 
-        private readonly AggregateDispatcher<object, NodeCandidate?> _getCandidates = new AggregateDispatcher<object, NodeCandidate?>();
+        private readonly AggregateDispatcher<object, NodeCandidate?> _getCandidates = new();
 
         /// <summary>
         /// Adds a <see cref="ContainerDescription{TContainer}"/> used to describe the structure of the data being editing.

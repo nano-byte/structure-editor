@@ -11,7 +11,7 @@ namespace NanoByte.StructureEditor.Sample
 {
     public class MainForm : Form
     {
-        private readonly AddressBookEditor _editor = new AddressBookEditor
+        private readonly AddressBookEditor _editor = new()
         {
             Dock = DockStyle.Fill,
             Padding = new Padding(8)
@@ -36,7 +36,7 @@ namespace NanoByte.StructureEditor.Sample
 
             Controls.Add(_editor);
 
-            ToolStripMenuItem MenuItem(string text, Action action, Keys hotKey = Keys.None)
+            static ToolStripMenuItem MenuItem(string text, Action action, Keys hotKey = Keys.None)
             {
                 var button = new ToolStripMenuItem {Text = text, ShortcutKeys = hotKey};
                 button.Click += delegate { action(); };

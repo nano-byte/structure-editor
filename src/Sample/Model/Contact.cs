@@ -38,7 +38,7 @@ namespace NanoByte.StructureEditor.Sample.Model
         [Browsable(false)]
         [XmlElement(nameof(LandlineNumber), typeof(LandlineNumber))]
         [XmlElement(nameof(MobileNumber), typeof(MobileNumber))]
-        public List<PhoneNumber> PhoneNumbers { get; } = new List<PhoneNumber>();
+        public List<PhoneNumber> PhoneNumbers { get; } = new();
 
         public override string ToString() => FirstName + " " + LastName;
 

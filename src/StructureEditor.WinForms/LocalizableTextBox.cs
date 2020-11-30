@@ -18,7 +18,7 @@ namespace NanoByte.StructureEditor.WinForms
     /// </summary>
     public class LocalizableTextBox : NodeEditorBase<LocalizableStringCollection>
     {
-        private readonly ComboBox _comboBoxLanguage = new ComboBox
+        private readonly ComboBox _comboBoxLanguage = new()
         {
             DropDownStyle = ComboBoxStyle.DropDownList,
             DropDownWidth = 86,
@@ -27,7 +27,7 @@ namespace NanoByte.StructureEditor.WinForms
             Size = new Size(60, 21)
         };
 
-        public HintTextBox TextBox { get; } = new HintTextBox
+        public HintTextBox TextBox { get; } = new()
         {
             Anchor = AnchorStyles.Top
                    | AnchorStyles.Bottom
