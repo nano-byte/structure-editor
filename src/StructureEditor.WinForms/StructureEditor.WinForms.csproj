@@ -34,7 +34,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="NanoByte.Common.WinForms" Version="2.5.2" />
+    <PackageReference Include="NanoByte.Common.WinForms" Version="2.6.0" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net461'">
     <PackageReference Include="System.Resources.Extensions" Version="5.0.0" />
