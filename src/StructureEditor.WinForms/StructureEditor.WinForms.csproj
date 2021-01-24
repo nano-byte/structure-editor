@@ -29,7 +29,9 @@
     <ProjectReference Include="..\StructureEditor\StructureEditor.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.TextEditor" HintPath="..\..\lib\ICSharpCode.TextEditor.dll" />
+    <Reference Include="ICSharpCode.TextEditor">
+      <HintPath>..\..\lib\ICSharpCode.TextEditor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NanoByte.Common.WinForms" Version="2.5.2" />
@@ -40,9 +42,18 @@
 
   <!-- Bundle 3rd party libs in NuGet package -->
   <ItemGroup Condition="'$(MSBuildRuntimeType)'!='Core'">
-    <None Include="..\..\lib\ICSharpCode.TextEditor.*" Pack="true" PackagePath="lib/net45" />
-    <None Include="..\..\lib\ICSharpCode.TextEditor.*" Pack="true" PackagePath="lib/net461" />
-    <None Include="..\..\lib\ICSharpCode.TextEditor.*" Pack="true" PackagePath="lib/net5.0-windows7.0" />
+    <None Include="..\..\lib\ICSharpCode.TextEditor.*">
+      <PackagePath>lib/net45</PackagePath>
+      <Pack>true</Pack>
+    </None>
+    <None Include="..\..\lib\ICSharpCode.TextEditor.*">
+      <PackagePath>lib/net461</PackagePath>
+      <Pack>true</Pack>
+    </None>
+    <None Include="..\..\lib\ICSharpCode.TextEditor.*">
+      <PackagePath>lib/net5.0-windows7.0</PackagePath>
+      <Pack>true</Pack>
+    </None>
   </ItemGroup>
 
 </Project>
