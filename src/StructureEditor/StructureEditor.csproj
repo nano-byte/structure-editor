@@ -5,7 +5,7 @@
     <AssemblyName>NanoByte.StructureEditor</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor</RootNamespace>
     <Description>Utility classes and data structures with an emphasis on integration with native Windows and Linux features, network and disk IO, advanced collections and undo/redo logic.</Description>
-    <TargetFrameworks>net45;net461;netstandard2.1;net5.0</TargetFrameworks>
+    <TargetFrameworks>net45;net472;netstandard2.1;net5.0</TargetFrameworks>
     <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1' Or '$(TargetFramework)'=='net5.0'">
