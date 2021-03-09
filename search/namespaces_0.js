@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['collections_1103',['Collections',['https://common.nano-byte.net/namespace_nano_byte_1_1_common_1_1_collections.html',1,'NanoByte::Common']]],
+  ['common_1104',['Common',['https://common.nano-byte.net/namespace_nano_byte_1_1_common.html',1,'NanoByte']]],
+  ['controls_1105',['Controls',['https://common.nano-byte.net/namespace_nano_byte_1_1_common_1_1_controls.html',1,'NanoByte::Common']]],
+  ['design_1106',['Design',['https://common.nano-byte.net/namespace_nano_byte_1_1_common_1_1_values_1_1_design.html',1,'NanoByte::Common::Values']]],
+  ['dispatch_1107',['Dispatch',['https://common.nano-byte.net/namespace_nano_byte_1_1_common_1_1_dispatch.html',1,'NanoByte::Common']]],
+  ['info_1108',['Info',['https://common.nano-byte.net/namespace_nano_byte_1_1_common_1_1_info.html',1,'NanoByte::Common']]],
+  ['native_1109',['Native',['https://common.nano-byte.net/namespace_nano_byte_1_1_common_1_1_native.html',1,'NanoByte::Common']]],
+  ['net_1110',['Net',['https://common.nano-byte.net/namespace_nano_byte_1_1_common_1_1_net.html',1,'NanoByte::Common']]],
+  ['resources_1111',['Resources',['../namespace_nano_byte_1_1_structure_editor_1_1_win_forms_1_1_resources.html',1,'NanoByte::StructureEditor::WinForms']]],
+  ['storage_1112',['Storage',['https://common.nano-byte.net/namespace_nano_byte_1_1_common_1_1_storage.html',1,'NanoByte::Common']]],
+  ['streams_1113',['Streams',['https://common.nano-byte.net/namespace_nano_byte_1_1_common_1_1_streams.html',1,'NanoByte::Common']]],
+  ['structureeditor_1114',['StructureEditor',['../namespace_nano_byte_1_1_structure_editor.html',1,'NanoByte']]],
+  ['tasks_1115',['Tasks',['https://common.nano-byte.net/namespace_nano_byte_1_1_common_1_1_tasks.html',1,'NanoByte::Common']]],
+  ['undo_1116',['Undo',['https://common.nano-byte.net/namespace_nano_byte_1_1_common_1_1_undo.html',1,'NanoByte::Common']]],
+  ['values_1117',['Values',['https://common.nano-byte.net/namespace_nano_byte_1_1_common_1_1_values.html',1,'NanoByte::Common']]],
+  ['windowstaskbar_1118',['WindowsTaskbar',['https://common.nano-byte.net/struct_nano_byte_1_1_common_1_1_native_1_1_windows_taskbar_1_1_shell_link.html',1,'NanoByte::Common::Native']]],
+  ['winforms_1119',['WinForms',['../namespace_nano_byte_1_1_structure_editor_1_1_win_forms.html',1,'NanoByte::StructureEditor']]]
+];

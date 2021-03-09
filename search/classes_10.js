@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['servicetaskhandler_1037',['ServiceTaskHandler',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_tasks_1_1_service_task_handler.html',1,'NanoByte::Common::Tasks']]],
+  ['setinlist_1038',['SetInList',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_undo_1_1_set_in_list.html',1,'NanoByte::Common::Undo']]],
+  ['setlocalizablestring_1039',['SetLocalizableString',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_undo_1_1_set_localizable_string.html',1,'NanoByte::Common::Undo']]],
+  ['setvaluecommand_1040',['SetValueCommand',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_undo_1_1_set_value_command.html',1,'NanoByte::Common::Undo']]],
+  ['shelllink_1041',['ShellLink',['https://common.nano-byte.net/struct_nano_byte_1_1_common_1_1_native_1_1_windows_taskbar_1_1_shell_link.html',1,'NanoByte::Common::Native::WindowsTaskbar']]],
+  ['silenttaskhandler_1042',['SilentTaskHandler',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_tasks_1_1_silent_task_handler.html',1,'NanoByte::Common::Tasks']]],
+  ['simplecommand_1043',['SimpleCommand',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_undo_1_1_simple_command.html',1,'NanoByte::Common::Undo']]],
+  ['simplecommandexecutor_1044',['SimpleCommandExecutor',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_undo_1_1_simple_command_executor.html',1,'NanoByte::Common::Undo']]],
+  ['simplepercenttask_1045',['SimplePercentTask',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_tasks_1_1_simple_percent_task.html',1,'NanoByte::Common::Tasks']]],
+  ['simpletask_1046',['SimpleTask',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_tasks_1_1_simple_task.html',1,'NanoByte::Common::Tasks']]],
+  ['stackextensions_1047',['StackExtensions',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_collections_1_1_stack_extensions.html',1,'NanoByte::Common::Collections']]],
+  ['stagedoperation_1048',['StagedOperation',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_staged_operation.html',1,'NanoByte::Common']]],
+  ['streamconsumer_1049',['StreamConsumer',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_streams_1_1_stream_consumer.html',1,'NanoByte::Common::Streams']]],
+  ['streamutils_1050',['StreamUtils',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_streams_1_1_stream_utils.html',1,'NanoByte::Common::Streams']]],
+  ['stringconstructorconverter_1051',['StringConstructorConverter',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_values_1_1_design_1_1_string_constructor_converter.html',1,'NanoByte::Common::Values::Design']]],
+  ['stringutils_1052',['StringUtils',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_string_utils.html',1,'NanoByte::Common']]],
+  ['structureeditor_1053',['StructureEditor',['../class_nano_byte_1_1_structure_editor_1_1_win_forms_1_1_structure_editor.html',1,'NanoByte::StructureEditor::WinForms']]],
+  ['structuretreenode_1054',['StructureTreeNode',['../class_nano_byte_1_1_structure_editor_1_1_win_forms_1_1_structure_tree_node.html',1,'NanoByte::StructureEditor::WinForms']]],
+  ['synchronousprogress_1055',['SynchronousProgress',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_tasks_1_1_synchronous_progress.html',1,'NanoByte::Common::Tasks']]]
+];

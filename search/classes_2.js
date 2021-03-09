@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['cachedcredentialprovider_899',['CachedCredentialProvider',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_net_1_1_cached_credential_provider.html',1,'NanoByte::Common::Net']]],
+  ['cancellationguard_900',['CancellationGuard',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_cancellation_guard.html',1,'NanoByte::Common']]],
+  ['cancellationtoken_901',['CancellationToken',['https://common.nano-byte.net/struct_nano_byte_1_1_common_1_1_tasks_1_1_cancellation_token.html',1,'NanoByte::Common::Tasks']]],
+  ['cancellationtokenregistration_902',['CancellationTokenRegistration',['https://common.nano-byte.net/struct_nano_byte_1_1_common_1_1_tasks_1_1_cancellation_token_registration.html',1,'NanoByte::Common::Tasks']]],
+  ['cancellationtokensource_903',['CancellationTokenSource',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_tasks_1_1_cancellation_token_source.html',1,'NanoByte::Common::Tasks']]],
+  ['childprocess_904',['ChildProcess',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_streams_1_1_child_process.html',1,'NanoByte::Common::Streams']]],
+  ['circularbufferstream_905',['CircularBufferStream',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_streams_1_1_circular_buffer_stream.html',1,'NanoByte::Common::Streams']]],
+  ['cliprogress_906',['CliProgress',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_tasks_1_1_cli_progress.html',1,'NanoByte::Common::Tasks']]],
+  ['clitaskhandler_907',['CliTaskHandler',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_tasks_1_1_cli_task_handler.html',1,'NanoByte::Common::Tasks']]],
+  ['collectioncommand_908',['CollectionCommand',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_undo_1_1_collection_command.html',1,'NanoByte::Common::Undo']]],
+  ['collectionextensions_909',['CollectionExtensions',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_collections_1_1_collection_extensions.html',1,'NanoByte::Common::Collections']]],
+  ['commandcollector_910',['CommandCollector',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_undo_1_1_command_collector.html',1,'NanoByte::Common::Undo']]],
+  ['commandmanager_911',['CommandManager',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_undo_1_1_command_manager.html',1,'NanoByte::Common::Undo']]],
+  ['comparabletuple_912',['ComparableTuple',['https://common.nano-byte.net/struct_nano_byte_1_1_common_1_1_collections_1_1_comparable_tuple.html',1,'NanoByte::Common::Collections']]],
+  ['compositecommand_913',['CompositeCommand',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_undo_1_1_composite_command.html',1,'NanoByte::Common::Undo']]],
+  ['configurationcredentialprovider_914',['ConfigurationCredentialProvider',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_net_1_1_configuration_credential_provider.html',1,'NanoByte::Common::Net']]],
+  ['configurationcredentialproviderregistration_915',['ConfigurationCredentialProviderRegistration',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_net_1_1_configuration_credential_provider_registration.html',1,'NanoByte::Common::Net']]],
+  ['containerdescription_916',['ContainerDescription',['../class_nano_byte_1_1_structure_editor_1_1_container_description.html',1,'NanoByte::StructureEditor']]],
+  ['containerdescriptionextensions_917',['ContainerDescriptionExtensions',['../class_nano_byte_1_1_structure_editor_1_1_win_forms_1_1_container_description_extensions.html',1,'NanoByte::StructureEditor::WinForms']]],
+  ['controlextensions_918',['ControlExtensions',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_controls_1_1_control_extensions.html',1,'NanoByte::Common::Controls']]],
+  ['copydirectory_919',['CopyDirectory',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_storage_1_1_copy_directory.html',1,'NanoByte::Common::Storage']]],
+  ['credentialproviderbase_920',['CredentialProviderBase',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_net_1_1_credential_provider_base.html',1,'NanoByte::Common::Net']]],
+  ['culturecomparer_921',['CultureComparer',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_collections_1_1_culture_comparer.html',1,'NanoByte::Common::Collections']]],
+  ['cygwinutils_922',['CygwinUtils',['https://common.nano-byte.net/class_nano_byte_1_1_common_1_1_native_1_1_cygwin_utils.html',1,'NanoByte::Common::Native']]]
+];
