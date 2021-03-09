@@ -117,7 +117,7 @@ namespace NanoByte.StructureEditor.WinForms
         {
             var description = new ContainerDescription<TContainer>();
             _getNodes.Add<TContainer>(container => description.GetNodesIn(container).ToList());
-            _getCandidates.Add<TContainer>(container => EnumerableExtensions.Append(description.GetCandidatesFor(container), null).ToList());
+            _getCandidates.Add<TContainer>(container => description.GetCandidatesFor(container).Concat(new NodeCandidate?[] {null}).ToList());
             return description;
         }
 
