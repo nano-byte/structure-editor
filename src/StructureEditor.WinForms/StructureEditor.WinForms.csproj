@@ -11,17 +11,13 @@
     <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildRuntimeType)'=='Core'">
-    <!-- .NET Core MSBuild does not support legacy ResGen -->
-    <TargetFrameworks>net472;net5.0-windows7.0</TargetFrameworks>
+    <!-- .NET Core MSBuild does not support non-primitive resources (e.g., images) for .NET Framework -->
+    <TargetFrameworks>net5.0-windows7.0</TargetFrameworks>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net5.0-windows7.0'">
     <!-- Run nullability analysis only on annotated frameworks -->
     <Nullable>enable</Nullable>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)'=='net472'">
-    <!-- Support non-string resources -->
-    <GenerateResourceUsePreserializedResources>True</GenerateResourceUsePreserializedResources>
   </PropertyGroup>
 
   <!-- Dependencies -->
@@ -35,9 +31,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NanoByte.Common.WinForms" Version="2.7.3" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)'=='net472'">
-    <PackageReference Include="System.Resources.Extensions" Version="5.0.0" />
   </ItemGroup>
 
   <!-- Bundle 3rd party libs in NuGet package -->
