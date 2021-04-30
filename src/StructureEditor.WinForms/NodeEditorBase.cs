@@ -88,7 +88,7 @@ namespace NanoByte.StructureEditor.WinForms
         {
             Controls.Add(control);
 
-            control.Validated += delegate
+            control.Validated += (_, _) =>
             {
                 string? text = string.IsNullOrEmpty(control.Text) ? null : control.Text;
                 if (text == pointer.Value) return;
@@ -139,7 +139,7 @@ namespace NanoByte.StructureEditor.WinForms
         {
             Controls.Add(control);
 
-            control.Validated += delegate
+            control.Validated += (_, _) =>
             {
                 if (!control.IsValid || control.Uri == pointer.Value) return;
 
@@ -177,7 +177,7 @@ namespace NanoByte.StructureEditor.WinForms
         {
             Controls.Add(control);
 
-            control.CheckedChanged += delegate
+            control.CheckedChanged += (_, _) =>
             {
                 if (control.Checked == pointer.Value) return;
 

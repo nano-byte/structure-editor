@@ -40,10 +40,10 @@ namespace NanoByte.StructureEditor.WinForms
             if (UnixUtils.IsUnix)
             { // WORKAROUND: e.OldValue is not reliable on Mono, use MultiPropertyTracker instead
                 var tracker = new MultiPropertyTracker(propertyGrid);
-                propertyGrid.PropertyValueChanged += (sender, e) => CommandExecutor?.Execute(tracker.GetCommand(e.ChangedItem));
+                propertyGrid.PropertyValueChanged += (_, e) => CommandExecutor?.Execute(tracker.GetCommand(e.ChangedItem));
             }
             else
-                propertyGrid.PropertyValueChanged += (sender, e) => CommandExecutor?.Execute(new PropertyChangedCommand(Target!, e));
+                propertyGrid.PropertyValueChanged += (_, e) => CommandExecutor?.Execute(new PropertyChangedCommand(Target!, e));
         }
     }
 }

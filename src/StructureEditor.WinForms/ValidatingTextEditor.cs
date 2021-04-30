@@ -109,7 +109,7 @@ namespace NanoByte.StructureEditor.WinForms
         #region Event handlers
         private void TextEditor_TextChanged(object? sender, EventArgs e)
         {
-            TextEditor.Document.MarkerStrategy.RemoveAll(marker => true);
+            TextEditor.Document.MarkerStrategy.RemoveAll(_ => true);
 
             if (_timer.Enabled) _timer.Stop();
             else SetStatus(null, "Changed...");

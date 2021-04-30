@@ -32,14 +32,14 @@ namespace NanoByte.StructureEditor.Sample
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 600);
-            FormClosing += (sender, e) => { e.Cancel = !_editor.Closing(); };
+            FormClosing += (_, e) => { e.Cancel = !_editor.Closing(); };
 
             Controls.Add(_editor);
 
             static ToolStripMenuItem MenuItem(string text, Action action, Keys hotKey = Keys.None)
             {
                 var button = new ToolStripMenuItem {Text = text, ShortcutKeys = hotKey};
-                button.Click += delegate { action(); };
+                button.Click += (_, _) => action();
                 return button;
             }
 

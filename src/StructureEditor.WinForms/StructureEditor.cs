@@ -59,7 +59,7 @@ namespace NanoByte.StructureEditor.WinForms
 
         private void SetupControls()
         {
-            _buttonRemove.Click += (sender, e) => Remove();
+            _buttonRemove.Click += (_, _) => Remove();
             _treeView.AfterSelect += treeView_AfterSelect;
             _textEditor.ContentChanged += TextEditorContentChanged;
 
@@ -132,7 +132,7 @@ namespace NanoByte.StructureEditor.WinForms
         {
             // Use CommandManager as root rather than Target, to allow the entire Target to be replaced during editing
             Describe<ICommandManager<T>>()
-               .AddProperty(name, x => PropertyPointer.For(() => CommandManager.Target, value => CommandManager.Target = value!), new TEditor());
+               .AddProperty(name, _ => PropertyPointer.For(() => CommandManager.Target, value => CommandManager.Target = value!), new TEditor());
 
             return Describe<T>();
         }
@@ -160,7 +160,7 @@ namespace NanoByte.StructureEditor.WinForms
         {
             if (commandManager == null) throw new ArgumentNullException(nameof(commandManager));
 
-            if (CommandManager != null) CommandManager.TargetUpdated -= RebuildOnNextIdle;
+            CommandManager.TargetUpdated -= RebuildOnNextIdle;
             CommandManager = commandManager;
             CommandManager.TargetUpdated += RebuildOnNextIdle;
 
@@ -239,7 +239,7 @@ namespace NanoByte.StructureEditor.WinForms
                 : _getCandidates.Dispatch(SelectedNode.Node.Target)
                                 .Select(candidate => candidate == null
                                      ? (ToolStripItem)new ToolStripSeparator()
-                                     : new ToolStripMenuItem(candidate.NodeType, null, delegate
+                                     : new ToolStripMenuItem(candidate.NodeType, null, (_, _) =>
                                          {
                                              var command = candidate.GetCreateCommand();
                                              _selectedTarget = command.Value;
@@ -272,7 +272,7 @@ namespace NanoByte.StructureEditor.WinForms
         private object? _editingTarget;
         private object? _serializedTarget;
 
-        private StructureTreeNode? SelectedNode => _treeView?.SelectedNode as StructureTreeNode;
+        private StructureTreeNode? SelectedNode => _treeView.SelectedNode as StructureTreeNode;
 
         private void treeView_AfterSelect(object? sender, TreeViewEventArgs e)
         {

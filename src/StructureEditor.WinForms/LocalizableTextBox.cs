@@ -66,15 +66,15 @@ namespace NanoByte.StructureEditor.WinForms
         {
             MinimumSize = new Size(65, 22);
 
-            _comboBoxLanguage.SelectionChangeCommitted += (sender, e) =>
+            _comboBoxLanguage.SelectionChangeCommitted += (_, _) =>
             {
                 _selectedLanguage = (CultureInfo) _comboBoxLanguage.SelectedItem;
                 FillTextBox();
             };
             Controls.Add(_comboBoxLanguage);
 
-            TextBox.TextChanged += (sender, e) => _textBoxDirty = true;
-            TextBox.Validating += (sender, e) =>
+            TextBox.TextChanged += (_, _) => _textBoxDirty = true;
+            TextBox.Validating += (_, _) =>
             {
                 if (_selectedLanguage == null) return;
 
