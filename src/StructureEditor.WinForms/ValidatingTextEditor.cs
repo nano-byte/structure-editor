@@ -93,11 +93,8 @@ namespace NanoByte.StructureEditor.WinForms
             textEditor.Validating += TextEditor_Validating;
 
             Controls.Add(textEditor);
-            if (TextEditor != null)
-            {
-                Controls.Remove(TextEditor);
-                TextEditor.Dispose();
-            }
+            Controls.Remove(TextEditor);
+            TextEditor.Dispose();
             TextEditor = textEditor;
 
             SetStatus(Images.Info, "OK");
