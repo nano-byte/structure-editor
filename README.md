@@ -21,7 +21,7 @@ Add a reference to the [NanoByte.StructureEditor.WinForms](https://www.nuget.org
 
 Create an instance of `StructureEditor<T>` and add it to your Form:
 ```csharp
-var editor = StructureEditor<MyData>();
+var editor = new StructureEditor<MyData>();
 Controls.Add(editor);
 ```
 
