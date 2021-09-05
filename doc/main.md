@@ -17,13 +17,13 @@ Add a reference to the [NanoByte.StructureEditor.WinForms](https://www.nuget.org
 ### Initialization
 
 Create an instance of \ref NanoByte.StructureEditor.WinForms.StructureEditor "StructureEditor<T>" and add it to your Form:
-```csharp
+```{.cs}
 var editor = new StructureEditor<MyData>();
 Controls.Add(editor);
 ```
 
 Alternatively, you may want to derive your own class from \ref NanoByte.StructureEditor.WinForms.StructureEditor "StructureEditor<T>". This will allow you to use the graphical WinForms designer in Visual Studio (which does not support generic types) to place the Editor on your Form.
-```csharp
+```{.cs}
 public class MyDataEditor : StructureEditor<MyData>
 {}
 ```
@@ -39,7 +39,7 @@ The fluent API provides the following methods:
 
 There are numerous overloads for each of these methods, e.g., allowing you to specify a custom editor control for a data type or to keep the auto-generated one.
 
-```csharp
+```{.cs}
 editor.DescribeRoot("Address Book")
       .AddPlainList("Group", x => x.Groups);
 editor.Describe<IContactContainer>()
@@ -55,12 +55,12 @@ editor.Describe<Contact>()
 ### Storage
 
 Use the \ref NanoByte.StructureEditor.WinForms.StructureEditor.Open "Open()" method to load an XML file into the editor:
-```csharp
+```{.cs}
 editor.Open(CommandManager<AddressBook>.Load(path));
 ```
 
 Use the \ref NanoByte.Common.Undo.ICommandManager.Save "Save()" method on the \ref NanoByte.StructureEditor.WinForms.StructureEditor.CommandManager "CommandManager" property to save the editor's content as an XML file:
-```csharp
+```{.cs}
 editor.CommandManager.Save(path);
 ```
 
