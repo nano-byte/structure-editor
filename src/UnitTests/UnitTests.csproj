@@ -4,16 +4,16 @@
   <PropertyGroup>
     <AssemblyName>NanoByte.StructureEditor.UnitTests</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor</RootNamespace>
-    <TargetFrameworks>net48;net5.0-windows</TargetFrameworks>
+    <TargetFrameworks>net48;net6.0-windows</TargetFrameworks>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <IsPackable>False</IsPackable>
     <DeterministicSourcePaths>False</DeterministicSourcePaths>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildRuntimeType)'=='Core'">
     <!-- .NET Core MSBuild does not support non-primitive resources (e.g., images) for .NET Framework -->
-    <TargetFrameworks>net5.0-windows</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition="$(TargetFramework)=='net5.0-windows'">
+  <PropertyGroup Condition="$(TargetFramework)=='net6.0-windows'">
     <!-- Run nullability analysis only on annotated frameworks -->
     <Nullable>enable</Nullable>
   </PropertyGroup>
