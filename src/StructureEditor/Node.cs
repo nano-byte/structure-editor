@@ -2,9 +2,8 @@
 // Licensed under the MIT License
 
 using System.ComponentModel;
-using System.Linq;
+using System.Reflection;
 using NanoByte.Common.Undo;
-using NanoByte.Common.Values;
 using ICommandExecutor = NanoByte.Common.Undo.ICommandExecutor;
 
 namespace NanoByte.StructureEditor
@@ -71,6 +70,6 @@ namespace NanoByte.StructureEditor
         /// Gets the <see cref="DescriptionAttribute.Description"/> of <typeparamref name="T"/>, if any.
         /// </summary>
         public static string? GetDescription<T>()
-            => AttributeUtils.GetAttributes<DescriptionAttribute, T>().FirstOrDefault()?.Description;
+            => typeof(T).GetCustomAttribute<DescriptionAttribute>()?.Description;
     }
 }
