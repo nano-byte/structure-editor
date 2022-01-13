@@ -1,0 +1,55 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../artifacts/Release/net6.0-windows",
+          "files": [
+            "NanoByte.StructureEditor*.dll"
+          ]
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "globalMetadata": {
+      "_baseUrl": "https://structure-editor.nano-byte.net/",
+      "_appTitle": "NanoByte Structure Editor",
+      "_appFooter": "Copyright Bastian Eicher",
+      "_disableBreadcrumb": true,
+      "_enableNewTab": true
+    },
+    "content": [
+      {
+        "files": [
+          "*.md",
+          "toc.yml",
+          "api/*.yml"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "*.png"
+        ]
+      }
+    ],
+    "overwrite": [
+      {
+        "src": "../src/",
+        "files": [
+          "**/*.md"
+        ]
+      }
+    ],
+    "xref": [
+      "https://common.nano-byte.net/xrefmap.yml"
+    ],
+    "xrefService": [
+      "https://xref.docs.microsoft.com/query?uid={uid}"
+    ],
+    "dest": "../artifacts/Documentation"
+  }
+}

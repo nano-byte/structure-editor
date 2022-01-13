@@ -1,14 +1,18 @@
+---
+title: Home
+---
+
+# NanoByte Structure Editor
+
 NanoByte Structure Editor is a WinForms library that helps you build split-screen editors for your data structures, consisting of:
 
 1. a collapsible tree-view of the data structure,
-2. a graphical editor for the currently selected node in the tree (`PropertyGrid` or custom) and
+2. a graphical editor for the currently selected node in the tree (<xref:System.Windows.Forms.PropertyGrid> or custom) and
 3. a text editor (based on [ICSharpCode.TextEditor](https://github.com/nano-byte/ICSharpCode.TextEditor)) with a serialized (XML) representation of the currently selected node.
 
 This allows you to create an IDE-like experience for your users when editing complex domain specific languages, configuration files, etc..
 
-\image html screenshot.png
-
-[**GitHub repository**](https://github.com/nano-byte/structure-editor)
+![](screenshot.png)
 
 ## Usage
 
@@ -16,21 +20,21 @@ Add a reference to the [NanoByte.StructureEditor.WinForms](https://www.nuget.org
 
 ### Initialization
 
-Create an instance of \ref NanoByte.StructureEditor.WinForms.StructureEditor "StructureEditor<T>" and add it to your Form:
-```{.cs}
+Create an instance of <xref:NanoByte.StructureEditor.WinForms.StructureEditor`1> and add it to your Form:
+```csharp
 var editor = new StructureEditor<MyData>();
 Controls.Add(editor);
 ```
 
-Alternatively, you may want to derive your own class from \ref NanoByte.StructureEditor.WinForms.StructureEditor "StructureEditor<T>". This will allow you to use the graphical WinForms designer in Visual Studio (which does not support generic types) to place the Editor on your Form.
-```{.cs}
+Alternatively, you may want to derive your own class from <xref:NanoByte.StructureEditor.WinForms.StructureEditor`1>. This will allow you to use the graphical WinForms designer in Visual Studio (which does not support generic types) to place the Editor on your Form.
+```csharp
 public class MyDataEditor : StructureEditor<MyData>
 {}
 ```
 
 You need to "describe" your data structure to the Editor. You can do this directly after instantiating the editor or in the constructor of your derived class.
-- Call \ref NanoByte.StructureEditor.IStructureEditor.DescribeRoot "DescribeRoot()" and then use the fluent API provided as a return value to describe the properties on your main data type.
-- Call \ref NanoByte.StructureEditor.IStructureEditor.Describe<TContainer> "Describe<TContainer>()" to describe the properties on a data type `TContainer` exposed by another property. You can use multiple calls with different type parameters to describe arbitrarily deep hierarchies.  
+- Call [DescribeRoot()](xref:NanoByte.StructureEditor.IStructureEditor`1#NanoByte_StructureEditor_IStructureEditor_1_DescribeRoot_System_String_) and then use the fluent API provided as a return value to describe the properties on your main data type.
+- Call [Describe<TContainer>()](xref:NanoByte.StructureEditor.IStructureEditor`1#NanoByte_StructureEditor_IStructureEditor_1_Describe__1) to describe the properties on a data type `TContainer` exposed by another property. You can use multiple calls with different type parameters to describe arbitrarily deep hierarchies.  
 
 The fluent API provides the following methods:
 - `.AddProperty()` describes a simple value property.
@@ -39,7 +43,7 @@ The fluent API provides the following methods:
 
 There are numerous overloads for each of these methods, e.g., allowing you to specify a custom editor control for a data type or to keep the auto-generated one.
 
-```{.cs}
+```csharp
 editor.DescribeRoot("Address Book")
       .AddPlainList("Group", x => x.Groups);
 editor.Describe<IContactContainer>()
@@ -54,13 +58,13 @@ editor.Describe<Contact>()
 
 ### Storage
 
-Use the \ref NanoByte.StructureEditor.WinForms.StructureEditor.Open "Open()" method to load an XML file into the editor:
-```{.cs}
+Use the [Open()](xref:NanoByte.StructureEditor.WinForms.StructureEditor`1#NanoByte_StructureEditor_WinForms_StructureEditor_1_Open_NanoByte_Common_Undo_ICommandManager__0__) method to load an XML file into the editor:
+```csharp
 editor.Open(CommandManager<AddressBook>.Load(path));
 ```
 
-Use the \ref NanoByte.Common.Undo.ICommandManager.Save "Save()" method on the \ref NanoByte.StructureEditor.WinForms.StructureEditor.CommandManager "CommandManager" property to save the editor's content as an XML file:
-```{.cs}
+Use the [Save()](xref:NanoByte.Common.Undo.ICommandManager`1#NanoByte_Common_Undo_ICommandManager_1_Save_System_String_) method on the [CommandManager](xref:NanoByte.StructureEditor.WinForms.StructureEditor`1#NanoByte_StructureEditor_WinForms_StructureEditor_1_CommandManager) property to save the editor's content as an XML file:
+```csharp
 editor.CommandManager.Save(path);
 ```
 

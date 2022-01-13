@@ -7,7 +7,8 @@
 /src/_ReSharper.*/
 /src/*/obj/
 /src/*/bin/
-/doc/*.tag
+/doc/obj/
+/doc/api/
 
 # Output
 /artifacts/
