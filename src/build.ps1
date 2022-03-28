@@ -4,7 +4,7 @@ pushd $PSScriptRoot
 
 function Find-MSBuild {
     if (Test-Path "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe") {
-        $vsDir = . "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -products * -property installationPath -format value -version 16.8
+        $vsDir = . "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -products * -property installationPath -format value -version 17.0
         if ($vsDir) {
             if (Test-Path "$vsDir\MSBuild\Current") { return "$vsDir\MSBuild\Current\Bin\amd64\MSBuild.exe" } else { return "$vsDir\MSBuild\15.0\Bin\amd64\MSBuild.exe" }
         }
@@ -22,7 +22,7 @@ function Run-MSBuild {
         . $msbuild @args
         if ($LASTEXITCODE -ne 0) {throw "Exit Code: $LASTEXITCODE"}
     } else {
-        Write-Warning "You need Visual Studio 2022 to perform a full build of this project"
+        Write-Warning "You need Visual Studio 2022 or newer to perform a full build of this project"
         Run-DotNet msbuild @args
     }
 }
