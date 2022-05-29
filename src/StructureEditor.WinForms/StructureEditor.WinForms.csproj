@@ -30,7 +30,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="NanoByte.Common.WinForms" Version="2.11.6" />
+    <PackageReference Include="NanoByte.Common.WinForms" Version="2.12.0" />
   </ItemGroup>
 
   <!-- Bundle 3rd party libs in NuGet package -->

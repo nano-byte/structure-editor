@@ -156,7 +156,7 @@ namespace NanoByte.StructureEditor.WinForms
 
             string? warning = null;
 
-            void HandleLogEntry(LogSeverity severity, string message)
+            void HandleLogEntry(LogSeverity severity, string message, Exception? exception)
             {
                 if (severity >= LogSeverity.Warn) warning = message;
             }
