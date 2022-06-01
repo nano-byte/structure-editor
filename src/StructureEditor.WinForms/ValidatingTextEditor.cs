@@ -7,6 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml;
 using ICSharpCode.TextEditor;
 using ICSharpCode.TextEditor.Document;
 using NanoByte.Common;
@@ -166,28 +167,17 @@ namespace NanoByte.StructureEditor.WinForms
 
         private void HandleError(Exception ex)
         {
-            if (ex is InvalidDataException && ex.Source == "System.Xml" && ex.InnerException != null)
-            { // Parse XML exception message for position of the error
-                int lineStart = ex.Message.LastIndexOf('(') + 1;
-                int lineLength = ex.Message.LastIndexOf(',') - lineStart;
-                int charStart = ex.Message.LastIndexOf(' ') + 1;
-                int charLength = ex.Message.LastIndexOf(')') - charStart;
-                if (int.TryParse(ex.Message.Substring(lineStart, lineLength), out int lineNumber) && int.TryParse(ex.Message.Substring(charStart, charLength), out int charNumber))
-                {
-                    int lineOffset = TextEditor.Document.GetLineSegment(lineNumber - 1).Offset;
-                    TextEditor.Document.MarkerStrategy.AddMarker(
-                        new TextMarker(lineOffset + charNumber - 1, 10, TextMarkerType.WaveLine) {ToolTip = ex.InnerException.Message});
-                    TextEditor.Refresh();
-                }
+            if (ex is InvalidDataException {InnerException: XmlException xmlException})
+            {
+                int lineOffset = TextEditor.Document.GetLineSegment(xmlException.LineNumber - 1).Offset;
+                TextEditor.Document.MarkerStrategy.AddMarker(
+                    new TextMarker(lineOffset + xmlException.LinePosition - 1, 10, TextMarkerType.WaveLine) {ToolTip = xmlException.Message});
+                TextEditor.Refresh();
 
-                SetStatus(Images.Error, ex.InnerException.Message);
+                SetStatus(Images.Error, xmlException.Message);
             }
             else
-            {
-                SetStatus(Images.Error, ex.InnerException == null
-                    ? ex.Message
-                    : ex.Message + Environment.NewLine + ex.InnerException.Message);
-            }
+                SetStatus(Images.Error, ex.GetMessageWithInner());
         }
 
         private void SetStatus(Image? image, string message)
