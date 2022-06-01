@@ -3,7 +3,6 @@
 
 using System.Windows.Forms;
 using NanoByte.Common.Controls;
-using NanoByte.Common.Native;
 using NanoByte.Common.Undo;
 
 namespace NanoByte.StructureEditor.WinForms
@@ -37,21 +36,10 @@ namespace NanoByte.StructureEditor.WinForms
 
         private void SetupUndoTracking(PropertyGrid propertyGrid)
         {
-            if (UnixUtils.IsUnix)
-            { // WORKAROUND: e.OldValue is not reliable on Mono, use MultiPropertyTracker instead
-                var tracker = new MultiPropertyTracker(propertyGrid);
-                propertyGrid.PropertyValueChanged += (_, e) =>
-                {
-                    if (e.ChangedItem != null) CommandExecutor?.Execute(tracker.GetCommand(e.ChangedItem));
-                };
-            }
-            else
+            propertyGrid.PropertyValueChanged += (_, e) =>
             {
-                propertyGrid.PropertyValueChanged += (_, e) =>
-                {
-                    if (Target != null) CommandExecutor?.Execute(new PropertyChangedCommand(Target, e));
-                };
-            }
+                if (Target != null) CommandExecutor?.Execute(new PropertyChangedCommand(Target, e));
+            };
         }
     }
 }

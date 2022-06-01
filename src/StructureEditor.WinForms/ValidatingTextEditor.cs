@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using ICSharpCode.TextEditor;
 using ICSharpCode.TextEditor.Document;
 using NanoByte.Common;
-using NanoByte.Common.Native;
 using NanoByte.StructureEditor.WinForms.Resources;
 
 namespace NanoByte.StructureEditor.WinForms
@@ -167,7 +166,7 @@ namespace NanoByte.StructureEditor.WinForms
 
         private void HandleError(Exception ex)
         {
-            if (!UnixUtils.IsUnix && ex is InvalidDataException && ex.Source == "System.Xml" && ex.InnerException != null)
+            if (ex is InvalidDataException && ex.Source == "System.Xml" && ex.InnerException != null)
             { // Parse XML exception message for position of the error
                 int lineStart = ex.Message.LastIndexOf('(') + 1;
                 int lineLength = ex.Message.LastIndexOf(',') - lineStart;
