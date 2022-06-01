@@ -6,7 +6,6 @@
     <RootNamespace>NanoByte.StructureEditor.Sample</RootNamespace>
     <TargetFrameworks>net48;net6.0-windows</TargetFrameworks>
     <UseWindowsForms>True</UseWindowsForms>
-    <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
     <OutputType>WinExe</OutputType>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <IsPackable>False</IsPackable>
