@@ -156,9 +156,10 @@ namespace NanoByte.StructureEditor.WinForms
 
             string? warning = null;
 
-            void HandleLogEntry(LogSeverity severity, string message, Exception? exception)
+            void HandleLogEntry(LogSeverity severity, string? message, Exception? exception)
             {
-                if (severity >= LogSeverity.Warn) warning = message;
+                if (severity >= LogSeverity.Warn)
+                    warning = message ?? exception?.GetMessageWithInner();
             }
 
             if (warning == null) SetStatus(Images.Info, "OK");
