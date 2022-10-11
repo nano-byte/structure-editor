@@ -132,7 +132,7 @@ namespace NanoByte.StructureEditor.WinForms
         {
             // Use CommandManager as root rather than Target, to allow the entire Target to be replaced during editing
             Describe<ICommandManager<T>>()
-               .AddProperty(name, _ => PropertyPointer.For(() => CommandManager.Target, value => CommandManager.Target = value!), new TEditor());
+               .AddProperty(name, _ => PropertyPointer.ForNullable(() => CommandManager.Target, value => CommandManager.Target = value), new TEditor());
 
             return Describe<T>();
         }

@@ -24,8 +24,8 @@ namespace NanoByte.StructureEditor.Sample.Controls
                .AddPlainList("Contact", x => x.Contacts);
 
             Describe<Contact>()
-               .AddProperty("Home Address", x => PropertyPointer.For(() => x.HomeAddress), new AddressEditor())
-               .AddProperty("Work Address", x => PropertyPointer.For(() => x.WorkAddress), new AddressEditor())
+               .AddProperty("Home Address", x => PropertyPointer.ForNullable(() => x.HomeAddress), new AddressEditor())
+               .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress), new AddressEditor())
                .AddList(x => x.PhoneNumbers)
                .AddElement("Landline Number", new LandlineNumber())
                .AddElement("Mobile Number", new MobileNumber());
