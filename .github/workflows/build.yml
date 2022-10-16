@@ -11,7 +11,7 @@ jobs:
           fetch-depth: 0
       - uses: gittools/actions/gitversion/setup@v0.9.14
         with:
-          versionSpec: '5.7.x'
+          versionSpec: '5.10.x'
       - uses: gittools/actions/gitversion/execute@v0.9.14
         id: gitversion
       - uses: actions/cache@v3
