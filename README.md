@@ -15,7 +15,7 @@ This allows you to create an IDE-like experience for your users when editing com
 
 ## Usage
 
-Add a reference to the [NanoByte.StructureEditor.WinForms](https://www.nuget.org/packages/NanoByte.StructureEditor.WinForms/) NuGet package to your project. It is available for .NET Framework 2.0+ and .NET 5.0+.
+Add a reference to the [NanoByte.StructureEditor.WinForms](https://www.nuget.org/packages/NanoByte.StructureEditor.WinForms/) NuGet package to your project. It is available for .NET Framework 2.0+ and .NET 6.0+.
 
 ### Initialization
 

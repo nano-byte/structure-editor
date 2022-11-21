@@ -5,10 +5,10 @@
     <AssemblyName>NanoByte.StructureEditor</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor</RootNamespace>
     <Description>Utility classes and data structures with an emphasis on integration with native Windows and Linux features, network and disk IO, advanced collections and undo/redo logic.</Description>
-    <TargetFrameworks>net45;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>net45;net6.0</TargetFrameworks>
     <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='net6.0'">
     <!-- Run nullability analysis only on annotated frameworks -->
     <Nullable>enable</Nullable>
   </PropertyGroup>
