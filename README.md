@@ -11,7 +11,7 @@ NanoByte Structure Editor is a WinForms library that helps you build split-scree
 
 This allows you to create an IDE-like experience for your users when editing complex domain specific languages, configuration files, etc..
 
-![Screenshot](doc/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/nano-byte/structure-editor/master/doc/screenshot.png)
 
 ## Usage
 

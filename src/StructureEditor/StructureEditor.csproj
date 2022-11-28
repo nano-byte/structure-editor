@@ -4,24 +4,14 @@
   <PropertyGroup>
     <AssemblyName>NanoByte.StructureEditor</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor</RootNamespace>
-    <Description>Utility classes and data structures with an emphasis on integration with native Windows and Linux features, network and disk IO, advanced collections and undo/redo logic.</Description>
+    <Description>UI-agnostic base logic for building split-screen editors for data structures</Description>
+    <PackageTags>split-screen;editor;data structures</PackageTags>
     <TargetFrameworks>net45;net6.0</TargetFrameworks>
     <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net6.0'">
     <!-- Run nullability analysis only on annotated frameworks -->
     <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <!-- NuGet package metadata -->
-  <PropertyGroup>
-    <Description>UI-agnostic base logic for building split-screen editors for data structures</Description>
-    <Authors>Bastian Eicher</Authors>
-    <Copyright>Copyright Bastian Eicher</Copyright>
-    <PackageProjectUrl>https://structure-editor.nano-byte.net/</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>split-screen;editor;data structures</PackageTags>
-    <RepositoryUrl>https://github.com/nano-byte/structure-editor</RepositoryUrl>
   </PropertyGroup>
 
   <!-- Dependencies -->

@@ -1,7 +1,7 @@
 ﻿<Project>
 
+  <!-- Build configuration -->
   <PropertyGroup>
-    <!-- Build configuration -->
     <LangVersion>9.0</LangVersion>
     <Nullable>annotations</Nullable>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
@@ -13,15 +13,22 @@
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <NoWarn>$(NoWarn);1591</NoWarn><!-- Missing XML comments -->
-
-    <!-- Metadata -->
-    <Authors>Bastian Eicher</Authors>
-    <Copyright>Copyright Bastian Eicher</Copyright>
-    <PackageProjectUrl>https://structure-editor.nano-byte.net/</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/nano-byte/structure-editor</RepositoryUrl>
   </PropertyGroup>
 
+  <!-- NuGet Metadata -->
+  <PropertyGroup>
+    <Authors>Bastian Eicher</Authors>
+    <Copyright>Copyright Bastian Eicher</Copyright>
+    <RepositoryUrl>https://github.com/nano-byte/structure-editor</RepositoryUrl>
+    <PackageProjectUrl>https://structure-editor.nano-byte.net/</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+  <!-- Build-time dependencies -->
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
