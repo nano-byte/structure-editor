@@ -4,15 +4,14 @@
 using System;
 using System.ComponentModel;
 
-namespace NanoByte.StructureEditor.Sample.Model
+namespace NanoByte.StructureEditor.Sample.Model;
+
+/// <summary>
+/// A phone number for a mobile phone.
+/// </summary>
+[Description("A phone number for a mobile phone.")]
+public class MobileNumber : PhoneNumber, IEquatable<MobileNumber>
 {
-    /// <summary>
-    /// A phone number for a mobile phone.
-    /// </summary>
-    [Description("A phone number for a mobile phone.")]
-    public class MobileNumber : PhoneNumber, IEquatable<MobileNumber>
-    {
-        public bool Equals(MobileNumber? other)
-            => base.Equals(other);
-    }
+    public bool Equals(MobileNumber? other)
+        => base.Equals(other);
 }

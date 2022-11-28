@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace NanoByte.StructureEditor.Sample
+namespace NanoByte.StructureEditor.Sample;
+
+public class Program
 {
-    public class Program
+    [STAThread]
+    public static void Main(string[] args)
     {
-        [STAThread]
-        public static void Main(string[] args)
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
-        }
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+        Application.Run(new MainForm());
     }
 }

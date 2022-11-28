@@ -7,65 +7,64 @@ using System.Windows.Forms;
 using NanoByte.Common.Undo;
 using NanoByte.StructureEditor.Sample.Controls;
 
-namespace NanoByte.StructureEditor.Sample
+namespace NanoByte.StructureEditor.Sample;
+
+public class MainForm : Form
 {
-    public class MainForm : Form
+    private readonly AddressBookEditor _editor = new()
     {
-        private readonly AddressBookEditor _editor = new()
-        {
-            Dock = DockStyle.Fill,
-            Padding = new Padding(8)
-        };
+        Dock = DockStyle.Fill,
+        Padding = new Padding(8)
+    };
 
-        public MainForm()
-        {
-            SuspendLayout();
-            SetupComponents();
-            ResumeLayout(performLayout: false);
+    public MainForm()
+    {
+        SuspendLayout();
+        SetupComponents();
+        ResumeLayout(performLayout: false);
 
-            _editor.Open(CommandManager.For(SampleData.AddressBook));
+        _editor.Open(CommandManager.For(SampleData.AddressBook));
+    }
+
+    private void SetupComponents()
+    {
+        Text = "Structure Editor Sample";
+        AutoScaleDimensions = new SizeF(6F, 13F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(800, 600);
+        FormClosing += (_, e) => { e.Cancel = !_editor.Closing(); };
+
+        Controls.Add(_editor);
+
+        static ToolStripMenuItem MenuItem(string text, Action action, Keys hotKey = Keys.None)
+        {
+            var button = new ToolStripMenuItem {Text = text, ShortcutKeys = hotKey};
+            button.Click += (_, _) => action();
+            return button;
         }
 
-        private void SetupComponents()
+        Controls.Add(new MenuStrip
         {
-            Text = "Structure Editor Sample";
-            AutoScaleDimensions = new SizeF(6F, 13F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 600);
-            FormClosing += (_, e) => { e.Cancel = !_editor.Closing(); };
-
-            Controls.Add(_editor);
-
-            static ToolStripMenuItem MenuItem(string text, Action action, Keys hotKey = Keys.None)
+            Items =
             {
-                var button = new ToolStripMenuItem {Text = text, ShortcutKeys = hotKey};
-                button.Click += (_, _) => action();
-                return button;
-            }
-
-            Controls.Add(new MenuStrip
-            {
-                Items =
+                new ToolStripMenuItem("&File")
                 {
-                    new ToolStripMenuItem("&File")
+                    DropDownItems =
                     {
-                        DropDownItems =
-                        {
-                            MenuItem("&Open...", _editor.Open, hotKey: Keys.Control | Keys.O),
-                            MenuItem("&Save...", () => _editor.Save(), hotKey: Keys.Control | Keys.S),
-                            MenuItem("Save &As...", () => _editor.SaveAs())
-                        }
-                    },
-                    new ToolStripMenuItem("&Edit")
+                        MenuItem("&Open...", _editor.Open, hotKey: Keys.Control | Keys.O),
+                        MenuItem("&Save...", () => _editor.Save(), hotKey: Keys.Control | Keys.S),
+                        MenuItem("Save &As...", () => _editor.SaveAs())
+                    }
+                },
+                new ToolStripMenuItem("&Edit")
+                {
+                    DropDownItems =
                     {
-                        DropDownItems =
-                        {
-                            MenuItem("&Undo", _editor.Undo, hotKey: Keys.Control | Keys.Z),
-                            MenuItem("&Redo", _editor.Redo, hotKey: Keys.Control | Keys.Y)
-                        }
+                        MenuItem("&Undo", _editor.Undo, hotKey: Keys.Control | Keys.Z),
+                        MenuItem("&Redo", _editor.Redo, hotKey: Keys.Control | Keys.Y)
                     }
                 }
-            });
-        }
+            }
+        });
     }
 }

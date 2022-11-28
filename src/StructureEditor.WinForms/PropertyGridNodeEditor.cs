@@ -5,41 +5,40 @@ using System.Windows.Forms;
 using NanoByte.Common.Controls;
 using NanoByte.Common.Undo;
 
-namespace NanoByte.StructureEditor.WinForms
+namespace NanoByte.StructureEditor.WinForms;
+
+/// <summary>
+/// Edits a node in the structure using a <see cref="PropertyGrid"/>.
+/// </summary>
+/// <typeparam name="T">The type of element to edit.</typeparam>
+public class PropertyGridNodeEditor<T> : NodeEditorBase<T> where T : class
 {
-    /// <summary>
-    /// Edits a node in the structure using a <see cref="PropertyGrid"/>.
-    /// </summary>
-    /// <typeparam name="T">The type of element to edit.</typeparam>
-    public class PropertyGridNodeEditor<T> : NodeEditorBase<T> where T : class
+    public PropertyGridNodeEditor()
     {
-        public PropertyGridNodeEditor()
-        {
-            SuspendLayout();
-            SetupControls();
-            ResumeLayout(performLayout: false);
-        }
+        SuspendLayout();
+        SetupControls();
+        ResumeLayout(performLayout: false);
+    }
 
-        private void SetupControls()
+    private void SetupControls()
+    {
+        var propertyGrid = new ResettablePropertyGrid
         {
-            var propertyGrid = new ResettablePropertyGrid
-            {
-                ToolbarVisible = false,
-                Dock = DockStyle.Fill
-            };
-            Controls.Add(propertyGrid);
+            ToolbarVisible = false,
+            Dock = DockStyle.Fill
+        };
+        Controls.Add(propertyGrid);
 
-            SetupUndoTracking(propertyGrid);
-            TargetChanged += () => propertyGrid.SelectedObject = Target;
-            OnRefresh += propertyGrid.Refresh;
-        }
+        SetupUndoTracking(propertyGrid);
+        TargetChanged += () => propertyGrid.SelectedObject = Target;
+        OnRefresh += propertyGrid.Refresh;
+    }
 
-        private void SetupUndoTracking(PropertyGrid propertyGrid)
+    private void SetupUndoTracking(PropertyGrid propertyGrid)
+    {
+        propertyGrid.PropertyValueChanged += (_, e) =>
         {
-            propertyGrid.PropertyValueChanged += (_, e) =>
-            {
-                if (Target != null) CommandExecutor?.Execute(new PropertyChangedCommand(Target, e));
-            };
-        }
+            if (Target != null) CommandExecutor?.Execute(new PropertyChangedCommand(Target, e));
+        };
     }
 }

@@ -7,37 +7,36 @@ using System.ComponentModel;
 using System.Linq;
 using System.Xml.Serialization;
 
-namespace NanoByte.StructureEditor.Sample.Model
+namespace NanoByte.StructureEditor.Sample.Model;
+
+/// <summary>
+/// A group of multiple contacts.
+/// </summary>
+[Description("A group of multiple contacts.")]
+public class Group : IEquatable<Group>, IContactContainer
 {
     /// <summary>
-    /// A group of multiple contacts.
+    /// The name of the group.
     /// </summary>
-    [Description("A group of multiple contacts.")]
-    public class Group : IEquatable<Group>, IContactContainer
-    {
-        /// <summary>
-        /// The name of the group.
-        /// </summary>
-        [Description("The name of the group.")]
-        [XmlAttribute]
-        public string? Name { get; set; }
+    [Description("The name of the group.")]
+    [XmlAttribute]
+    public string? Name { get; set; }
 
-        /// <inheritdoc/>
-        [Browsable(false)]
-        [XmlElement(nameof(Contact))]
-        public List<Contact> Contacts { get; } = new();
+    /// <inheritdoc/>
+    [Browsable(false)]
+    [XmlElement(nameof(Contact))]
+    public List<Contact> Contacts { get; } = new();
 
-        public override string ToString() => Name ?? "";
+    public override string ToString() => Name ?? "";
 
-        public bool Equals(Group? other)
-            => other != null
-            && Name == other.Name
-            && Contacts.SequenceEqual(other.Contacts);
+    public bool Equals(Group? other)
+        => other != null
+        && Name == other.Name
+        && Contacts.SequenceEqual(other.Contacts);
 
-        public override bool Equals(object? obj)
-            => obj is Group other && Equals(other);
+    public override bool Equals(object? obj)
+        => obj is Group other && Equals(other);
 
-        public override int GetHashCode()
-            => Name?.GetHashCode() ?? 0;
-    }
+    public override int GetHashCode()
+        => Name?.GetHashCode() ?? 0;
 }

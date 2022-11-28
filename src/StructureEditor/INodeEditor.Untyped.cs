@@ -3,16 +3,15 @@
 
 using NanoByte.Common.Undo;
 
-namespace NanoByte.StructureEditor
+namespace NanoByte.StructureEditor;
+
+/// <summary>
+/// Provides an interface to a control that edits a node in the structure.
+/// </summary>
+public interface INodeEditor
 {
     /// <summary>
-    /// Provides an interface to a control that edits a node in the structure.
+    /// An optional undo system to use for editing.
     /// </summary>
-    public interface INodeEditor
-    {
-        /// <summary>
-        /// An optional undo system to use for editing.
-        /// </summary>
-        ICommandExecutor? CommandExecutor { get; set; }
-    }
+    ICommandExecutor? CommandExecutor { get; set; }
 }

@@ -3,19 +3,18 @@
 
 using System.ComponentModel;
 
-namespace NanoByte.StructureEditor
+namespace NanoByte.StructureEditor;
+
+/// <summary>
+/// Provides an interface to a control that edits a node in the structure.
+/// </summary>
+/// <typeparam name="T">The type of object to edit.</typeparam>
+public interface INodeEditor<T> : INodeEditor
+    where T : class
 {
     /// <summary>
-    /// Provides an interface to a control that edits a node in the structure.
+    /// The element to be edited.
     /// </summary>
-    /// <typeparam name="T">The type of object to edit.</typeparam>
-    public interface INodeEditor<T> : INodeEditor
-        where T : class
-    {
-        /// <summary>
-        /// The element to be edited.
-        /// </summary>
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        T? Target { get; set; }
-    }
+    [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    T? Target { get; set; }
 }

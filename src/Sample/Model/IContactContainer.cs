@@ -3,16 +3,15 @@
 
 using System.Collections.Generic;
 
-namespace NanoByte.StructureEditor.Sample.Model
+namespace NanoByte.StructureEditor.Sample.Model;
+
+/// <summary>
+/// An object that contains <see cref="Contact"/>s.
+/// </summary>
+public interface IContactContainer
 {
     /// <summary>
-    /// An object that contains <see cref="Contact"/>s.
+    /// Contact details of individuals.
     /// </summary>
-    public interface IContactContainer
-    {
-        /// <summary>
-        /// Contact details of individuals.
-        /// </summary>
-        List<Contact> Contacts { get; }
-    }
+    List<Contact> Contacts { get; }
 }
