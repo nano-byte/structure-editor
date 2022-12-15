@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Xml.Serialization;
+using Generator.Equals;
 
 namespace NanoByte.StructureEditor.Sample.Model;
 
@@ -10,7 +9,8 @@ namespace NanoByte.StructureEditor.Sample.Model;
 /// An address book.
 /// </summary>
 [Description("An address book.")]
-public class AddressBook : IContactContainer, IEquatable<AddressBook>
+[Equatable]
+public partial class AddressBook : IContactContainer
 {
     /// <summary>
     /// The name of the address book.
@@ -24,24 +24,14 @@ public class AddressBook : IContactContainer, IEquatable<AddressBook>
     /// </summary>
     [Browsable(false)]
     [XmlElement(nameof(Group))]
+    [OrderedEquality]
     public List<Group> Groups { get; } = new();
 
     /// <inheritdoc/>
     [Browsable(false)]
     [XmlElement(nameof(Contact))]
+    [OrderedEquality]
     public List<Contact> Contacts { get; } = new();
 
     public override string ToString() => Name ?? "";
-
-    public bool Equals(AddressBook? other)
-        => other != null
-        && Name == other.Name
-        && Groups.SequenceEqual(other.Groups)
-        && Contacts.SequenceEqual(other.Contacts);
-
-    public override bool Equals(object? obj)
-        => obj is AddressBook other && Equals(other);
-
-    public override int GetHashCode()
-        => Name?.GetHashCode() ?? 0;
 }

@@ -6,6 +6,7 @@
     <RootNamespace>NanoByte.StructureEditor</RootNamespace>
     <TargetFrameworks>net48;net6.0-windows</TargetFrameworks>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <SignAssembly>False</SignAssembly>
     <IsPackable>False</IsPackable>
     <DeterministicSourcePaths>False</DeterministicSourcePaths>
   </PropertyGroup>

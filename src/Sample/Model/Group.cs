@@ -1,11 +1,10 @@
 // Copyright Bastian Eicher
 // Licensed under the MIT License
 
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Xml.Serialization;
+using Generator.Equals;
 
 namespace NanoByte.StructureEditor.Sample.Model;
 
@@ -13,7 +12,8 @@ namespace NanoByte.StructureEditor.Sample.Model;
 /// A group of multiple contacts.
 /// </summary>
 [Description("A group of multiple contacts.")]
-public class Group : IEquatable<Group>, IContactContainer
+[Equatable]
+public partial class  Group : IContactContainer
 {
     /// <summary>
     /// The name of the group.
@@ -28,15 +28,4 @@ public class Group : IEquatable<Group>, IContactContainer
     public List<Contact> Contacts { get; } = new();
 
     public override string ToString() => Name ?? "";
-
-    public bool Equals(Group? other)
-        => other != null
-        && Name == other.Name
-        && Contacts.SequenceEqual(other.Contacts);
-
-    public override bool Equals(object? obj)
-        => obj is Group other && Equals(other);
-
-    public override int GetHashCode()
-        => Name?.GetHashCode() ?? 0;
 }
