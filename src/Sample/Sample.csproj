@@ -24,7 +24,7 @@
   <!-- Dependencies -->
   <ItemGroup>
     <ProjectReference Include="..\StructureEditor.WinForms\StructureEditor.WinForms.csproj" />
-    <PackageReference Include="Generator.Equals" Version="2.7.0" PrivateAssets="All" />
+    <PackageReference Include="Generator.Equals" Version="2.7.1" PrivateAssets="All" />
     <PackageReference Include="Generator.Equals.Runtime" Version="2.7.0" />
   </ItemGroup>
 
