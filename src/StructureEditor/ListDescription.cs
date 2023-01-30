@@ -45,11 +45,11 @@ internal class ListDescription<TContainer, TList> : Description<TContainer>, ILi
         => _descriptions.Select(description => description.GetCandidateFor(_getList(container)));
 
     /// <inheritdoc/>
-    public IListDescription<TContainer, TList> AddElement<TElement, TEditor>(string name, TElement element, TEditor editor)
-        where TElement : class, TList, IEquatable<TElement>, new()
+    public IListDescription<TContainer, TList> AddElement<TElement, TEditor>(string name, Func<TElement> factory, TEditor editor)
+        where TElement : class, TList, IEquatable<TElement>
         where TEditor : INodeEditor<TElement>, new()
     {
-        _descriptions.Add(new ElementDescription<TElement, TEditor>(name));
+        _descriptions.Add(new ElementDescription<TElement, TEditor>(name, factory));
         return this;
     }
 
@@ -61,12 +61,17 @@ internal class ListDescription<TContainer, TList> : Description<TContainer>, ILi
     }
 
     private class ElementDescription<TElement, TEditor> : IElementDescription
-        where TElement : class, TList, IEquatable<TElement>, new()
+        where TElement : class, TList, IEquatable<TElement>
         where TEditor : INodeEditor<TElement>, new()
     {
         private readonly string _name;
+        private readonly Func<TElement> _factory;
 
-        public ElementDescription(string name) => _name = name;
+        public ElementDescription(string name, Func<TElement> factory)
+        {
+            _name = name;
+            _factory = factory;
+        }
 
         public Node? TryGetNode(TContainer container, IList<TList> list, TList candidate)
         {
@@ -76,6 +81,6 @@ internal class ListDescription<TContainer, TList> : Description<TContainer>, ILi
         }
 
         public NodeCandidate GetCandidateFor(IList<TList> list)
-            => new ListElementNodeCandidate<TList, TElement>(_name, list);
+            => new ListElementNodeCandidate<TList, TElement>(_name, list, _factory);
     }
 }

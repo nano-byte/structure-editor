@@ -1,6 +1,7 @@
 // Copyright Bastian Eicher
 // Licensed under the MIT License
 
+using System;
 using System.Collections.Generic;
 using NanoByte.Common.Undo;
 
@@ -13,22 +14,25 @@ namespace NanoByte.StructureEditor;
 /// <typeparam name="TElement">The type of a specific element type to add to the list.</typeparam>
 public class ListElementNodeCandidate<TList, TElement> : NodeCandidate
     where TList : notnull
-    where TElement : TList, new()
+    where TElement : TList
 {
     private readonly IList<TList> _list;
+    private readonly Func<TElement> _factory;
 
     /// <summary>
     /// Creates a new list element node candidate.
     /// </summary>
     /// <param name="name">The name of the element type.</param>
     /// <param name="list">The list to add the element to.</param>
-    public ListElementNodeCandidate(string name, IList<TList> list)
+    /// <param name="factory">Callback to create a new instance of <typeparamref name="TElement"/>.</param>
+    public ListElementNodeCandidate(string name, IList<TList> list, Func<TElement> factory)
         : base(name, Node.GetDescription<TElement>())
     {
         _list = list;
+        _factory = factory;
     }
 
     /// <inheritdoc />
     public override IValueCommand GetCreateCommand()
-        => new AddToCollection<TList>(_list, new TElement());
+        => new AddToCollection<TList>(_list, _factory());
 }

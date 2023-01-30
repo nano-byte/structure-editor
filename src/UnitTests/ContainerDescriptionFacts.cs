@@ -23,8 +23,8 @@ public class ContainerDescriptionFacts
            .AddProperty("Home Address", x => PropertyPointer.ForNullable(() => x.HomeAddress), new AddressEditor())
            .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress), new AddressEditor())
            .AddList(x => x.PhoneNumbers)
-           .AddElement("Landline Number", new LandlineNumber())
-           .AddElement("Mobile Number", new MobileNumber());
+           .AddElement("Landline Number", () => new LandlineNumber())
+           .AddElement("Mobile Number", () => new MobileNumber());
 
         var container = new Contact();
 
@@ -44,8 +44,8 @@ public class ContainerDescriptionFacts
            .AddProperty("Home Address", x => PropertyPointer.ForNullable(() => x.HomeAddress), new AddressEditor())
            .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress), new AddressEditor())
            .AddList(x => x.PhoneNumbers)
-           .AddElement("Landline Number", new LandlineNumber())
-           .AddElement("Mobile Number", new MobileNumber());
+           .AddElement("Landline Number", () => new LandlineNumber())
+           .AddElement("Mobile Number", () => new MobileNumber());
 
         var landlineNumber = new LandlineNumber();
         var mobileNumber = new MobileNumber();

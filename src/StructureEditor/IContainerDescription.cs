@@ -17,10 +17,11 @@ public interface IContainerDescription<TContainer> where TContainer : class
     /// <typeparam name="TEditor">An editor for modifying the content of the property.</typeparam>
     /// <param name="name">The name of the property.</param>
     /// <param name="getPointer">A function to retrieve a pointer to property in the container.</param>
+    /// <param name="factory">Callback to create a new instance of <typeparamref name="TProperty"/>.</param>
     /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
-    IContainerDescription<TContainer> AddProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer, TEditor editor)
-        where TProperty : class, IEquatable<TProperty>, new()
+    IContainerDescription<TContainer> AddProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer, Func<TProperty> factory, TEditor editor)
+        where TProperty : class, IEquatable<TProperty>
         where TEditor : INodeEditor<TProperty>, new();
 
     /// <summary>
@@ -39,10 +40,11 @@ public interface IContainerDescription<TContainer> where TContainer : class
     /// <typeparam name="TEditor">An editor for modifying this type of element.</typeparam>
     /// <param name="name">The name of the element type.</param>
     /// <param name="getList">A function to retrieve the list from the container.</param>
+    /// <param name="factory">Callback to create a new instance of <typeparamref name="TElement"/>.</param>
     /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
-    IContainerDescription<TContainer> AddPlainList<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, TEditor editor)
-        where TElement : class, IEquatable<TElement>, new()
+    IContainerDescription<TContainer> AddPlainList<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, Func<TElement> factory, TEditor editor)
+        where TElement : class, IEquatable<TElement>
         where TEditor : INodeEditor<TElement>, new();
 
     /// <summary>

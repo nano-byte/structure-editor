@@ -27,8 +27,8 @@ public class AddressBookEditor : StructureEditor<AddressBook>
            .AddProperty("Home Address", x => PropertyPointer.ForNullable(() => x.HomeAddress), new AddressEditor())
            .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress), new AddressEditor())
            .AddList(x => x.PhoneNumbers)
-           .AddElement("Landline Number", new LandlineNumber())
-           .AddElement("Mobile Number", new MobileNumber());
+           .AddElement("Landline Number", () => new LandlineNumber())
+           .AddElement("Mobile Number", () => new MobileNumber());
     }
 
     public void Open()

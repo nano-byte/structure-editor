@@ -19,13 +19,13 @@ public interface IListDescription<TContainer, TList>
     /// Adds a list element type to the description.
     /// </summary>
     /// <param name="name">The name of the element type.</param>
-    /// <param name="element">Dummy element used for type inference of <typeparamref name="TElement"/>.</param>
+    /// <param name="factory">Callback to create a new instance of <typeparamref name="TElement"/>.</param>
     /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
     /// <typeparam name="TElement">The type of a specific element type in the list.</typeparam>
     /// <typeparam name="TEditor">An editor for modifying this type of element.</typeparam>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification = "Generics used as type-safe reflection replacement.")]
-    IListDescription<TContainer, TList> AddElement<TElement, TEditor>(string name, TElement element, TEditor editor)
-        where TElement : class, TList, IEquatable<TElement>, new()
+    IListDescription<TContainer, TList> AddElement<TElement, TEditor>(string name, Func<TElement> factory, TEditor editor)
+        where TElement : class, TList, IEquatable<TElement>
         where TEditor : INodeEditor<TElement>, new();
 }
