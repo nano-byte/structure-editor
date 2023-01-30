@@ -19,8 +19,29 @@ namespace NanoByte.StructureEditor.WinForms;
 /// <remarks>Derive and call <see cref="DescribeRoot"/> or <see cref="DescribeRoot{TEditor}"/> as well as <see cref="Describe{TContainer}"/> in the constructor.</remarks>
 /// <typeparam name="T">The type of object to edit.</typeparam>
 public class StructureEditor<T> : UserControl, IStructureEditor<T>
-    where T : class, IEquatable<T>, new()
+    where T : class, IEquatable<T>
 {
+    private readonly Func<T> _factory;
+
+    /// <summary>
+    /// Creates a new structure editor.
+    /// </summary>
+    /// <param name="factory">Callback to create a new instance of <typeparamref name="T"/>.</param>
+    public StructureEditor(Func<T> factory)
+    {
+        _factory = factory;
+        CommandManager = new CommandManager<T>(factory());
+
+        SuspendLayout();
+        SetupControls();
+        ResumeLayout(performLayout: false);
+    }
+
+    /// <summary>
+    /// Creates a new structure editor for a <typeparamref name="T"/> with a parameterless constructor.
+    /// </summary>
+    public StructureEditor() : this(Activator.CreateInstance<T>) {}
+
     #region Controls
     private readonly ToolStripDropDownButton _buttonAdd = new()
     {
@@ -49,13 +70,6 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     {
         Dock = DockStyle.Fill
     };
-
-    public StructureEditor()
-    {
-        SuspendLayout();
-        SetupControls();
-        ResumeLayout(performLayout: false);
-    }
 
     private void SetupControls()
     {
@@ -132,7 +146,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     {
         // Use CommandManager as root rather than Target, to allow the entire Target to be replaced during editing
         Describe<ICommandManager<T>>()
-           .AddProperty(name, _ => PropertyPointer.ForNullable(() => CommandManager.Target, value => CommandManager.Target = value), new TEditor());
+           .AddProperty(name, _ => PropertyPointer.ForNullable(() => CommandManager.Target, value => CommandManager.Target = value), _factory, new TEditor());
 
         return Describe<T>();
     }
@@ -150,7 +164,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     /// <summary>
     /// Holds the object being editing and manages undo/redo operations on it.
     /// </summary>
-    public ICommandManager<T> CommandManager { get; private set; } = new CommandManager<T>(new T());
+    public ICommandManager<T> CommandManager { get; private set; }
 
     /// <summary>
     /// Opens an object for editing using the specified <see cref="ICommandManager{T}"/>.
