@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: windows-2022
+    runs-on: windows-latest
     steps:
       # Prepare
       - uses: actions/checkout@v3
@@ -14,17 +14,10 @@ jobs:
           versionSpec: '5.12.x'
       - uses: gittools/actions/gitversion/execute@v0.10.2
         id: gitversion
-      - uses: actions/cache@v3
-        with:
-          path: |
-            ~\AppData\Roaming\0install.net
-            ~\AppData\Local\0install.net
-            C:\ProgramData\0install.net
-          key: 0install-${{hashFiles('**/build.ps1')}}
 
       # Build
       - name: Build (pre-release)
-        if: steps.gitversion.outputs.preReleaseLabel != ''
+        if: github.ref_type != 'tag'
         run: .\build.ps1 ${{steps.gitversion.outputs.nuGetVersion}}-${{steps.gitversion.outputs.shortSha}}
       - name: Build (release)
         if: github.ref_type == 'tag'
@@ -44,11 +37,8 @@ jobs:
 
       # Publish
       - name: Publish packages (GitHub)
-        if: github.event_name == 'push' && !startsWith(github.ref, 'refs/heads/renovate/')
-        run: |
-          Get-ChildItem artifacts\Release\*.nupkg | ForEach-Object {
-            curl.exe -sS -X PUT -u "${{github.actor}}:${{github.token}}" -F package=@$_ https://nuget.pkg.github.com/${{github.repository_owner}}/
-          }
+        if: github.event_name == 'push' && !startsWith(github.ref_name, 'renovate/')
+        run: dotnet nuget push artifacts\Release\*.nupkg --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json --api-key ${{github.token}} --no-symbols --skip-duplicate
       - name: Publish packages (NuGet.org)
         if: github.ref_type == 'tag'
         run: dotnet nuget push artifacts\Release\*.nupkg --source nuget.org --api-key ${{secrets.NUGET_API_KEY}}
