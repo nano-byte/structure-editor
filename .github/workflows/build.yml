@@ -27,7 +27,7 @@ jobs:
         if: steps.gitversion.outputs.preReleaseLabel != ''
         run: .\build.ps1 ${{steps.gitversion.outputs.nuGetVersion}}-${{steps.gitversion.outputs.shortSha}}
       - name: Build (release)
-        if: steps.gitversion.outputs.preReleaseLabel == ''
+        if: github.ref_type == 'tag'
         run: .\build.ps1 ${{steps.gitversion.outputs.nuGetVersion}}
       - name: Report test results
         if: always()
@@ -39,7 +39,7 @@ jobs:
 
       # Release
       - name: Create GitHub Release
-        if: steps.gitversion.outputs.preReleaseLabel == ''
+        if: github.ref_type == 'tag'
         uses: softprops/action-gh-release@v1
 
       # Publish
@@ -50,10 +50,10 @@ jobs:
             curl.exe -sS -X PUT -u "${{github.actor}}:${{github.token}}" -F package=@$_ https://nuget.pkg.github.com/${{github.repository_owner}}/
           }
       - name: Publish packages (NuGet.org)
-        if: steps.gitversion.outputs.preReleaseLabel == ''
+        if: github.ref_type == 'tag'
         run: dotnet nuget push artifacts\Release\*.nupkg --source nuget.org --api-key ${{secrets.NUGET_API_KEY}}
       - name: Publish documentation
-        if: steps.gitversion.outputs.preReleaseLabel == ''
+        if: github.ref_type == 'tag'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{github.token}}
