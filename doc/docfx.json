@@ -3,10 +3,9 @@
     {
       "src": [
         {
-          "src": "../artifacts/Release/net6.0-windows",
-          "files": [
-            "NanoByte.StructureEditor*.dll"
-          ]
+          "src": "../src",
+          "files": ["*/*.csproj"],
+          "exclude": ["UnitTests/*"]
         }
       ],
       "dest": "api"
@@ -31,17 +30,13 @@
     ],
     "resource": [
       {
-        "files": [
-          "*.png"
-        ]
+        "files": ["*.png"]
       }
     ],
     "overwrite": [
       {
         "src": "../src/",
-        "files": [
-          "**/*.md"
-        ]
+        "files": ["**/*.md"]
       }
     ],
     "xref": [
