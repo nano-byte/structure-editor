@@ -15,9 +15,7 @@
     "globalMetadata": {
       "_baseUrl": "https://structure-editor.nano-byte.net/",
       "_appTitle": "NanoByte Structure Editor",
-      "_appFooter": "Copyright Bastian Eicher",
-      "_disableBreadcrumb": true,
-      "_enableNewTab": true
+      "_appFooter": "Copyright Bastian Eicher"
     },
     "content": [
       {
@@ -44,6 +42,12 @@
     ],
     "xrefService": [
       "https://xref.docs.microsoft.com/query?uid={uid}"
+    ],
+    "postProcessors": ["ExtractSearchIndex"],
+    "template": [
+      "default",
+      "modern",
+      "template"
     ],
     "dest": "../artifacts/Documentation"
   }
