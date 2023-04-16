@@ -17,8 +17,8 @@ public interface IContainerDescription<TContainer> where TContainer : class
     /// <typeparam name="TEditor">An editor for modifying the content of the property.</typeparam>
     /// <param name="name">The name of the property.</param>
     /// <param name="getPointer">A function to retrieve a pointer to property in the container.</param>
-    /// <param name="factory">Callback to create a new instance of <typeparamref name="TProperty"/>.</param>
-    /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
+    /// <param name="factory">Callback to create a new instance of the property.</param>
+    /// <param name="editor">Dummy element used for type inference of the editor class.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     IContainerDescription<TContainer> AddProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer, Func<TProperty> factory, TEditor editor)
         where TProperty : class, IEquatable<TProperty>
@@ -29,7 +29,7 @@ public interface IContainerDescription<TContainer> where TContainer : class
     /// </summary>
     /// <typeparam name="TList">The type of elements in the list.</typeparam>
     /// <param name="getList">A function to retrieve the list from the container.</param>
-    /// <returns>A list description, enabling you to specify explicit sub-types of <typeparamref name="TList"/> allowed in the list.</returns>
+    /// <returns>A list description, enabling you to specify explicit sub-types of <c>TList</c> allowed in the list.</returns>
     IListDescription<TContainer, TList> AddList<TList>(Func<TContainer, IList<TList>> getList)
         where TList : class;
 
@@ -40,21 +40,21 @@ public interface IContainerDescription<TContainer> where TContainer : class
     /// <typeparam name="TEditor">An editor for modifying this type of element.</typeparam>
     /// <param name="name">The name of the element type.</param>
     /// <param name="getList">A function to retrieve the list from the container.</param>
-    /// <param name="factory">Callback to create a new instance of <typeparamref name="TElement"/>.</param>
-    /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
+    /// <param name="factory">Callback to create a new instance of the element.</param>
+    /// <param name="editor">Dummy element used for type inference of the editor class.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     IContainerDescription<TContainer> AddPlainList<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, Func<TElement> factory, TEditor editor)
         where TElement : class, IEquatable<TElement>
         where TEditor : INodeEditor<TElement>, new();
 
     /// <summary>
-    /// Returns information about nodes found in a specific instance of <typeparamref name="TContainer"/>.
+    /// Returns information about nodes found in a specific instance of the container.
     /// </summary>
     /// <param name="container">The container instance to look in to.</param>
     IEnumerable<Node> GetNodesIn(TContainer container);
 
     /// <summary>
-    /// Returns information about possible new child nodes for a specific instance of <typeparamref name="TContainer"/>.
+    /// Returns information about possible new child nodes for a specific instance of the container.
     /// </summary>
     /// <param name="container">The container instance to look at.</param>
     IEnumerable<NodeCandidate?> GetCandidatesFor(TContainer container);
