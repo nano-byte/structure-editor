@@ -324,7 +324,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     }
 
     /// <summary>
-    /// Returns the serialized representation of the <see cref="SelectedNode"/>.
+    /// Returns the serialized representation of the selected <see cref="StructureTreeNode"/>.
     /// </summary>
     protected virtual string GetSerialized()
         => SelectedNode
