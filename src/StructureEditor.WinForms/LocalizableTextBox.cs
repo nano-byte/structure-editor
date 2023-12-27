@@ -68,7 +68,7 @@ public class LocalizableTextBox : NodeEditorBase<LocalizableStringCollection>
 
         _comboBoxLanguage.SelectionChangeCommitted += (_, _) =>
         {
-            _selectedLanguage = (CultureInfo) _comboBoxLanguage.SelectedItem;
+            _selectedLanguage = (CultureInfo?) _comboBoxLanguage.SelectedItem;
             FillTextBox();
         };
         Controls.Add(_comboBoxLanguage);
