@@ -21,7 +21,7 @@
       "automergeType": "branch"
     },
     {
-      "matchPackagePatterns": ["gittools", "SourceLink"],
+      "matchPackagePatterns": ["gittools", "docfx", "SourceLink"],
       "automerge": true,
       "automergeType": "branch"
     },
