@@ -6,10 +6,10 @@
     <RootNamespace>NanoByte.StructureEditor</RootNamespace>
     <Description>UI-agnostic base logic for building split-screen editors for data structures</Description>
     <PackageTags>split-screen;editor;data structures</PackageTags>
-    <TargetFrameworks>net45;net6.0</TargetFrameworks>
+    <TargetFrameworks>net45;net6.0;net8.0</TargetFrameworks>
     <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)'=='net6.0'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='net6.0' Or '$(TargetFramework)'=='net8.0'">
     <!-- Run nullability analysis only on annotated frameworks -->
     <Nullable>enable</Nullable>
   </PropertyGroup>
