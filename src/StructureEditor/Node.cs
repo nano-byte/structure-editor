@@ -11,35 +11,25 @@ namespace NanoByte.StructureEditor;
 /// <summary>
 /// Describes a specific node in the structure.
 /// </summary>
-public abstract class Node
+/// <param name="nodeType">The name of the node type.</param>
+/// <param name="description">A description of the node type.</param>
+/// <param name="target">The object the node represents.</param>
+public abstract class Node(string nodeType, string? description, object? target)
 {
     /// <summary>
     /// The name of the node type.
     /// </summary>
-    public string NodeType { get; }
+    public string NodeType { get; } = nodeType;
 
     /// <summary>
     /// A description of the node type.
     /// </summary>
-    public string? Description { get; }
+    public string? Description { get; } = description;
 
     /// <summary>
     /// The object the node represents.
     /// </summary>
-    public object? Target { get; }
-
-    /// <summary>
-    /// Creates a new node.
-    /// </summary>
-    /// <param name="nodeType">The name of the node type.</param>
-    /// <param name="description">A description of the node type.</param>
-    /// <param name="target">The object the node represents.</param>
-    protected Node(string nodeType, string? description, object? target)
-    {
-        NodeType = nodeType;
-        Description = description;
-        Target = target;
-    }
+    public object? Target { get; } = target;
 
     public override string ToString()
         => $"{NodeType}: {Target}";

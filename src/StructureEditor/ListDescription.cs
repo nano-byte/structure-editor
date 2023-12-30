@@ -13,28 +13,20 @@ namespace NanoByte.StructureEditor;
 /// </summary>
 /// <typeparam name="TContainer">The type of the container containing the list.</typeparam>
 /// <typeparam name="TList">The type of elements in the list.</typeparam>
-internal class ListDescription<TContainer, TList> : Description<TContainer>, IListDescription<TContainer, TList>
+/// <param name="getList">A callback for retrieving the list from a container.</param>
+internal class ListDescription<TContainer, TList>(Func<TContainer, IList<TList>> getList)
+    : Description<TContainer>, IListDescription<TContainer, TList>
     where TContainer : class
     where TList : class
 {
-    private readonly Func<TContainer, IList<TList>> _getList;
     private readonly List<IElementDescription> _descriptions = [];
-
-    /// <summary>
-    /// Creates a new list description.
-    /// </summary>
-    /// <param name="getList">A callback for retrieving the list from a container.</param>
-    public ListDescription(Func<TContainer, IList<TList>> getList)
-    {
-        _getList = getList;
-    }
 
     public override IEnumerable<Node> GetNodesIn(TContainer container)
     {
-        foreach (var element in _getList(container))
+        foreach (var element in getList(container))
         {
             var node = _descriptions
-                      .Select(x => x.TryGetNode(container, _getList(container), element))
+                      .Select(x => x.TryGetNode(container, getList(container), element))
                       .WhereNotNull()
                       .FirstOrDefault();
             if (node != null) yield return node;
@@ -42,7 +34,7 @@ internal class ListDescription<TContainer, TList> : Description<TContainer>, ILi
     }
 
     public override IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container)
-        => _descriptions.Select(description => description.GetCandidateFor(_getList(container)));
+        => _descriptions.Select(description => description.GetCandidateFor(getList(container)));
 
     /// <inheritdoc/>
     public IListDescription<TContainer, TList> AddElement<TElement, TEditor>(string name, Func<TElement> factory, TEditor editor)
