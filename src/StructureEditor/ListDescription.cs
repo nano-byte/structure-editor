@@ -18,7 +18,7 @@ internal class ListDescription<TContainer, TList> : Description<TContainer>, ILi
     where TList : class
 {
     private readonly Func<TContainer, IList<TList>> _getList;
-    private readonly List<IElementDescription> _descriptions = new();
+    private readonly List<IElementDescription> _descriptions = [];
 
     /// <summary>
     /// Creates a new list description.

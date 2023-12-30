@@ -39,7 +39,7 @@ public partial class Contact
     [XmlElement(nameof(LandlineNumber), typeof(LandlineNumber))]
     [XmlElement(nameof(MobileNumber), typeof(MobileNumber))]
     [OrderedEquality]
-    public List<PhoneNumber> PhoneNumbers { get; } = new();
+    public List<PhoneNumber> PhoneNumbers { get; } = [];
 
     public override string ToString() => FirstName + " " + LastName;
 }

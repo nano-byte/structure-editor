@@ -25,7 +25,7 @@ public partial class  Group : IContactContainer
     /// <inheritdoc/>
     [Browsable(false)]
     [XmlElement(nameof(Contact))]
-    public List<Contact> Contacts { get; } = new();
+    public List<Contact> Contacts { get; } = [];
 
     public override string ToString() => Name ?? "";
 }

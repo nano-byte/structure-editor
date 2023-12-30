@@ -25,13 +25,13 @@ public partial class AddressBook : IContactContainer
     [Browsable(false)]
     [XmlElement(nameof(Group))]
     [OrderedEquality]
-    public List<Group> Groups { get; } = new();
+    public List<Group> Groups { get; } = [];
 
     /// <inheritdoc/>
     [Browsable(false)]
     [XmlElement(nameof(Contact))]
     [OrderedEquality]
-    public List<Contact> Contacts { get; } = new();
+    public List<Contact> Contacts { get; } = [];
 
     public override string ToString() => Name ?? "";
 }

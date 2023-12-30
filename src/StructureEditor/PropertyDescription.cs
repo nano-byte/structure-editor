@@ -45,5 +45,5 @@ internal class PropertyDescription<TContainer, TProperty, TEditor> : Description
 
     /// <inheritdoc/>
     public override IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container)
-        => new[] {new PropertyNodeCandidate<TProperty>(_name, _getPointer(container), _factory)};
+        => [new PropertyNodeCandidate<TProperty>(name, getPointer(container), factory)];
 }
