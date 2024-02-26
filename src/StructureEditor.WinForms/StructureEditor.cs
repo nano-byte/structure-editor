@@ -265,7 +265,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
         _buttonAdd.DropDownItems.Clear();
         _buttonAdd.DropDownItems.AddRange(menu.Take(menu.Length - 1).ToArray());
 
-        _buttonAdd.Enabled = _buttonAdd.DropDownItems.Count != 0;
+        _buttonAdd.Enabled = _buttonAdd.DropDownItems is not [];
     }
 
     /// <summary>
@@ -291,7 +291,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     private void treeView_AfterSelect(object? sender, TreeViewEventArgs e)
     {
         BuildAddDropDownMenu();
-        _buttonRemove.Enabled = _treeView.Nodes.Count > 0 && e.Node != _treeView.Nodes[0];
+        _buttonRemove.Enabled = _treeView.Nodes is [var node, ..] && e.Node != node;
         _selectedTarget = SelectedNode?.Node.Target;
 
         if (_selectedTarget == _editingTarget) _editorControl?.Refresh();

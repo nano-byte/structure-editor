@@ -97,8 +97,7 @@ public class LocalizableTextBox : NodeEditorBase<LocalizableStringCollection>
             else unsetLanguages.Add(language);
         }
 
-        if (_selectedLanguage == null)
-            _selectedLanguage = setLanguages.Count == 0 ? LocalizableString.DefaultLanguage : setLanguages[0];
+        _selectedLanguage ??= setLanguages is [var x] ? x : LocalizableString.DefaultLanguage;
 
         _comboBoxLanguage.BeginUpdate();
         _comboBoxLanguage.Items.Clear();
