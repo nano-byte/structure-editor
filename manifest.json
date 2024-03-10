@@ -1,0 +1,285 @@
+{
+  "source_base_path": "D:/a/structure-editor/structure-editor/doc",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.ContainerDescription-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.ContainerDescription-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.ContainerDescriptionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.ContainerDescriptionExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.IContainerDescription-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.IContainerDescription-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.IListDescription-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.IListDescription-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.INodeEditor-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.INodeEditor-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.INodeEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.INodeEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.IStructureEditor-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.IStructureEditor-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.ITargetContainerInject-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.ITargetContainerInject-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.ListElementNode-4.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.ListElementNode-4.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.ListElementNodeCandidate-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.ListElementNodeCandidate-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.Node.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.Node.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.NodeCandidate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.NodeCandidate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.PropertyNode-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.PropertyNode-3.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.PropertyNodeCandidate-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.PropertyNodeCandidate-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.WinForms.StructureEditor-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.WinForms.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.WinForms.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "screenshot.png",
+      "output": {
+        "resource": {
+          "relative_path": "screenshot.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
