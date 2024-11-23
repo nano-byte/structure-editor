@@ -278,7 +278,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
         if (SelectedNode == null || _treeView.SelectedNode == _treeView.Nodes[0]) return;
 
         var removeCommand = SelectedNode.Node.GetRemoveCommand();
-        _treeView.SelectedNode = _treeView.SelectedNode.Parent; // Select parent before deleting
+        _treeView.SelectedNode = _treeView.SelectedNode?.Parent; // Select parent before deleting
         CommandManager.Execute(removeCommand);
     }
     #endregion

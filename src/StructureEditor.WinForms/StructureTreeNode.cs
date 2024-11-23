@@ -13,7 +13,7 @@ internal sealed class StructureTreeNode : TreeNode
         : base(node.ToString(), children)
     {
         Node = node;
-        ToolTipText = node.Description;
+        ToolTipText = node.Description ?? "";
         ContextMenuStrip = new ContextMenuStrip();
     }
 }
