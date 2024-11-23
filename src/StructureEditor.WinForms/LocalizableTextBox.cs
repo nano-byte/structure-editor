@@ -53,6 +53,7 @@ public class LocalizableTextBox : NodeEditorBase<LocalizableStringCollection>
     /// A text to be displayed in <see cref="SystemColors.GrayText"/> when the text box is empty.
     /// </summary>
     [Description("A text to be displayed in gray when Text is empty."), Category("Appearance"), Localizable(true)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string HintText { get => TextBox.HintText; set => TextBox.HintText = value; }
 
     public LocalizableTextBox()

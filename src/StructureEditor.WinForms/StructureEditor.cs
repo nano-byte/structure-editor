@@ -10,6 +10,7 @@ using NanoByte.Common.Collections;
 using NanoByte.Common.Dispatch;
 using NanoByte.Common.Undo;
 using NanoByte.StructureEditor.WinForms.Resources;
+using System.ComponentModel;
 
 namespace NanoByte.StructureEditor.WinForms;
 
@@ -164,6 +165,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     /// <summary>
     /// Holds the object being editing and manages undo/redo operations on it.
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public ICommandManager<T> CommandManager { get; private set; }
 
     /// <summary>

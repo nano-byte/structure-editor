@@ -38,6 +38,7 @@ public class ValidatingTextEditor : UserControl
     /// <summary>
     /// The text editor control used internally.
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public TextEditorControl TextEditor { get; private set; } = new();
 
     public ValidatingTextEditor()
