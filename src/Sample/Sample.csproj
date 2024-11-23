@@ -4,7 +4,7 @@
   <PropertyGroup>
     <AssemblyName>NanoByte.StructureEditor.Sample</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor.Sample</RootNamespace>
-    <TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
+    <TargetFrameworks>net48;net9.0-windows</TargetFrameworks>
     <UseWindowsForms>True</UseWindowsForms>
     <OutputType>WinExe</OutputType>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
@@ -14,9 +14,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildRuntimeType)'=='Core'">
     <!-- .NET Core MSBuild does not support non-primitive resources (e.g., images) for .NET Framework -->
-    <TargetFrameworks>net8.0-windows</TargetFrameworks>
+    <TargetFrameworks>net9.0-windows</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)'=='net8.0-windows'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='net9.0-windows'">
     <!-- Run nullability analysis only on annotated frameworks -->
     <Nullable>enable</Nullable>
   </PropertyGroup>
