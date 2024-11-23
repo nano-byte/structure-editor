@@ -73,7 +73,7 @@ Take a look a the [sample project](src/Sample) for a more complete setup, includ
 
 The source code is in [`src/`](src/), config for building the API documentation is in [`doc/`](doc/) and generated build artifacts are placed in `artifacts/`. The source code does not contain version numbers. Instead the version is determined during CI using [GitVersion](https://gitversion.net/).
 
-To build install [Visual Studio 2022 or newer](https://www.visualstudio.com/downloads/) and run `.\build.ps1`.
+To build install [Visual Studio 2022 v17.12 or newer](https://www.visualstudio.com/downloads/) and run `.\build.ps1`.
 
 ## Contributing
 
