@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Shared/">
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Project Path="StructureEditor/StructureEditor.csproj" />
+  <Project Path="StructureEditor.WinForms/StructureEditor.WinForms.csproj" />
+  <Project Path="UnitTests/UnitTests.csproj" />
+  <Project Path="Sample/Sample.csproj" />
+</Solution>
