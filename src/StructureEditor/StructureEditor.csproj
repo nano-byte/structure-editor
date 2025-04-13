@@ -16,7 +16,7 @@
 
   <!-- Dependencies -->
   <ItemGroup>
-    <PackageReference Include="NanoByte.Common" Version="2.19.8" />
+    <PackageReference Include="NanoByte.Common" Version="2.19.9" />
   </ItemGroup>
 
 </Project>
