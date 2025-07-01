@@ -3,7 +3,11 @@
   "extends": ["config:base", ":disableDependencyDashboard"],
   "packageRules": [
     {
-      "matchPackagePatterns": ["gittools", "Test", "Assert", "Mock", "[Xx]unit", "Moq"],
+      "matchPackageNames": ["gittools"],
+      "allowedVersions": "<4"
+    },
+    {
+      "matchPackagePatterns": ["Test", "Assert", "Mock", "[Xx]unit", "Moq"],
       "groupName": "Testing deps",
       "automerge": true,
       "automergeType": "branch"
@@ -25,7 +29,7 @@
       "automergeType": "branch"
     },
     {
-      "matchPackagePatterns": ["gittools", "docfx", "SourceLink"],
+      "matchPackagePatterns": ["docfx", "SourceLink"],
       "automerge": true,
       "automergeType": "branch"
     },
