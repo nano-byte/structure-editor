@@ -77,18 +77,17 @@ public class ValidatingTextEditor : UserControl
     /// <param name="format">The format named used to determine the highlighting scheme (e.g. XML).</param>
     public void SetContent(string text, string format)
     {
-        var textEditor = new TextEditorControl
+        var textEditor = new TextEditorControlEx
         {
             Location = new Point(0, 0),
             Size = Size - new Size(0, _statusStrip.Height),
             Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom,
             TabIndex = 0,
             ShowVRuler = false,
-            Document =
-            {
-                TextContent = text,
-                HighlightingStrategy = HighlightingStrategyFactory.CreateHighlightingStrategy(format)
-            }
+            ContextMenuEnabled = true,
+            Document = { TextContent = text },
+            SyntaxHighlighting = format,
+            FoldingStrategy = format
         };
         textEditor.TextChanged += TextEditor_TextChanged;
         textEditor.Validating += TextEditor_Validating;
