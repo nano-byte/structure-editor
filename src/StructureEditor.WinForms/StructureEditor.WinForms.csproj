@@ -26,7 +26,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ICSharpCode.TextEditorEx" Version="1.3.0" />
-    <PackageReference Include="NanoByte.Common.WinForms" Version="2.19.10" />
+    <PackageReference Include="NanoByte.Common.WinForms" Version="2.20.1" />
   </ItemGroup>
 
 </Project>
