@@ -1,6 +1,6 @@
 # NanoByte Structure Editor
 
-[![Build](https://github.com/nano-byte/structure-editor/workflows/Build/badge.svg?branch=master)](https://github.com/nano-byte/structure-editor/actions?query=workflow%3ABuild)
+[![Build](https://github.com/nano-byte/structure-editor/actions/workflows/build.yml/badge.svg)](https://github.com/nano-byte/structure-editor/actions/workflows/build.yml)
 [![NuGet](https://img.shields.io/nuget/v/NanoByte.StructureEditor.WinForms.svg)](https://www.nuget.org/packages/NanoByte.StructureEditor.WinForms/)
 [![API documentation](https://img.shields.io/badge/api-docs-orange.svg)](https://structure-editor.nano-byte.net/)  
 NanoByte Structure Editor is a WinForms library that helps you build split-screen editors for your data structures, consisting of:
