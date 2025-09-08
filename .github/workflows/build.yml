@@ -32,9 +32,22 @@ jobs:
           path: src/UnitTests/TestResults/*.trx
 
       # Release
+      - name: Get tag message
+        if: github.ref_type == 'tag'
+        id: tag_message
+        run: |
+          "message<<EOF" >> $env:GITHUB_OUTPUT
+          git fetch -f origin tag ${{github.ref_name}}
+          git tag --format="%(contents)" -l ${{github.ref_name}} >> $env:GITHUB_OUTPUT
+          "EOF" >> $env:GITHUB_OUTPUT
       - name: Create GitHub Release
         if: github.ref_type == 'tag'
         uses: softprops/action-gh-release@v2
+        with:
+          body: |
+            **[NuGet package](https://www.nuget.org/packages/NanoByte.StructureEditor/${{steps.gitversion.outputs.nuGetVersion}})**
+            ## Changes
+            ${{steps.tag_message.outputs.message}}
 
       # Publish
       - name: Publish packages (GitHub)
