@@ -23,10 +23,11 @@ internal class ListDescription<TContainer, TList>(Func<TContainer, IList<TList>>
 
     public override IEnumerable<Node> GetNodesIn(TContainer container)
     {
-        foreach (var element in getList(container))
+        var list = getList(container);
+        foreach (var element in list)
         {
             var node = _descriptions
-                      .Select(x => x.TryGetNode(container, getList(container), element))
+                      .Select(x => x.TryGetNode(container, list, element))
                       .WhereNotNull()
                       .FirstOrDefault();
             if (node != null) yield return node;
