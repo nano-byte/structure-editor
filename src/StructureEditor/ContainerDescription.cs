@@ -56,6 +56,6 @@ public class ContainerDescription<TContainer> : IContainerDescription<TContainer
         => _descriptions.SelectMany(description => description.GetNodesIn(container));
 
     /// <inheritdoc/>
-    public IEnumerable<NodeCandidate?> GetCandidatesFor(TContainer container)
+    public IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container)
         => _descriptions.SelectMany(description => description.GetCandidatesFor(container));
 }

@@ -57,5 +57,5 @@ public interface IContainerDescription<TContainer> where TContainer : class
     /// Returns information about possible new child nodes for a specific instance of the container.
     /// </summary>
     /// <param name="container">The container instance to look at.</param>
-    IEnumerable<NodeCandidate?> GetCandidatesFor(TContainer container);
+    IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container);
 }
