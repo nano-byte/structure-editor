@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ContainerDescriptionExtensions | NanoByte Structure Editor </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ContainerDescriptionExtensions | NanoByte Structure Editor ">
+      
+      <meta name="description" content="Provides WinForms-specific extensions methods for .">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/nano-byte/structure-editor/new/1.0.6/apiSpec/new?filename=NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions.md&amp;value=---%0Auid%3A%20NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions">
+
+
+
+  <h1 id="NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions" data-uid="NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions" class="text-break">
+Class ContainerDescriptionExtensions  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor.WinForms/ContainerDescriptionExtensions.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="NanoByte.html">NanoByte</a>.<a class="xref" href="NanoByte.StructureEditor.html">StructureEditor</a>.<a class="xref" href="NanoByte.StructureEditor.WinForms.html">WinForms</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>NanoByte.StructureEditor.WinForms.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Provides WinForms-specific extensions methods for <a class="xref" href="NanoByte.StructureEditor.IContainerDescription-1.html">IContainerDescription&lt;TContainer&gt;</a>.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class ContainerDescriptionExtensions</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><span class="xref">object</span></div>
+      <div><span class="xref">ContainerDescriptionExtensions</span></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddElement_" data-uid="NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddElement*"></a>
+
+  <h3 id="NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddElement__3_NanoByte_StructureEditor_IListDescription___0___1__System_String_System_Func___2__" data-uid="NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddElement``3(NanoByte.StructureEditor.IListDescription{``0,``1},System.String,System.Func{``2})">
+  AddElement&lt;TContainer, TList, TElement&gt;(IListDescription&lt;TContainer, TList&gt;, string, Func&lt;TElement&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor.WinForms/ContainerDescriptionExtensions.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a list element type to the description using <a class="xref" href="NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.html">PropertyGridNodeEditor&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IListDescription&lt;TContainer, TList&gt; AddElement&lt;TContainer, TList, TElement&gt;(this IListDescription&lt;TContainer, TList&gt; description, string name, Func&lt;TElement&gt; factory) where TContainer : class where TList : class where TElement : class, TList, IEquatable&lt;TElement&gt;</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>description</code> <a class="xref" href="NanoByte.StructureEditor.IListDescription-2.html">IListDescription</a>&lt;TContainer, TList&gt;</dt>
+    <dd><p>Describes an object that contains nodes (properties and/or lists).</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the element type.</p>
+</dd>
+    <dt><code>factory</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;TElement&gt;</dt>
+    <dd><p>Callback to create a new instance of <code class="typeparamref">TElement</code>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="NanoByte.StructureEditor.IListDescription-2.html">IListDescription</a>&lt;TContainer, TList&gt;</dt>
+    <dd><p>The &quot;this&quot; pointer for use in a &quot;Fluent API&quot; style.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TContainer</code></dt>
+    <dd><p>The type of the container containing the list.</p>
+</dd>
+    <dt><code>TList</code></dt>
+    <dd><p>The type of elements in the list.</p>
+</dd>
+    <dt><code>TElement</code></dt>
+    <dd><p>The type of a specific element type in the list.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddPlainList_" data-uid="NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList*"></a>
+
+  <h3 id="NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddPlainList__2_NanoByte_StructureEditor_IContainerDescription___0__System_String_System_Func___0_System_Collections_Generic_IList___1___" data-uid="NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList``2(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,System.Collections.Generic.IList{``1}})">
+  AddPlainList&lt;TContainer, TElement&gt;(IContainerDescription&lt;TContainer&gt;, string, Func&lt;TContainer, IList&lt;TElement&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor.WinForms/ContainerDescriptionExtensions.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a list with only one type of element to the description using <a class="xref" href="NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.html">PropertyGridNodeEditor&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IContainerDescription&lt;TContainer&gt; AddPlainList&lt;TContainer, TElement&gt;(this IContainerDescription&lt;TContainer&gt; description, string name, Func&lt;TContainer, IList&lt;TElement&gt;&gt; getList) where TContainer : class where TElement : class, IEquatable&lt;TElement&gt;, new()</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>description</code> <a class="xref" href="NanoByte.StructureEditor.IContainerDescription-1.html">IContainerDescription</a>&lt;TContainer&gt;</dt>
+    <dd><p>Describes an object that contains nodes (properties and/or lists).</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the element type.</p>
+</dd>
+    <dt><code>getList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TContainer, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TElement&gt;&gt;</dt>
+    <dd><p>A function to retrieve the list from the container.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="NanoByte.StructureEditor.IContainerDescription-1.html">IContainerDescription</a>&lt;TContainer&gt;</dt>
+    <dd><p>The &quot;this&quot; pointer for use in a &quot;Fluent API&quot; style.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TContainer</code></dt>
+    <dd><p>The type of the container containing the list.</p>
+</dd>
+    <dt><code>TElement</code></dt>
+    <dd><p>The type of elements in the list.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddPlainList_" data-uid="NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList*"></a>
+
+  <h3 id="NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddPlainList__2_NanoByte_StructureEditor_IContainerDescription___0__System_String_System_Func___0_System_Collections_Generic_IList___1___System_Func___1__" data-uid="NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList``2(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,System.Collections.Generic.IList{``1}},System.Func{``1})">
+  AddPlainList&lt;TContainer, TElement&gt;(IContainerDescription&lt;TContainer&gt;, string, Func&lt;TContainer, IList&lt;TElement&gt;&gt;, Func&lt;TElement&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor.WinForms/ContainerDescriptionExtensions.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a list with only one type of element to the description using <a class="xref" href="NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.html">PropertyGridNodeEditor&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IContainerDescription&lt;TContainer&gt; AddPlainList&lt;TContainer, TElement&gt;(this IContainerDescription&lt;TContainer&gt; description, string name, Func&lt;TContainer, IList&lt;TElement&gt;&gt; getList, Func&lt;TElement&gt; factory) where TContainer : class where TElement : class, IEquatable&lt;TElement&gt;</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>description</code> <a class="xref" href="NanoByte.StructureEditor.IContainerDescription-1.html">IContainerDescription</a>&lt;TContainer&gt;</dt>
+    <dd><p>Describes an object that contains nodes (properties and/or lists).</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the element type.</p>
+</dd>
+    <dt><code>getList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TContainer, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;TElement&gt;&gt;</dt>
+    <dd><p>A function to retrieve the list from the container.</p>
+</dd>
+    <dt><code>factory</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;TElement&gt;</dt>
+    <dd><p>Callback to create a new instance of <code class="typeparamref">TElement</code>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="NanoByte.StructureEditor.IContainerDescription-1.html">IContainerDescription</a>&lt;TContainer&gt;</dt>
+    <dd><p>The &quot;this&quot; pointer for use in a &quot;Fluent API&quot; style.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TContainer</code></dt>
+    <dd><p>The type of the container containing the list.</p>
+</dd>
+    <dt><code>TElement</code></dt>
+    <dd><p>The type of elements in the list.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddProperty_" data-uid="NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty*"></a>
+
+  <h3 id="NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddProperty__2_NanoByte_StructureEditor_IContainerDescription___0__System_String_System_Func___0_NanoByte_Common_PropertyPointer___1___" data-uid="NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty``2(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,NanoByte.Common.PropertyPointer{``1}})">
+  AddProperty&lt;TContainer, TProperty&gt;(IContainerDescription&lt;TContainer&gt;, string, Func&lt;TContainer, PropertyPointer&lt;TProperty?&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor.WinForms/ContainerDescriptionExtensions.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a property to the description using <a class="xref" href="NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.html">PropertyGridNodeEditor&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IContainerDescription&lt;TContainer&gt; AddProperty&lt;TContainer, TProperty&gt;(this IContainerDescription&lt;TContainer&gt; description, string name, Func&lt;TContainer, PropertyPointer&lt;TProperty?&gt;&gt; getPointer) where TContainer : class where TProperty : class, IEquatable&lt;TProperty&gt;, new()</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>description</code> <a class="xref" href="NanoByte.StructureEditor.IContainerDescription-1.html">IContainerDescription</a>&lt;TContainer&gt;</dt>
+    <dd><p>Describes an object that contains nodes (properties and/or lists).</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the property.</p>
+</dd>
+    <dt><code>getPointer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TContainer, <a class="xref" href="https://common.nano-byte.net/api/NanoByte.Common.PropertyPointer-1.html">PropertyPointer</a>&lt;TProperty&gt;&gt;</dt>
+    <dd><p>A function to retrieve a pointer to property in the container.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="NanoByte.StructureEditor.IContainerDescription-1.html">IContainerDescription</a>&lt;TContainer&gt;</dt>
+    <dd><p>The &quot;this&quot; pointer for use in a &quot;Fluent API&quot; style.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TContainer</code></dt>
+    <dd><p>The type of the container containing the property.</p>
+</dd>
+    <dt><code>TProperty</code></dt>
+    <dd><p>The type of the property.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddProperty_" data-uid="NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty*"></a>
+
+  <h3 id="NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddProperty__2_NanoByte_StructureEditor_IContainerDescription___0__System_String_System_Func___0_NanoByte_Common_PropertyPointer___1___System_Func___1__" data-uid="NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty``2(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,NanoByte.Common.PropertyPointer{``1}},System.Func{``1})">
+  AddProperty&lt;TContainer, TProperty&gt;(IContainerDescription&lt;TContainer&gt;, string, Func&lt;TContainer, PropertyPointer&lt;TProperty?&gt;&gt;, Func&lt;TProperty&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor.WinForms/ContainerDescriptionExtensions.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a property to the description using <a class="xref" href="NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.html">PropertyGridNodeEditor&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IContainerDescription&lt;TContainer&gt; AddProperty&lt;TContainer, TProperty&gt;(this IContainerDescription&lt;TContainer&gt; description, string name, Func&lt;TContainer, PropertyPointer&lt;TProperty?&gt;&gt; getPointer, Func&lt;TProperty&gt; factory) where TContainer : class where TProperty : class, IEquatable&lt;TProperty&gt;</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>description</code> <a class="xref" href="NanoByte.StructureEditor.IContainerDescription-1.html">IContainerDescription</a>&lt;TContainer&gt;</dt>
+    <dd><p>Describes an object that contains nodes (properties and/or lists).</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the property.</p>
+</dd>
+    <dt><code>getPointer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TContainer, <a class="xref" href="https://common.nano-byte.net/api/NanoByte.Common.PropertyPointer-1.html">PropertyPointer</a>&lt;TProperty&gt;&gt;</dt>
+    <dd><p>A function to retrieve a pointer to property in the container.</p>
+</dd>
+    <dt><code>factory</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;TProperty&gt;</dt>
+    <dd><p>Callback to create a new instance of <code class="typeparamref">TProperty</code>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="NanoByte.StructureEditor.IContainerDescription-1.html">IContainerDescription</a>&lt;TContainer&gt;</dt>
+    <dd><p>The &quot;this&quot; pointer for use in a &quot;Fluent API&quot; style.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TContainer</code></dt>
+    <dd><p>The type of the container containing the property.</p>
+</dd>
+    <dt><code>TProperty</code></dt>
+    <dd><p>The type of the property.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor.WinForms/ContainerDescriptionExtensions.cs/#L13" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright Bastian Eicher
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

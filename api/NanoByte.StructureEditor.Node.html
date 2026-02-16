@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Node | NanoByte Structure Editor </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Node | NanoByte Structure Editor ">
+      
+      <meta name="description" content="Describes a specific node in the structure.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/nano-byte/structure-editor/new/1.0.6/apiSpec/new?filename=NanoByte_StructureEditor_Node.md&amp;value=---%0Auid%3A%20NanoByte.StructureEditor.Node%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="NanoByte.StructureEditor.Node">
+
+
+
+  <h1 id="NanoByte_StructureEditor_Node" data-uid="NanoByte.StructureEditor.Node" class="text-break">
+Class Node  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor/Node.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="NanoByte.html">NanoByte</a>.<a class="xref" href="NanoByte.StructureEditor.html">StructureEditor</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>NanoByte.StructureEditor.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Describes a specific node in the structure.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class Node</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><span class="xref">object</span></div>
+      <div><span class="xref">Node</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="NanoByte.StructureEditor.ListElementNode-4.html">ListElementNode&lt;TContainer, TList, TElement, TEditor&gt;</a></div>
+      <div><a class="xref" href="NanoByte.StructureEditor.PropertyNode-3.html">PropertyNode&lt;TContainer, TProperty, TEditor&gt;</a></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="NanoByte_StructureEditor_Node__ctor_" data-uid="NanoByte.StructureEditor.Node.#ctor*"></a>
+
+  <h3 id="NanoByte_StructureEditor_Node__ctor_System_String_System_String_System_Object_" data-uid="NanoByte.StructureEditor.Node.#ctor(System.String,System.String,System.Object)">
+  Node(string, string?, object?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor/Node.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Describes a specific node in the structure.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Node(string nodeType, string? description, object? target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>nodeType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the node type.</p>
+</dd>
+    <dt><code>description</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A description of the node type.</p>
+</dd>
+    <dt><code>target</code> <span class="xref">object</span></dt>
+    <dd><p>The object the node represents.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="NanoByte_StructureEditor_Node_Description_" data-uid="NanoByte.StructureEditor.Node.Description*"></a>
+
+  <h3 id="NanoByte_StructureEditor_Node_Description" data-uid="NanoByte.StructureEditor.Node.Description">
+  Description
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor/Node.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A description of the node type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? Description { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="NanoByte_StructureEditor_Node_NodeType_" data-uid="NanoByte.StructureEditor.Node.NodeType*"></a>
+
+  <h3 id="NanoByte_StructureEditor_Node_NodeType" data-uid="NanoByte.StructureEditor.Node.NodeType">
+  NodeType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor/Node.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The name of the node type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string NodeType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="NanoByte_StructureEditor_Node_Target_" data-uid="NanoByte.StructureEditor.Node.Target*"></a>
+
+  <h3 id="NanoByte_StructureEditor_Node_Target" data-uid="NanoByte.StructureEditor.Node.Target">
+  Target
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor/Node.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The object the node represents.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object? Target { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">object</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="NanoByte_StructureEditor_Node_GetDescription_" data-uid="NanoByte.StructureEditor.Node.GetDescription*"></a>
+
+  <h3 id="NanoByte_StructureEditor_Node_GetDescription__1" data-uid="NanoByte.StructureEditor.Node.GetDescription``1">
+  GetDescription&lt;T&gt;()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor/Node.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.descriptionattribute.description">Description</a> of <code class="typeparamref">T</code>, if any.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string? GetDescription&lt;T&gt;()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="NanoByte_StructureEditor_Node_GetEditorControl_" data-uid="NanoByte.StructureEditor.Node.GetEditorControl*"></a>
+
+  <h3 id="NanoByte_StructureEditor_Node_GetEditorControl_NanoByte_Common_Undo_ICommandExecutor_" data-uid="NanoByte.StructureEditor.Node.GetEditorControl(NanoByte.Common.Undo.ICommandExecutor)">
+  GetEditorControl(ICommandExecutor)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor/Node.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a GUI control for editing the node's target.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract INodeEditor GetEditorControl(ICommandExecutor executor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>executor</code> <a class="xref" href="https://common.nano-byte.net/api/NanoByte.Common.Undo.ICommandExecutor.html">ICommandExecutor</a></dt>
+    <dd><p>Used to perform undo/redo operations.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="NanoByte.StructureEditor.INodeEditor.html">INodeEditor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="NanoByte_StructureEditor_Node_GetRemoveCommand_" data-uid="NanoByte.StructureEditor.Node.GetRemoveCommand*"></a>
+
+  <h3 id="NanoByte_StructureEditor_Node_GetRemoveCommand" data-uid="NanoByte.StructureEditor.Node.GetRemoveCommand">
+  GetRemoveCommand()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor/Node.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a command for removing the node's target from the structure.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract IUndoCommand GetRemoveCommand()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://common.nano-byte.net/api/NanoByte.Common.Undo.IUndoCommand.html">IUndoCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="NanoByte_StructureEditor_Node_GetSerialized_" data-uid="NanoByte.StructureEditor.Node.GetSerialized*"></a>
+
+  <h3 id="NanoByte_StructureEditor_Node_GetSerialized" data-uid="NanoByte.StructureEditor.Node.GetSerialized">
+  GetSerialized()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor/Node.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a serialized representation of the <a class="xref" href="NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_Target">Target</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract string GetSerialized()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="NanoByte_StructureEditor_Node_GetUpdateCommand_" data-uid="NanoByte.StructureEditor.Node.GetUpdateCommand*"></a>
+
+  <h3 id="NanoByte_StructureEditor_Node_GetUpdateCommand_System_String_" data-uid="NanoByte.StructureEditor.Node.GetUpdateCommand(System.String)">
+  GetUpdateCommand(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor/Node.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a command for updating the node's target with a new value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract IValueCommand? GetUpdateCommand(string serializedValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>serializedValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A serialized representation of the new value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://common.nano-byte.net/api/NanoByte.Common.Undo.IValueCommand.html">IValueCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="NanoByte_StructureEditor_Node_ToString_" data-uid="NanoByte.StructureEditor.Node.ToString*"></a>
+
+  <h3 id="NanoByte_StructureEditor_Node_ToString" data-uid="NanoByte.StructureEditor.Node.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor/Node.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a string that represents the current object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A string that represents the current object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/nano-byte/structure-editor/blob/1.0.6/src/StructureEditor/Node.cs/#L17" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright Bastian Eicher
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

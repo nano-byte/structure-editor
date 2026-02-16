@@ -1,0 +1,373 @@
+{
+  "source_base_path": "D:/a/structure-editor/structure-editor/doc",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.ContainerDescription-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.ContainerDescription-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.ContainerDescription<TContainer>",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.ContainerDescription-1.yml\" sourcestartlinenumber=\"1\">Describes an object that contains nodes (properties and/or lists). Provides information about how to edit this content.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.ContainerDescriptionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.ContainerDescriptionExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.ContainerDescriptionExtensions",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.ContainerDescriptionExtensions.yml\" sourcestartlinenumber=\"1\">Provides extensions methods for <xref href=\"NanoByte.StructureEditor.IContainerDescription%601\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.IContainerDescription-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.IContainerDescription-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.IContainerDescription<TContainer>",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.IContainerDescription-1.yml\" sourcestartlinenumber=\"1\">Describes an object that contains nodes (properties and/or lists). Provides information about how to edit this content.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.IListDescription-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.IListDescription-2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.IListDescription<TContainer, TList>",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.IListDescription-2.yml\" sourcestartlinenumber=\"1\">Exposes methods for configuring a list in a <xref href=\"NanoByte.StructureEditor.ContainerDescription%601\" data-throw-if-not-resolved=\"false\"></xref> in a Fluent API style.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.INodeEditor-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.INodeEditor-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.INodeEditor<T>",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.INodeEditor-1.yml\" sourcestartlinenumber=\"1\">Provides an interface to a control that edits a node in the structure.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.INodeEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.INodeEditor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.INodeEditor",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.INodeEditor.yml\" sourcestartlinenumber=\"1\">Provides an interface to a control that edits a node in the structure.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.IStructureEditor-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.IStructureEditor-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.IStructureEditor<T>",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.IStructureEditor-1.yml\" sourcestartlinenumber=\"1\">An editor for hierarchical structures.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.ITargetContainerInject-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.ITargetContainerInject-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.ITargetContainerInject<T>",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.ITargetContainerInject-1.yml\" sourcestartlinenumber=\"1\">Implement this interface in addition to <xref href=\"NanoByte.StructureEditor.INodeEditor%601\" data-throw-if-not-resolved=\"false\"></xref> in order to get the target's container injected.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.ListElementNode-4.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.ListElementNode-4.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.ListElementNode<TContainer, TList, TElement, TEditor>",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.ListElementNode-4.yml\" sourcestartlinenumber=\"1\">Describes a node in the structure that points to an element in the list.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.ListElementNodeCandidate-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.ListElementNodeCandidate-2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.ListElementNodeCandidate<TList, TElement>",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.ListElementNodeCandidate-2.yml\" sourcestartlinenumber=\"1\">Describes a potential new node in the structure that points to an element in the list.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.Node.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.Node.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.Node",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.Node.yml\" sourcestartlinenumber=\"1\">Describes a specific node in the structure.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.NodeCandidate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.NodeCandidate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.NodeCandidate",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.NodeCandidate.yml\" sourcestartlinenumber=\"1\">Describes a potential new node in the structure.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.PropertyNode-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.PropertyNode-3.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.PropertyNode<TContainer, TProperty, TEditor>",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.PropertyNode-3.yml\" sourcestartlinenumber=\"1\">Describes a node in the structure that points to a property.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.PropertyNodeCandidate-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.PropertyNodeCandidate-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.PropertyNodeCandidate<TProperty>",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.PropertyNodeCandidate-1.yml\" sourcestartlinenumber=\"1\">Describes a potential new node in the structure that points to a property.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.yml\" sourcestartlinenumber=\"1\">Provides WinForms-specific extensions methods for <xref href=\"NanoByte.StructureEditor.IContainerDescription%601\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.WinForms.LocalizableTextBox",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.yml\" sourcestartlinenumber=\"1\">Exposes a <xref href=\"NanoByte.Common.Collections.LocalizableStringCollection\" data-throw-if-not-resolved=\"false\"></xref> as a text box with a drop-down box for language switching.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.WinForms.NodeEditorBase<T>",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.yml\" sourcestartlinenumber=\"1\">Common base class for controls that edits a node in the structure.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor<T>",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.yml\" sourcestartlinenumber=\"1\">Edits a node in the structure using a <xref href=\"System.Windows.Forms.PropertyGrid\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.WinForms.StructureEditor-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.WinForms.StructureEditor<T>",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.WinForms.StructureEditor-1.yml\" sourcestartlinenumber=\"1\">An editor for hierarchical structures.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.WinForms.ValidatingTextEditor",
+      "Summary": "<p sourcefile=\"api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.yml\" sourcestartlinenumber=\"1\">A text editor that automatically validates changes using an external callback after a short period of no input.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.WinForms.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.WinForms.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor.WinForms",
+      "Summary": "<p sourcefile=\"../src/StructureEditor.WinForms/_Namespace.md\" sourcestartlinenumber=\"1\">WinForms controls for building split-screen editors for data structures.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NanoByte.StructureEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NanoByte.StructureEditor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NanoByte.StructureEditor",
+      "Summary": "<p sourcefile=\"../src/StructureEditor/_Namespace.md\" sourcestartlinenumber=\"1\">UI-agnostic base logic for building split-screen editors for data structures.</p>\n"
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "screenshot.png",
+      "output": {
+        "resource": {
+          "relative_path": "screenshot.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

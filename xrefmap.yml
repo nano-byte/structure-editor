@@ -1,0 +1,1568 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: NanoByte.StructureEditor
+  name: NanoByte.StructureEditor
+  href: api/NanoByte.StructureEditor.html
+  commentId: N:NanoByte.StructureEditor
+  fullName: NanoByte.StructureEditor
+  nameWithType: NanoByte.StructureEditor
+- uid: NanoByte.StructureEditor.ContainerDescriptionExtensions
+  name: ContainerDescriptionExtensions
+  href: api/NanoByte.StructureEditor.ContainerDescriptionExtensions.html
+  commentId: T:NanoByte.StructureEditor.ContainerDescriptionExtensions
+  fullName: NanoByte.StructureEditor.ContainerDescriptionExtensions
+  nameWithType: ContainerDescriptionExtensions
+- uid: NanoByte.StructureEditor.ContainerDescriptionExtensions.AddPlainList*
+  name: AddPlainList
+  href: api/NanoByte.StructureEditor.ContainerDescriptionExtensions.html#NanoByte_StructureEditor_ContainerDescriptionExtensions_AddPlainList_
+  commentId: Overload:NanoByte.StructureEditor.ContainerDescriptionExtensions.AddPlainList
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.ContainerDescriptionExtensions.AddPlainList
+  nameWithType: ContainerDescriptionExtensions.AddPlainList
+- uid: NanoByte.StructureEditor.ContainerDescriptionExtensions.AddPlainList``3(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,System.Collections.Generic.IList{``1}},``2)
+  name: AddPlainList<TContainer, TElement, TEditor>(IContainerDescription<TContainer>, string, Func<TContainer, IList<TElement>>, TEditor)
+  href: api/NanoByte.StructureEditor.ContainerDescriptionExtensions.html#NanoByte_StructureEditor_ContainerDescriptionExtensions_AddPlainList__3_NanoByte_StructureEditor_IContainerDescription___0__System_String_System_Func___0_System_Collections_Generic_IList___1_____2_
+  commentId: M:NanoByte.StructureEditor.ContainerDescriptionExtensions.AddPlainList``3(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,System.Collections.Generic.IList{``1}},``2)
+  name.vb: AddPlainList(Of TContainer, TElement, TEditor)(IContainerDescription(Of TContainer), String, Func(Of TContainer, IList(Of TElement)), TEditor)
+  fullName: NanoByte.StructureEditor.ContainerDescriptionExtensions.AddPlainList<TContainer, TElement, TEditor>(NanoByte.StructureEditor.IContainerDescription<TContainer>, string, System.Func<TContainer, System.Collections.Generic.IList<TElement>>, TEditor)
+  fullName.vb: NanoByte.StructureEditor.ContainerDescriptionExtensions.AddPlainList(Of TContainer, TElement, TEditor)(NanoByte.StructureEditor.IContainerDescription(Of TContainer), String, System.Func(Of TContainer, System.Collections.Generic.IList(Of TElement)), TEditor)
+  nameWithType: ContainerDescriptionExtensions.AddPlainList<TContainer, TElement, TEditor>(IContainerDescription<TContainer>, string, Func<TContainer, IList<TElement>>, TEditor)
+  nameWithType.vb: ContainerDescriptionExtensions.AddPlainList(Of TContainer, TElement, TEditor)(IContainerDescription(Of TContainer), String, Func(Of TContainer, IList(Of TElement)), TEditor)
+- uid: NanoByte.StructureEditor.ContainerDescriptionExtensions.AddProperty*
+  name: AddProperty
+  href: api/NanoByte.StructureEditor.ContainerDescriptionExtensions.html#NanoByte_StructureEditor_ContainerDescriptionExtensions_AddProperty_
+  commentId: Overload:NanoByte.StructureEditor.ContainerDescriptionExtensions.AddProperty
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.ContainerDescriptionExtensions.AddProperty
+  nameWithType: ContainerDescriptionExtensions.AddProperty
+- uid: NanoByte.StructureEditor.ContainerDescriptionExtensions.AddProperty``3(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,NanoByte.Common.PropertyPointer{``1}},``2)
+  name: AddProperty<TContainer, TProperty, TEditor>(IContainerDescription<TContainer>, string, Func<TContainer, PropertyPointer<TProperty?>>, TEditor)
+  href: api/NanoByte.StructureEditor.ContainerDescriptionExtensions.html#NanoByte_StructureEditor_ContainerDescriptionExtensions_AddProperty__3_NanoByte_StructureEditor_IContainerDescription___0__System_String_System_Func___0_NanoByte_Common_PropertyPointer___1_____2_
+  commentId: M:NanoByte.StructureEditor.ContainerDescriptionExtensions.AddProperty``3(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,NanoByte.Common.PropertyPointer{``1}},``2)
+  name.vb: AddProperty(Of TContainer, TProperty, TEditor)(IContainerDescription(Of TContainer), String, Func(Of TContainer, PropertyPointer(Of TProperty)), TEditor)
+  fullName: NanoByte.StructureEditor.ContainerDescriptionExtensions.AddProperty<TContainer, TProperty, TEditor>(NanoByte.StructureEditor.IContainerDescription<TContainer>, string, System.Func<TContainer, NanoByte.Common.PropertyPointer<TProperty?>>, TEditor)
+  fullName.vb: NanoByte.StructureEditor.ContainerDescriptionExtensions.AddProperty(Of TContainer, TProperty, TEditor)(NanoByte.StructureEditor.IContainerDescription(Of TContainer), String, System.Func(Of TContainer, NanoByte.Common.PropertyPointer(Of TProperty)), TEditor)
+  nameWithType: ContainerDescriptionExtensions.AddProperty<TContainer, TProperty, TEditor>(IContainerDescription<TContainer>, string, Func<TContainer, PropertyPointer<TProperty?>>, TEditor)
+  nameWithType.vb: ContainerDescriptionExtensions.AddProperty(Of TContainer, TProperty, TEditor)(IContainerDescription(Of TContainer), String, Func(Of TContainer, PropertyPointer(Of TProperty)), TEditor)
+- uid: NanoByte.StructureEditor.ContainerDescription`1
+  name: ContainerDescription<TContainer>
+  href: api/NanoByte.StructureEditor.ContainerDescription-1.html
+  commentId: T:NanoByte.StructureEditor.ContainerDescription`1
+  name.vb: ContainerDescription(Of TContainer)
+  fullName: NanoByte.StructureEditor.ContainerDescription<TContainer>
+  fullName.vb: NanoByte.StructureEditor.ContainerDescription(Of TContainer)
+  nameWithType: ContainerDescription<TContainer>
+  nameWithType.vb: ContainerDescription(Of TContainer)
+- uid: NanoByte.StructureEditor.ContainerDescription`1.AddList*
+  name: AddList
+  href: api/NanoByte.StructureEditor.ContainerDescription-1.html#NanoByte_StructureEditor_ContainerDescription_1_AddList_
+  commentId: Overload:NanoByte.StructureEditor.ContainerDescription`1.AddList
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.ContainerDescription<TContainer>.AddList
+  fullName.vb: NanoByte.StructureEditor.ContainerDescription(Of TContainer).AddList
+  nameWithType: ContainerDescription<TContainer>.AddList
+  nameWithType.vb: ContainerDescription(Of TContainer).AddList
+- uid: NanoByte.StructureEditor.ContainerDescription`1.AddList``1(System.Func{`0,System.Collections.Generic.IList{``0}})
+  name: AddList<TList>(Func<TContainer, IList<TList>>)
+  href: api/NanoByte.StructureEditor.ContainerDescription-1.html#NanoByte_StructureEditor_ContainerDescription_1_AddList__1_System_Func__0_System_Collections_Generic_IList___0___
+  commentId: M:NanoByte.StructureEditor.ContainerDescription`1.AddList``1(System.Func{`0,System.Collections.Generic.IList{``0}})
+  name.vb: AddList(Of TList)(Func(Of TContainer, IList(Of TList)))
+  fullName: NanoByte.StructureEditor.ContainerDescription<TContainer>.AddList<TList>(System.Func<TContainer, System.Collections.Generic.IList<TList>>)
+  fullName.vb: NanoByte.StructureEditor.ContainerDescription(Of TContainer).AddList(Of TList)(System.Func(Of TContainer, System.Collections.Generic.IList(Of TList)))
+  nameWithType: ContainerDescription<TContainer>.AddList<TList>(Func<TContainer, IList<TList>>)
+  nameWithType.vb: ContainerDescription(Of TContainer).AddList(Of TList)(Func(Of TContainer, IList(Of TList)))
+- uid: NanoByte.StructureEditor.ContainerDescription`1.AddPlainList*
+  name: AddPlainList
+  href: api/NanoByte.StructureEditor.ContainerDescription-1.html#NanoByte_StructureEditor_ContainerDescription_1_AddPlainList_
+  commentId: Overload:NanoByte.StructureEditor.ContainerDescription`1.AddPlainList
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.ContainerDescription<TContainer>.AddPlainList
+  fullName.vb: NanoByte.StructureEditor.ContainerDescription(Of TContainer).AddPlainList
+  nameWithType: ContainerDescription<TContainer>.AddPlainList
+  nameWithType.vb: ContainerDescription(Of TContainer).AddPlainList
+- uid: NanoByte.StructureEditor.ContainerDescription`1.AddPlainList``2(System.String,System.Func{`0,System.Collections.Generic.IList{``0}},System.Func{``0},``1)
+  name: AddPlainList<TElement, TEditor>(string, Func<TContainer, IList<TElement>>, Func<TElement>, TEditor)
+  href: api/NanoByte.StructureEditor.ContainerDescription-1.html#NanoByte_StructureEditor_ContainerDescription_1_AddPlainList__2_System_String_System_Func__0_System_Collections_Generic_IList___0___System_Func___0____1_
+  commentId: M:NanoByte.StructureEditor.ContainerDescription`1.AddPlainList``2(System.String,System.Func{`0,System.Collections.Generic.IList{``0}},System.Func{``0},``1)
+  name.vb: AddPlainList(Of TElement, TEditor)(String, Func(Of TContainer, IList(Of TElement)), Func(Of TElement), TEditor)
+  fullName: NanoByte.StructureEditor.ContainerDescription<TContainer>.AddPlainList<TElement, TEditor>(string, System.Func<TContainer, System.Collections.Generic.IList<TElement>>, System.Func<TElement>, TEditor)
+  fullName.vb: NanoByte.StructureEditor.ContainerDescription(Of TContainer).AddPlainList(Of TElement, TEditor)(String, System.Func(Of TContainer, System.Collections.Generic.IList(Of TElement)), System.Func(Of TElement), TEditor)
+  nameWithType: ContainerDescription<TContainer>.AddPlainList<TElement, TEditor>(string, Func<TContainer, IList<TElement>>, Func<TElement>, TEditor)
+  nameWithType.vb: ContainerDescription(Of TContainer).AddPlainList(Of TElement, TEditor)(String, Func(Of TContainer, IList(Of TElement)), Func(Of TElement), TEditor)
+- uid: NanoByte.StructureEditor.ContainerDescription`1.AddProperty*
+  name: AddProperty
+  href: api/NanoByte.StructureEditor.ContainerDescription-1.html#NanoByte_StructureEditor_ContainerDescription_1_AddProperty_
+  commentId: Overload:NanoByte.StructureEditor.ContainerDescription`1.AddProperty
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.ContainerDescription<TContainer>.AddProperty
+  fullName.vb: NanoByte.StructureEditor.ContainerDescription(Of TContainer).AddProperty
+  nameWithType: ContainerDescription<TContainer>.AddProperty
+  nameWithType.vb: ContainerDescription(Of TContainer).AddProperty
+- uid: NanoByte.StructureEditor.ContainerDescription`1.AddProperty``2(System.String,System.Func{`0,NanoByte.Common.PropertyPointer{``0}},System.Func{``0},``1)
+  name: AddProperty<TProperty, TEditor>(string, Func<TContainer, PropertyPointer<TProperty?>>, Func<TProperty>, TEditor)
+  href: api/NanoByte.StructureEditor.ContainerDescription-1.html#NanoByte_StructureEditor_ContainerDescription_1_AddProperty__2_System_String_System_Func__0_NanoByte_Common_PropertyPointer___0___System_Func___0____1_
+  commentId: M:NanoByte.StructureEditor.ContainerDescription`1.AddProperty``2(System.String,System.Func{`0,NanoByte.Common.PropertyPointer{``0}},System.Func{``0},``1)
+  name.vb: AddProperty(Of TProperty, TEditor)(String, Func(Of TContainer, PropertyPointer(Of TProperty)), Func(Of TProperty), TEditor)
+  fullName: NanoByte.StructureEditor.ContainerDescription<TContainer>.AddProperty<TProperty, TEditor>(string, System.Func<TContainer, NanoByte.Common.PropertyPointer<TProperty?>>, System.Func<TProperty>, TEditor)
+  fullName.vb: NanoByte.StructureEditor.ContainerDescription(Of TContainer).AddProperty(Of TProperty, TEditor)(String, System.Func(Of TContainer, NanoByte.Common.PropertyPointer(Of TProperty)), System.Func(Of TProperty), TEditor)
+  nameWithType: ContainerDescription<TContainer>.AddProperty<TProperty, TEditor>(string, Func<TContainer, PropertyPointer<TProperty?>>, Func<TProperty>, TEditor)
+  nameWithType.vb: ContainerDescription(Of TContainer).AddProperty(Of TProperty, TEditor)(String, Func(Of TContainer, PropertyPointer(Of TProperty)), Func(Of TProperty), TEditor)
+- uid: NanoByte.StructureEditor.ContainerDescription`1.GetCandidatesFor(`0)
+  name: GetCandidatesFor(TContainer)
+  href: api/NanoByte.StructureEditor.ContainerDescription-1.html#NanoByte_StructureEditor_ContainerDescription_1_GetCandidatesFor__0_
+  commentId: M:NanoByte.StructureEditor.ContainerDescription`1.GetCandidatesFor(`0)
+  fullName: NanoByte.StructureEditor.ContainerDescription<TContainer>.GetCandidatesFor(TContainer)
+  fullName.vb: NanoByte.StructureEditor.ContainerDescription(Of TContainer).GetCandidatesFor(TContainer)
+  nameWithType: ContainerDescription<TContainer>.GetCandidatesFor(TContainer)
+  nameWithType.vb: ContainerDescription(Of TContainer).GetCandidatesFor(TContainer)
+- uid: NanoByte.StructureEditor.ContainerDescription`1.GetCandidatesFor*
+  name: GetCandidatesFor
+  href: api/NanoByte.StructureEditor.ContainerDescription-1.html#NanoByte_StructureEditor_ContainerDescription_1_GetCandidatesFor_
+  commentId: Overload:NanoByte.StructureEditor.ContainerDescription`1.GetCandidatesFor
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.ContainerDescription<TContainer>.GetCandidatesFor
+  fullName.vb: NanoByte.StructureEditor.ContainerDescription(Of TContainer).GetCandidatesFor
+  nameWithType: ContainerDescription<TContainer>.GetCandidatesFor
+  nameWithType.vb: ContainerDescription(Of TContainer).GetCandidatesFor
+- uid: NanoByte.StructureEditor.ContainerDescription`1.GetNodesIn(`0)
+  name: GetNodesIn(TContainer)
+  href: api/NanoByte.StructureEditor.ContainerDescription-1.html#NanoByte_StructureEditor_ContainerDescription_1_GetNodesIn__0_
+  commentId: M:NanoByte.StructureEditor.ContainerDescription`1.GetNodesIn(`0)
+  fullName: NanoByte.StructureEditor.ContainerDescription<TContainer>.GetNodesIn(TContainer)
+  fullName.vb: NanoByte.StructureEditor.ContainerDescription(Of TContainer).GetNodesIn(TContainer)
+  nameWithType: ContainerDescription<TContainer>.GetNodesIn(TContainer)
+  nameWithType.vb: ContainerDescription(Of TContainer).GetNodesIn(TContainer)
+- uid: NanoByte.StructureEditor.ContainerDescription`1.GetNodesIn*
+  name: GetNodesIn
+  href: api/NanoByte.StructureEditor.ContainerDescription-1.html#NanoByte_StructureEditor_ContainerDescription_1_GetNodesIn_
+  commentId: Overload:NanoByte.StructureEditor.ContainerDescription`1.GetNodesIn
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.ContainerDescription<TContainer>.GetNodesIn
+  fullName.vb: NanoByte.StructureEditor.ContainerDescription(Of TContainer).GetNodesIn
+  nameWithType: ContainerDescription<TContainer>.GetNodesIn
+  nameWithType.vb: ContainerDescription(Of TContainer).GetNodesIn
+- uid: NanoByte.StructureEditor.IContainerDescription`1
+  name: IContainerDescription<TContainer>
+  href: api/NanoByte.StructureEditor.IContainerDescription-1.html
+  commentId: T:NanoByte.StructureEditor.IContainerDescription`1
+  name.vb: IContainerDescription(Of TContainer)
+  fullName: NanoByte.StructureEditor.IContainerDescription<TContainer>
+  fullName.vb: NanoByte.StructureEditor.IContainerDescription(Of TContainer)
+  nameWithType: IContainerDescription<TContainer>
+  nameWithType.vb: IContainerDescription(Of TContainer)
+- uid: NanoByte.StructureEditor.IContainerDescription`1.AddList*
+  name: AddList
+  href: api/NanoByte.StructureEditor.IContainerDescription-1.html#NanoByte_StructureEditor_IContainerDescription_1_AddList_
+  commentId: Overload:NanoByte.StructureEditor.IContainerDescription`1.AddList
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.IContainerDescription<TContainer>.AddList
+  fullName.vb: NanoByte.StructureEditor.IContainerDescription(Of TContainer).AddList
+  nameWithType: IContainerDescription<TContainer>.AddList
+  nameWithType.vb: IContainerDescription(Of TContainer).AddList
+- uid: NanoByte.StructureEditor.IContainerDescription`1.AddList``1(System.Func{`0,System.Collections.Generic.IList{``0}})
+  name: AddList<TList>(Func<TContainer, IList<TList>>)
+  href: api/NanoByte.StructureEditor.IContainerDescription-1.html#NanoByte_StructureEditor_IContainerDescription_1_AddList__1_System_Func__0_System_Collections_Generic_IList___0___
+  commentId: M:NanoByte.StructureEditor.IContainerDescription`1.AddList``1(System.Func{`0,System.Collections.Generic.IList{``0}})
+  name.vb: AddList(Of TList)(Func(Of TContainer, IList(Of TList)))
+  fullName: NanoByte.StructureEditor.IContainerDescription<TContainer>.AddList<TList>(System.Func<TContainer, System.Collections.Generic.IList<TList>>)
+  fullName.vb: NanoByte.StructureEditor.IContainerDescription(Of TContainer).AddList(Of TList)(System.Func(Of TContainer, System.Collections.Generic.IList(Of TList)))
+  nameWithType: IContainerDescription<TContainer>.AddList<TList>(Func<TContainer, IList<TList>>)
+  nameWithType.vb: IContainerDescription(Of TContainer).AddList(Of TList)(Func(Of TContainer, IList(Of TList)))
+- uid: NanoByte.StructureEditor.IContainerDescription`1.AddPlainList*
+  name: AddPlainList
+  href: api/NanoByte.StructureEditor.IContainerDescription-1.html#NanoByte_StructureEditor_IContainerDescription_1_AddPlainList_
+  commentId: Overload:NanoByte.StructureEditor.IContainerDescription`1.AddPlainList
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.IContainerDescription<TContainer>.AddPlainList
+  fullName.vb: NanoByte.StructureEditor.IContainerDescription(Of TContainer).AddPlainList
+  nameWithType: IContainerDescription<TContainer>.AddPlainList
+  nameWithType.vb: IContainerDescription(Of TContainer).AddPlainList
+- uid: NanoByte.StructureEditor.IContainerDescription`1.AddPlainList``2(System.String,System.Func{`0,System.Collections.Generic.IList{``0}},System.Func{``0},``1)
+  name: AddPlainList<TElement, TEditor>(string, Func<TContainer, IList<TElement>>, Func<TElement>, TEditor)
+  href: api/NanoByte.StructureEditor.IContainerDescription-1.html#NanoByte_StructureEditor_IContainerDescription_1_AddPlainList__2_System_String_System_Func__0_System_Collections_Generic_IList___0___System_Func___0____1_
+  commentId: M:NanoByte.StructureEditor.IContainerDescription`1.AddPlainList``2(System.String,System.Func{`0,System.Collections.Generic.IList{``0}},System.Func{``0},``1)
+  name.vb: AddPlainList(Of TElement, TEditor)(String, Func(Of TContainer, IList(Of TElement)), Func(Of TElement), TEditor)
+  fullName: NanoByte.StructureEditor.IContainerDescription<TContainer>.AddPlainList<TElement, TEditor>(string, System.Func<TContainer, System.Collections.Generic.IList<TElement>>, System.Func<TElement>, TEditor)
+  fullName.vb: NanoByte.StructureEditor.IContainerDescription(Of TContainer).AddPlainList(Of TElement, TEditor)(String, System.Func(Of TContainer, System.Collections.Generic.IList(Of TElement)), System.Func(Of TElement), TEditor)
+  nameWithType: IContainerDescription<TContainer>.AddPlainList<TElement, TEditor>(string, Func<TContainer, IList<TElement>>, Func<TElement>, TEditor)
+  nameWithType.vb: IContainerDescription(Of TContainer).AddPlainList(Of TElement, TEditor)(String, Func(Of TContainer, IList(Of TElement)), Func(Of TElement), TEditor)
+- uid: NanoByte.StructureEditor.IContainerDescription`1.AddProperty*
+  name: AddProperty
+  href: api/NanoByte.StructureEditor.IContainerDescription-1.html#NanoByte_StructureEditor_IContainerDescription_1_AddProperty_
+  commentId: Overload:NanoByte.StructureEditor.IContainerDescription`1.AddProperty
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.IContainerDescription<TContainer>.AddProperty
+  fullName.vb: NanoByte.StructureEditor.IContainerDescription(Of TContainer).AddProperty
+  nameWithType: IContainerDescription<TContainer>.AddProperty
+  nameWithType.vb: IContainerDescription(Of TContainer).AddProperty
+- uid: NanoByte.StructureEditor.IContainerDescription`1.AddProperty``2(System.String,System.Func{`0,NanoByte.Common.PropertyPointer{``0}},System.Func{``0},``1)
+  name: AddProperty<TProperty, TEditor>(string, Func<TContainer, PropertyPointer<TProperty?>>, Func<TProperty>, TEditor)
+  href: api/NanoByte.StructureEditor.IContainerDescription-1.html#NanoByte_StructureEditor_IContainerDescription_1_AddProperty__2_System_String_System_Func__0_NanoByte_Common_PropertyPointer___0___System_Func___0____1_
+  commentId: M:NanoByte.StructureEditor.IContainerDescription`1.AddProperty``2(System.String,System.Func{`0,NanoByte.Common.PropertyPointer{``0}},System.Func{``0},``1)
+  name.vb: AddProperty(Of TProperty, TEditor)(String, Func(Of TContainer, PropertyPointer(Of TProperty)), Func(Of TProperty), TEditor)
+  fullName: NanoByte.StructureEditor.IContainerDescription<TContainer>.AddProperty<TProperty, TEditor>(string, System.Func<TContainer, NanoByte.Common.PropertyPointer<TProperty?>>, System.Func<TProperty>, TEditor)
+  fullName.vb: NanoByte.StructureEditor.IContainerDescription(Of TContainer).AddProperty(Of TProperty, TEditor)(String, System.Func(Of TContainer, NanoByte.Common.PropertyPointer(Of TProperty)), System.Func(Of TProperty), TEditor)
+  nameWithType: IContainerDescription<TContainer>.AddProperty<TProperty, TEditor>(string, Func<TContainer, PropertyPointer<TProperty?>>, Func<TProperty>, TEditor)
+  nameWithType.vb: IContainerDescription(Of TContainer).AddProperty(Of TProperty, TEditor)(String, Func(Of TContainer, PropertyPointer(Of TProperty)), Func(Of TProperty), TEditor)
+- uid: NanoByte.StructureEditor.IContainerDescription`1.GetCandidatesFor(`0)
+  name: GetCandidatesFor(TContainer)
+  href: api/NanoByte.StructureEditor.IContainerDescription-1.html#NanoByte_StructureEditor_IContainerDescription_1_GetCandidatesFor__0_
+  commentId: M:NanoByte.StructureEditor.IContainerDescription`1.GetCandidatesFor(`0)
+  fullName: NanoByte.StructureEditor.IContainerDescription<TContainer>.GetCandidatesFor(TContainer)
+  fullName.vb: NanoByte.StructureEditor.IContainerDescription(Of TContainer).GetCandidatesFor(TContainer)
+  nameWithType: IContainerDescription<TContainer>.GetCandidatesFor(TContainer)
+  nameWithType.vb: IContainerDescription(Of TContainer).GetCandidatesFor(TContainer)
+- uid: NanoByte.StructureEditor.IContainerDescription`1.GetCandidatesFor*
+  name: GetCandidatesFor
+  href: api/NanoByte.StructureEditor.IContainerDescription-1.html#NanoByte_StructureEditor_IContainerDescription_1_GetCandidatesFor_
+  commentId: Overload:NanoByte.StructureEditor.IContainerDescription`1.GetCandidatesFor
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.IContainerDescription<TContainer>.GetCandidatesFor
+  fullName.vb: NanoByte.StructureEditor.IContainerDescription(Of TContainer).GetCandidatesFor
+  nameWithType: IContainerDescription<TContainer>.GetCandidatesFor
+  nameWithType.vb: IContainerDescription(Of TContainer).GetCandidatesFor
+- uid: NanoByte.StructureEditor.IContainerDescription`1.GetNodesIn(`0)
+  name: GetNodesIn(TContainer)
+  href: api/NanoByte.StructureEditor.IContainerDescription-1.html#NanoByte_StructureEditor_IContainerDescription_1_GetNodesIn__0_
+  commentId: M:NanoByte.StructureEditor.IContainerDescription`1.GetNodesIn(`0)
+  fullName: NanoByte.StructureEditor.IContainerDescription<TContainer>.GetNodesIn(TContainer)
+  fullName.vb: NanoByte.StructureEditor.IContainerDescription(Of TContainer).GetNodesIn(TContainer)
+  nameWithType: IContainerDescription<TContainer>.GetNodesIn(TContainer)
+  nameWithType.vb: IContainerDescription(Of TContainer).GetNodesIn(TContainer)
+- uid: NanoByte.StructureEditor.IContainerDescription`1.GetNodesIn*
+  name: GetNodesIn
+  href: api/NanoByte.StructureEditor.IContainerDescription-1.html#NanoByte_StructureEditor_IContainerDescription_1_GetNodesIn_
+  commentId: Overload:NanoByte.StructureEditor.IContainerDescription`1.GetNodesIn
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.IContainerDescription<TContainer>.GetNodesIn
+  fullName.vb: NanoByte.StructureEditor.IContainerDescription(Of TContainer).GetNodesIn
+  nameWithType: IContainerDescription<TContainer>.GetNodesIn
+  nameWithType.vb: IContainerDescription(Of TContainer).GetNodesIn
+- uid: NanoByte.StructureEditor.IListDescription`2
+  name: IListDescription<TContainer, TList>
+  href: api/NanoByte.StructureEditor.IListDescription-2.html
+  commentId: T:NanoByte.StructureEditor.IListDescription`2
+  name.vb: IListDescription(Of TContainer, TList)
+  fullName: NanoByte.StructureEditor.IListDescription<TContainer, TList>
+  fullName.vb: NanoByte.StructureEditor.IListDescription(Of TContainer, TList)
+  nameWithType: IListDescription<TContainer, TList>
+  nameWithType.vb: IListDescription(Of TContainer, TList)
+- uid: NanoByte.StructureEditor.IListDescription`2.AddElement*
+  name: AddElement
+  href: api/NanoByte.StructureEditor.IListDescription-2.html#NanoByte_StructureEditor_IListDescription_2_AddElement_
+  commentId: Overload:NanoByte.StructureEditor.IListDescription`2.AddElement
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.IListDescription<TContainer, TList>.AddElement
+  fullName.vb: NanoByte.StructureEditor.IListDescription(Of TContainer, TList).AddElement
+  nameWithType: IListDescription<TContainer, TList>.AddElement
+  nameWithType.vb: IListDescription(Of TContainer, TList).AddElement
+- uid: NanoByte.StructureEditor.IListDescription`2.AddElement``2(System.String,System.Func{``0},``1)
+  name: AddElement<TElement, TEditor>(string, Func<TElement>, TEditor)
+  href: api/NanoByte.StructureEditor.IListDescription-2.html#NanoByte_StructureEditor_IListDescription_2_AddElement__2_System_String_System_Func___0____1_
+  commentId: M:NanoByte.StructureEditor.IListDescription`2.AddElement``2(System.String,System.Func{``0},``1)
+  name.vb: AddElement(Of TElement, TEditor)(String, Func(Of TElement), TEditor)
+  fullName: NanoByte.StructureEditor.IListDescription<TContainer, TList>.AddElement<TElement, TEditor>(string, System.Func<TElement>, TEditor)
+  fullName.vb: NanoByte.StructureEditor.IListDescription(Of TContainer, TList).AddElement(Of TElement, TEditor)(String, System.Func(Of TElement), TEditor)
+  nameWithType: IListDescription<TContainer, TList>.AddElement<TElement, TEditor>(string, Func<TElement>, TEditor)
+  nameWithType.vb: IListDescription(Of TContainer, TList).AddElement(Of TElement, TEditor)(String, Func(Of TElement), TEditor)
+- uid: NanoByte.StructureEditor.INodeEditor
+  name: INodeEditor
+  href: api/NanoByte.StructureEditor.INodeEditor.html
+  commentId: T:NanoByte.StructureEditor.INodeEditor
+  fullName: NanoByte.StructureEditor.INodeEditor
+  nameWithType: INodeEditor
+- uid: NanoByte.StructureEditor.INodeEditor.CommandExecutor
+  name: CommandExecutor
+  href: api/NanoByte.StructureEditor.INodeEditor.html#NanoByte_StructureEditor_INodeEditor_CommandExecutor
+  commentId: P:NanoByte.StructureEditor.INodeEditor.CommandExecutor
+  fullName: NanoByte.StructureEditor.INodeEditor.CommandExecutor
+  nameWithType: INodeEditor.CommandExecutor
+- uid: NanoByte.StructureEditor.INodeEditor.CommandExecutor*
+  name: CommandExecutor
+  href: api/NanoByte.StructureEditor.INodeEditor.html#NanoByte_StructureEditor_INodeEditor_CommandExecutor_
+  commentId: Overload:NanoByte.StructureEditor.INodeEditor.CommandExecutor
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.INodeEditor.CommandExecutor
+  nameWithType: INodeEditor.CommandExecutor
+- uid: NanoByte.StructureEditor.INodeEditor`1
+  name: INodeEditor<T>
+  href: api/NanoByte.StructureEditor.INodeEditor-1.html
+  commentId: T:NanoByte.StructureEditor.INodeEditor`1
+  name.vb: INodeEditor(Of T)
+  fullName: NanoByte.StructureEditor.INodeEditor<T>
+  fullName.vb: NanoByte.StructureEditor.INodeEditor(Of T)
+  nameWithType: INodeEditor<T>
+  nameWithType.vb: INodeEditor(Of T)
+- uid: NanoByte.StructureEditor.INodeEditor`1.Target
+  name: Target
+  href: api/NanoByte.StructureEditor.INodeEditor-1.html#NanoByte_StructureEditor_INodeEditor_1_Target
+  commentId: P:NanoByte.StructureEditor.INodeEditor`1.Target
+  fullName: NanoByte.StructureEditor.INodeEditor<T>.Target
+  fullName.vb: NanoByte.StructureEditor.INodeEditor(Of T).Target
+  nameWithType: INodeEditor<T>.Target
+  nameWithType.vb: INodeEditor(Of T).Target
+- uid: NanoByte.StructureEditor.INodeEditor`1.Target*
+  name: Target
+  href: api/NanoByte.StructureEditor.INodeEditor-1.html#NanoByte_StructureEditor_INodeEditor_1_Target_
+  commentId: Overload:NanoByte.StructureEditor.INodeEditor`1.Target
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.INodeEditor<T>.Target
+  fullName.vb: NanoByte.StructureEditor.INodeEditor(Of T).Target
+  nameWithType: INodeEditor<T>.Target
+  nameWithType.vb: INodeEditor(Of T).Target
+- uid: NanoByte.StructureEditor.IStructureEditor`1
+  name: IStructureEditor<T>
+  href: api/NanoByte.StructureEditor.IStructureEditor-1.html
+  commentId: T:NanoByte.StructureEditor.IStructureEditor`1
+  name.vb: IStructureEditor(Of T)
+  fullName: NanoByte.StructureEditor.IStructureEditor<T>
+  fullName.vb: NanoByte.StructureEditor.IStructureEditor(Of T)
+  nameWithType: IStructureEditor<T>
+  nameWithType.vb: IStructureEditor(Of T)
+- uid: NanoByte.StructureEditor.IStructureEditor`1.Describe*
+  name: Describe
+  href: api/NanoByte.StructureEditor.IStructureEditor-1.html#NanoByte_StructureEditor_IStructureEditor_1_Describe_
+  commentId: Overload:NanoByte.StructureEditor.IStructureEditor`1.Describe
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.IStructureEditor<T>.Describe
+  fullName.vb: NanoByte.StructureEditor.IStructureEditor(Of T).Describe
+  nameWithType: IStructureEditor<T>.Describe
+  nameWithType.vb: IStructureEditor(Of T).Describe
+- uid: NanoByte.StructureEditor.IStructureEditor`1.DescribeRoot(System.String)
+  name: DescribeRoot(string)
+  href: api/NanoByte.StructureEditor.IStructureEditor-1.html#NanoByte_StructureEditor_IStructureEditor_1_DescribeRoot_System_String_
+  commentId: M:NanoByte.StructureEditor.IStructureEditor`1.DescribeRoot(System.String)
+  name.vb: DescribeRoot(String)
+  fullName: NanoByte.StructureEditor.IStructureEditor<T>.DescribeRoot(string)
+  fullName.vb: NanoByte.StructureEditor.IStructureEditor(Of T).DescribeRoot(String)
+  nameWithType: IStructureEditor<T>.DescribeRoot(string)
+  nameWithType.vb: IStructureEditor(Of T).DescribeRoot(String)
+- uid: NanoByte.StructureEditor.IStructureEditor`1.DescribeRoot*
+  name: DescribeRoot
+  href: api/NanoByte.StructureEditor.IStructureEditor-1.html#NanoByte_StructureEditor_IStructureEditor_1_DescribeRoot_
+  commentId: Overload:NanoByte.StructureEditor.IStructureEditor`1.DescribeRoot
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.IStructureEditor<T>.DescribeRoot
+  fullName.vb: NanoByte.StructureEditor.IStructureEditor(Of T).DescribeRoot
+  nameWithType: IStructureEditor<T>.DescribeRoot
+  nameWithType.vb: IStructureEditor(Of T).DescribeRoot
+- uid: NanoByte.StructureEditor.IStructureEditor`1.DescribeRoot``1(System.String)
+  name: DescribeRoot<TEditor>(string)
+  href: api/NanoByte.StructureEditor.IStructureEditor-1.html#NanoByte_StructureEditor_IStructureEditor_1_DescribeRoot__1_System_String_
+  commentId: M:NanoByte.StructureEditor.IStructureEditor`1.DescribeRoot``1(System.String)
+  name.vb: DescribeRoot(Of TEditor)(String)
+  fullName: NanoByte.StructureEditor.IStructureEditor<T>.DescribeRoot<TEditor>(string)
+  fullName.vb: NanoByte.StructureEditor.IStructureEditor(Of T).DescribeRoot(Of TEditor)(String)
+  nameWithType: IStructureEditor<T>.DescribeRoot<TEditor>(string)
+  nameWithType.vb: IStructureEditor(Of T).DescribeRoot(Of TEditor)(String)
+- uid: NanoByte.StructureEditor.IStructureEditor`1.Describe``1
+  name: Describe<TContainer>()
+  href: api/NanoByte.StructureEditor.IStructureEditor-1.html#NanoByte_StructureEditor_IStructureEditor_1_Describe__1
+  commentId: M:NanoByte.StructureEditor.IStructureEditor`1.Describe``1
+  name.vb: Describe(Of TContainer)()
+  fullName: NanoByte.StructureEditor.IStructureEditor<T>.Describe<TContainer>()
+  fullName.vb: NanoByte.StructureEditor.IStructureEditor(Of T).Describe(Of TContainer)()
+  nameWithType: IStructureEditor<T>.Describe<TContainer>()
+  nameWithType.vb: IStructureEditor(Of T).Describe(Of TContainer)()
+- uid: NanoByte.StructureEditor.ITargetContainerInject`1
+  name: ITargetContainerInject<T>
+  href: api/NanoByte.StructureEditor.ITargetContainerInject-1.html
+  commentId: T:NanoByte.StructureEditor.ITargetContainerInject`1
+  name.vb: ITargetContainerInject(Of T)
+  fullName: NanoByte.StructureEditor.ITargetContainerInject<T>
+  fullName.vb: NanoByte.StructureEditor.ITargetContainerInject(Of T)
+  nameWithType: ITargetContainerInject<T>
+  nameWithType.vb: ITargetContainerInject(Of T)
+- uid: NanoByte.StructureEditor.ITargetContainerInject`1.TargetContainer
+  name: TargetContainer
+  href: api/NanoByte.StructureEditor.ITargetContainerInject-1.html#NanoByte_StructureEditor_ITargetContainerInject_1_TargetContainer
+  commentId: P:NanoByte.StructureEditor.ITargetContainerInject`1.TargetContainer
+  fullName: NanoByte.StructureEditor.ITargetContainerInject<T>.TargetContainer
+  fullName.vb: NanoByte.StructureEditor.ITargetContainerInject(Of T).TargetContainer
+  nameWithType: ITargetContainerInject<T>.TargetContainer
+  nameWithType.vb: ITargetContainerInject(Of T).TargetContainer
+- uid: NanoByte.StructureEditor.ITargetContainerInject`1.TargetContainer*
+  name: TargetContainer
+  href: api/NanoByte.StructureEditor.ITargetContainerInject-1.html#NanoByte_StructureEditor_ITargetContainerInject_1_TargetContainer_
+  commentId: Overload:NanoByte.StructureEditor.ITargetContainerInject`1.TargetContainer
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.ITargetContainerInject<T>.TargetContainer
+  fullName.vb: NanoByte.StructureEditor.ITargetContainerInject(Of T).TargetContainer
+  nameWithType: ITargetContainerInject<T>.TargetContainer
+  nameWithType.vb: ITargetContainerInject(Of T).TargetContainer
+- uid: NanoByte.StructureEditor.ListElementNodeCandidate`2
+  name: ListElementNodeCandidate<TList, TElement>
+  href: api/NanoByte.StructureEditor.ListElementNodeCandidate-2.html
+  commentId: T:NanoByte.StructureEditor.ListElementNodeCandidate`2
+  name.vb: ListElementNodeCandidate(Of TList, TElement)
+  fullName: NanoByte.StructureEditor.ListElementNodeCandidate<TList, TElement>
+  fullName.vb: NanoByte.StructureEditor.ListElementNodeCandidate(Of TList, TElement)
+  nameWithType: ListElementNodeCandidate<TList, TElement>
+  nameWithType.vb: ListElementNodeCandidate(Of TList, TElement)
+- uid: NanoByte.StructureEditor.ListElementNodeCandidate`2.#ctor(System.String,System.Collections.Generic.IList{`0},System.Func{`1})
+  name: ListElementNodeCandidate(string, IList<TList>, Func<TElement>)
+  href: api/NanoByte.StructureEditor.ListElementNodeCandidate-2.html#NanoByte_StructureEditor_ListElementNodeCandidate_2__ctor_System_String_System_Collections_Generic_IList__0__System_Func__1__
+  commentId: M:NanoByte.StructureEditor.ListElementNodeCandidate`2.#ctor(System.String,System.Collections.Generic.IList{`0},System.Func{`1})
+  name.vb: New(String, IList(Of TList), Func(Of TElement))
+  fullName: NanoByte.StructureEditor.ListElementNodeCandidate<TList, TElement>.ListElementNodeCandidate(string, System.Collections.Generic.IList<TList>, System.Func<TElement>)
+  fullName.vb: NanoByte.StructureEditor.ListElementNodeCandidate(Of TList, TElement).New(String, System.Collections.Generic.IList(Of TList), System.Func(Of TElement))
+  nameWithType: ListElementNodeCandidate<TList, TElement>.ListElementNodeCandidate(string, IList<TList>, Func<TElement>)
+  nameWithType.vb: ListElementNodeCandidate(Of TList, TElement).New(String, IList(Of TList), Func(Of TElement))
+- uid: NanoByte.StructureEditor.ListElementNodeCandidate`2.#ctor*
+  name: ListElementNodeCandidate
+  href: api/NanoByte.StructureEditor.ListElementNodeCandidate-2.html#NanoByte_StructureEditor_ListElementNodeCandidate_2__ctor_
+  commentId: Overload:NanoByte.StructureEditor.ListElementNodeCandidate`2.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: NanoByte.StructureEditor.ListElementNodeCandidate<TList, TElement>.ListElementNodeCandidate
+  fullName.vb: NanoByte.StructureEditor.ListElementNodeCandidate(Of TList, TElement).New
+  nameWithType: ListElementNodeCandidate<TList, TElement>.ListElementNodeCandidate
+  nameWithType.vb: ListElementNodeCandidate(Of TList, TElement).New
+- uid: NanoByte.StructureEditor.ListElementNodeCandidate`2.GetCreateCommand
+  name: GetCreateCommand()
+  href: api/NanoByte.StructureEditor.ListElementNodeCandidate-2.html#NanoByte_StructureEditor_ListElementNodeCandidate_2_GetCreateCommand
+  commentId: M:NanoByte.StructureEditor.ListElementNodeCandidate`2.GetCreateCommand
+  fullName: NanoByte.StructureEditor.ListElementNodeCandidate<TList, TElement>.GetCreateCommand()
+  fullName.vb: NanoByte.StructureEditor.ListElementNodeCandidate(Of TList, TElement).GetCreateCommand()
+  nameWithType: ListElementNodeCandidate<TList, TElement>.GetCreateCommand()
+  nameWithType.vb: ListElementNodeCandidate(Of TList, TElement).GetCreateCommand()
+- uid: NanoByte.StructureEditor.ListElementNodeCandidate`2.GetCreateCommand*
+  name: GetCreateCommand
+  href: api/NanoByte.StructureEditor.ListElementNodeCandidate-2.html#NanoByte_StructureEditor_ListElementNodeCandidate_2_GetCreateCommand_
+  commentId: Overload:NanoByte.StructureEditor.ListElementNodeCandidate`2.GetCreateCommand
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.ListElementNodeCandidate<TList, TElement>.GetCreateCommand
+  fullName.vb: NanoByte.StructureEditor.ListElementNodeCandidate(Of TList, TElement).GetCreateCommand
+  nameWithType: ListElementNodeCandidate<TList, TElement>.GetCreateCommand
+  nameWithType.vb: ListElementNodeCandidate(Of TList, TElement).GetCreateCommand
+- uid: NanoByte.StructureEditor.ListElementNode`4
+  name: ListElementNode<TContainer, TList, TElement, TEditor>
+  href: api/NanoByte.StructureEditor.ListElementNode-4.html
+  commentId: T:NanoByte.StructureEditor.ListElementNode`4
+  name.vb: ListElementNode(Of TContainer, TList, TElement, TEditor)
+  fullName: NanoByte.StructureEditor.ListElementNode<TContainer, TList, TElement, TEditor>
+  fullName.vb: NanoByte.StructureEditor.ListElementNode(Of TContainer, TList, TElement, TEditor)
+  nameWithType: ListElementNode<TContainer, TList, TElement, TEditor>
+  nameWithType.vb: ListElementNode(Of TContainer, TList, TElement, TEditor)
+- uid: NanoByte.StructureEditor.ListElementNode`4.#ctor(System.String,`0,System.Collections.Generic.IList{`1},`2)
+  name: ListElementNode(string, TContainer, IList<TList>, TElement)
+  href: api/NanoByte.StructureEditor.ListElementNode-4.html#NanoByte_StructureEditor_ListElementNode_4__ctor_System_String__0_System_Collections_Generic_IList__1___2_
+  commentId: M:NanoByte.StructureEditor.ListElementNode`4.#ctor(System.String,`0,System.Collections.Generic.IList{`1},`2)
+  name.vb: New(String, TContainer, IList(Of TList), TElement)
+  fullName: NanoByte.StructureEditor.ListElementNode<TContainer, TList, TElement, TEditor>.ListElementNode(string, TContainer, System.Collections.Generic.IList<TList>, TElement)
+  fullName.vb: NanoByte.StructureEditor.ListElementNode(Of TContainer, TList, TElement, TEditor).New(String, TContainer, System.Collections.Generic.IList(Of TList), TElement)
+  nameWithType: ListElementNode<TContainer, TList, TElement, TEditor>.ListElementNode(string, TContainer, IList<TList>, TElement)
+  nameWithType.vb: ListElementNode(Of TContainer, TList, TElement, TEditor).New(String, TContainer, IList(Of TList), TElement)
+- uid: NanoByte.StructureEditor.ListElementNode`4.#ctor*
+  name: ListElementNode
+  href: api/NanoByte.StructureEditor.ListElementNode-4.html#NanoByte_StructureEditor_ListElementNode_4__ctor_
+  commentId: Overload:NanoByte.StructureEditor.ListElementNode`4.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: NanoByte.StructureEditor.ListElementNode<TContainer, TList, TElement, TEditor>.ListElementNode
+  fullName.vb: NanoByte.StructureEditor.ListElementNode(Of TContainer, TList, TElement, TEditor).New
+  nameWithType: ListElementNode<TContainer, TList, TElement, TEditor>.ListElementNode
+  nameWithType.vb: ListElementNode(Of TContainer, TList, TElement, TEditor).New
+- uid: NanoByte.StructureEditor.ListElementNode`4.GetEditorControl(NanoByte.Common.Undo.ICommandExecutor)
+  name: GetEditorControl(ICommandExecutor)
+  href: api/NanoByte.StructureEditor.ListElementNode-4.html#NanoByte_StructureEditor_ListElementNode_4_GetEditorControl_NanoByte_Common_Undo_ICommandExecutor_
+  commentId: M:NanoByte.StructureEditor.ListElementNode`4.GetEditorControl(NanoByte.Common.Undo.ICommandExecutor)
+  fullName: NanoByte.StructureEditor.ListElementNode<TContainer, TList, TElement, TEditor>.GetEditorControl(NanoByte.Common.Undo.ICommandExecutor)
+  fullName.vb: NanoByte.StructureEditor.ListElementNode(Of TContainer, TList, TElement, TEditor).GetEditorControl(NanoByte.Common.Undo.ICommandExecutor)
+  nameWithType: ListElementNode<TContainer, TList, TElement, TEditor>.GetEditorControl(ICommandExecutor)
+  nameWithType.vb: ListElementNode(Of TContainer, TList, TElement, TEditor).GetEditorControl(ICommandExecutor)
+- uid: NanoByte.StructureEditor.ListElementNode`4.GetEditorControl*
+  name: GetEditorControl
+  href: api/NanoByte.StructureEditor.ListElementNode-4.html#NanoByte_StructureEditor_ListElementNode_4_GetEditorControl_
+  commentId: Overload:NanoByte.StructureEditor.ListElementNode`4.GetEditorControl
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.ListElementNode<TContainer, TList, TElement, TEditor>.GetEditorControl
+  fullName.vb: NanoByte.StructureEditor.ListElementNode(Of TContainer, TList, TElement, TEditor).GetEditorControl
+  nameWithType: ListElementNode<TContainer, TList, TElement, TEditor>.GetEditorControl
+  nameWithType.vb: ListElementNode(Of TContainer, TList, TElement, TEditor).GetEditorControl
+- uid: NanoByte.StructureEditor.ListElementNode`4.GetRemoveCommand
+  name: GetRemoveCommand()
+  href: api/NanoByte.StructureEditor.ListElementNode-4.html#NanoByte_StructureEditor_ListElementNode_4_GetRemoveCommand
+  commentId: M:NanoByte.StructureEditor.ListElementNode`4.GetRemoveCommand
+  fullName: NanoByte.StructureEditor.ListElementNode<TContainer, TList, TElement, TEditor>.GetRemoveCommand()
+  fullName.vb: NanoByte.StructureEditor.ListElementNode(Of TContainer, TList, TElement, TEditor).GetRemoveCommand()
+  nameWithType: ListElementNode<TContainer, TList, TElement, TEditor>.GetRemoveCommand()
+  nameWithType.vb: ListElementNode(Of TContainer, TList, TElement, TEditor).GetRemoveCommand()
+- uid: NanoByte.StructureEditor.ListElementNode`4.GetRemoveCommand*
+  name: GetRemoveCommand
+  href: api/NanoByte.StructureEditor.ListElementNode-4.html#NanoByte_StructureEditor_ListElementNode_4_GetRemoveCommand_
+  commentId: Overload:NanoByte.StructureEditor.ListElementNode`4.GetRemoveCommand
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.ListElementNode<TContainer, TList, TElement, TEditor>.GetRemoveCommand
+  fullName.vb: NanoByte.StructureEditor.ListElementNode(Of TContainer, TList, TElement, TEditor).GetRemoveCommand
+  nameWithType: ListElementNode<TContainer, TList, TElement, TEditor>.GetRemoveCommand
+  nameWithType.vb: ListElementNode(Of TContainer, TList, TElement, TEditor).GetRemoveCommand
+- uid: NanoByte.StructureEditor.ListElementNode`4.GetSerialized
+  name: GetSerialized()
+  href: api/NanoByte.StructureEditor.ListElementNode-4.html#NanoByte_StructureEditor_ListElementNode_4_GetSerialized
+  commentId: M:NanoByte.StructureEditor.ListElementNode`4.GetSerialized
+  fullName: NanoByte.StructureEditor.ListElementNode<TContainer, TList, TElement, TEditor>.GetSerialized()
+  fullName.vb: NanoByte.StructureEditor.ListElementNode(Of TContainer, TList, TElement, TEditor).GetSerialized()
+  nameWithType: ListElementNode<TContainer, TList, TElement, TEditor>.GetSerialized()
+  nameWithType.vb: ListElementNode(Of TContainer, TList, TElement, TEditor).GetSerialized()
+- uid: NanoByte.StructureEditor.ListElementNode`4.GetSerialized*
+  name: GetSerialized
+  href: api/NanoByte.StructureEditor.ListElementNode-4.html#NanoByte_StructureEditor_ListElementNode_4_GetSerialized_
+  commentId: Overload:NanoByte.StructureEditor.ListElementNode`4.GetSerialized
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.ListElementNode<TContainer, TList, TElement, TEditor>.GetSerialized
+  fullName.vb: NanoByte.StructureEditor.ListElementNode(Of TContainer, TList, TElement, TEditor).GetSerialized
+  nameWithType: ListElementNode<TContainer, TList, TElement, TEditor>.GetSerialized
+  nameWithType.vb: ListElementNode(Of TContainer, TList, TElement, TEditor).GetSerialized
+- uid: NanoByte.StructureEditor.ListElementNode`4.GetUpdateCommand(System.String)
+  name: GetUpdateCommand(string)
+  href: api/NanoByte.StructureEditor.ListElementNode-4.html#NanoByte_StructureEditor_ListElementNode_4_GetUpdateCommand_System_String_
+  commentId: M:NanoByte.StructureEditor.ListElementNode`4.GetUpdateCommand(System.String)
+  name.vb: GetUpdateCommand(String)
+  fullName: NanoByte.StructureEditor.ListElementNode<TContainer, TList, TElement, TEditor>.GetUpdateCommand(string)
+  fullName.vb: NanoByte.StructureEditor.ListElementNode(Of TContainer, TList, TElement, TEditor).GetUpdateCommand(String)
+  nameWithType: ListElementNode<TContainer, TList, TElement, TEditor>.GetUpdateCommand(string)
+  nameWithType.vb: ListElementNode(Of TContainer, TList, TElement, TEditor).GetUpdateCommand(String)
+- uid: NanoByte.StructureEditor.ListElementNode`4.GetUpdateCommand*
+  name: GetUpdateCommand
+  href: api/NanoByte.StructureEditor.ListElementNode-4.html#NanoByte_StructureEditor_ListElementNode_4_GetUpdateCommand_
+  commentId: Overload:NanoByte.StructureEditor.ListElementNode`4.GetUpdateCommand
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.ListElementNode<TContainer, TList, TElement, TEditor>.GetUpdateCommand
+  fullName.vb: NanoByte.StructureEditor.ListElementNode(Of TContainer, TList, TElement, TEditor).GetUpdateCommand
+  nameWithType: ListElementNode<TContainer, TList, TElement, TEditor>.GetUpdateCommand
+  nameWithType.vb: ListElementNode(Of TContainer, TList, TElement, TEditor).GetUpdateCommand
+- uid: NanoByte.StructureEditor.Node
+  name: Node
+  href: api/NanoByte.StructureEditor.Node.html
+  commentId: T:NanoByte.StructureEditor.Node
+  fullName: NanoByte.StructureEditor.Node
+  nameWithType: Node
+- uid: NanoByte.StructureEditor.Node.#ctor(System.String,System.String,System.Object)
+  name: Node(string, string?, object?)
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node__ctor_System_String_System_String_System_Object_
+  commentId: M:NanoByte.StructureEditor.Node.#ctor(System.String,System.String,System.Object)
+  name.vb: New(String, String, Object)
+  fullName: NanoByte.StructureEditor.Node.Node(string, string?, object?)
+  fullName.vb: NanoByte.StructureEditor.Node.New(String, String, Object)
+  nameWithType: Node.Node(string, string?, object?)
+  nameWithType.vb: Node.New(String, String, Object)
+- uid: NanoByte.StructureEditor.Node.#ctor*
+  name: Node
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node__ctor_
+  commentId: Overload:NanoByte.StructureEditor.Node.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: NanoByte.StructureEditor.Node.Node
+  fullName.vb: NanoByte.StructureEditor.Node.New
+  nameWithType: Node.Node
+  nameWithType.vb: Node.New
+- uid: NanoByte.StructureEditor.Node.Description
+  name: Description
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_Description
+  commentId: P:NanoByte.StructureEditor.Node.Description
+  fullName: NanoByte.StructureEditor.Node.Description
+  nameWithType: Node.Description
+- uid: NanoByte.StructureEditor.Node.Description*
+  name: Description
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_Description_
+  commentId: Overload:NanoByte.StructureEditor.Node.Description
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.Node.Description
+  nameWithType: Node.Description
+- uid: NanoByte.StructureEditor.Node.GetDescription*
+  name: GetDescription
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_GetDescription_
+  commentId: Overload:NanoByte.StructureEditor.Node.GetDescription
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.Node.GetDescription
+  nameWithType: Node.GetDescription
+- uid: NanoByte.StructureEditor.Node.GetDescription``1
+  name: GetDescription<T>()
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_GetDescription__1
+  commentId: M:NanoByte.StructureEditor.Node.GetDescription``1
+  name.vb: GetDescription(Of T)()
+  fullName: NanoByte.StructureEditor.Node.GetDescription<T>()
+  fullName.vb: NanoByte.StructureEditor.Node.GetDescription(Of T)()
+  nameWithType: Node.GetDescription<T>()
+  nameWithType.vb: Node.GetDescription(Of T)()
+- uid: NanoByte.StructureEditor.Node.GetEditorControl(NanoByte.Common.Undo.ICommandExecutor)
+  name: GetEditorControl(ICommandExecutor)
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_GetEditorControl_NanoByte_Common_Undo_ICommandExecutor_
+  commentId: M:NanoByte.StructureEditor.Node.GetEditorControl(NanoByte.Common.Undo.ICommandExecutor)
+  fullName: NanoByte.StructureEditor.Node.GetEditorControl(NanoByte.Common.Undo.ICommandExecutor)
+  nameWithType: Node.GetEditorControl(ICommandExecutor)
+- uid: NanoByte.StructureEditor.Node.GetEditorControl*
+  name: GetEditorControl
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_GetEditorControl_
+  commentId: Overload:NanoByte.StructureEditor.Node.GetEditorControl
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.Node.GetEditorControl
+  nameWithType: Node.GetEditorControl
+- uid: NanoByte.StructureEditor.Node.GetRemoveCommand
+  name: GetRemoveCommand()
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_GetRemoveCommand
+  commentId: M:NanoByte.StructureEditor.Node.GetRemoveCommand
+  fullName: NanoByte.StructureEditor.Node.GetRemoveCommand()
+  nameWithType: Node.GetRemoveCommand()
+- uid: NanoByte.StructureEditor.Node.GetRemoveCommand*
+  name: GetRemoveCommand
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_GetRemoveCommand_
+  commentId: Overload:NanoByte.StructureEditor.Node.GetRemoveCommand
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.Node.GetRemoveCommand
+  nameWithType: Node.GetRemoveCommand
+- uid: NanoByte.StructureEditor.Node.GetSerialized
+  name: GetSerialized()
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_GetSerialized
+  commentId: M:NanoByte.StructureEditor.Node.GetSerialized
+  fullName: NanoByte.StructureEditor.Node.GetSerialized()
+  nameWithType: Node.GetSerialized()
+- uid: NanoByte.StructureEditor.Node.GetSerialized*
+  name: GetSerialized
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_GetSerialized_
+  commentId: Overload:NanoByte.StructureEditor.Node.GetSerialized
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.Node.GetSerialized
+  nameWithType: Node.GetSerialized
+- uid: NanoByte.StructureEditor.Node.GetUpdateCommand(System.String)
+  name: GetUpdateCommand(string)
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_GetUpdateCommand_System_String_
+  commentId: M:NanoByte.StructureEditor.Node.GetUpdateCommand(System.String)
+  name.vb: GetUpdateCommand(String)
+  fullName: NanoByte.StructureEditor.Node.GetUpdateCommand(string)
+  fullName.vb: NanoByte.StructureEditor.Node.GetUpdateCommand(String)
+  nameWithType: Node.GetUpdateCommand(string)
+  nameWithType.vb: Node.GetUpdateCommand(String)
+- uid: NanoByte.StructureEditor.Node.GetUpdateCommand*
+  name: GetUpdateCommand
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_GetUpdateCommand_
+  commentId: Overload:NanoByte.StructureEditor.Node.GetUpdateCommand
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.Node.GetUpdateCommand
+  nameWithType: Node.GetUpdateCommand
+- uid: NanoByte.StructureEditor.Node.NodeType
+  name: NodeType
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_NodeType
+  commentId: P:NanoByte.StructureEditor.Node.NodeType
+  fullName: NanoByte.StructureEditor.Node.NodeType
+  nameWithType: Node.NodeType
+- uid: NanoByte.StructureEditor.Node.NodeType*
+  name: NodeType
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_NodeType_
+  commentId: Overload:NanoByte.StructureEditor.Node.NodeType
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.Node.NodeType
+  nameWithType: Node.NodeType
+- uid: NanoByte.StructureEditor.Node.Target
+  name: Target
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_Target
+  commentId: P:NanoByte.StructureEditor.Node.Target
+  fullName: NanoByte.StructureEditor.Node.Target
+  nameWithType: Node.Target
+- uid: NanoByte.StructureEditor.Node.Target*
+  name: Target
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_Target_
+  commentId: Overload:NanoByte.StructureEditor.Node.Target
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.Node.Target
+  nameWithType: Node.Target
+- uid: NanoByte.StructureEditor.Node.ToString
+  name: ToString()
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_ToString
+  commentId: M:NanoByte.StructureEditor.Node.ToString
+  fullName: NanoByte.StructureEditor.Node.ToString()
+  nameWithType: Node.ToString()
+- uid: NanoByte.StructureEditor.Node.ToString*
+  name: ToString
+  href: api/NanoByte.StructureEditor.Node.html#NanoByte_StructureEditor_Node_ToString_
+  commentId: Overload:NanoByte.StructureEditor.Node.ToString
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.Node.ToString
+  nameWithType: Node.ToString
+- uid: NanoByte.StructureEditor.NodeCandidate
+  name: NodeCandidate
+  href: api/NanoByte.StructureEditor.NodeCandidate.html
+  commentId: T:NanoByte.StructureEditor.NodeCandidate
+  fullName: NanoByte.StructureEditor.NodeCandidate
+  nameWithType: NodeCandidate
+- uid: NanoByte.StructureEditor.NodeCandidate.#ctor(System.String,System.String)
+  name: NodeCandidate(string, string?)
+  href: api/NanoByte.StructureEditor.NodeCandidate.html#NanoByte_StructureEditor_NodeCandidate__ctor_System_String_System_String_
+  commentId: M:NanoByte.StructureEditor.NodeCandidate.#ctor(System.String,System.String)
+  name.vb: New(String, String)
+  fullName: NanoByte.StructureEditor.NodeCandidate.NodeCandidate(string, string?)
+  fullName.vb: NanoByte.StructureEditor.NodeCandidate.New(String, String)
+  nameWithType: NodeCandidate.NodeCandidate(string, string?)
+  nameWithType.vb: NodeCandidate.New(String, String)
+- uid: NanoByte.StructureEditor.NodeCandidate.#ctor*
+  name: NodeCandidate
+  href: api/NanoByte.StructureEditor.NodeCandidate.html#NanoByte_StructureEditor_NodeCandidate__ctor_
+  commentId: Overload:NanoByte.StructureEditor.NodeCandidate.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: NanoByte.StructureEditor.NodeCandidate.NodeCandidate
+  fullName.vb: NanoByte.StructureEditor.NodeCandidate.New
+  nameWithType: NodeCandidate.NodeCandidate
+  nameWithType.vb: NodeCandidate.New
+- uid: NanoByte.StructureEditor.NodeCandidate.Description
+  name: Description
+  href: api/NanoByte.StructureEditor.NodeCandidate.html#NanoByte_StructureEditor_NodeCandidate_Description
+  commentId: P:NanoByte.StructureEditor.NodeCandidate.Description
+  fullName: NanoByte.StructureEditor.NodeCandidate.Description
+  nameWithType: NodeCandidate.Description
+- uid: NanoByte.StructureEditor.NodeCandidate.Description*
+  name: Description
+  href: api/NanoByte.StructureEditor.NodeCandidate.html#NanoByte_StructureEditor_NodeCandidate_Description_
+  commentId: Overload:NanoByte.StructureEditor.NodeCandidate.Description
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.NodeCandidate.Description
+  nameWithType: NodeCandidate.Description
+- uid: NanoByte.StructureEditor.NodeCandidate.GetCreateCommand
+  name: GetCreateCommand()
+  href: api/NanoByte.StructureEditor.NodeCandidate.html#NanoByte_StructureEditor_NodeCandidate_GetCreateCommand
+  commentId: M:NanoByte.StructureEditor.NodeCandidate.GetCreateCommand
+  fullName: NanoByte.StructureEditor.NodeCandidate.GetCreateCommand()
+  nameWithType: NodeCandidate.GetCreateCommand()
+- uid: NanoByte.StructureEditor.NodeCandidate.GetCreateCommand*
+  name: GetCreateCommand
+  href: api/NanoByte.StructureEditor.NodeCandidate.html#NanoByte_StructureEditor_NodeCandidate_GetCreateCommand_
+  commentId: Overload:NanoByte.StructureEditor.NodeCandidate.GetCreateCommand
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.NodeCandidate.GetCreateCommand
+  nameWithType: NodeCandidate.GetCreateCommand
+- uid: NanoByte.StructureEditor.NodeCandidate.NodeType
+  name: NodeType
+  href: api/NanoByte.StructureEditor.NodeCandidate.html#NanoByte_StructureEditor_NodeCandidate_NodeType
+  commentId: P:NanoByte.StructureEditor.NodeCandidate.NodeType
+  fullName: NanoByte.StructureEditor.NodeCandidate.NodeType
+  nameWithType: NodeCandidate.NodeType
+- uid: NanoByte.StructureEditor.NodeCandidate.NodeType*
+  name: NodeType
+  href: api/NanoByte.StructureEditor.NodeCandidate.html#NanoByte_StructureEditor_NodeCandidate_NodeType_
+  commentId: Overload:NanoByte.StructureEditor.NodeCandidate.NodeType
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.NodeCandidate.NodeType
+  nameWithType: NodeCandidate.NodeType
+- uid: NanoByte.StructureEditor.NodeCandidate.ToString
+  name: ToString()
+  href: api/NanoByte.StructureEditor.NodeCandidate.html#NanoByte_StructureEditor_NodeCandidate_ToString
+  commentId: M:NanoByte.StructureEditor.NodeCandidate.ToString
+  fullName: NanoByte.StructureEditor.NodeCandidate.ToString()
+  nameWithType: NodeCandidate.ToString()
+- uid: NanoByte.StructureEditor.NodeCandidate.ToString*
+  name: ToString
+  href: api/NanoByte.StructureEditor.NodeCandidate.html#NanoByte_StructureEditor_NodeCandidate_ToString_
+  commentId: Overload:NanoByte.StructureEditor.NodeCandidate.ToString
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.NodeCandidate.ToString
+  nameWithType: NodeCandidate.ToString
+- uid: NanoByte.StructureEditor.PropertyNodeCandidate`1
+  name: PropertyNodeCandidate<TProperty>
+  href: api/NanoByte.StructureEditor.PropertyNodeCandidate-1.html
+  commentId: T:NanoByte.StructureEditor.PropertyNodeCandidate`1
+  name.vb: PropertyNodeCandidate(Of TProperty)
+  fullName: NanoByte.StructureEditor.PropertyNodeCandidate<TProperty>
+  fullName.vb: NanoByte.StructureEditor.PropertyNodeCandidate(Of TProperty)
+  nameWithType: PropertyNodeCandidate<TProperty>
+  nameWithType.vb: PropertyNodeCandidate(Of TProperty)
+- uid: NanoByte.StructureEditor.PropertyNodeCandidate`1.#ctor(System.String,NanoByte.Common.PropertyPointer{`0},System.Func{`0})
+  name: PropertyNodeCandidate(string, PropertyPointer<TProperty?>, Func<TProperty>)
+  href: api/NanoByte.StructureEditor.PropertyNodeCandidate-1.html#NanoByte_StructureEditor_PropertyNodeCandidate_1__ctor_System_String_NanoByte_Common_PropertyPointer__0__System_Func__0__
+  commentId: M:NanoByte.StructureEditor.PropertyNodeCandidate`1.#ctor(System.String,NanoByte.Common.PropertyPointer{`0},System.Func{`0})
+  name.vb: New(String, PropertyPointer(Of TProperty), Func(Of TProperty))
+  fullName: NanoByte.StructureEditor.PropertyNodeCandidate<TProperty>.PropertyNodeCandidate(string, NanoByte.Common.PropertyPointer<TProperty?>, System.Func<TProperty>)
+  fullName.vb: NanoByte.StructureEditor.PropertyNodeCandidate(Of TProperty).New(String, NanoByte.Common.PropertyPointer(Of TProperty), System.Func(Of TProperty))
+  nameWithType: PropertyNodeCandidate<TProperty>.PropertyNodeCandidate(string, PropertyPointer<TProperty?>, Func<TProperty>)
+  nameWithType.vb: PropertyNodeCandidate(Of TProperty).New(String, PropertyPointer(Of TProperty), Func(Of TProperty))
+- uid: NanoByte.StructureEditor.PropertyNodeCandidate`1.#ctor*
+  name: PropertyNodeCandidate
+  href: api/NanoByte.StructureEditor.PropertyNodeCandidate-1.html#NanoByte_StructureEditor_PropertyNodeCandidate_1__ctor_
+  commentId: Overload:NanoByte.StructureEditor.PropertyNodeCandidate`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: NanoByte.StructureEditor.PropertyNodeCandidate<TProperty>.PropertyNodeCandidate
+  fullName.vb: NanoByte.StructureEditor.PropertyNodeCandidate(Of TProperty).New
+  nameWithType: PropertyNodeCandidate<TProperty>.PropertyNodeCandidate
+  nameWithType.vb: PropertyNodeCandidate(Of TProperty).New
+- uid: NanoByte.StructureEditor.PropertyNodeCandidate`1.GetCreateCommand
+  name: GetCreateCommand()
+  href: api/NanoByte.StructureEditor.PropertyNodeCandidate-1.html#NanoByte_StructureEditor_PropertyNodeCandidate_1_GetCreateCommand
+  commentId: M:NanoByte.StructureEditor.PropertyNodeCandidate`1.GetCreateCommand
+  fullName: NanoByte.StructureEditor.PropertyNodeCandidate<TProperty>.GetCreateCommand()
+  fullName.vb: NanoByte.StructureEditor.PropertyNodeCandidate(Of TProperty).GetCreateCommand()
+  nameWithType: PropertyNodeCandidate<TProperty>.GetCreateCommand()
+  nameWithType.vb: PropertyNodeCandidate(Of TProperty).GetCreateCommand()
+- uid: NanoByte.StructureEditor.PropertyNodeCandidate`1.GetCreateCommand*
+  name: GetCreateCommand
+  href: api/NanoByte.StructureEditor.PropertyNodeCandidate-1.html#NanoByte_StructureEditor_PropertyNodeCandidate_1_GetCreateCommand_
+  commentId: Overload:NanoByte.StructureEditor.PropertyNodeCandidate`1.GetCreateCommand
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.PropertyNodeCandidate<TProperty>.GetCreateCommand
+  fullName.vb: NanoByte.StructureEditor.PropertyNodeCandidate(Of TProperty).GetCreateCommand
+  nameWithType: PropertyNodeCandidate<TProperty>.GetCreateCommand
+  nameWithType.vb: PropertyNodeCandidate(Of TProperty).GetCreateCommand
+- uid: NanoByte.StructureEditor.PropertyNode`3
+  name: PropertyNode<TContainer, TProperty, TEditor>
+  href: api/NanoByte.StructureEditor.PropertyNode-3.html
+  commentId: T:NanoByte.StructureEditor.PropertyNode`3
+  name.vb: PropertyNode(Of TContainer, TProperty, TEditor)
+  fullName: NanoByte.StructureEditor.PropertyNode<TContainer, TProperty, TEditor>
+  fullName.vb: NanoByte.StructureEditor.PropertyNode(Of TContainer, TProperty, TEditor)
+  nameWithType: PropertyNode<TContainer, TProperty, TEditor>
+  nameWithType.vb: PropertyNode(Of TContainer, TProperty, TEditor)
+- uid: NanoByte.StructureEditor.PropertyNode`3.#ctor(System.String,`0,NanoByte.Common.PropertyPointer{`1})
+  name: PropertyNode(string, TContainer, PropertyPointer<TProperty?>)
+  href: api/NanoByte.StructureEditor.PropertyNode-3.html#NanoByte_StructureEditor_PropertyNode_3__ctor_System_String__0_NanoByte_Common_PropertyPointer__1__
+  commentId: M:NanoByte.StructureEditor.PropertyNode`3.#ctor(System.String,`0,NanoByte.Common.PropertyPointer{`1})
+  name.vb: New(String, TContainer, PropertyPointer(Of TProperty))
+  fullName: NanoByte.StructureEditor.PropertyNode<TContainer, TProperty, TEditor>.PropertyNode(string, TContainer, NanoByte.Common.PropertyPointer<TProperty?>)
+  fullName.vb: NanoByte.StructureEditor.PropertyNode(Of TContainer, TProperty, TEditor).New(String, TContainer, NanoByte.Common.PropertyPointer(Of TProperty))
+  nameWithType: PropertyNode<TContainer, TProperty, TEditor>.PropertyNode(string, TContainer, PropertyPointer<TProperty?>)
+  nameWithType.vb: PropertyNode(Of TContainer, TProperty, TEditor).New(String, TContainer, PropertyPointer(Of TProperty))
+- uid: NanoByte.StructureEditor.PropertyNode`3.#ctor*
+  name: PropertyNode
+  href: api/NanoByte.StructureEditor.PropertyNode-3.html#NanoByte_StructureEditor_PropertyNode_3__ctor_
+  commentId: Overload:NanoByte.StructureEditor.PropertyNode`3.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: NanoByte.StructureEditor.PropertyNode<TContainer, TProperty, TEditor>.PropertyNode
+  fullName.vb: NanoByte.StructureEditor.PropertyNode(Of TContainer, TProperty, TEditor).New
+  nameWithType: PropertyNode<TContainer, TProperty, TEditor>.PropertyNode
+  nameWithType.vb: PropertyNode(Of TContainer, TProperty, TEditor).New
+- uid: NanoByte.StructureEditor.PropertyNode`3.GetEditorControl(NanoByte.Common.Undo.ICommandExecutor)
+  name: GetEditorControl(ICommandExecutor)
+  href: api/NanoByte.StructureEditor.PropertyNode-3.html#NanoByte_StructureEditor_PropertyNode_3_GetEditorControl_NanoByte_Common_Undo_ICommandExecutor_
+  commentId: M:NanoByte.StructureEditor.PropertyNode`3.GetEditorControl(NanoByte.Common.Undo.ICommandExecutor)
+  fullName: NanoByte.StructureEditor.PropertyNode<TContainer, TProperty, TEditor>.GetEditorControl(NanoByte.Common.Undo.ICommandExecutor)
+  fullName.vb: NanoByte.StructureEditor.PropertyNode(Of TContainer, TProperty, TEditor).GetEditorControl(NanoByte.Common.Undo.ICommandExecutor)
+  nameWithType: PropertyNode<TContainer, TProperty, TEditor>.GetEditorControl(ICommandExecutor)
+  nameWithType.vb: PropertyNode(Of TContainer, TProperty, TEditor).GetEditorControl(ICommandExecutor)
+- uid: NanoByte.StructureEditor.PropertyNode`3.GetEditorControl*
+  name: GetEditorControl
+  href: api/NanoByte.StructureEditor.PropertyNode-3.html#NanoByte_StructureEditor_PropertyNode_3_GetEditorControl_
+  commentId: Overload:NanoByte.StructureEditor.PropertyNode`3.GetEditorControl
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.PropertyNode<TContainer, TProperty, TEditor>.GetEditorControl
+  fullName.vb: NanoByte.StructureEditor.PropertyNode(Of TContainer, TProperty, TEditor).GetEditorControl
+  nameWithType: PropertyNode<TContainer, TProperty, TEditor>.GetEditorControl
+  nameWithType.vb: PropertyNode(Of TContainer, TProperty, TEditor).GetEditorControl
+- uid: NanoByte.StructureEditor.PropertyNode`3.GetRemoveCommand
+  name: GetRemoveCommand()
+  href: api/NanoByte.StructureEditor.PropertyNode-3.html#NanoByte_StructureEditor_PropertyNode_3_GetRemoveCommand
+  commentId: M:NanoByte.StructureEditor.PropertyNode`3.GetRemoveCommand
+  fullName: NanoByte.StructureEditor.PropertyNode<TContainer, TProperty, TEditor>.GetRemoveCommand()
+  fullName.vb: NanoByte.StructureEditor.PropertyNode(Of TContainer, TProperty, TEditor).GetRemoveCommand()
+  nameWithType: PropertyNode<TContainer, TProperty, TEditor>.GetRemoveCommand()
+  nameWithType.vb: PropertyNode(Of TContainer, TProperty, TEditor).GetRemoveCommand()
+- uid: NanoByte.StructureEditor.PropertyNode`3.GetRemoveCommand*
+  name: GetRemoveCommand
+  href: api/NanoByte.StructureEditor.PropertyNode-3.html#NanoByte_StructureEditor_PropertyNode_3_GetRemoveCommand_
+  commentId: Overload:NanoByte.StructureEditor.PropertyNode`3.GetRemoveCommand
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.PropertyNode<TContainer, TProperty, TEditor>.GetRemoveCommand
+  fullName.vb: NanoByte.StructureEditor.PropertyNode(Of TContainer, TProperty, TEditor).GetRemoveCommand
+  nameWithType: PropertyNode<TContainer, TProperty, TEditor>.GetRemoveCommand
+  nameWithType.vb: PropertyNode(Of TContainer, TProperty, TEditor).GetRemoveCommand
+- uid: NanoByte.StructureEditor.PropertyNode`3.GetSerialized
+  name: GetSerialized()
+  href: api/NanoByte.StructureEditor.PropertyNode-3.html#NanoByte_StructureEditor_PropertyNode_3_GetSerialized
+  commentId: M:NanoByte.StructureEditor.PropertyNode`3.GetSerialized
+  fullName: NanoByte.StructureEditor.PropertyNode<TContainer, TProperty, TEditor>.GetSerialized()
+  fullName.vb: NanoByte.StructureEditor.PropertyNode(Of TContainer, TProperty, TEditor).GetSerialized()
+  nameWithType: PropertyNode<TContainer, TProperty, TEditor>.GetSerialized()
+  nameWithType.vb: PropertyNode(Of TContainer, TProperty, TEditor).GetSerialized()
+- uid: NanoByte.StructureEditor.PropertyNode`3.GetSerialized*
+  name: GetSerialized
+  href: api/NanoByte.StructureEditor.PropertyNode-3.html#NanoByte_StructureEditor_PropertyNode_3_GetSerialized_
+  commentId: Overload:NanoByte.StructureEditor.PropertyNode`3.GetSerialized
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.PropertyNode<TContainer, TProperty, TEditor>.GetSerialized
+  fullName.vb: NanoByte.StructureEditor.PropertyNode(Of TContainer, TProperty, TEditor).GetSerialized
+  nameWithType: PropertyNode<TContainer, TProperty, TEditor>.GetSerialized
+  nameWithType.vb: PropertyNode(Of TContainer, TProperty, TEditor).GetSerialized
+- uid: NanoByte.StructureEditor.PropertyNode`3.GetUpdateCommand(System.String)
+  name: GetUpdateCommand(string)
+  href: api/NanoByte.StructureEditor.PropertyNode-3.html#NanoByte_StructureEditor_PropertyNode_3_GetUpdateCommand_System_String_
+  commentId: M:NanoByte.StructureEditor.PropertyNode`3.GetUpdateCommand(System.String)
+  name.vb: GetUpdateCommand(String)
+  fullName: NanoByte.StructureEditor.PropertyNode<TContainer, TProperty, TEditor>.GetUpdateCommand(string)
+  fullName.vb: NanoByte.StructureEditor.PropertyNode(Of TContainer, TProperty, TEditor).GetUpdateCommand(String)
+  nameWithType: PropertyNode<TContainer, TProperty, TEditor>.GetUpdateCommand(string)
+  nameWithType.vb: PropertyNode(Of TContainer, TProperty, TEditor).GetUpdateCommand(String)
+- uid: NanoByte.StructureEditor.PropertyNode`3.GetUpdateCommand*
+  name: GetUpdateCommand
+  href: api/NanoByte.StructureEditor.PropertyNode-3.html#NanoByte_StructureEditor_PropertyNode_3_GetUpdateCommand_
+  commentId: Overload:NanoByte.StructureEditor.PropertyNode`3.GetUpdateCommand
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.PropertyNode<TContainer, TProperty, TEditor>.GetUpdateCommand
+  fullName.vb: NanoByte.StructureEditor.PropertyNode(Of TContainer, TProperty, TEditor).GetUpdateCommand
+  nameWithType: PropertyNode<TContainer, TProperty, TEditor>.GetUpdateCommand
+  nameWithType.vb: PropertyNode(Of TContainer, TProperty, TEditor).GetUpdateCommand
+- uid: NanoByte.StructureEditor.WinForms
+  name: NanoByte.StructureEditor.WinForms
+  href: api/NanoByte.StructureEditor.WinForms.html
+  commentId: N:NanoByte.StructureEditor.WinForms
+  fullName: NanoByte.StructureEditor.WinForms
+  nameWithType: NanoByte.StructureEditor.WinForms
+- uid: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions
+  name: ContainerDescriptionExtensions
+  href: api/NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.html
+  commentId: T:NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions
+  fullName: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions
+  nameWithType: ContainerDescriptionExtensions
+- uid: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddElement*
+  name: AddElement
+  href: api/NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.html#NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddElement_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddElement
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddElement
+  nameWithType: ContainerDescriptionExtensions.AddElement
+- uid: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddElement``3(NanoByte.StructureEditor.IListDescription{``0,``1},System.String,System.Func{``2})
+  name: AddElement<TContainer, TList, TElement>(IListDescription<TContainer, TList>, string, Func<TElement>)
+  href: api/NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.html#NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddElement__3_NanoByte_StructureEditor_IListDescription___0___1__System_String_System_Func___2__
+  commentId: M:NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddElement``3(NanoByte.StructureEditor.IListDescription{``0,``1},System.String,System.Func{``2})
+  name.vb: AddElement(Of TContainer, TList, TElement)(IListDescription(Of TContainer, TList), String, Func(Of TElement))
+  fullName: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddElement<TContainer, TList, TElement>(NanoByte.StructureEditor.IListDescription<TContainer, TList>, string, System.Func<TElement>)
+  fullName.vb: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddElement(Of TContainer, TList, TElement)(NanoByte.StructureEditor.IListDescription(Of TContainer, TList), String, System.Func(Of TElement))
+  nameWithType: ContainerDescriptionExtensions.AddElement<TContainer, TList, TElement>(IListDescription<TContainer, TList>, string, Func<TElement>)
+  nameWithType.vb: ContainerDescriptionExtensions.AddElement(Of TContainer, TList, TElement)(IListDescription(Of TContainer, TList), String, Func(Of TElement))
+- uid: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList*
+  name: AddPlainList
+  href: api/NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.html#NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddPlainList_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList
+  nameWithType: ContainerDescriptionExtensions.AddPlainList
+- uid: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList``2(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,System.Collections.Generic.IList{``1}})
+  name: AddPlainList<TContainer, TElement>(IContainerDescription<TContainer>, string, Func<TContainer, IList<TElement>>)
+  href: api/NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.html#NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddPlainList__2_NanoByte_StructureEditor_IContainerDescription___0__System_String_System_Func___0_System_Collections_Generic_IList___1___
+  commentId: M:NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList``2(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,System.Collections.Generic.IList{``1}})
+  name.vb: AddPlainList(Of TContainer, TElement)(IContainerDescription(Of TContainer), String, Func(Of TContainer, IList(Of TElement)))
+  fullName: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList<TContainer, TElement>(NanoByte.StructureEditor.IContainerDescription<TContainer>, string, System.Func<TContainer, System.Collections.Generic.IList<TElement>>)
+  fullName.vb: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList(Of TContainer, TElement)(NanoByte.StructureEditor.IContainerDescription(Of TContainer), String, System.Func(Of TContainer, System.Collections.Generic.IList(Of TElement)))
+  nameWithType: ContainerDescriptionExtensions.AddPlainList<TContainer, TElement>(IContainerDescription<TContainer>, string, Func<TContainer, IList<TElement>>)
+  nameWithType.vb: ContainerDescriptionExtensions.AddPlainList(Of TContainer, TElement)(IContainerDescription(Of TContainer), String, Func(Of TContainer, IList(Of TElement)))
+- uid: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList``2(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,System.Collections.Generic.IList{``1}},System.Func{``1})
+  name: AddPlainList<TContainer, TElement>(IContainerDescription<TContainer>, string, Func<TContainer, IList<TElement>>, Func<TElement>)
+  href: api/NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.html#NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddPlainList__2_NanoByte_StructureEditor_IContainerDescription___0__System_String_System_Func___0_System_Collections_Generic_IList___1___System_Func___1__
+  commentId: M:NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList``2(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,System.Collections.Generic.IList{``1}},System.Func{``1})
+  name.vb: AddPlainList(Of TContainer, TElement)(IContainerDescription(Of TContainer), String, Func(Of TContainer, IList(Of TElement)), Func(Of TElement))
+  fullName: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList<TContainer, TElement>(NanoByte.StructureEditor.IContainerDescription<TContainer>, string, System.Func<TContainer, System.Collections.Generic.IList<TElement>>, System.Func<TElement>)
+  fullName.vb: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddPlainList(Of TContainer, TElement)(NanoByte.StructureEditor.IContainerDescription(Of TContainer), String, System.Func(Of TContainer, System.Collections.Generic.IList(Of TElement)), System.Func(Of TElement))
+  nameWithType: ContainerDescriptionExtensions.AddPlainList<TContainer, TElement>(IContainerDescription<TContainer>, string, Func<TContainer, IList<TElement>>, Func<TElement>)
+  nameWithType.vb: ContainerDescriptionExtensions.AddPlainList(Of TContainer, TElement)(IContainerDescription(Of TContainer), String, Func(Of TContainer, IList(Of TElement)), Func(Of TElement))
+- uid: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty*
+  name: AddProperty
+  href: api/NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.html#NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddProperty_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty
+  nameWithType: ContainerDescriptionExtensions.AddProperty
+- uid: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty``2(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,NanoByte.Common.PropertyPointer{``1}})
+  name: AddProperty<TContainer, TProperty>(IContainerDescription<TContainer>, string, Func<TContainer, PropertyPointer<TProperty?>>)
+  href: api/NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.html#NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddProperty__2_NanoByte_StructureEditor_IContainerDescription___0__System_String_System_Func___0_NanoByte_Common_PropertyPointer___1___
+  commentId: M:NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty``2(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,NanoByte.Common.PropertyPointer{``1}})
+  name.vb: AddProperty(Of TContainer, TProperty)(IContainerDescription(Of TContainer), String, Func(Of TContainer, PropertyPointer(Of TProperty)))
+  fullName: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty<TContainer, TProperty>(NanoByte.StructureEditor.IContainerDescription<TContainer>, string, System.Func<TContainer, NanoByte.Common.PropertyPointer<TProperty?>>)
+  fullName.vb: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty(Of TContainer, TProperty)(NanoByte.StructureEditor.IContainerDescription(Of TContainer), String, System.Func(Of TContainer, NanoByte.Common.PropertyPointer(Of TProperty)))
+  nameWithType: ContainerDescriptionExtensions.AddProperty<TContainer, TProperty>(IContainerDescription<TContainer>, string, Func<TContainer, PropertyPointer<TProperty?>>)
+  nameWithType.vb: ContainerDescriptionExtensions.AddProperty(Of TContainer, TProperty)(IContainerDescription(Of TContainer), String, Func(Of TContainer, PropertyPointer(Of TProperty)))
+- uid: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty``2(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,NanoByte.Common.PropertyPointer{``1}},System.Func{``1})
+  name: AddProperty<TContainer, TProperty>(IContainerDescription<TContainer>, string, Func<TContainer, PropertyPointer<TProperty?>>, Func<TProperty>)
+  href: api/NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.html#NanoByte_StructureEditor_WinForms_ContainerDescriptionExtensions_AddProperty__2_NanoByte_StructureEditor_IContainerDescription___0__System_String_System_Func___0_NanoByte_Common_PropertyPointer___1___System_Func___1__
+  commentId: M:NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty``2(NanoByte.StructureEditor.IContainerDescription{``0},System.String,System.Func{``0,NanoByte.Common.PropertyPointer{``1}},System.Func{``1})
+  name.vb: AddProperty(Of TContainer, TProperty)(IContainerDescription(Of TContainer), String, Func(Of TContainer, PropertyPointer(Of TProperty)), Func(Of TProperty))
+  fullName: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty<TContainer, TProperty>(NanoByte.StructureEditor.IContainerDescription<TContainer>, string, System.Func<TContainer, NanoByte.Common.PropertyPointer<TProperty?>>, System.Func<TProperty>)
+  fullName.vb: NanoByte.StructureEditor.WinForms.ContainerDescriptionExtensions.AddProperty(Of TContainer, TProperty)(NanoByte.StructureEditor.IContainerDescription(Of TContainer), String, System.Func(Of TContainer, NanoByte.Common.PropertyPointer(Of TProperty)), System.Func(Of TProperty))
+  nameWithType: ContainerDescriptionExtensions.AddProperty<TContainer, TProperty>(IContainerDescription<TContainer>, string, Func<TContainer, PropertyPointer<TProperty?>>, Func<TProperty>)
+  nameWithType.vb: ContainerDescriptionExtensions.AddProperty(Of TContainer, TProperty)(IContainerDescription(Of TContainer), String, Func(Of TContainer, PropertyPointer(Of TProperty)), Func(Of TProperty))
+- uid: NanoByte.StructureEditor.WinForms.LocalizableTextBox
+  name: LocalizableTextBox
+  href: api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.html
+  commentId: T:NanoByte.StructureEditor.WinForms.LocalizableTextBox
+  fullName: NanoByte.StructureEditor.WinForms.LocalizableTextBox
+  nameWithType: LocalizableTextBox
+- uid: NanoByte.StructureEditor.WinForms.LocalizableTextBox.#ctor
+  name: LocalizableTextBox()
+  href: api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.html#NanoByte_StructureEditor_WinForms_LocalizableTextBox__ctor
+  commentId: M:NanoByte.StructureEditor.WinForms.LocalizableTextBox.#ctor
+  name.vb: New()
+  fullName: NanoByte.StructureEditor.WinForms.LocalizableTextBox.LocalizableTextBox()
+  fullName.vb: NanoByte.StructureEditor.WinForms.LocalizableTextBox.New()
+  nameWithType: LocalizableTextBox.LocalizableTextBox()
+  nameWithType.vb: LocalizableTextBox.New()
+- uid: NanoByte.StructureEditor.WinForms.LocalizableTextBox.#ctor*
+  name: LocalizableTextBox
+  href: api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.html#NanoByte_StructureEditor_WinForms_LocalizableTextBox__ctor_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.LocalizableTextBox.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: NanoByte.StructureEditor.WinForms.LocalizableTextBox.LocalizableTextBox
+  fullName.vb: NanoByte.StructureEditor.WinForms.LocalizableTextBox.New
+  nameWithType: LocalizableTextBox.LocalizableTextBox
+  nameWithType.vb: LocalizableTextBox.New
+- uid: NanoByte.StructureEditor.WinForms.LocalizableTextBox.HintText
+  name: HintText
+  href: api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.html#NanoByte_StructureEditor_WinForms_LocalizableTextBox_HintText
+  commentId: P:NanoByte.StructureEditor.WinForms.LocalizableTextBox.HintText
+  fullName: NanoByte.StructureEditor.WinForms.LocalizableTextBox.HintText
+  nameWithType: LocalizableTextBox.HintText
+- uid: NanoByte.StructureEditor.WinForms.LocalizableTextBox.HintText*
+  name: HintText
+  href: api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.html#NanoByte_StructureEditor_WinForms_LocalizableTextBox_HintText_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.LocalizableTextBox.HintText
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.LocalizableTextBox.HintText
+  nameWithType: LocalizableTextBox.HintText
+- uid: NanoByte.StructureEditor.WinForms.LocalizableTextBox.Multiline
+  name: Multiline
+  href: api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.html#NanoByte_StructureEditor_WinForms_LocalizableTextBox_Multiline
+  commentId: P:NanoByte.StructureEditor.WinForms.LocalizableTextBox.Multiline
+  fullName: NanoByte.StructureEditor.WinForms.LocalizableTextBox.Multiline
+  nameWithType: LocalizableTextBox.Multiline
+- uid: NanoByte.StructureEditor.WinForms.LocalizableTextBox.Multiline*
+  name: Multiline
+  href: api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.html#NanoByte_StructureEditor_WinForms_LocalizableTextBox_Multiline_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.LocalizableTextBox.Multiline
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.LocalizableTextBox.Multiline
+  nameWithType: LocalizableTextBox.Multiline
+- uid: NanoByte.StructureEditor.WinForms.LocalizableTextBox.Refresh
+  name: Refresh()
+  href: api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.html#NanoByte_StructureEditor_WinForms_LocalizableTextBox_Refresh
+  commentId: M:NanoByte.StructureEditor.WinForms.LocalizableTextBox.Refresh
+  fullName: NanoByte.StructureEditor.WinForms.LocalizableTextBox.Refresh()
+  nameWithType: LocalizableTextBox.Refresh()
+- uid: NanoByte.StructureEditor.WinForms.LocalizableTextBox.Refresh*
+  name: Refresh
+  href: api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.html#NanoByte_StructureEditor_WinForms_LocalizableTextBox_Refresh_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.LocalizableTextBox.Refresh
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.LocalizableTextBox.Refresh
+  nameWithType: LocalizableTextBox.Refresh
+- uid: NanoByte.StructureEditor.WinForms.LocalizableTextBox.TextBox
+  name: TextBox
+  href: api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.html#NanoByte_StructureEditor_WinForms_LocalizableTextBox_TextBox
+  commentId: P:NanoByte.StructureEditor.WinForms.LocalizableTextBox.TextBox
+  fullName: NanoByte.StructureEditor.WinForms.LocalizableTextBox.TextBox
+  nameWithType: LocalizableTextBox.TextBox
+- uid: NanoByte.StructureEditor.WinForms.LocalizableTextBox.TextBox*
+  name: TextBox
+  href: api/NanoByte.StructureEditor.WinForms.LocalizableTextBox.html#NanoByte_StructureEditor_WinForms_LocalizableTextBox_TextBox_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.LocalizableTextBox.TextBox
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.LocalizableTextBox.TextBox
+  nameWithType: LocalizableTextBox.TextBox
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1
+  name: NodeEditorBase<T>
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html
+  commentId: T:NanoByte.StructureEditor.WinForms.NodeEditorBase`1
+  name.vb: NodeEditorBase(Of T)
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T)
+  nameWithType: NodeEditorBase<T>
+  nameWithType.vb: NodeEditorBase(Of T)
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.#ctor
+  name: NodeEditorBase()
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1__ctor
+  commentId: M:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.#ctor
+  name.vb: New()
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.NodeEditorBase()
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).New()
+  nameWithType: NodeEditorBase<T>.NodeEditorBase()
+  nameWithType.vb: NodeEditorBase(Of T).New()
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.#ctor*
+  name: NodeEditorBase
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1__ctor_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.NodeEditorBase
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).New
+  nameWithType: NodeEditorBase<T>.NodeEditorBase
+  nameWithType.vb: NodeEditorBase(Of T).New
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Bind(NanoByte.Common.Controls.UriTextBox,NanoByte.Common.PropertyPointer{System.Uri})
+  name: Bind(UriTextBox, PropertyPointer<Uri?>)
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_Bind_NanoByte_Common_Controls_UriTextBox_NanoByte_Common_PropertyPointer_System_Uri__
+  commentId: M:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Bind(NanoByte.Common.Controls.UriTextBox,NanoByte.Common.PropertyPointer{System.Uri})
+  name.vb: Bind(UriTextBox, PropertyPointer(Of Uri))
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.Bind(NanoByte.Common.Controls.UriTextBox, NanoByte.Common.PropertyPointer<System.Uri?>)
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).Bind(NanoByte.Common.Controls.UriTextBox, NanoByte.Common.PropertyPointer(Of System.Uri))
+  nameWithType: NodeEditorBase<T>.Bind(UriTextBox, PropertyPointer<Uri?>)
+  nameWithType.vb: NodeEditorBase(Of T).Bind(UriTextBox, PropertyPointer(Of Uri))
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Bind(System.Windows.Forms.CheckBox,NanoByte.Common.PropertyPointer{System.Boolean})
+  name: Bind(CheckBox, PropertyPointer<bool>)
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_Bind_System_Windows_Forms_CheckBox_NanoByte_Common_PropertyPointer_System_Boolean__
+  commentId: M:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Bind(System.Windows.Forms.CheckBox,NanoByte.Common.PropertyPointer{System.Boolean})
+  name.vb: Bind(CheckBox, PropertyPointer(Of Boolean))
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.Bind(System.Windows.Forms.CheckBox, NanoByte.Common.PropertyPointer<bool>)
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).Bind(System.Windows.Forms.CheckBox, NanoByte.Common.PropertyPointer(Of Boolean))
+  nameWithType: NodeEditorBase<T>.Bind(CheckBox, PropertyPointer<bool>)
+  nameWithType.vb: NodeEditorBase(Of T).Bind(CheckBox, PropertyPointer(Of Boolean))
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Bind(System.Windows.Forms.ComboBox,NanoByte.Common.PropertyPointer{System.String})
+  name: Bind(ComboBox, PropertyPointer<string?>)
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_Bind_System_Windows_Forms_ComboBox_NanoByte_Common_PropertyPointer_System_String__
+  commentId: M:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Bind(System.Windows.Forms.ComboBox,NanoByte.Common.PropertyPointer{System.String})
+  name.vb: Bind(ComboBox, PropertyPointer(Of String))
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.Bind(System.Windows.Forms.ComboBox, NanoByte.Common.PropertyPointer<string?>)
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).Bind(System.Windows.Forms.ComboBox, NanoByte.Common.PropertyPointer(Of String))
+  nameWithType: NodeEditorBase<T>.Bind(ComboBox, PropertyPointer<string?>)
+  nameWithType.vb: NodeEditorBase(Of T).Bind(ComboBox, PropertyPointer(Of String))
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Bind(System.Windows.Forms.Control,NanoByte.Common.PropertyPointer{System.String})
+  name: Bind(Control, PropertyPointer<string?>)
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_Bind_System_Windows_Forms_Control_NanoByte_Common_PropertyPointer_System_String__
+  commentId: M:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Bind(System.Windows.Forms.Control,NanoByte.Common.PropertyPointer{System.String})
+  name.vb: Bind(Control, PropertyPointer(Of String))
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.Bind(System.Windows.Forms.Control, NanoByte.Common.PropertyPointer<string?>)
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).Bind(System.Windows.Forms.Control, NanoByte.Common.PropertyPointer(Of String))
+  nameWithType: NodeEditorBase<T>.Bind(Control, PropertyPointer<string?>)
+  nameWithType.vb: NodeEditorBase(Of T).Bind(Control, PropertyPointer(Of String))
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Bind*
+  name: Bind
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_Bind_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Bind
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.Bind
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).Bind
+  nameWithType: NodeEditorBase<T>.Bind
+  nameWithType.vb: NodeEditorBase(Of T).Bind
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Bind``2(``0,System.Func{``1})
+  name: Bind<TControl, TChild>(TControl, Func<TChild>)
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_Bind__2___0_System_Func___1__
+  commentId: M:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Bind``2(``0,System.Func{``1})
+  name.vb: Bind(Of TControl, TChild)(TControl, Func(Of TChild))
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.Bind<TControl, TChild>(TControl, System.Func<TChild>)
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).Bind(Of TControl, TChild)(TControl, System.Func(Of TChild))
+  nameWithType: NodeEditorBase<T>.Bind<TControl, TChild>(TControl, Func<TChild>)
+  nameWithType.vb: NodeEditorBase(Of T).Bind(Of TControl, TChild)(TControl, Func(Of TChild))
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.CommandExecutor
+  name: CommandExecutor
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_CommandExecutor
+  commentId: P:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.CommandExecutor
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.CommandExecutor
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).CommandExecutor
+  nameWithType: NodeEditorBase<T>.CommandExecutor
+  nameWithType.vb: NodeEditorBase(Of T).CommandExecutor
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.CommandExecutor*
+  name: CommandExecutor
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_CommandExecutor_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.CommandExecutor
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.CommandExecutor
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).CommandExecutor
+  nameWithType: NodeEditorBase<T>.CommandExecutor
+  nameWithType.vb: NodeEditorBase(Of T).CommandExecutor
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.CommandExecutorChanged
+  name: CommandExecutorChanged
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_CommandExecutorChanged
+  commentId: E:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.CommandExecutorChanged
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.CommandExecutorChanged
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).CommandExecutorChanged
+  nameWithType: NodeEditorBase<T>.CommandExecutorChanged
+  nameWithType.vb: NodeEditorBase(Of T).CommandExecutorChanged
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.OnRefresh
+  name: OnRefresh
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_OnRefresh
+  commentId: E:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.OnRefresh
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.OnRefresh
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).OnRefresh
+  nameWithType: NodeEditorBase<T>.OnRefresh
+  nameWithType.vb: NodeEditorBase(Of T).OnRefresh
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Refresh
+  name: Refresh()
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_Refresh
+  commentId: M:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Refresh
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.Refresh()
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).Refresh()
+  nameWithType: NodeEditorBase<T>.Refresh()
+  nameWithType.vb: NodeEditorBase(Of T).Refresh()
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Refresh*
+  name: Refresh
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_Refresh_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Refresh
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.Refresh
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).Refresh
+  nameWithType: NodeEditorBase<T>.Refresh
+  nameWithType.vb: NodeEditorBase(Of T).Refresh
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Target
+  name: Target
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_Target
+  commentId: P:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Target
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.Target
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).Target
+  nameWithType: NodeEditorBase<T>.Target
+  nameWithType.vb: NodeEditorBase(Of T).Target
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Target*
+  name: Target
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_Target_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.Target
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.Target
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).Target
+  nameWithType: NodeEditorBase<T>.Target
+  nameWithType.vb: NodeEditorBase(Of T).Target
+- uid: NanoByte.StructureEditor.WinForms.NodeEditorBase`1.TargetChanged
+  name: TargetChanged
+  href: api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html#NanoByte_StructureEditor_WinForms_NodeEditorBase_1_TargetChanged
+  commentId: E:NanoByte.StructureEditor.WinForms.NodeEditorBase`1.TargetChanged
+  fullName: NanoByte.StructureEditor.WinForms.NodeEditorBase<T>.TargetChanged
+  fullName.vb: NanoByte.StructureEditor.WinForms.NodeEditorBase(Of T).TargetChanged
+  nameWithType: NodeEditorBase<T>.TargetChanged
+  nameWithType.vb: NodeEditorBase(Of T).TargetChanged
+- uid: NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor`1
+  name: PropertyGridNodeEditor<T>
+  href: api/NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.html
+  commentId: T:NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor`1
+  name.vb: PropertyGridNodeEditor(Of T)
+  fullName: NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor<T>
+  fullName.vb: NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor(Of T)
+  nameWithType: PropertyGridNodeEditor<T>
+  nameWithType.vb: PropertyGridNodeEditor(Of T)
+- uid: NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor`1.#ctor
+  name: PropertyGridNodeEditor()
+  href: api/NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.html#NanoByte_StructureEditor_WinForms_PropertyGridNodeEditor_1__ctor
+  commentId: M:NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor`1.#ctor
+  name.vb: New()
+  fullName: NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor<T>.PropertyGridNodeEditor()
+  fullName.vb: NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor(Of T).New()
+  nameWithType: PropertyGridNodeEditor<T>.PropertyGridNodeEditor()
+  nameWithType.vb: PropertyGridNodeEditor(Of T).New()
+- uid: NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor`1.#ctor*
+  name: PropertyGridNodeEditor
+  href: api/NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.html#NanoByte_StructureEditor_WinForms_PropertyGridNodeEditor_1__ctor_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor<T>.PropertyGridNodeEditor
+  fullName.vb: NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor(Of T).New
+  nameWithType: PropertyGridNodeEditor<T>.PropertyGridNodeEditor
+  nameWithType.vb: PropertyGridNodeEditor(Of T).New
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1
+  name: StructureEditor<T>
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html
+  commentId: T:NanoByte.StructureEditor.WinForms.StructureEditor`1
+  name.vb: StructureEditor(Of T)
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T)
+  nameWithType: StructureEditor<T>
+  nameWithType.vb: StructureEditor(Of T)
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.#ctor
+  name: StructureEditor()
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1__ctor
+  commentId: M:NanoByte.StructureEditor.WinForms.StructureEditor`1.#ctor
+  name.vb: New()
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.StructureEditor()
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).New()
+  nameWithType: StructureEditor<T>.StructureEditor()
+  nameWithType.vb: StructureEditor(Of T).New()
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.#ctor(System.Func{`0})
+  name: StructureEditor(Func<T>)
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1__ctor_System_Func__0__
+  commentId: M:NanoByte.StructureEditor.WinForms.StructureEditor`1.#ctor(System.Func{`0})
+  name.vb: New(Func(Of T))
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.StructureEditor(System.Func<T>)
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).New(System.Func(Of T))
+  nameWithType: StructureEditor<T>.StructureEditor(Func<T>)
+  nameWithType.vb: StructureEditor(Of T).New(Func(Of T))
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.#ctor*
+  name: StructureEditor
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1__ctor_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.StructureEditor`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.StructureEditor
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).New
+  nameWithType: StructureEditor<T>.StructureEditor
+  nameWithType.vb: StructureEditor(Of T).New
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.CommandManager
+  name: CommandManager
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_CommandManager
+  commentId: P:NanoByte.StructureEditor.WinForms.StructureEditor`1.CommandManager
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.CommandManager
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).CommandManager
+  nameWithType: StructureEditor<T>.CommandManager
+  nameWithType.vb: StructureEditor(Of T).CommandManager
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.CommandManager*
+  name: CommandManager
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_CommandManager_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.StructureEditor`1.CommandManager
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.CommandManager
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).CommandManager
+  nameWithType: StructureEditor<T>.CommandManager
+  nameWithType.vb: StructureEditor(Of T).CommandManager
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.Describe*
+  name: Describe
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_Describe_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.StructureEditor`1.Describe
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.Describe
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).Describe
+  nameWithType: StructureEditor<T>.Describe
+  nameWithType.vb: StructureEditor(Of T).Describe
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.DescribeRoot(System.String)
+  name: DescribeRoot(string)
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_DescribeRoot_System_String_
+  commentId: M:NanoByte.StructureEditor.WinForms.StructureEditor`1.DescribeRoot(System.String)
+  name.vb: DescribeRoot(String)
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.DescribeRoot(string)
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).DescribeRoot(String)
+  nameWithType: StructureEditor<T>.DescribeRoot(string)
+  nameWithType.vb: StructureEditor(Of T).DescribeRoot(String)
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.DescribeRoot*
+  name: DescribeRoot
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_DescribeRoot_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.StructureEditor`1.DescribeRoot
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.DescribeRoot
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).DescribeRoot
+  nameWithType: StructureEditor<T>.DescribeRoot
+  nameWithType.vb: StructureEditor(Of T).DescribeRoot
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.DescribeRoot``1(System.String)
+  name: DescribeRoot<TEditor>(string)
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_DescribeRoot__1_System_String_
+  commentId: M:NanoByte.StructureEditor.WinForms.StructureEditor`1.DescribeRoot``1(System.String)
+  name.vb: DescribeRoot(Of TEditor)(String)
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.DescribeRoot<TEditor>(string)
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).DescribeRoot(Of TEditor)(String)
+  nameWithType: StructureEditor<T>.DescribeRoot<TEditor>(string)
+  nameWithType.vb: StructureEditor(Of T).DescribeRoot(Of TEditor)(String)
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.Describe``1
+  name: Describe<TContainer>()
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_Describe__1
+  commentId: M:NanoByte.StructureEditor.WinForms.StructureEditor`1.Describe``1
+  name.vb: Describe(Of TContainer)()
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.Describe<TContainer>()
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).Describe(Of TContainer)()
+  nameWithType: StructureEditor<T>.Describe<TContainer>()
+  nameWithType.vb: StructureEditor(Of T).Describe(Of TContainer)()
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.GetSerialized
+  name: GetSerialized()
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_GetSerialized
+  commentId: M:NanoByte.StructureEditor.WinForms.StructureEditor`1.GetSerialized
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.GetSerialized()
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).GetSerialized()
+  nameWithType: StructureEditor<T>.GetSerialized()
+  nameWithType.vb: StructureEditor(Of T).GetSerialized()
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.GetSerialized*
+  name: GetSerialized
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_GetSerialized_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.StructureEditor`1.GetSerialized
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.GetSerialized
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).GetSerialized
+  nameWithType: StructureEditor<T>.GetSerialized
+  nameWithType.vb: StructureEditor(Of T).GetSerialized
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.Open(NanoByte.Common.Undo.ICommandManager{`0})
+  name: Open(ICommandManager<T>)
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_Open_NanoByte_Common_Undo_ICommandManager__0__
+  commentId: M:NanoByte.StructureEditor.WinForms.StructureEditor`1.Open(NanoByte.Common.Undo.ICommandManager{`0})
+  name.vb: Open(ICommandManager(Of T))
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.Open(NanoByte.Common.Undo.ICommandManager<T>)
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).Open(NanoByte.Common.Undo.ICommandManager(Of T))
+  nameWithType: StructureEditor<T>.Open(ICommandManager<T>)
+  nameWithType.vb: StructureEditor(Of T).Open(ICommandManager(Of T))
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.Open*
+  name: Open
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_Open_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.StructureEditor`1.Open
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.Open
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).Open
+  nameWithType: StructureEditor<T>.Open
+  nameWithType.vb: StructureEditor(Of T).Open
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.Redo
+  name: Redo()
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_Redo
+  commentId: M:NanoByte.StructureEditor.WinForms.StructureEditor`1.Redo
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.Redo()
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).Redo()
+  nameWithType: StructureEditor<T>.Redo()
+  nameWithType.vb: StructureEditor(Of T).Redo()
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.Redo*
+  name: Redo
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_Redo_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.StructureEditor`1.Redo
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.Redo
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).Redo
+  nameWithType: StructureEditor<T>.Redo
+  nameWithType.vb: StructureEditor(Of T).Redo
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.Remove
+  name: Remove()
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_Remove
+  commentId: M:NanoByte.StructureEditor.WinForms.StructureEditor`1.Remove
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.Remove()
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).Remove()
+  nameWithType: StructureEditor<T>.Remove()
+  nameWithType.vb: StructureEditor(Of T).Remove()
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.Remove*
+  name: Remove
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_Remove_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.StructureEditor`1.Remove
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.Remove
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).Remove
+  nameWithType: StructureEditor<T>.Remove
+  nameWithType.vb: StructureEditor(Of T).Remove
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.Undo
+  name: Undo()
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_Undo
+  commentId: M:NanoByte.StructureEditor.WinForms.StructureEditor`1.Undo
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.Undo()
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).Undo()
+  nameWithType: StructureEditor<T>.Undo()
+  nameWithType.vb: StructureEditor(Of T).Undo()
+- uid: NanoByte.StructureEditor.WinForms.StructureEditor`1.Undo*
+  name: Undo
+  href: api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_Undo_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.StructureEditor`1.Undo
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.StructureEditor<T>.Undo
+  fullName.vb: NanoByte.StructureEditor.WinForms.StructureEditor(Of T).Undo
+  nameWithType: StructureEditor<T>.Undo
+  nameWithType.vb: StructureEditor(Of T).Undo
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor
+  name: ValidatingTextEditor
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html
+  commentId: T:NanoByte.StructureEditor.WinForms.ValidatingTextEditor
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor
+  nameWithType: ValidatingTextEditor
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.#ctor
+  name: ValidatingTextEditor()
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor__ctor
+  commentId: M:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.#ctor
+  name.vb: New()
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.ValidatingTextEditor()
+  fullName.vb: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.New()
+  nameWithType: ValidatingTextEditor.ValidatingTextEditor()
+  nameWithType.vb: ValidatingTextEditor.New()
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.#ctor*
+  name: ValidatingTextEditor
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor__ctor_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.ValidatingTextEditor
+  fullName.vb: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.New
+  nameWithType: ValidatingTextEditor.ValidatingTextEditor
+  nameWithType.vb: ValidatingTextEditor.New
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.ClearUndoStack
+  name: ClearUndoStack()
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_ClearUndoStack
+  commentId: M:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.ClearUndoStack
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.ClearUndoStack()
+  nameWithType: ValidatingTextEditor.ClearUndoStack()
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.ClearUndoStack*
+  name: ClearUndoStack
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_ClearUndoStack_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.ClearUndoStack
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.ClearUndoStack
+  nameWithType: ValidatingTextEditor.ClearUndoStack
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.ContentChanged
+  name: ContentChanged
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_ContentChanged
+  commentId: E:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.ContentChanged
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.ContentChanged
+  nameWithType: ValidatingTextEditor.ContentChanged
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Dispose(System.Boolean)
+  name: Dispose(bool)
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_Dispose_System_Boolean_
+  commentId: M:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Dispose(System.Boolean)
+  name.vb: Dispose(Boolean)
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Dispose(bool)
+  fullName.vb: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Dispose(Boolean)
+  nameWithType: ValidatingTextEditor.Dispose(bool)
+  nameWithType.vb: ValidatingTextEditor.Dispose(Boolean)
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Dispose*
+  name: Dispose
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_Dispose_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Dispose
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Dispose
+  nameWithType: ValidatingTextEditor.Dispose
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.EnableRedo
+  name: EnableRedo
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_EnableRedo
+  commentId: P:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.EnableRedo
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.EnableRedo
+  nameWithType: ValidatingTextEditor.EnableRedo
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.EnableRedo*
+  name: EnableRedo
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_EnableRedo_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.EnableRedo
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.EnableRedo
+  nameWithType: ValidatingTextEditor.EnableRedo
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.EnableUndo
+  name: EnableUndo
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_EnableUndo
+  commentId: P:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.EnableUndo
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.EnableUndo
+  nameWithType: ValidatingTextEditor.EnableUndo
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.EnableUndo*
+  name: EnableUndo
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_EnableUndo_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.EnableUndo
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.EnableUndo
+  nameWithType: ValidatingTextEditor.EnableUndo
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Redo
+  name: Redo()
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_Redo
+  commentId: M:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Redo
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Redo()
+  nameWithType: ValidatingTextEditor.Redo()
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Redo*
+  name: Redo
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_Redo_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Redo
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Redo
+  nameWithType: ValidatingTextEditor.Redo
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.SetContent(System.String,System.String)
+  name: SetContent(string, string)
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_SetContent_System_String_System_String_
+  commentId: M:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.SetContent(System.String,System.String)
+  name.vb: SetContent(String, String)
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.SetContent(string, string)
+  fullName.vb: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.SetContent(String, String)
+  nameWithType: ValidatingTextEditor.SetContent(string, string)
+  nameWithType.vb: ValidatingTextEditor.SetContent(String, String)
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.SetContent*
+  name: SetContent
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_SetContent_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.SetContent
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.SetContent
+  nameWithType: ValidatingTextEditor.SetContent
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.TextEditor
+  name: TextEditor
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_TextEditor
+  commentId: P:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.TextEditor
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.TextEditor
+  nameWithType: ValidatingTextEditor.TextEditor
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.TextEditor*
+  name: TextEditor
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_TextEditor_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.TextEditor
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.TextEditor
+  nameWithType: ValidatingTextEditor.TextEditor
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Undo
+  name: Undo()
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_Undo
+  commentId: M:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Undo
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Undo()
+  nameWithType: ValidatingTextEditor.Undo()
+- uid: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Undo*
+  name: Undo
+  href: api/NanoByte.StructureEditor.WinForms.ValidatingTextEditor.html#NanoByte_StructureEditor_WinForms_ValidatingTextEditor_Undo_
+  commentId: Overload:NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Undo
+  isSpec: "True"
+  fullName: NanoByte.StructureEditor.WinForms.ValidatingTextEditor.Undo
+  nameWithType: ValidatingTextEditor.Undo
