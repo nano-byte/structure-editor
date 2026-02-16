@@ -5,6 +5,7 @@
     <AssemblyName>NanoByte.StructureEditor.UnitTests</AssemblyName>
     <RootNamespace>NanoByte.StructureEditor</RootNamespace>
     <TargetFrameworks>net48;net9.0-windows</TargetFrameworks>
+    <OutputType>Exe</OutputType>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <SignAssembly>False</SignAssembly>
     <IsPackable>False</IsPackable>
@@ -27,7 +28,7 @@
     <PackageReference Include="FluentAssertions" Version="7.2.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
     <PackageReference Include="Moq" Version="4.20.72" />
-    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.v3" Version="3.2.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" />
   </ItemGroup>
 
