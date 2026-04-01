@@ -25,6 +25,7 @@ public partial class  Group : IContactContainer
     /// <inheritdoc/>
     [Browsable(false)]
     [XmlElement(nameof(Contact))]
+    [OrderedEquality]
     public List<Contact> Contacts { get; } = [];
 
     public override string ToString() => Name ?? "";
