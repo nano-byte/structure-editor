@@ -42,7 +42,7 @@ jobs:
           "EOF" >> $env:GITHUB_OUTPUT
       - name: Create GitHub Release
         if: github.ref_type == 'tag'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           body: |
             **[NuGet package](https://www.nuget.org/packages/NanoByte.StructureEditor/${{steps.gitversion.outputs.nuGetVersion}})**
