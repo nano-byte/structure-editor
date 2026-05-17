@@ -35,7 +35,7 @@ public static class SampleData
                         HomeAddress = new Address
                         {
                             Street = "112 Mercer Street",
-                            City = "New Jersey",
+                            City = "Princeton",
                             Country = "United States"
                         },
                         PhoneNumbers =

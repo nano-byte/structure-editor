@@ -13,7 +13,7 @@ namespace NanoByte.StructureEditor.Sample.Model;
 /// </summary>
 [Description("A group of multiple contacts.")]
 [Equatable]
-public partial class  Group : IContactContainer
+public partial class Group : IContactContainer
 {
     /// <summary>
     /// The name of the group.

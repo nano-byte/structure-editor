@@ -9,9 +9,9 @@ using Generator.Equals;
 namespace NanoByte.StructureEditor.Sample.Model;
 
 /// <summary>
-/// Contact details of an individuals.
+/// Contact details of an individual.
 /// </summary>
-[Description("Contact details of an individuals.")]
+[Description("Contact details of an individual.")]
 [Equatable]
 public partial class Contact
 {
