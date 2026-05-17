@@ -150,16 +150,22 @@ public class ValidatingTextEditor : UserControl
         _timer.Stop();
         if (ContentChanged == null) return;
 
-        Log.Handler += HandleLogEntry;
-        ContentChanged(TextEditor.Text);
-        Log.Handler -= HandleLogEntry;
-
         string? warning = null;
 
         void HandleLogEntry(LogSeverity severity, string? message, Exception? exception)
         {
             if (severity >= LogSeverity.Warn)
                 warning = message ?? exception?.GetMessageWithInner();
+        }
+
+        Log.Handler += HandleLogEntry;
+        try
+        {
+            ContentChanged(TextEditor.Text);
+        }
+        finally
+        {
+            Log.Handler -= HandleLogEntry;
         }
 
         if (warning == null) SetStatus(Images.Info, "OK");

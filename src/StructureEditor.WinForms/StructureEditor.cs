@@ -177,21 +177,31 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
         if (commandManager == null) throw new ArgumentNullException(nameof(commandManager));
 
         CommandManager.TargetUpdated -= RebuildOnNextIdle;
+
+        // Cancel any rebuild that was scheduled against the previous CommandManager
+        Application.Idle -= RebuildOnce;
+        _rebuildScheduled = false;
+
         CommandManager = commandManager;
         CommandManager.TargetUpdated += RebuildOnNextIdle;
 
         RebuildTree();
+    }
 
-        void RebuildOnNextIdle()
-        {
-            Application.Idle += RebuildOnce;
+    private bool _rebuildScheduled;
 
-            void RebuildOnce(object? sender, EventArgs e)
-            {
-                RebuildTree();
-                Application.Idle -= RebuildOnce;
-            }
-        }
+    private void RebuildOnNextIdle()
+    {
+        if (_rebuildScheduled) return;
+        _rebuildScheduled = true;
+        Application.Idle += RebuildOnce;
+    }
+
+    private void RebuildOnce(object? sender, EventArgs e)
+    {
+        Application.Idle -= RebuildOnce;
+        _rebuildScheduled = false;
+        RebuildTree();
     }
     #endregion
 
