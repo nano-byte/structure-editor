@@ -66,6 +66,7 @@ public class ContainerDescriptionFacts
 
     private static void ShouldBe(IReadOnlyList<NodeCandidate?> nodes, params (string name, string description)[] expectedValues)
     {
+        nodes.Should().HaveCount(expectedValues.Length);
         for (int i = 0; i < expectedValues.Length; i++)
         {
             var node = nodes[i];
@@ -77,6 +78,7 @@ public class ContainerDescriptionFacts
 
     private static void ShouldBe(IReadOnlyList<Node> nodes, params (string nodeType, object target)[] expectedValues)
     {
+        nodes.Should().HaveCount(expectedValues.Length);
         for (int i = 0; i < expectedValues.Length; i++)
         {
             var node = nodes[i];
