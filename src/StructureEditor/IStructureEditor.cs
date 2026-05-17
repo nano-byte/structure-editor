@@ -1,3 +1,6 @@
+// Copyright Bastian Eicher
+// Licensed under the MIT License
+
 using System.Diagnostics.CodeAnalysis;
 
 namespace NanoByte.StructureEditor;

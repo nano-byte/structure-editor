@@ -1,3 +1,6 @@
+// Copyright Bastian Eicher
+// Licensed under the MIT License
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
