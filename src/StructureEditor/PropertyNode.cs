@@ -30,7 +30,7 @@ public class PropertyNode<TContainer, TProperty, TEditor>(string name, TContaine
     public override IValueCommand? GetUpdateCommand(string serializedValue)
     {
         var newValue = XmlStorage.FromXmlString<TProperty>(serializedValue);
-        return newValue.Equals(pointer.Value) ? null : SetValueCommand.For(pointer, newValue);
+        return Equals(newValue, pointer.Value) ? null : SetValueCommand.For(pointer, newValue);
     }
 
     /// <inheritdoc/>
