@@ -170,9 +170,12 @@ public class ValidatingTextEditor : UserControl
     {
         if (ex is InvalidDataException {InnerException: XmlException xmlException})
         {
-            int lineOffset = TextEditor.Document.GetLineSegment(xmlException.LineNumber - 1).Offset;
+            int lineIndex = Math.Max(0, Math.Min(xmlException.LineNumber - 1, TextEditor.Document.TotalNumberOfLines - 1));
+            var segment = TextEditor.Document.GetLineSegment(lineIndex);
+            int offset = segment.Offset + Math.Max(0, Math.Min(xmlException.LinePosition - 1, segment.Length));
+            int length = Math.Min(10, Math.Max(1, TextEditor.Document.TextLength - offset));
             TextEditor.Document.MarkerStrategy.AddMarker(
-                new TextMarker(lineOffset + xmlException.LinePosition - 1, 10, TextMarkerType.WaveLine) {ToolTip = xmlException.Message});
+                new TextMarker(offset, length, TextMarkerType.WaveLine) {ToolTip = xmlException.Message});
             TextEditor.Refresh();
 
             SetStatus(Images.Error, xmlException.Message);
