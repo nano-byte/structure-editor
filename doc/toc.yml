@@ -1,4 +1,12 @@
 - name: Home
   href: index.md
+- name: Polymorphic lists
+  href: polymorphic-lists.md
+- name: Undo & redo
+  href: undo-redo.md
+- name: Custom editors
+  href: custom-editors.md
+- name: Custom frontends
+  href: custom-frontends.md
 - name: API
   href: api/
