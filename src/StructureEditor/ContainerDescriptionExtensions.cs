@@ -38,7 +38,7 @@ public static class ContainerDescriptionExtensions
     /// <param name="description">Describes an object that contains nodes (properties and/or lists).</param>
     /// <param name="name">The name of the element type.</param>
     /// <param name="getList">A function to retrieve the list from the container.</param>
-    /// <param name="editor"></param>
+    /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     public static IContainerDescription<TContainer> AddPlainList<TContainer, TElement, TEditor>(this IContainerDescription<TContainer> description, string name, Func<TContainer, IList<TElement>> getList, TEditor editor)
         where TContainer : class

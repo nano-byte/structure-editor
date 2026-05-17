@@ -123,7 +123,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     private readonly AggregateDispatcher<object, NodeCandidate?> _getCandidates = new();
 
     /// <summary>
-    /// Adds a <see cref="ContainerDescription{TContainer}"/> used to describe the structure of the data being editing.
+    /// Adds a <see cref="ContainerDescription{TContainer}"/> used to describe the structure of the data being edited.
     /// </summary>
     /// <typeparam name="TContainer">The type of the container to describe.</typeparam>
     /// <returns>The <see cref="ContainerDescription{TContainer}"/> for use in a "Fluent API" style.</returns>
@@ -163,7 +163,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
 
     #region Target
     /// <summary>
-    /// Holds the object being editing and manages undo/redo operations on it.
+    /// Holds the object being edited and manages undo/redo operations on it.
     /// </summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public ICommandManager<T> CommandManager { get; private set; }
@@ -171,7 +171,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     /// <summary>
     /// Opens an object for editing using the specified <see cref="ICommandManager{T}"/>.
     /// </summary>
-    /// <param name="commandManager">Holds the object being editing and manages undo/redo operations on it.</param>
+    /// <param name="commandManager">Holds the object being edited and manages undo/redo operations on it.</param>
     public void Open(ICommandManager<T> commandManager)
     {
         if (commandManager == null) throw new ArgumentNullException(nameof(commandManager));
