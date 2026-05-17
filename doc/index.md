@@ -16,7 +16,7 @@ This allows you to create an IDE-like experience for your users when editing com
 
 ## Usage
 
-Add a reference to the [NanoByte.StructureEditor.WinForms](https://www.nuget.org/packages/NanoByte.StructureEditor.WinForms/) NuGet package to your project. It is available for .NET Framework 2.0+.
+Add a reference to the [NanoByte.StructureEditor.WinForms](https://www.nuget.org/packages/NanoByte.StructureEditor.WinForms/) NuGet package to your project. It is available for .NET Framework 4.5+ and .NET 8.0+.
 
 ### Initialization
 
@@ -49,11 +49,11 @@ editor.DescribeRoot("Address Book")
 editor.Describe<IContactContainer>()
       .AddPlainList("Contact", x => x.Contacts);
 editor.Describe<Contact>()
-      .AddProperty("Home Address", x => PropertyPointer.For(() => x.HomeAddress))
-      .AddProperty("Work Address", x => PropertyPointer.For(() => x.WorkAddress))
+      .AddProperty("Home Address", x => PropertyPointer.ForNullable(() => x.HomeAddress))
+      .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress))
       .AddList(x => x.PhoneNumbers)
-      .AddElement("Landline Number", new LandlineNumber())
-      .AddElement("Mobile Number", new MobileNumber());
+      .AddElement("Landline Number", () => new LandlineNumber())
+      .AddElement("Mobile Number", () => new MobileNumber());
 ```
 
 ### Storage
