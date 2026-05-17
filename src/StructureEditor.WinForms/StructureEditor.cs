@@ -251,7 +251,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     private void BuildAddDropDownMenu()
     {
         var menu = (SelectedNode?.Node.Target == null)
-            ? new ToolStripItem[0]
+            ? []
             : _getCandidates.Dispatch(SelectedNode.Node.Target)
                             .Select(candidate => candidate == null
                                  ? (ToolStripItem)new ToolStripSeparator()
