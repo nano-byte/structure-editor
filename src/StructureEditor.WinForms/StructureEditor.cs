@@ -205,6 +205,25 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     }
     #endregion
 
+    #region Dispose
+    /// <inheritdoc/>
+    protected override void Dispose(bool disposing)
+    {
+        try
+        {
+            if (disposing)
+            {
+                CommandManager.TargetUpdated -= RebuildOnNextIdle;
+                Application.Idle -= RebuildOnce;
+            }
+        }
+        finally
+        {
+            base.Dispose(disposing);
+        }
+    }
+    #endregion
+
     #region Build nodes
     /// <summary>
     /// Rebuilds the <see cref="_treeView"/> node while attempting to retain the current selection.
