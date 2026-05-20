@@ -15,7 +15,7 @@ internal abstract class Description<TContainer>
     /// <summary>
     /// Returns information about nodes of this type found in a specific instance of <typeparamref name="TContainer"/>.
     /// </summary>
-    /// <param name="container">The container instance to look in to.</param>
+    /// <param name="container">The container instance to look into.</param>
     public abstract IEnumerable<Node> GetNodesIn(TContainer container);
 
     /// <summary>

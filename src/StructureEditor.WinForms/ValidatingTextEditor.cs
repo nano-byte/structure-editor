@@ -77,7 +77,7 @@ public class ValidatingTextEditor : UserControl
     /// Sets a new text to be edited.
     /// </summary>
     /// <param name="text">The text to set.</param>
-    /// <param name="format">The format named used to determine the highlighting scheme (e.g. XML).</param>
+    /// <param name="format">The format name used to determine the highlighting scheme (e.g. XML).</param>
     public void SetContent(string text, string format)
     {
         // Discard any validation pending against the previous content

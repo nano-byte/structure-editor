@@ -13,7 +13,7 @@ using ICommandExecutor = NanoByte.Common.Undo.ICommandExecutor;
 namespace NanoByte.StructureEditor.WinForms;
 
 /// <summary>
-/// Common base class for controls that edits a node in the structure.
+/// Common base class for controls that edit a node in the structure.
 /// </summary>
 /// <typeparam name="T">The type of element to edit.</typeparam>
 public abstract class NodeEditorBase<T> : UserControl, INodeEditor<T>

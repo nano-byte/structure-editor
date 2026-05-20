@@ -19,7 +19,7 @@ public static class ContainerDescriptionExtensions
     /// <typeparam name="TProperty">The type of the property.</typeparam>
     /// <param name="description">Describes an object that contains nodes (properties and/or lists).</param>
     /// <param name="name">The name of the property.</param>
-    /// <param name="getPointer">A function to retrieve a pointer to property in the container.</param>
+    /// <param name="getPointer">A function to retrieve a pointer to the property in the container.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     public static IContainerDescription<TContainer> AddProperty<TContainer, TProperty>(this IContainerDescription<TContainer> description, string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer)
         where TContainer : class
@@ -33,7 +33,7 @@ public static class ContainerDescriptionExtensions
     /// <typeparam name="TProperty">The type of the property.</typeparam>
     /// <param name="description">Describes an object that contains nodes (properties and/or lists).</param>
     /// <param name="name">The name of the property.</param>
-    /// <param name="getPointer">A function to retrieve a pointer to property in the container.</param>
+    /// <param name="getPointer">A function to retrieve a pointer to the property in the container.</param>
     /// <param name="factory">Callback to create a new instance of <typeparamref name="TProperty"/>.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     public static IContainerDescription<TContainer> AddProperty<TContainer, TProperty>(this IContainerDescription<TContainer> description, string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer, Func<TProperty> factory)

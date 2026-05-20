@@ -137,7 +137,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     }
 
     /// <summary>
-    /// Set up handling for the root element with a custom editor.
+    /// Sets up handling for the root element with a custom editor.
     /// </summary>
     /// <typeparam name="TEditor">An editor for modifying the content of the root.</typeparam>
     /// <param name="name">The name of the root element.</param>
@@ -153,7 +153,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     }
 
     /// <summary>
-    /// Set up handling for the root element with a generic editor.
+    /// Sets up handling for the root element with a generic editor.
     /// </summary>
     /// <param name="name">The name of the root element.</param>
     /// <returns>The <see cref="ContainerDescription{TContainer}"/> for use in a "Fluent API" style.</returns>

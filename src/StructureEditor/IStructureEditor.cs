@@ -21,13 +21,13 @@ public interface IStructureEditor<T>
         where TContainer : class;
 
     /// <summary>
-    /// Set up handling for the root element with a generic editor.
+    /// Sets up handling for the root element with a generic editor.
     /// </summary>
     /// <param name="name">The name of the root element.</param>
     IContainerDescription<T> DescribeRoot(string name);
 
     /// <summary>
-    /// Set up handling for the root element with a custom editor.
+    /// Sets up handling for the root element with a custom editor.
     /// </summary>
     /// <typeparam name="TEditor">An editor for modifying the content of the root.</typeparam>
     /// <param name="name">The name of the root element.</param>

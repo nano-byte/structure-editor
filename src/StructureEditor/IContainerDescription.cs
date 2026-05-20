@@ -19,7 +19,7 @@ public interface IContainerDescription<TContainer> where TContainer : class
     /// <typeparam name="TProperty">The type of the property.</typeparam>
     /// <typeparam name="TEditor">An editor for modifying the content of the property.</typeparam>
     /// <param name="name">The name of the property.</param>
-    /// <param name="getPointer">A function to retrieve a pointer to property in the container.</param>
+    /// <param name="getPointer">A function to retrieve a pointer to the property in the container.</param>
     /// <param name="factory">Callback to create a new instance of the property.</param>
     /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
@@ -53,7 +53,7 @@ public interface IContainerDescription<TContainer> where TContainer : class
     /// <summary>
     /// Returns information about nodes found in a specific instance of the container.
     /// </summary>
-    /// <param name="container">The container instance to look in to.</param>
+    /// <param name="container">The container instance to look into.</param>
     IEnumerable<Node> GetNodesIn(TContainer container);
 
     /// <summary>
