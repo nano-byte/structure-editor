@@ -344,6 +344,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
         {
             _editorPanel.Controls.Remove(_editorControl);
             _editorControl.Dispose();
+            _editorControl = null;
         }
 
         if (SelectedNode != null)

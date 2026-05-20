@@ -61,7 +61,10 @@ public class ValidatingTextEditor : UserControl
         try
         {
             if (disposing)
+            {
                 _timer.Dispose();
+                TextEditor.Dispose();
+            }
         }
         finally
         {
@@ -77,6 +80,9 @@ public class ValidatingTextEditor : UserControl
     /// <param name="format">The format named used to determine the highlighting scheme (e.g. XML).</param>
     public void SetContent(string text, string format)
     {
+        // Discard any validation pending against the previous content
+        _timer.Stop();
+
         var textEditor = new TextEditorControlEx
         {
             Location = new Point(0, 0),
