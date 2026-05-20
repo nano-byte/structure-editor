@@ -14,6 +14,5 @@ internal sealed class StructureTreeNode : TreeNode
     {
         Node = node;
         ToolTipText = node.Description ?? "";
-        ContextMenuStrip = new ContextMenuStrip();
     }
 }
