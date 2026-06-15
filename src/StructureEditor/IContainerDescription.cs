@@ -37,7 +37,7 @@ public interface IContainerDescription<TContainer> where TContainer : class
         where TProperty : class;
 
     /// <summary>
-    /// Adds a list to the description.
+    /// Adds a polymoprhic list to the description, i.e. a list whose elements can be one of several types.
     /// </summary>
     /// <typeparam name="TList">The type of elements in the list.</typeparam>
     /// <param name="getList">A function to retrieve the list from the container.</param>
@@ -46,7 +46,7 @@ public interface IContainerDescription<TContainer> where TContainer : class
         where TList : class;
 
     /// <summary>
-    /// Adds a list with only one type of element to the description.
+    /// Adds a list to the description.
     /// </summary>
     /// <typeparam name="TElement">The type of elements in the list.</typeparam>
     /// <typeparam name="TEditor">An editor for modifying this type of element.</typeparam>

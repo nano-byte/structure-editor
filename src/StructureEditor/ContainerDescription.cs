@@ -35,12 +35,7 @@ public class ContainerDescription<TContainer> : IContainerDescription<TContainer
         return propertyDescription;
     }
 
-    /// <summary>
-    /// Adds a list to the description.
-    /// </summary>
-    /// <typeparam name="TList">The type of elements in the list.</typeparam>
-    /// <param name="getList">A function to retrieve the list from the container.</param>
-    /// <returns>A list description, enabling you to specify explicit sub-types of <typeparamref name="TList"/> allowed in the list.</returns>
+    /// <inheritdoc/>
     public IListDescription<TContainer, TList> AddPolymorphicList<TList>(Func<TContainer, IList<TList>> getList)
         where TList : class
     {

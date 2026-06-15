@@ -30,7 +30,7 @@ public static class ContainerDescriptionExtensions
         => description.AddProperty(name, getPointer, () => new TProperty(), editor);
 
     /// <summary>
-    /// Adds a list with only one type of element to the description.
+    /// Adds a list to the description.
     /// </summary>
     /// <typeparam name="TContainer">The type of the container containing the list.</typeparam>
     /// <typeparam name="TElement">The type of elements in the list.</typeparam>

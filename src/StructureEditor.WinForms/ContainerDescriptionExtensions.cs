@@ -42,7 +42,7 @@ public static class ContainerDescriptionExtensions
         => description.AddProperty(name, getPointer, factory, new PropertyGridNodeEditor<TProperty>());
 
     /// <summary>
-    /// Adds a list with only one type of element to the description using <see cref="PropertyGridNodeEditor{T}"/>.
+    /// Adds a list to the description using <see cref="PropertyGridNodeEditor{T}"/>.
     /// </summary>
     /// <typeparam name="TContainer">The type of the container containing the list.</typeparam>
     /// <typeparam name="TElement">The type of elements in the list.</typeparam>
@@ -56,7 +56,7 @@ public static class ContainerDescriptionExtensions
         => description.AddList(name, getList, new PropertyGridNodeEditor<TElement>());
 
     /// <summary>
-    /// Adds a list with only one type of element to the description using <see cref="PropertyGridNodeEditor{T}"/>.
+    /// Adds a list to the description using <see cref="PropertyGridNodeEditor{T}"/>.
     /// </summary>
     /// <typeparam name="TContainer">The type of the container containing the list.</typeparam>
     /// <typeparam name="TElement">The type of elements in the list.</typeparam>
