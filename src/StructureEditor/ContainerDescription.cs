@@ -50,7 +50,7 @@ public class ContainerDescription<TContainer> : IContainerDescription<TContainer
     }
 
     /// <inheritdoc/>
-    public IContainerDescription<TContainer> AddPlainList<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, Func<TElement> factory, TEditor editor)
+    public IContainerDescription<TContainer> AddList<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, Func<TElement> factory, TEditor editor)
         where TElement : class, IEquatable<TElement>
         where TEditor : INodeEditor<TElement>, new()
     {

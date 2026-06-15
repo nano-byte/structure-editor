@@ -1,6 +1,6 @@
 # Polymorphic lists
 
-`AddPlainList()` covers the common case of a list with a single element type. When a list can hold multiple concrete types behind a common base class or interface, use `AddPolymorphicList()` and chain `AddElement()` for each concrete type the user should be able to add.
+`AddList()` covers the common case of a list with a single element type. When a list can hold multiple concrete types behind a common base class or interface, use `AddPolymorphicList()` and chain `AddElement()` for each concrete type the user should be able to add.
 
 ## Modeling the data
 
@@ -62,7 +62,7 @@ public class AddressBook : IContactContainer { /* ... */ }
 public class Group       : IContactContainer { /* ... */ }
 
 editor.Describe<IContactContainer>()
-      .AddPlainList("Contact", x => x.Contacts);
+      .AddList("Contact", x => x.Contacts);
 ```
 
 Both `AddressBook` nodes and `Group` nodes will now offer "Add → Contact" in the tree, without having to repeat the description.

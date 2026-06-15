@@ -40,9 +40,9 @@ public static class ContainerDescriptionExtensions
     /// <param name="getList">A function to retrieve the list from the container.</param>
     /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
-    public static IContainerDescription<TContainer> AddPlainList<TContainer, TElement, TEditor>(this IContainerDescription<TContainer> description, string name, Func<TContainer, IList<TElement>> getList, TEditor editor)
+    public static IContainerDescription<TContainer> AddList<TContainer, TElement, TEditor>(this IContainerDescription<TContainer> description, string name, Func<TContainer, IList<TElement>> getList, TEditor editor)
         where TContainer : class
         where TElement : class, IEquatable<TElement>, new()
         where TEditor : INodeEditor<TElement>, new()
-        => description.AddPlainList(name, getList, () => new TElement(), editor);
+        => description.AddList(name, getList, () => new TElement(), editor);
 }

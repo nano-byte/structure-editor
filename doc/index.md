@@ -39,16 +39,16 @@ You need to "describe" your data structure to the Editor. You can do this direct
 The fluent API provides the following methods:
 - `.AddProperty()` describes a single-value non-polymorphic property.
 - `.AddPolymorphicProperty()` describes a single-value [polymorphic property](polymorphic-properties.md). After calling it you chain `.AddElement()` calls for each specific type the property can hold.
-- `.AddPlainList()` describes a non-polymorphic list.
+- `.AddList()` describes a non-polymorphic list.
 - `.AddPolymorphicList()` describes a [polymorphic list](polymorphic-lists.md). After calling it you need to chain `.AddElement()` calls for each specific type of element the list can hold.
 
 There are numerous overloads for each of these methods, e.g., allowing you to specify a custom editor control for a data type or to keep the auto-generated one.
 
 ```csharp
 editor.DescribeRoot("Address Book")
-      .AddPlainList("Group", x => x.Groups);
+      .AddList("Group", x => x.Groups);
 editor.Describe<IContactContainer>()
-      .AddPlainList("Contact", x => x.Contacts);
+      .AddList("Contact", x => x.Contacts);
 editor.Describe<Contact>()
       .AddProperty("Home Address", x => PropertyPointer.ForNullable(() => x.HomeAddress))
       .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress))

@@ -18,10 +18,10 @@ public class AddressBookEditor : StructureEditor<AddressBook>
     public AddressBookEditor()
     {
         DescribeRoot("Address Book")
-           .AddPlainList("Group", x => x.Groups);
+           .AddList("Group", x => x.Groups);
 
         Describe<IContactContainer>()
-           .AddPlainList("Contact", x => x.Contacts);
+           .AddList("Contact", x => x.Contacts);
 
         Describe<Contact>()
            .AddProperty("Home Address", x => PropertyPointer.ForNullable(() => x.HomeAddress), new AddressEditor())

@@ -50,10 +50,10 @@ public static class ContainerDescriptionExtensions
     /// <param name="name">The name of the element type.</param>
     /// <param name="getList">A function to retrieve the list from the container.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
-    public static IContainerDescription<TContainer> AddPlainList<TContainer, TElement>(this IContainerDescription<TContainer> description, string name, Func<TContainer, IList<TElement>> getList)
+    public static IContainerDescription<TContainer> AddList<TContainer, TElement>(this IContainerDescription<TContainer> description, string name, Func<TContainer, IList<TElement>> getList)
         where TContainer : class
         where TElement : class, IEquatable<TElement>, new()
-        => description.AddPlainList(name, getList, new PropertyGridNodeEditor<TElement>());
+        => description.AddList(name, getList, new PropertyGridNodeEditor<TElement>());
 
     /// <summary>
     /// Adds a list with only one type of element to the description using <see cref="PropertyGridNodeEditor{T}"/>.
@@ -65,10 +65,10 @@ public static class ContainerDescriptionExtensions
     /// <param name="getList">A function to retrieve the list from the container.</param>
     /// <param name="factory">Callback to create a new instance of <typeparamref name="TElement"/>.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
-    public static IContainerDescription<TContainer> AddPlainList<TContainer, TElement>(this IContainerDescription<TContainer> description, string name, Func<TContainer, IList<TElement>> getList, Func<TElement> factory)
+    public static IContainerDescription<TContainer> AddList<TContainer, TElement>(this IContainerDescription<TContainer> description, string name, Func<TContainer, IList<TElement>> getList, Func<TElement> factory)
         where TContainer : class
         where TElement : class, IEquatable<TElement>
-        => description.AddPlainList(name, getList, factory, new PropertyGridNodeEditor<TElement>());
+        => description.AddList(name, getList, factory, new PropertyGridNodeEditor<TElement>());
 
     /// <summary>
     /// Adds a list element type to the description using <see cref="PropertyGridNodeEditor{T}"/>.

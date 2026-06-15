@@ -55,7 +55,7 @@ public interface IContainerDescription<TContainer> where TContainer : class
     /// <param name="factory">Callback to create a new instance of the element.</param>
     /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
-    IContainerDescription<TContainer> AddPlainList<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, Func<TElement> factory, TEditor editor)
+    IContainerDescription<TContainer> AddList<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, Func<TElement> factory, TEditor editor)
         where TElement : class, IEquatable<TElement>
         where TEditor : INodeEditor<TElement>, new();
 
