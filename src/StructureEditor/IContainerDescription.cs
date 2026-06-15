@@ -28,6 +28,15 @@ public interface IContainerDescription<TContainer> where TContainer : class
         where TEditor : INodeEditor<TProperty>, new();
 
     /// <summary>
+    /// Adds a polymorphic single-value property to the description, i.e. a property whose value can be one of several types.
+    /// </summary>
+    /// <typeparam name="TProperty">The base type of the property.</typeparam>
+    /// <param name="getPointer">A function to retrieve a pointer to the property in the container.</param>
+    /// <returns>A property description, enabling you to specify explicit sub-types of <c>TProperty</c> allowed as the value.</returns>
+    IPropertyDescription<TContainer, TProperty> AddPolymorphicProperty<TProperty>(Func<TContainer, PropertyPointer<TProperty?>> getPointer)
+        where TProperty : class;
+
+    /// <summary>
     /// Adds a list to the description.
     /// </summary>
     /// <typeparam name="TList">The type of elements in the list.</typeparam>

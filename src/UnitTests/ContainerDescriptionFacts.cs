@@ -21,7 +21,12 @@ public class ContainerDescriptionFacts
         var descriptor = new ContainerDescription<Contact>();
         descriptor
            .AddProperty("Home Address", x => PropertyPointer.ForNullable(() => x.HomeAddress), new AddressEditor())
-           .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress), new AddressEditor())
+           .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress), new AddressEditor());
+        descriptor
+           .AddPolymorphicProperty(x => PropertyPointer.ForNullable(() => x.PrimaryNumber))
+           .AddElement("Primary Landline Number", () => new LandlineNumber())
+           .AddElement("Primary Mobile Number", () => new MobileNumber());
+        descriptor
            .AddList(x => x.PhoneNumbers)
            .AddElement("Landline Number", () => new LandlineNumber())
            .AddElement("Mobile Number", () => new MobileNumber());
@@ -32,6 +37,8 @@ public class ContainerDescriptionFacts
         ShouldBe(candidates,
             ("Home Address", "A postal address."),
             ("Work Address", "A postal address."),
+            ("Primary Landline Number", "A phone number for a landline."),
+            ("Primary Mobile Number", "A phone number for a mobile phone."),
             ("Landline Number", "A phone number for a landline."),
             ("Mobile Number", "A phone number for a mobile phone."));
     }
@@ -42,17 +49,24 @@ public class ContainerDescriptionFacts
         var descriptor = new ContainerDescription<Contact>();
         descriptor
            .AddProperty("Home Address", x => PropertyPointer.ForNullable(() => x.HomeAddress), new AddressEditor())
-           .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress), new AddressEditor())
+           .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress), new AddressEditor());
+        descriptor
+           .AddPolymorphicProperty(x => PropertyPointer.ForNullable(() => x.PrimaryNumber))
+           .AddElement("Primary Landline Number", () => new LandlineNumber())
+           .AddElement("Primary Mobile Number", () => new MobileNumber());
+        descriptor
            .AddList(x => x.PhoneNumbers)
            .AddElement("Landline Number", () => new LandlineNumber())
            .AddElement("Mobile Number", () => new MobileNumber());
 
+        var primaryNumber = new MobileNumber();
         var landlineNumber = new LandlineNumber();
         var mobileNumber = new MobileNumber();
         var container = new Contact
         {
             HomeAddress = new Address(),
             WorkAddress = new Address(),
+            PrimaryNumber = primaryNumber,
             PhoneNumbers = {landlineNumber, mobileNumber}
         };
 
@@ -60,6 +74,7 @@ public class ContainerDescriptionFacts
         ShouldBe(nodes,
             ("Home Address",  container.HomeAddress),
             ("Work Address", container.WorkAddress),
+            ("Primary Mobile Number", primaryNumber),
             ("Landline Number", landlineNumber),
             ("Mobile Number", mobileNumber));
     }

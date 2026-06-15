@@ -29,6 +29,11 @@ public class AddressBookEditor : StructureEditor<AddressBook>
            .AddList(x => x.PhoneNumbers)
            .AddElement("Landline Number", () => new LandlineNumber())
            .AddElement("Mobile Number", () => new MobileNumber());
+
+        Describe<Contact>()
+           .AddPolymorphicProperty(x => PropertyPointer.ForNullable(() => x.PrimaryNumber))
+           .AddElement("Primary Landline Number", () => new LandlineNumber())
+           .AddElement("Primary Mobile Number", () => new MobileNumber());
     }
 
     public void Open()

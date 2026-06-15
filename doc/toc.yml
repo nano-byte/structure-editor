@@ -2,6 +2,8 @@
   href: index.md
 - name: Polymorphic lists
   href: polymorphic-lists.md
+- name: Polymorphic properties
+  href: polymorphic-properties.md
 - name: Undo & redo
   href: undo-redo.md
 - name: Custom editors

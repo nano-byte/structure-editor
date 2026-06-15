@@ -36,7 +36,8 @@ You need to "describe" your data structure to the Editor. You can do this direct
 - Call `Describe<TContainer>()` to describe the properties on a data type `TContainer` exposed by another property. You can use multiple calls with different type parameters to describe arbitrarily deep hierarchies.  
 
 The fluent API provides the following methods:
-- `.AddProperty()` describes a simple value property.
+- `.AddProperty()` describes a single-value non-polymorphic property.
+- `.AddPolymorphicProperty()` describes a single-value polymorphic property. After calling it you chain `.AddElement()` calls for each specific type the property can hold.
 - `.AddPlainList()` describes a non-polymorphic list.
 - `.AddList()` describes a polymorphic list. After calling it you need to chain `.AddElement()` calls for each specific type of element the list can hold.
 

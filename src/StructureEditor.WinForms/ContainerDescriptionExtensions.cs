@@ -85,4 +85,20 @@ public static class ContainerDescriptionExtensions
         where TList : class
         where TElement : class, TList, IEquatable<TElement>
         => description.AddElement(name, factory, new PropertyGridNodeEditor<TElement>());
+
+    /// <summary>
+    /// Adds a value type to a polymorphic single-value property description using <see cref="PropertyGridNodeEditor{T}"/>.
+    /// </summary>
+    /// <typeparam name="TContainer">The type of the container containing the property.</typeparam>
+    /// <typeparam name="TProperty">The base type of the property.</typeparam>
+    /// <typeparam name="TElement">A specific type the property value can have.</typeparam>
+    /// <param name="description">Describes a polymorphic single-value property.</param>
+    /// <param name="name">The name of the value type.</param>
+    /// <param name="factory">Callback to create a new instance of <typeparamref name="TElement"/>.</param>
+    /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
+    public static IPropertyDescription<TContainer, TProperty> AddElement<TContainer, TProperty, TElement>(this IPropertyDescription<TContainer, TProperty> description, string name, Func<TElement> factory)
+        where TContainer : class
+        where TProperty : class
+        where TElement : class, TProperty, IEquatable<TElement>
+        => description.AddElement(name, factory, new PropertyGridNodeEditor<TElement>());
 }

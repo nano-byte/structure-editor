@@ -36,6 +36,11 @@ public partial class Contact
     public Address? WorkAddress { get; set; }
 
     [Browsable(false)]
+    [XmlElement($"Primary{nameof(LandlineNumber)}", typeof(LandlineNumber))]
+    [XmlElement($"Primary{nameof(MobileNumber)}", typeof(MobileNumber))]
+    public PhoneNumber? PrimaryNumber { get; set; }
+
+    [Browsable(false)]
     [XmlElement(nameof(LandlineNumber), typeof(LandlineNumber))]
     [XmlElement(nameof(MobileNumber), typeof(MobileNumber))]
     [OrderedEquality]

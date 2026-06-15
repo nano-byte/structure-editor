@@ -26,6 +26,15 @@ public class ContainerDescription<TContainer> : IContainerDescription<TContainer
         return this;
     }
 
+    /// <inheritdoc/>
+    public IPropertyDescription<TContainer, TProperty> AddPolymorphicProperty<TProperty>(Func<TContainer, PropertyPointer<TProperty?>> getPointer)
+        where TProperty : class
+    {
+        var propertyDescription = new PolymorphicPropertyDescription<TContainer, TProperty>(getPointer);
+        _descriptions.Add(propertyDescription);
+        return propertyDescription;
+    }
+
     /// <summary>
     /// Adds a list to the description.
     /// </summary>
