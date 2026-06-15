@@ -40,7 +40,7 @@ The fluent API provides the following methods:
 - `.AddProperty()` describes a single-value non-polymorphic property.
 - `.AddPolymorphicProperty()` describes a single-value [polymorphic property](polymorphic-properties.md). After calling it you chain `.AddElement()` calls for each specific type the property can hold.
 - `.AddPlainList()` describes a non-polymorphic list.
-- `.AddList()` describes a [polymorphic list](polymorphic-lists.md). After calling it you need to chain `.AddElement()` calls for each specific type of element the list can hold.
+- `.AddPolymorphicList()` describes a [polymorphic list](polymorphic-lists.md). After calling it you need to chain `.AddElement()` calls for each specific type of element the list can hold.
 
 There are numerous overloads for each of these methods, e.g., allowing you to specify a custom editor control for a data type or to keep the auto-generated one.
 
@@ -52,7 +52,7 @@ editor.Describe<IContactContainer>()
 editor.Describe<Contact>()
       .AddProperty("Home Address", x => PropertyPointer.ForNullable(() => x.HomeAddress))
       .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress))
-      .AddList(x => x.PhoneNumbers)
+      .AddPolymorphicList(x => x.PhoneNumbers)
       .AddElement("Landline Number", () => new LandlineNumber())
       .AddElement("Mobile Number", () => new MobileNumber());
 ```

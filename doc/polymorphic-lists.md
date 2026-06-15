@@ -1,6 +1,6 @@
 # Polymorphic lists
 
-`AddPlainList()` covers the common case of a list with a single element type. When a list can hold multiple concrete types behind a common base class or interface, use `AddList()` and chain `AddElement()` for each concrete type the user should be able to add.
+`AddPlainList()` covers the common case of a list with a single element type. When a list can hold multiple concrete types behind a common base class or interface, use `AddPolymorphicList()` and chain `AddElement()` for each concrete type the user should be able to add.
 
 ## Modeling the data
 
@@ -32,11 +32,11 @@ The element name passed to `[XmlElement]` is the XML tag that will appear in the
 
 ## Describing the list
 
-`AddList()` returns an <xref:NanoByte.StructureEditor.IListDescription`2> on which you call `AddElement()` once per concrete type. The user-facing name and factory you pass here populate the "Add" drop-down menu:
+`AddPolymorphicList()` returns an <xref:NanoByte.StructureEditor.IListDescription`2> on which you call `AddElement()` once per concrete type. The user-facing name and factory you pass here populate the "Add" drop-down menu:
 
 ```csharp
 editor.Describe<Contact>()
-      .AddList(x => x.PhoneNumbers)
+      .AddPolymorphicList(x => x.PhoneNumbers)
       .AddElement("Landline Number", () => new LandlineNumber())
       .AddElement("Mobile Number",   () => new MobileNumber());
 ```

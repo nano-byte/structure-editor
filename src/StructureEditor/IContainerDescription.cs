@@ -42,7 +42,7 @@ public interface IContainerDescription<TContainer> where TContainer : class
     /// <typeparam name="TList">The type of elements in the list.</typeparam>
     /// <param name="getList">A function to retrieve the list from the container.</param>
     /// <returns>A list description, enabling you to specify explicit sub-types of <c>TList</c> allowed in the list.</returns>
-    IListDescription<TContainer, TList> AddList<TList>(Func<TContainer, IList<TList>> getList)
+    IListDescription<TContainer, TList> AddPolymorphicList<TList>(Func<TContainer, IList<TList>> getList)
         where TList : class;
 
     /// <summary>

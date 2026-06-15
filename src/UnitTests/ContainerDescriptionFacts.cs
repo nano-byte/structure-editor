@@ -27,7 +27,7 @@ public class ContainerDescriptionFacts
            .AddElement("Primary Landline Number", () => new LandlineNumber())
            .AddElement("Primary Mobile Number", () => new MobileNumber());
         descriptor
-           .AddList(x => x.PhoneNumbers)
+           .AddPolymorphicList(x => x.PhoneNumbers)
            .AddElement("Landline Number", () => new LandlineNumber())
            .AddElement("Mobile Number", () => new MobileNumber());
 
@@ -55,7 +55,7 @@ public class ContainerDescriptionFacts
            .AddElement("Primary Landline Number", () => new LandlineNumber())
            .AddElement("Primary Mobile Number", () => new MobileNumber());
         descriptor
-           .AddList(x => x.PhoneNumbers)
+           .AddPolymorphicList(x => x.PhoneNumbers)
            .AddElement("Landline Number", () => new LandlineNumber())
            .AddElement("Mobile Number", () => new MobileNumber());
 
