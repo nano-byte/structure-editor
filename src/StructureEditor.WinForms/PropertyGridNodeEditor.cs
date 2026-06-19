@@ -38,7 +38,7 @@ public class PropertyGridNodeEditor<T> : NodeEditorBase<T> where T : class
     {
         propertyGrid.PropertyValueChanged += (_, e) =>
         {
-            if (Target != null) CommandExecutor?.Execute(new PropertyChangedCommand(Target, e));
+            if (Target != null) CommandExecutor?.Execute(e.ToPropertyChangedCommand(Target));
         };
     }
 }
