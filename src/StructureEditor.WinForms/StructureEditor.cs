@@ -317,6 +317,16 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     private object? _editingTarget;
     private object? _serializedTarget;
 
+    /// <summary>
+    /// The target object of the currently selected node; <c>null</c> if nothing is selected.
+    /// </summary>
+    public object? SelectedTarget => SelectedNode?.Node.Target;
+
+    /// <summary>
+    /// Raised when the selected node in the tree changes.
+    /// </summary>
+    public event Action? SelectionChanged;
+
     private StructureTreeNode? SelectedNode => _treeView.SelectedNode as StructureTreeNode;
 
     private void treeView_AfterSelect(object? sender, TreeViewEventArgs e)
@@ -334,6 +344,8 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
 
         if (_selectedTarget != _serializedTarget) _textEditor.SetContent(GetSerialized(), "XML");
         _serializedTarget = null;
+
+        SelectionChanged?.Invoke();
     }
 
     private Control? _editorControl;
