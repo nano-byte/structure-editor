@@ -16,7 +16,8 @@ namespace NanoByte.StructureEditor;
 /// <param name="name">The name of the property.</param>
 /// <param name="getPointer">A callback for retrieving a pointer to the property in a container.</param>
 /// <param name="factory">Callback to create a new instance of <typeparamref name="TProperty"/>.</param>
-internal class PropertyDescription<TContainer, TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer, Func<TProperty> factory) : Description<TContainer>
+/// <param name="nullable">Whether the property may be set to null, i.e. removed.</param>
+internal class PropertyDescription<TContainer, TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer, Func<TProperty> factory, bool nullable) : Description<TContainer>
     where TContainer : class
     where TProperty : class, IEquatable<TProperty>
     where TEditor : INodeEditor<TProperty>, new()
@@ -26,7 +27,7 @@ internal class PropertyDescription<TContainer, TProperty, TEditor>(string name, 
     {
         var pointer = getPointer(container);
         if (pointer.Value != null)
-            yield return new PropertyNode<TContainer, TProperty, TEditor>(name, container, pointer);
+            yield return new PropertyNode<TContainer, TProperty, TEditor>(name, container, pointer, nullable);
     }
 
     /// <inheritdoc/>

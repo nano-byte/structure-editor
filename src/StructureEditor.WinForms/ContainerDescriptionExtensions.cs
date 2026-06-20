@@ -42,6 +42,35 @@ public static class ContainerDescriptionExtensions
         => description.AddProperty(name, getPointer, factory, new PropertyGridNodeEditor<TProperty>());
 
     /// <summary>
+    /// Adds a required (non-nullable) property to the description using <see cref="PropertyGridNodeEditor{T}"/>.
+    /// </summary>
+    /// <typeparam name="TContainer">The type of the container containing the property.</typeparam>
+    /// <typeparam name="TProperty">The type of the property.</typeparam>
+    /// <param name="description">Describes an object that contains nodes (properties and/or lists).</param>
+    /// <param name="name">The name of the property.</param>
+    /// <param name="getPointer">A function to retrieve a pointer to the property in the container.</param>
+    /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
+    public static IContainerDescription<TContainer> AddRequiredProperty<TContainer, TProperty>(this IContainerDescription<TContainer> description, string name, Func<TContainer, PropertyPointer<TProperty>> getPointer)
+        where TContainer : class
+        where TProperty : class, IEquatable<TProperty>, new()
+        => description.AddRequiredProperty(name, getPointer, new PropertyGridNodeEditor<TProperty>());
+
+    /// <summary>
+    /// Adds a required (non-nullable) property to the description using <see cref="PropertyGridNodeEditor{T}"/>.
+    /// </summary>
+    /// <typeparam name="TContainer">The type of the container containing the property.</typeparam>
+    /// <typeparam name="TProperty">The type of the property.</typeparam>
+    /// <param name="description">Describes an object that contains nodes (properties and/or lists).</param>
+    /// <param name="name">The name of the property.</param>
+    /// <param name="getPointer">A function to retrieve a pointer to the property in the container.</param>
+    /// <param name="factory">Callback to create a new instance of <typeparamref name="TProperty"/>.</param>
+    /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
+    public static IContainerDescription<TContainer> AddRequiredProperty<TContainer, TProperty>(this IContainerDescription<TContainer> description, string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, Func<TProperty> factory)
+        where TContainer : class
+        where TProperty : class, IEquatable<TProperty>
+        => description.AddRequiredProperty(name, getPointer, factory, new PropertyGridNodeEditor<TProperty>());
+
+    /// <summary>
     /// Adds a list to the description using <see cref="PropertyGridNodeEditor{T}"/>.
     /// </summary>
     /// <typeparam name="TContainer">The type of the container containing the list.</typeparam>

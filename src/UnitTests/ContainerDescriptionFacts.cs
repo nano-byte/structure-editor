@@ -20,7 +20,7 @@ public class ContainerDescriptionFacts
     {
         var descriptor = new ContainerDescription<Contact>();
         descriptor
-           .AddProperty("Home Address", x => PropertyPointer.ForNullable(() => x.HomeAddress), new AddressEditor())
+           .AddRequiredProperty("Home Address", x => PropertyPointer.For(() => x.HomeAddress), new AddressEditor())
            .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress), new AddressEditor());
         descriptor
            .AddPolymorphicProperty(x => PropertyPointer.ForNullable(() => x.PrimaryNumber))
@@ -48,7 +48,7 @@ public class ContainerDescriptionFacts
     {
         var descriptor = new ContainerDescription<Contact>();
         descriptor
-           .AddProperty("Home Address", x => PropertyPointer.ForNullable(() => x.HomeAddress), new AddressEditor())
+           .AddRequiredProperty("Home Address", x => PropertyPointer.For(() => x.HomeAddress), new AddressEditor())
            .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress), new AddressEditor());
         descriptor
            .AddPolymorphicProperty(x => PropertyPointer.ForNullable(() => x.PrimaryNumber))
@@ -78,6 +78,45 @@ public class ContainerDescriptionFacts
             ("Landline Number", landlineNumber),
             ("Mobile Number", mobileNumber));
     }
+
+    [Fact]
+    public void RequiredPropertiesHaveNoRemoveCommand()
+    {
+        PhoneNumber requiredNumber = new MobileNumber();
+
+        var descriptor = new ContainerDescription<Contact>();
+        descriptor
+           .AddRequiredProperty("Home Address", x => PropertyPointer.For(() => x.HomeAddress), new AddressEditor())
+           .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress), new AddressEditor());
+        descriptor
+           .AddPolymorphicProperty(x => PropertyPointer.ForNullable(() => x.PrimaryNumber))
+           .AddElement("Primary Landline Number", () => new LandlineNumber())
+           .AddElement("Primary Mobile Number", () => new MobileNumber());
+        descriptor
+           .AddRequiredPolymorphicProperty(_ => PropertyPointer.For(() => requiredNumber))
+           .AddElement("Required Landline Number", () => new LandlineNumber())
+           .AddElement("Required Mobile Number", () => new MobileNumber());
+
+        var container = new Contact
+        {
+            HomeAddress = new Address(),
+            WorkAddress = new Address(),
+            PrimaryNumber = new MobileNumber()
+        };
+
+        var nodes = descriptor.GetNodesIn(container).ToArray();
+
+        // Required properties cannot be removed
+        NodeFor(nodes, "Home Address").GetRemoveCommand().Should().BeNull();
+        NodeFor(nodes, "Required Mobile Number").GetRemoveCommand().Should().BeNull();
+
+        // Nullable properties can be removed
+        NodeFor(nodes, "Work Address").GetRemoveCommand().Should().NotBeNull();
+        NodeFor(nodes, "Primary Mobile Number").GetRemoveCommand().Should().NotBeNull();
+    }
+
+    private static Node NodeFor(IEnumerable<Node> nodes, string nodeType)
+        => nodes.First(node => node.NodeType == nodeType);
 
     private static void ShouldBe(IReadOnlyList<NodeCandidate?> nodes, params (string name, string description)[] expectedValues)
     {

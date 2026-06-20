@@ -16,7 +16,8 @@ namespace NanoByte.StructureEditor;
 /// <param name="name">The name of the property.</param>
 /// <param name="container">The container containing the property.</param>
 /// <param name="pointer">A pointer to the property.</param>
-public class PropertyNode<TContainer, TProperty, TEditor>(string name, TContainer container, PropertyPointer<TProperty?> pointer)
+/// <param name="nullable">Whether the property may be set to null, i.e. removed.</param>
+public class PropertyNode<TContainer, TProperty, TEditor>(string name, TContainer container, PropertyPointer<TProperty?> pointer, bool nullable = true)
     : Node(name, GetDescription<TProperty>(), pointer.Value)
     where TContainer : class
     where TProperty : class
@@ -34,7 +35,7 @@ public class PropertyNode<TContainer, TProperty, TEditor>(string name, TContaine
     }
 
     /// <inheritdoc/>
-    public override IUndoCommand GetRemoveCommand() => SetValueCommand.For(pointer, null);
+    public override IUndoCommand? GetRemoveCommand() => nullable ? SetValueCommand.For(pointer, null) : null;
 
     /// <inheritdoc/>
     public override INodeEditor GetEditorControl(ICommandExecutor executor)

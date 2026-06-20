@@ -28,12 +28,35 @@ public interface IContainerDescription<TContainer> where TContainer : class
         where TEditor : INodeEditor<TProperty>, new();
 
     /// <summary>
+    /// Adds a required (non-nullable) property to the description.
+    /// </summary>
+    /// <typeparam name="TProperty">The type of the property.</typeparam>
+    /// <typeparam name="TEditor">An editor for modifying the content of the property.</typeparam>
+    /// <param name="name">The name of the property.</param>
+    /// <param name="getPointer">A function to retrieve a pointer to the property in the container.</param>
+    /// <param name="factory">Callback to create a new instance of the property.</param>
+    /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
+    /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
+    IContainerDescription<TContainer> AddRequiredProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, Func<TProperty> factory, TEditor editor)
+        where TProperty : class, IEquatable<TProperty>
+        where TEditor : INodeEditor<TProperty>, new();
+
+    /// <summary>
     /// Adds a polymorphic single-value property to the description, i.e. a property whose value can be one of several types.
     /// </summary>
     /// <typeparam name="TProperty">The base type of the property.</typeparam>
     /// <param name="getPointer">A function to retrieve a pointer to the property in the container.</param>
     /// <returns>A property description, enabling you to specify explicit sub-types of <c>TProperty</c> allowed as the value.</returns>
     IPropertyDescription<TContainer, TProperty> AddPolymorphicProperty<TProperty>(Func<TContainer, PropertyPointer<TProperty?>> getPointer)
+        where TProperty : class;
+
+    /// <summary>
+    /// Adds a required (non-nullable) polymorphic single-value property to the description.
+    /// </summary>
+    /// <typeparam name="TProperty">The base type of the property.</typeparam>
+    /// <param name="getPointer">A function to retrieve a pointer to the property in the container.</param>
+    /// <returns>A property description, enabling you to specify explicit sub-types of <c>TProperty</c> allowed as the value.</returns>
+    IPropertyDescription<TContainer, TProperty> AddRequiredPolymorphicProperty<TProperty>(Func<TContainer, PropertyPointer<TProperty>> getPointer)
         where TProperty : class;
 
     /// <summary>

@@ -30,6 +30,23 @@ public static class ContainerDescriptionExtensions
         => description.AddProperty(name, getPointer, () => new TProperty(), editor);
 
     /// <summary>
+    /// Adds a required (non-nullable) property to the description.
+    /// </summary>
+    /// <typeparam name="TContainer">The type of the container containing the property.</typeparam>
+    /// <typeparam name="TProperty">The type of the property.</typeparam>
+    /// <typeparam name="TEditor">An editor for modifying the content of the property.</typeparam>
+    /// <param name="description">Describes an object that contains nodes (properties and/or lists).</param>
+    /// <param name="name">The name of the property.</param>
+    /// <param name="getPointer">A function to retrieve a pointer to the property in the container.</param>
+    /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
+    /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
+    public static IContainerDescription<TContainer> AddRequiredProperty<TContainer, TProperty, TEditor>(this IContainerDescription<TContainer> description, string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, TEditor editor)
+        where TContainer : class
+        where TProperty : class, IEquatable<TProperty>, new()
+        where TEditor : INodeEditor<TProperty>, new()
+        => description.AddRequiredProperty(name, getPointer, () => new TProperty(), editor);
+
+    /// <summary>
     /// Adds a list to the description.
     /// </summary>
     /// <typeparam name="TContainer">The type of the container containing the list.</typeparam>

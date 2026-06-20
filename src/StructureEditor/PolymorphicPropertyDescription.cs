@@ -15,7 +15,8 @@ namespace NanoByte.StructureEditor;
 /// <typeparam name="TContainer">The type of the container containing the property.</typeparam>
 /// <typeparam name="TProperty">The base type of the property.</typeparam>
 /// <param name="getPointer">A callback for retrieving a pointer to the property in a container.</param>
-internal class PolymorphicPropertyDescription<TContainer, TProperty>(Func<TContainer, PropertyPointer<TProperty?>> getPointer)
+/// <param name="nullable">Whether the property may be set to null, i.e. removed.</param>
+internal class PolymorphicPropertyDescription<TContainer, TProperty>(Func<TContainer, PropertyPointer<TProperty?>> getPointer, bool nullable)
     : Description<TContainer>, IPropertyDescription<TContainer, TProperty>
     where TContainer : class
     where TProperty : class
@@ -42,7 +43,7 @@ internal class PolymorphicPropertyDescription<TContainer, TProperty>(Func<TConta
         where TElement : class, TProperty, IEquatable<TElement>
         where TEditor : INodeEditor<TElement>, new()
     {
-        _descriptions.Add(new ElementDescription<TElement, TEditor>(name, factory));
+        _descriptions.Add(new ElementDescription<TElement, TEditor>(name, factory, nullable));
         return this;
     }
 
@@ -53,13 +54,13 @@ internal class PolymorphicPropertyDescription<TContainer, TProperty>(Func<TConta
         NodeCandidate GetCandidateFor(PropertyPointer<TProperty?> pointer);
     }
 
-    private class ElementDescription<TElement, TEditor>(string name, Func<TElement> factory) : IElementDescription
+    private class ElementDescription<TElement, TEditor>(string name, Func<TElement> factory, bool nullable) : IElementDescription
         where TElement : class, TProperty, IEquatable<TElement>
         where TEditor : INodeEditor<TElement>, new()
     {
         public Node? TryGetNode(TContainer container, PropertyPointer<TProperty?> pointer)
             => pointer.Value is TElement element
-                ? new PropertyElementNode<TContainer, TProperty, TElement, TEditor>(name, container, pointer, element)
+                ? new PropertyElementNode<TContainer, TProperty, TElement, TEditor>(name, container, pointer, element, nullable)
                 : null;
 
         public NodeCandidate GetCandidateFor(PropertyPointer<TProperty?> pointer)

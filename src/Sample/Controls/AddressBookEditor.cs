@@ -24,7 +24,7 @@ public class AddressBookEditor : StructureEditor<AddressBook>
            .AddList("Contact", x => x.Contacts);
 
         Describe<Contact>()
-           .AddProperty("Home Address", x => PropertyPointer.ForNullable(() => x.HomeAddress), new AddressEditor())
+           .AddRequiredProperty("Home Address", x => PropertyPointer.For(() => x.HomeAddress), new AddressEditor())
            .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress), new AddressEditor())
            .AddPolymorphicList(x => x.PhoneNumbers)
            .AddElement("Landline Number", () => new LandlineNumber())

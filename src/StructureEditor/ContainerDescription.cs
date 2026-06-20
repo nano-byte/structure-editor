@@ -22,7 +22,16 @@ public class ContainerDescription<TContainer> : IContainerDescription<TContainer
         where TProperty : class, IEquatable<TProperty>
         where TEditor : INodeEditor<TProperty>, new()
     {
-        _descriptions.Add(new PropertyDescription<TContainer, TProperty, TEditor>(name, getPointer, factory));
+        _descriptions.Add(new PropertyDescription<TContainer, TProperty, TEditor>(name, getPointer, factory, nullable: true));
+        return this;
+    }
+
+    /// <inheritdoc/>
+    public IContainerDescription<TContainer> AddRequiredProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, Func<TProperty> factory, TEditor editor)
+        where TProperty : class, IEquatable<TProperty>
+        where TEditor : INodeEditor<TProperty>, new()
+    {
+        _descriptions.Add(new PropertyDescription<TContainer, TProperty, TEditor>(name, AsNullable(getPointer), factory, nullable: false));
         return this;
     }
 
@@ -30,10 +39,30 @@ public class ContainerDescription<TContainer> : IContainerDescription<TContainer
     public IPropertyDescription<TContainer, TProperty> AddPolymorphicProperty<TProperty>(Func<TContainer, PropertyPointer<TProperty?>> getPointer)
         where TProperty : class
     {
-        var propertyDescription = new PolymorphicPropertyDescription<TContainer, TProperty>(getPointer);
+        var propertyDescription = new PolymorphicPropertyDescription<TContainer, TProperty>(getPointer, nullable: true);
         _descriptions.Add(propertyDescription);
         return propertyDescription;
     }
+
+    /// <inheritdoc/>
+    public IPropertyDescription<TContainer, TProperty> AddRequiredPolymorphicProperty<TProperty>(Func<TContainer, PropertyPointer<TProperty>> getPointer)
+        where TProperty : class
+    {
+        var propertyDescription = new PolymorphicPropertyDescription<TContainer, TProperty>(AsNullable(getPointer), nullable: false);
+        _descriptions.Add(propertyDescription);
+        return propertyDescription;
+    }
+
+    /// <summary>
+    /// Widens a pointer to a non-nullable property into a pointer that exposes a nullable value, for use by the internal property descriptions.
+    /// </summary>
+    private static Func<TContainer, PropertyPointer<TProperty?>> AsNullable<TProperty>(Func<TContainer, PropertyPointer<TProperty>> getPointer)
+        where TProperty : class
+        => container =>
+        {
+            var pointer = getPointer(container);
+            return new PropertyPointer<TProperty?>(() => pointer.Value, value => pointer.Value = value!);
+        };
 
     /// <inheritdoc/>
     public IListDescription<TContainer, TList> AddPolymorphicList<TList>(Func<TContainer, IList<TList>> getList)

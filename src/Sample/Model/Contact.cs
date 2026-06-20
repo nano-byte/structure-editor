@@ -30,7 +30,7 @@ public partial class Contact
     public string? LastName { get; set; }
 
     [Browsable(false)]
-    public Address? HomeAddress { get; set; }
+    public Address HomeAddress { get; set; } = new();
 
     [Browsable(false)]
     public Address? WorkAddress { get; set; }
