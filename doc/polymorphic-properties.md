@@ -36,7 +36,7 @@ The element name passed to `[XmlElement]` is the XML tag that will appear in the
 
 ```csharp
 editor.Describe<Contact>()
-      .AddProperty(x => PropertyPointer.ForNullable(() => x.PrimaryNumber))
+      .AddPolymorphicProperty(x => PropertyPointer.ForNullable(() => x.PrimaryNumber))
       .AddElement("Primary Landline Number", () => new LandlineNumber())
       .AddElement("Primary Mobile Number",   () => new MobileNumber());
 ```
