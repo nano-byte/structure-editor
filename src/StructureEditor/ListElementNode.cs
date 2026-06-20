@@ -37,7 +37,7 @@ public class ListElementNode<TContainer, TList, TElement, TEditor>(string name, 
     }
 
     /// <inheritdoc/>
-    public override IUndoCommand GetRemoveCommand()
+    public override IUndoCommand? GetRemoveCommand()
         => new RemoveFromCollection<TList>(list, element);
 
     /// <inheritdoc/>

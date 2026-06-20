@@ -307,6 +307,8 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
         if (SelectedNode == null || _treeView.SelectedNode == _treeView.Nodes[0]) return;
 
         var removeCommand = SelectedNode.Node.GetRemoveCommand();
+        if (removeCommand == null) return;
+
         _treeView.SelectedNode = _treeView.SelectedNode?.Parent; // Select parent before deleting
         CommandManager.Execute(removeCommand);
     }
@@ -332,7 +334,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     private void treeView_AfterSelect(object? sender, TreeViewEventArgs e)
     {
         BuildAddDropDownMenu();
-        _buttonRemove.Enabled = _treeView.Nodes is [var node, ..] && e.Node != node;
+        _buttonRemove.Enabled = _treeView.Nodes is [var node, ..] && e.Node != node && SelectedNode?.Node.GetRemoveCommand() != null;
         _selectedTarget = SelectedNode?.Node.Target;
 
         if (_selectedTarget == _editingTarget) _editorControl?.Refresh();

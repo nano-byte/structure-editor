@@ -46,9 +46,9 @@ public abstract class Node(string nodeType, string? description, object? target)
     public abstract IValueCommand? GetUpdateCommand(string serializedValue);
 
     /// <summary>
-    /// Gets a command for removing the node's target from the structure.
+    /// Gets a command for removing the node's target from the structure; <c>null</c> if the node cannot be removed.
     /// </summary>
-    public abstract IUndoCommand GetRemoveCommand();
+    public abstract IUndoCommand? GetRemoveCommand();
 
     /// <summary>
     /// Gets a GUI control for editing the node's target.
