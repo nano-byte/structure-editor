@@ -190,7 +190,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
 
     private bool _rebuildScheduled;
 
-    private void RebuildOnNextIdle()
+    private void RebuildOnNextIdle(IUndoCommand command)
     {
         if (_rebuildScheduled) return;
         _rebuildScheduled = true;
