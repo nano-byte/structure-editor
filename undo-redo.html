@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Undo, redo and persistence | NanoByte Structure Editor </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Undo, redo and persistence | NanoByte Structure Editor ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/nano-byte/structure-editor/blob/2.1.0/doc/undo-redo.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="undo-redo-and-persistence">Undo, redo and persistence</h1>
+
+<p>The structure editor routes every edit (tree changes, property changes, and raw XML edits) through a single <a class="xref" href="https://common.nano-byte.net/api/NanoByte.Common.Undo.ICommandManager-1.html">ICommandManager&lt;T&gt;</a>. The manager owns the root object, records reversible commands, and persists to disk.</p>
+<h2 id="the-commandmanager-property">The <code>CommandManager</code> property</h2>
+<p><code>StructureEditor&lt;T&gt;.CommandManager</code> is the seam between the editor and your data. It is created automatically (wrapping a new <code>T</code> from the factory) and replaced when you call <code>Open()</code>:</p>
+<pre><code class="lang-csharp">editor.Open(CommandManager&lt;AddressBook&gt;.Load(path));      // load from XML
+editor.Open(CommandManager.For(SampleData.AddressBook));  // wrap an in-memory object
+</code></pre>
+<p><code>CommandManager.Target</code> is the live root object. Reads and writes are safe at any time. Replacing it raises <code>TargetUpdated</code>, which the editor uses to rebuild the tree on the next idle.</p>
+<h2 id="saving">Saving</h2>
+<p><code>ICommandManager&lt;T&gt;</code> serializes the target to XML via the same machinery the inline editor uses:</p>
+<pre><code class="lang-csharp">editor.CommandManager.Save(path);
+</code></pre>
+<p>After <code>Save()</code>, <code>CommandManager.UndoEnabled</code> becomes <code>false</code> and <code>Path</code> is updated, so you can build a &quot;dirty&quot; indicator and a Save/Save As flow:</p>
+<pre><code class="lang-csharp">public bool Save()
+{
+    if (string.IsNullOrEmpty(CommandManager.Path)) return SaveAs();
+    CommandManager.Save(CommandManager.Path);
+    return true;
+}
+</code></pre>
+<h2 id="wiring-undoredo-into-your-ui">Wiring undo/redo into your UI</h2>
+<p><code>StructureEditor&lt;T&gt;</code> exposes <code>Undo()</code> and <code>Redo()</code> methods that already do the right thing in two contexts:</p>
+<ul>
+<li>If the embedded XML text editor has its own undo stack populated (i.e., the user is typing), they undo/redo characters there.</li>
+<li>Otherwise they delegate to <code>CommandManager.Undo()</code> / <code>Redo()</code>, reversing the last structural or property change.</li>
+</ul>
+<p>Bind them to menu items or hot-keys:</p>
+<pre><code class="lang-csharp">new ToolStripMenuItem(&quot;&amp;Undo&quot;) {ShortcutKeys = Keys.Control | Keys.Z}
+    .Click += (_, _) =&gt; editor.Undo();
+</code></pre>
+<h2 id="confirming-unsaved-changes-on-close">Confirming unsaved changes on close</h2>
+<p>Check <code>CommandManager.UndoEnabled</code> to detect pending changes:</p>
+<pre><code class="lang-csharp">public bool Closing()
+{
+    if (!CommandManager.UndoEnabled) return true;
+
+    return Msg.YesNoCancel(this, &quot;Save changes?&quot;, MsgSeverity.Warn) switch
+    {
+        DialogResult.Yes =&gt; Save(),
+        DialogResult.No  =&gt; true,
+        _                =&gt; false
+    };
+}
+</code></pre>
+<h2 id="custom-editors-and-the-command-system">Custom editors and the command system</h2>
+<p>Inside a <a class="xref" href="api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html">NodeEditorBase&lt;T&gt;</a>, the <code>Bind()</code> helpers route changes through <a class="xref" href="https://common.nano-byte.net/api/NanoByte.Common.Undo.ICommandExecutor.html">ICommandExecutor</a> (<code>CommandExecutor</code>), which is the same instance as the structure editor's <code>CommandManager</code>. You generally do not need to interact with it directly. If you build a control without a matching <code>Bind()</code> overload, follow the same pattern:</p>
+<pre><code class="lang-csharp">if (CommandExecutor == null) pointer.Value = newValue;
+else CommandExecutor.Execute(SetValueCommand.For(pointer, newValue));
+</code></pre>
+<p>This keeps property edits, tree add/remove, and raw XML edits on one undo stack, so a single Ctrl+Z reverses whichever happened last.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/nano-byte/structure-editor/blob/2.1.0/doc/undo-redo.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright Bastian Eicher
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

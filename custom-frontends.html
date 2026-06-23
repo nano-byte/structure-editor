@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Custom frontends | NanoByte Structure Editor </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Custom frontends | NanoByte Structure Editor ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/nano-byte/structure-editor/blob/2.1.0/doc/custom-frontends.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="custom-frontends">Custom frontends</h1>
+
+<p>The library is split across two NuGet packages so the description model can be reused independently of WinForms.</p>
+<h2 id="the-two-assemblies">The two assemblies</h2>
+<h3 id="nanobytestructureeditor"><code>NanoByte.StructureEditor</code></h3>
+<p>UI-agnostic. Defines:</p>
+<ul>
+<li><a class="xref" href="api/NanoByte.StructureEditor.IStructureEditor-1.html">IStructureEditor&lt;T&gt;</a>: the fluent entry point (<code>DescribeRoot</code>, <code>Describe&lt;TContainer&gt;</code>).</li>
+<li><a class="xref" href="api/NanoByte.StructureEditor.IContainerDescription-1.html">IContainerDescription&lt;TContainer&gt;</a> and <a class="xref" href="api/NanoByte.StructureEditor.IListDescription-2.html">IListDescription&lt;TContainer, TList&gt;</a>: the fluent surface for declaring properties, plain lists, and polymorphic lists.</li>
+<li><a class="xref" href="api/NanoByte.StructureEditor.Node.html">Node</a> and its concrete subclasses: runtime nodes returned by <code>GetNodesIn(container)</code>, each carrying the methods needed to serialize, update, remove, and edit the underlying object.</li>
+<li><a class="xref" href="api/NanoByte.StructureEditor.NodeCandidate.html">NodeCandidate</a>: describes a node that <em>could</em> be created (drives &quot;Add&quot; menus), with <code>GetCreateCommand()</code> to materialize it.</li>
+<li><a class="xref" href="api/NanoByte.StructureEditor.INodeEditor.html">INodeEditor</a> / <a class="xref" href="api/NanoByte.StructureEditor.INodeEditor-1.html">INodeEditor&lt;T&gt;</a>: the toolkit-neutral contract a per-type editor implements.</li>
+</ul>
+<p>The package targets <code>netstandard2.0</code>, <code>netstandard2.1</code>, and <code>net8.0</code>, so it can be referenced from non-Windows hosts.</p>
+<h3 id="nanobytestructureeditorwinforms"><code>NanoByte.StructureEditor.WinForms</code></h3>
+<p>The reference frontend. Provides:</p>
+<ul>
+<li><a class="xref" href="api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html">StructureEditor&lt;T&gt;</a>: the <code>UserControl</code> that hosts the tree, per-node editor panel, and XML text editor.</li>
+<li><a class="xref" href="api/NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.html">PropertyGridNodeEditor&lt;T&gt;</a>: default <code>INodeEditor&lt;T&gt;</code> based on <code>PropertyGrid</code>.</li>
+<li><a class="xref" href="api/NanoByte.StructureEditor.WinForms.NodeEditorBase-1.html">NodeEditorBase&lt;T&gt;</a>: base class for custom editors, with <code>Bind()</code> helpers that wire WinForms controls to the undo system.</li>
+</ul>
+<h2 id="runtime-flow">Runtime flow</h2>
+<ol>
+<li><strong>Description</strong>: your code calls <code>DescribeRoot()</code> / <code>Describe&lt;TContainer&gt;()</code> and the fluent methods, populating a per-container-type list of node descriptions.</li>
+<li><strong>Dispatch</strong>: <code>StructureEditor&lt;T&gt;</code> stores these descriptions in an <code>AggregateDispatcher</code> keyed by container type. To build the tree, it walks the object graph and dispatches each object to the matching description list.</li>
+<li><strong>Node materialization</strong>: each description yields concrete <a class="xref" href="api/NanoByte.StructureEditor.Node.html">Node</a> instances. The tree control wraps them in <code>StructureTreeNode</code>s.</li>
+<li><strong>Editing</strong>: selecting a tree node calls <code>Node.GetEditorControl(executor)</code>, which returns an <code>INodeEditor</code> bound to the current <code>CommandManager</code>. Changes flow as <code>IUndoCommand</code>s onto the shared undo stack.</li>
+<li><strong>Serialization</strong>: the XML text editor mirrors <code>Node.GetSerialized()</code> for the selected node. Edits there round-trip via <code>Node.GetUpdateCommand(serializedValue)</code>, which replaces the target with the deserialized value as an undoable command.</li>
+</ol>
+<h2 id="building-a-non-winforms-frontend">Building a non-WinForms frontend</h2>
+<p>Because <code>IStructureEditor&lt;T&gt;</code>, <code>Node</code>, and <code>INodeEditor</code> are toolkit-neutral, a host for Avalonia, WPF, Uno, etc. can be built without touching the core package. A minimal port needs to:</p>
+<ol>
+<li>Implement <code>IStructureEditor&lt;T&gt;</code>: typically by mirroring <code>StructureEditor&lt;T&gt;</code>'s use of <code>AggregateDispatcher</code> to collect descriptions and dispatch by container type.</li>
+<li>Render the node tree by walking <code>IContainerDescription&lt;T&gt;.GetNodesIn(container)</code> recursively (each <code>Node.Target</code> is itself a container for the next level).</li>
+<li>Provide a toolkit-specific <code>INodeEditor&lt;T&gt;</code> base class (analogous to <code>NodeEditorBase&lt;T&gt;</code>) that adapts your toolkit's data-binding to <a class="xref" href="https://common.nano-byte.net/api/NanoByte.Common.PropertyPointer-1.html">PropertyPointer&lt;T&gt;</a> and <a class="xref" href="https://common.nano-byte.net/api/NanoByte.Common.Undo.ICommandExecutor.html">ICommandExecutor</a>.</li>
+<li>Populate &quot;Add&quot; menus from <code>IContainerDescription&lt;T&gt;.GetCandidatesFor(container)</code> and execute <code>NodeCandidate.GetCreateCommand()</code> on the shared <code>ICommandManager&lt;T&gt;</code>.</li>
+</ol>
+<p>The XML editor pane is optional. The rest of the model works the same whether or not you expose the serialized form.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/nano-byte/structure-editor/blob/2.1.0/doc/custom-frontends.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright Bastian Eicher
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
