@@ -4,7 +4,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using FluentAssertions;
+using AwesomeAssertions;
 using NanoByte.Common;
 using NanoByte.StructureEditor.Sample.Controls;
 using NanoByte.StructureEditor.Sample.Model;
