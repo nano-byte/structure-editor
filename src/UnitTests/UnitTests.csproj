@@ -10,6 +10,7 @@
     <SignAssembly>False</SignAssembly>
     <IsPackable>False</IsPackable>
     <DeterministicSourcePaths>False</DeterministicSourcePaths>
+    <VSTestLogger>trx%3bLogFileName=$(TargetFramework).trx</VSTestLogger>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildRuntimeType)'=='Core'">
     <!-- .NET Core MSBuild does not support non-primitive resources (e.g., images) for .NET Framework -->
