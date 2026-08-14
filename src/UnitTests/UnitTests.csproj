@@ -10,7 +10,8 @@
     <SignAssembly>False</SignAssembly>
     <IsPackable>False</IsPackable>
     <DeterministicSourcePaths>False</DeterministicSourcePaths>
-    <VSTestLogger>trx%3bLogFileName=$(TargetFramework).trx</VSTestLogger>
+    <UseMicrosoftTestingPlatformRunner>True</UseMicrosoftTestingPlatformRunner>
+    <TestingPlatformCommandLineArguments>$(TestingPlatformCommandLineArguments) --report-xunit-trx --report-xunit-trx-filename $(TargetFramework).trx --results-directory $(MSBuildProjectDirectory)/TestResults</TestingPlatformCommandLineArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildRuntimeType)'=='Core'">
     <!-- .NET Core MSBuild does not support non-primitive resources (e.g., images) for .NET Framework -->
@@ -27,10 +28,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AwesomeAssertions" Version="9.5.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.8.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.9.0" />
     <PackageReference Include="Moq" Version="4.20.72" />
-    <PackageReference Include="xunit.v3" Version="3.2.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" />
+    <PackageReference Include="xunit.v3" Version="4.0.0" />
   </ItemGroup>
 
   <!-- Mark as unit test project -->
