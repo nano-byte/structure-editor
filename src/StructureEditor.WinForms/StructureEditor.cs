@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using NanoByte.Common;
 using NanoByte.Common.Collections;
@@ -214,10 +215,12 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
 
     #region Build nodes
     /// <summary>
-    /// Rebuilds the <see cref="_treeView"/> node while attempting to retain the current selection.
+    /// Rebuilds the <see cref="_treeView"/> node while attempting to retain the current selection and expansion state.
     /// </summary>
     private void RebuildTree()
     {
+        var expandedTargets = GetExpandedTargets(_treeView.Nodes);
+        var reexpandNodes = new List<TreeNode>();
         TreeNode? reselectNode = null;
 
         IEnumerable<TreeNode> GetTreeNodes(object? target)
@@ -228,6 +231,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
             {
                 var treeNode = new StructureTreeNode(node, GetTreeNodes(node.Target).ToArray());
                 if (node.Target == _selectedTarget) reselectNode = treeNode;
+                if (node.Target != null && expandedTargets.Contains(node.Target)) reexpandNodes.Add(treeNode);
                 yield return treeNode;
             }
         }
@@ -235,10 +239,43 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
         _treeView.BeginUpdate();
         _treeView.Nodes.Clear();
         _treeView.Nodes.AddRange(GetTreeNodes(CommandManager).ToArray());
+        foreach (var treeNode in reexpandNodes) treeNode.Expand();
         // ReSharper disable once ConstantNullCoalescingCondition
         _treeView.SelectedNode = reselectNode ?? _treeView.Nodes.Cast<TreeNode>().FirstOrDefault();
         _treeView.SelectedNode?.Expand();
         _treeView.EndUpdate();
+    }
+
+    /// <summary>
+    /// Collects the <see cref="Node.Target"/>s of all currently expanded tree nodes.
+    /// </summary>
+    private static HashSet<object> GetExpandedTargets(TreeNodeCollection nodes)
+    {
+        var targets = new HashSet<object>(ReferenceComparer.Instance);
+
+        void Collect(TreeNodeCollection collection)
+        {
+            foreach (TreeNode treeNode in collection)
+            {
+                if (treeNode.IsExpanded && treeNode is StructureTreeNode {Node.Target: {} target}) targets.Add(target);
+                Collect(treeNode.Nodes);
+            }
+        }
+
+        Collect(nodes);
+        return targets;
+    }
+
+    /// <summary>
+    /// Compares objects by reference, so that <see cref="Node.Target"/>s can be tracked across tree rebuilds.
+    /// </summary>
+    private sealed class ReferenceComparer : IEqualityComparer<object>
+    {
+        public static readonly ReferenceComparer Instance = new();
+
+        public new bool Equals(object? x, object? y) => ReferenceEquals(x, y);
+
+        public int GetHashCode(object obj) => RuntimeHelpers.GetHashCode(obj);
     }
     #endregion
 
