@@ -36,7 +36,13 @@ internal class PolymorphicPropertyDescription<TContainer, TProperty>(Func<TConta
     }
 
     public override IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container)
-        => _descriptions.Select(description => description.GetCandidateFor(getPointer(container)));
+    {
+        // The property holds at most one value, so it can only be created while unset
+        var pointer = getPointer(container);
+        return pointer.Value == null
+            ? _descriptions.Select(description => description.GetCandidateFor(pointer))
+            : [];
+    }
 
     /// <inheritdoc/>
     public IPropertyDescription<TContainer, TProperty> AddElement<TElement, TEditor>(string name, Func<TElement> factory, TEditor editor)

@@ -35,10 +35,40 @@ public class ContainerDescriptionFacts
 
         var candidates = descriptor.GetCandidatesFor(container).ToArray();
         ShouldBe(candidates,
-            ("Home Address", "A postal address."),
+            // "Home Address" is already set by the constructor, so it is not offered
             ("Work Address", "A postal address."),
             ("Primary Landline Number", "A phone number for a landline."),
             ("Primary Mobile Number", "A phone number for a mobile phone."),
+            ("Landline Number", "A phone number for a landline."),
+            ("Mobile Number", "A phone number for a mobile phone."));
+    }
+
+    [Fact]
+    public void GetCandidatesForSkipsPropertiesThatAreAlreadySet()
+    {
+        var descriptor = new ContainerDescription<Contact>();
+        descriptor
+           .AddRequiredProperty("Home Address", x => PropertyPointer.For(() => x.HomeAddress), new AddressEditor())
+           .AddProperty("Work Address", x => PropertyPointer.ForNullable(() => x.WorkAddress), new AddressEditor());
+        descriptor
+           .AddPolymorphicProperty(x => PropertyPointer.ForNullable(() => x.PrimaryNumber))
+           .AddElement("Primary Landline Number", () => new LandlineNumber())
+           .AddElement("Primary Mobile Number", () => new MobileNumber());
+        descriptor
+           .AddPolymorphicList(x => x.PhoneNumbers)
+           .AddElement("Landline Number", () => new LandlineNumber())
+           .AddElement("Mobile Number", () => new MobileNumber());
+
+        var container = new Contact
+        {
+            HomeAddress = new Address(),
+            WorkAddress = new Address(),
+            PrimaryNumber = new MobileNumber()
+        };
+
+        // Single-value properties can only be created while unset, lists always accept more elements
+        var candidates = descriptor.GetCandidatesFor(container).ToArray();
+        ShouldBe(candidates,
             ("Landline Number", "A phone number for a landline."),
             ("Mobile Number", "A phone number for a mobile phone."));
     }

@@ -32,5 +32,10 @@ internal class PropertyDescription<TContainer, TProperty, TEditor>(string name, 
 
     /// <inheritdoc/>
     public override IEnumerable<NodeCandidate> GetCandidatesFor(TContainer container)
-        => [new PropertyNodeCandidate<TProperty>(name, getPointer(container), factory)];
+    {
+        // The property holds at most one value, so it can only be created while unset
+        var pointer = getPointer(container);
+        if (pointer.Value == null)
+            yield return new PropertyNodeCandidate<TProperty>(name, pointer, factory);
+    }
 }
