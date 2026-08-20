@@ -1,20 +1,17 @@
 // Copyright Bastian Eicher
 // Licensed under the MIT License
 
-using System.ComponentModel;
+using NanoByte.Common.Undo;
 
 namespace NanoByte.StructureEditor;
 
 /// <summary>
 /// Provides an interface to a control that edits a node in the structure.
 /// </summary>
-/// <typeparam name="T">The type of object to edit.</typeparam>
-public interface INodeEditor<T> : INodeEditor
-    where T : class
+public interface INodeEditor
 {
     /// <summary>
-    /// The element to be edited.
+    /// An optional undo system to use for editing.
     /// </summary>
-    [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    T? Target { get; set; }
+    ICommandExecutor? CommandExecutor { get; set; }
 }
