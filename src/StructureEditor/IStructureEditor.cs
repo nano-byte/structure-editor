@@ -25,6 +25,7 @@ public interface IStructureEditor<T>
     /// Sets up handling for the root element with a generic editor.
     /// </summary>
     /// <param name="name">The name of the root element.</param>
+    /// <returns>The <see cref="ContainerDescription{TContainer}"/> for use in a "Fluent API" style.</returns>
     IContainerDescription<T> DescribeRoot(string name);
 
     /// <summary>
@@ -32,6 +33,7 @@ public interface IStructureEditor<T>
     /// </summary>
     /// <typeparam name="TEditor">An editor for modifying the content of the root.</typeparam>
     /// <param name="name">The name of the root element.</param>
+    /// <returns>The <see cref="ContainerDescription{TContainer}"/> for use in a "Fluent API" style.</returns>
     [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification = "Generics used as type-safe reflection replacement.")]
     IContainerDescription<T> DescribeRoot<TEditor>(string name)
         where TEditor : INodeEditor<T>, new();
