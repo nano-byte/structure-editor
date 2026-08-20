@@ -145,9 +145,10 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     public IContainerDescription<T> DescribeRoot<TEditor>(string name)
         where TEditor : INodeEditor<T>, new()
     {
-        // Use CommandManager as root rather than Target, to allow the entire Target to be replaced during editing
+        // Use CommandManager as root rather than Target, to allow the entire Target to be replaced during editing.
+        // Described as required, so that the root can neither be removed nor re-created.
         Describe<ICommandManager<T>>()
-           .AddProperty(name, _ => PropertyPointer.ForNullable(() => CommandManager.Target, value => CommandManager.Target = value), _factory, new TEditor());
+           .AddRequiredProperty(name, _ => PropertyPointer.For(() => CommandManager.Target!, value => CommandManager.Target = value), _factory, new TEditor());
 
         return Describe<T>();
     }
