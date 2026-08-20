@@ -261,7 +261,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     /// </summary>
     public void Undo()
     {
-        if (_textEditor.TextEditor.EnableUndo) _textEditor.TextEditor.Undo();
+        if (_textEditor.EnableUndo) _textEditor.Undo();
         else CommandManager.Undo();
     }
 
@@ -270,7 +270,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     /// </summary>
     public void Redo()
     {
-        if (_textEditor.TextEditor.EnableRedo) _textEditor.TextEditor.Redo();
+        if (_textEditor.EnableRedo) _textEditor.Redo();
         else CommandManager.Redo();
     }
     #endregion
@@ -386,7 +386,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
         if (command == null) return;
         _serializedTarget = _selectedTarget = command.Value;
         CommandManager.Execute(command);
-        _textEditor.TextEditor.Document.UndoStack.ClearAll();
+        _textEditor.ClearUndoStack();
     }
     #endregion
 }
