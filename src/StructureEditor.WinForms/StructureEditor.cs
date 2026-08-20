@@ -267,24 +267,37 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     #region Add/remove
     private void BuildAddDropDownMenu()
     {
-        var menu = (SelectedNode?.Node.Target == null)
-            ? []
-            : _getCandidates.Dispatch(SelectedNode.Node.Target)
-                            .Select(candidate => candidate == null
-                                 ? (ToolStripItem)new ToolStripSeparator()
-                                 : new ToolStripMenuItem(candidate.NodeType, null, (_, _) =>
-                                     {
-                                         var command = candidate.GetCreateCommand();
-                                         _selectedTarget = command.Value;
-                                         CommandManager.Execute(command);
-                                     })
-                                     {ToolTipText = candidate.Description})
-                            .ToArray();
+        ToolStripItem MenuItem(NodeCandidate candidate)
+            => new ToolStripMenuItem(candidate.NodeType, null, (_, _) =>
+            {
+                var command = candidate.GetCreateCommand();
+                _selectedTarget = command.Value;
+                CommandManager.Execute(command);
+            })
+            {ToolTipText = candidate.Description};
+
+        var menu = new List<ToolStripItem>();
+        if (SelectedNode?.Node.Target != null)
+        {
+            foreach (var candidate in _getCandidates.Dispatch(SelectedNode.Node.Target))
+            {
+                // null candidates mark the boundaries between the descriptions of different container types
+                if (candidate == null)
+                {
+                    // Suppress leading and consecutive separators
+                    if (menu is not ([] or [.., ToolStripSeparator])) menu.Add(new ToolStripSeparator());
+                }
+                else menu.Add(MenuItem(candidate));
+            }
+
+            // Suppress trailing separator
+            if (menu is [.., ToolStripSeparator]) menu.RemoveAt(menu.Count - 1);
+        }
 
         _buttonAdd.DropDownItems.Clear();
-        _buttonAdd.DropDownItems.AddRange(menu.Take(menu.Length - 1).ToArray());
+        _buttonAdd.DropDownItems.AddRange(menu.ToArray());
 
-        _buttonAdd.Enabled = _buttonAdd.DropDownItems is not [];
+        _buttonAdd.Enabled = menu is not [];
     }
 
     /// <summary>
