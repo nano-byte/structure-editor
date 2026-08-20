@@ -110,14 +110,7 @@ public class LocalizableTextBox : NodeEditorBase<LocalizableStringCollection>
 
     private void FillTextBox()
     {
-        try
-        {
-            TextBox.Text = (_selectedLanguage == null) ? "" : Target?.GetExactLanguage(_selectedLanguage) ?? "";
-        }
-        catch (KeyNotFoundException)
-        {
-            TextBox.Text = "";
-        }
+        TextBox.Text = (_selectedLanguage == null) ? "" : Target?.GetExactLanguage(_selectedLanguage) ?? "";
         _textBoxDirty = false;
     }
 
