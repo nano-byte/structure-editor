@@ -14,7 +14,7 @@ UI-agnostic. Defines:
 - <xref:NanoByte.StructureEditor.NodeCandidate>: describes a node that *could* be created (drives "Add" menus), with `GetCreateCommand()` to materialize it.
 - <xref:NanoByte.StructureEditor.INodeEditor> / <xref:NanoByte.StructureEditor.INodeEditor`1>: the toolkit-neutral contract a per-type editor implements.
 
-The package targets `netstandard2.0`, `netstandard2.1`, and `net8.0`, so it can be referenced from non-Windows hosts.
+The package targets `net45`, `net8.0`, `net9.0`, and `net10.0`. The non-Framework targets carry no Windows-specific dependencies, so it can be referenced from non-Windows hosts.
 
 ### `NanoByte.StructureEditor.WinForms`
 
