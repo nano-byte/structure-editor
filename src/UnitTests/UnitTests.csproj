@@ -17,7 +17,7 @@
     <!-- .NET Core MSBuild does not support non-primitive resources (e.g., images) for .NET Framework -->
     <TargetFrameworks>net10.0-windows</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition="$(TargetFramework)!='net48'">
+  <PropertyGroup Condition="'$(TargetFramework)'!='net48'">
     <!-- Run nullability analysis only on annotated frameworks -->
     <Nullable>enable</Nullable>
   </PropertyGroup>
