@@ -4,7 +4,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
-using Generator.Equals;
 
 namespace NanoByte.StructureEditor.Sample.Model;
 
@@ -12,8 +11,7 @@ namespace NanoByte.StructureEditor.Sample.Model;
 /// Contact details of an individual.
 /// </summary>
 [Description("Contact details of an individual.")]
-[Equatable]
-public partial class Contact
+public class Contact
 {
     /// <summary>
     /// The first name of the contact.
@@ -43,7 +41,6 @@ public partial class Contact
     [Browsable(false)]
     [XmlElement(nameof(LandlineNumber), typeof(LandlineNumber))]
     [XmlElement(nameof(MobileNumber), typeof(MobileNumber))]
-    [OrderedEquality]
     public List<PhoneNumber> PhoneNumbers { get; } = [];
 
     public override string ToString() => FirstName + " " + LastName;

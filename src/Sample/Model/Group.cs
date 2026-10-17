@@ -4,7 +4,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
-using Generator.Equals;
 
 namespace NanoByte.StructureEditor.Sample.Model;
 
@@ -12,8 +11,7 @@ namespace NanoByte.StructureEditor.Sample.Model;
 /// A group of multiple contacts.
 /// </summary>
 [Description("A group of multiple contacts.")]
-[Equatable]
-public partial class Group : IContactContainer
+public class Group : IContactContainer
 {
     /// <summary>
     /// The name of the group.
@@ -25,7 +23,6 @@ public partial class Group : IContactContainer
     /// <inheritdoc/>
     [Browsable(false)]
     [XmlElement(nameof(Contact))]
-    [OrderedEquality]
     public List<Contact> Contacts { get; } = [];
 
     public override string ToString() => Name ?? "";

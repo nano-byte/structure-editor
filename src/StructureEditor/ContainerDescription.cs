@@ -19,7 +19,7 @@ public class ContainerDescription<TContainer> : IContainerDescription<TContainer
 
     /// <inheritdoc/>
     public IContainerDescription<TContainer> AddProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer, Func<TProperty> factory, TEditor editor)
-        where TProperty : class, IEquatable<TProperty>
+        where TProperty : class
         where TEditor : INodeEditor<TProperty>, new()
     {
         _descriptions.Add(new PropertyDescription<TContainer, TProperty, TEditor>(name, getPointer, factory, nullable: true));
@@ -28,7 +28,7 @@ public class ContainerDescription<TContainer> : IContainerDescription<TContainer
 
     /// <inheritdoc/>
     public IContainerDescription<TContainer> AddRequiredProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, Func<TProperty> factory, TEditor editor)
-        where TProperty : class, IEquatable<TProperty>
+        where TProperty : class
         where TEditor : INodeEditor<TProperty>, new()
     {
         _descriptions.Add(new PropertyDescription<TContainer, TProperty, TEditor>(name, AsNullable(getPointer), factory, nullable: false));
@@ -75,7 +75,7 @@ public class ContainerDescription<TContainer> : IContainerDescription<TContainer
 
     /// <inheritdoc/>
     public IContainerDescription<TContainer> AddList<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, Func<TElement> factory, TEditor editor)
-        where TElement : class, IEquatable<TElement>
+        where TElement : class
         where TEditor : INodeEditor<TElement>, new()
     {
         var listDescription = new ListDescription<TContainer, TElement>(getList);

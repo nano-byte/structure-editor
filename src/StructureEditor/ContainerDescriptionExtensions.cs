@@ -25,7 +25,7 @@ public static class ContainerDescriptionExtensions
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     public static IContainerDescription<TContainer> AddProperty<TContainer, TProperty, TEditor>(this IContainerDescription<TContainer> description, string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer, TEditor editor)
         where TContainer : class
-        where TProperty : class, IEquatable<TProperty>, new()
+        where TProperty : class, new()
         where TEditor : INodeEditor<TProperty>, new()
         => description.AddProperty(name, getPointer, () => new TProperty(), editor);
 
@@ -42,7 +42,7 @@ public static class ContainerDescriptionExtensions
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     public static IContainerDescription<TContainer> AddRequiredProperty<TContainer, TProperty, TEditor>(this IContainerDescription<TContainer> description, string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, TEditor editor)
         where TContainer : class
-        where TProperty : class, IEquatable<TProperty>, new()
+        where TProperty : class, new()
         where TEditor : INodeEditor<TProperty>, new()
         => description.AddRequiredProperty(name, getPointer, () => new TProperty(), editor);
 
@@ -59,7 +59,7 @@ public static class ContainerDescriptionExtensions
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     public static IContainerDescription<TContainer> AddList<TContainer, TElement, TEditor>(this IContainerDescription<TContainer> description, string name, Func<TContainer, IList<TElement>> getList, TEditor editor)
         where TContainer : class
-        where TElement : class, IEquatable<TElement>, new()
+        where TElement : class, new()
         where TEditor : INodeEditor<TElement>, new()
         => description.AddList(name, getList, () => new TElement(), editor);
 }

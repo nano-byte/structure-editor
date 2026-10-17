@@ -33,7 +33,7 @@ public class ListElementNode<TContainer, TList, TElement, TEditor>(string name, 
     public override IValueCommand? GetUpdateCommand(string serializedValue)
     {
         var newValue = XmlStorage.FromXmlString<TElement>(serializedValue);
-        return Equals(newValue, element) ? null : new ReplaceInList<TList>(list, element, newValue);
+        return newValue.ToXmlString() == GetSerialized() ? null : new ReplaceInList<TList>(list, element, newValue);
     }
 
     /// <inheritdoc/>

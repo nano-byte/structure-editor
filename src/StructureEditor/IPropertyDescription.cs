@@ -26,6 +26,6 @@ public interface IPropertyDescription<TContainer, TProperty>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification = "Generics used as type-safe reflection replacement.")]
     IPropertyDescription<TContainer, TProperty> AddElement<TElement, TEditor>(string name, Func<TElement> factory, TEditor editor)
-        where TElement : class, TProperty, IEquatable<TElement>
+        where TElement : class, TProperty
         where TEditor : INodeEditor<TElement>, new();
 }

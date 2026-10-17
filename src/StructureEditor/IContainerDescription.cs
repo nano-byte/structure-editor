@@ -24,7 +24,7 @@ public interface IContainerDescription<TContainer> where TContainer : class
     /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     IContainerDescription<TContainer> AddProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer, Func<TProperty> factory, TEditor editor)
-        where TProperty : class, IEquatable<TProperty>
+        where TProperty : class
         where TEditor : INodeEditor<TProperty>, new();
 
     /// <summary>
@@ -38,7 +38,7 @@ public interface IContainerDescription<TContainer> where TContainer : class
     /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     IContainerDescription<TContainer> AddRequiredProperty<TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, Func<TProperty> factory, TEditor editor)
-        where TProperty : class, IEquatable<TProperty>
+        where TProperty : class
         where TEditor : INodeEditor<TProperty>, new();
 
     /// <summary>
@@ -79,7 +79,7 @@ public interface IContainerDescription<TContainer> where TContainer : class
     /// <param name="editor">Dummy element used for type inference of <typeparamref name="TEditor"/>.</param>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     IContainerDescription<TContainer> AddList<TElement, TEditor>(string name, Func<TContainer, IList<TElement>> getList, Func<TElement> factory, TEditor editor)
-        where TElement : class, IEquatable<TElement>
+        where TElement : class
         where TEditor : INodeEditor<TElement>, new();
 
     /// <summary>

@@ -26,6 +26,6 @@ public interface IListDescription<TContainer, TList>
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification = "Generics used as type-safe reflection replacement.")]
     IListDescription<TContainer, TList> AddElement<TElement, TEditor>(string name, Func<TElement> factory, TEditor editor)
-        where TElement : class, TList, IEquatable<TElement>
+        where TElement : class, TList
         where TEditor : INodeEditor<TElement>, new();
 }

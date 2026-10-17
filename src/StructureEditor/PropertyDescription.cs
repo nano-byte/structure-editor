@@ -19,7 +19,7 @@ namespace NanoByte.StructureEditor;
 /// <param name="nullable">Whether the property may be set to null, i.e. removed.</param>
 internal class PropertyDescription<TContainer, TProperty, TEditor>(string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer, Func<TProperty> factory, bool nullable) : Description<TContainer>
     where TContainer : class
-    where TProperty : class, IEquatable<TProperty>
+    where TProperty : class
     where TEditor : INodeEditor<TProperty>, new()
 {
     /// <inheritdoc/>

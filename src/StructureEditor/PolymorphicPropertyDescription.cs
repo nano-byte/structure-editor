@@ -46,7 +46,7 @@ internal class PolymorphicPropertyDescription<TContainer, TProperty>(Func<TConta
 
     /// <inheritdoc/>
     public IPropertyDescription<TContainer, TProperty> AddElement<TElement, TEditor>(string name, Func<TElement> factory, TEditor editor)
-        where TElement : class, TProperty, IEquatable<TElement>
+        where TElement : class, TProperty
         where TEditor : INodeEditor<TElement>, new()
     {
         _descriptions.Add(new ElementDescription<TElement, TEditor>(name, factory, nullable));
@@ -61,7 +61,7 @@ internal class PolymorphicPropertyDescription<TContainer, TProperty>(Func<TConta
     }
 
     private class ElementDescription<TElement, TEditor>(string name, Func<TElement> factory, bool nullable) : IElementDescription
-        where TElement : class, TProperty, IEquatable<TElement>
+        where TElement : class, TProperty
         where TEditor : INodeEditor<TElement>, new()
     {
         public Node? TryGetNode(TContainer container, PropertyPointer<TProperty?> pointer)

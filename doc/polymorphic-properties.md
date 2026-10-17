@@ -14,8 +14,8 @@ public abstract class PhoneNumber
     public string? LocalNumber { get; set; }
 }
 
-public class LandlineNumber : PhoneNumber, IEquatable<LandlineNumber> { /* ... */ }
-public class MobileNumber   : PhoneNumber, IEquatable<MobileNumber>   { /* ... */ }
+public class LandlineNumber : PhoneNumber { /* ... */ }
+public class MobileNumber   : PhoneNumber { /* ... */ }
 
 public class Contact
 {
@@ -26,9 +26,6 @@ public class Contact
 ```
 
 The element name passed to `[XmlElement]` is the XML tag that will appear in the serialized output and inside the embedded text editor. It does not have to match the CLR type name, but doing so keeps things obvious.
-
-> [!NOTE]
-> Each concrete type must implement `IEquatable<TElement>`. The structure editor uses equality to decide whether an edit actually changed anything before recording an undo command. The sample uses [Generator.Equals](https://github.com/diegofrata/Generator.Equals) to generate these implementations, but a hand-written `Equals` works just as well.
 
 ## Describing the property
 

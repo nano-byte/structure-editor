@@ -23,7 +23,7 @@ public static class ContainerDescriptionExtensions
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     public static IContainerDescription<TContainer> AddProperty<TContainer, TProperty>(this IContainerDescription<TContainer> description, string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer)
         where TContainer : class
-        where TProperty : class, IEquatable<TProperty>, new()
+        where TProperty : class, new()
         => description.AddProperty(name, getPointer, new PropertyGridNodeEditor<TProperty>());
 
     /// <summary>
@@ -38,7 +38,7 @@ public static class ContainerDescriptionExtensions
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     public static IContainerDescription<TContainer> AddProperty<TContainer, TProperty>(this IContainerDescription<TContainer> description, string name, Func<TContainer, PropertyPointer<TProperty?>> getPointer, Func<TProperty> factory)
         where TContainer : class
-        where TProperty : class, IEquatable<TProperty>
+        where TProperty : class
         => description.AddProperty(name, getPointer, factory, new PropertyGridNodeEditor<TProperty>());
 
     /// <summary>
@@ -52,7 +52,7 @@ public static class ContainerDescriptionExtensions
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     public static IContainerDescription<TContainer> AddRequiredProperty<TContainer, TProperty>(this IContainerDescription<TContainer> description, string name, Func<TContainer, PropertyPointer<TProperty>> getPointer)
         where TContainer : class
-        where TProperty : class, IEquatable<TProperty>, new()
+        where TProperty : class, new()
         => description.AddRequiredProperty(name, getPointer, new PropertyGridNodeEditor<TProperty>());
 
     /// <summary>
@@ -67,7 +67,7 @@ public static class ContainerDescriptionExtensions
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     public static IContainerDescription<TContainer> AddRequiredProperty<TContainer, TProperty>(this IContainerDescription<TContainer> description, string name, Func<TContainer, PropertyPointer<TProperty>> getPointer, Func<TProperty> factory)
         where TContainer : class
-        where TProperty : class, IEquatable<TProperty>
+        where TProperty : class
         => description.AddRequiredProperty(name, getPointer, factory, new PropertyGridNodeEditor<TProperty>());
 
     /// <summary>
@@ -81,7 +81,7 @@ public static class ContainerDescriptionExtensions
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     public static IContainerDescription<TContainer> AddList<TContainer, TElement>(this IContainerDescription<TContainer> description, string name, Func<TContainer, IList<TElement>> getList)
         where TContainer : class
-        where TElement : class, IEquatable<TElement>, new()
+        where TElement : class, new()
         => description.AddList(name, getList, new PropertyGridNodeEditor<TElement>());
 
     /// <summary>
@@ -96,7 +96,7 @@ public static class ContainerDescriptionExtensions
     /// <returns>The "this" pointer for use in a "Fluent API" style.</returns>
     public static IContainerDescription<TContainer> AddList<TContainer, TElement>(this IContainerDescription<TContainer> description, string name, Func<TContainer, IList<TElement>> getList, Func<TElement> factory)
         where TContainer : class
-        where TElement : class, IEquatable<TElement>
+        where TElement : class
         => description.AddList(name, getList, factory, new PropertyGridNodeEditor<TElement>());
 
     /// <summary>
@@ -112,7 +112,7 @@ public static class ContainerDescriptionExtensions
     public static IListDescription<TContainer, TList> AddElement<TContainer, TList, TElement>(this IListDescription<TContainer, TList> description, string name, Func<TElement> factory)
         where TContainer : class
         where TList : class
-        where TElement : class, TList, IEquatable<TElement>
+        where TElement : class, TList
         => description.AddElement(name, factory, new PropertyGridNodeEditor<TElement>());
 
     /// <summary>
@@ -128,6 +128,6 @@ public static class ContainerDescriptionExtensions
     public static IPropertyDescription<TContainer, TProperty> AddElement<TContainer, TProperty, TElement>(this IPropertyDescription<TContainer, TProperty> description, string name, Func<TElement> factory)
         where TContainer : class
         where TProperty : class
-        where TElement : class, TProperty, IEquatable<TElement>
+        where TElement : class, TProperty
         => description.AddElement(name, factory, new PropertyGridNodeEditor<TElement>());
 }

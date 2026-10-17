@@ -21,7 +21,7 @@ namespace NanoByte.StructureEditor.WinForms;
 /// <remarks>Derive and call <see cref="DescribeRoot"/> or <see cref="DescribeRoot{TEditor}"/> as well as <see cref="Describe{TContainer}"/> in the constructor.</remarks>
 /// <typeparam name="T">The type of object to edit.</typeparam>
 public class StructureEditor<T> : UserControl, IStructureEditor<T>
-    where T : class, IEquatable<T>
+    where T : class
 {
     private readonly Func<T> _factory;
 

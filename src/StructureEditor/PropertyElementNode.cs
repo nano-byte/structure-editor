@@ -34,7 +34,7 @@ public class PropertyElementNode<TContainer, TProperty, TElement, TEditor>(strin
     public override IValueCommand? GetUpdateCommand(string serializedValue)
     {
         var newValue = XmlStorage.FromXmlString<TElement>(serializedValue);
-        return Equals(newValue, element) ? null : SetValueCommand.For(pointer, newValue);
+        return newValue.ToXmlString() == GetSerialized() ? null : SetValueCommand.For(pointer, newValue);
     }
 
     /// <inheritdoc/>

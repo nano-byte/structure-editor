@@ -2,7 +2,6 @@
 // Licensed under the MIT License
 
 using System.ComponentModel;
-using Generator.Equals;
 
 namespace NanoByte.StructureEditor.Sample.Model;
 
@@ -10,8 +9,7 @@ namespace NanoByte.StructureEditor.Sample.Model;
 /// A postal address.
 /// </summary>
 [Description("A postal address.")]
-[Equatable]
-public partial class Address
+public class Address
 {
     public string? Street { get; set; }
     public string? City { get; set; }

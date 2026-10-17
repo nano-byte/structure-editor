@@ -39,7 +39,7 @@ internal class ListDescription<TContainer, TList>(Func<TContainer, IList<TList>>
 
     /// <inheritdoc/>
     public IListDescription<TContainer, TList> AddElement<TElement, TEditor>(string name, Func<TElement> factory, TEditor editor)
-        where TElement : class, TList, IEquatable<TElement>
+        where TElement : class, TList
         where TEditor : INodeEditor<TElement>, new()
     {
         _descriptions.Add(new ElementDescription<TElement, TEditor>(name, factory));
@@ -54,7 +54,7 @@ internal class ListDescription<TContainer, TList>(Func<TContainer, IList<TList>>
     }
 
     private class ElementDescription<TElement, TEditor> : IElementDescription
-        where TElement : class, TList, IEquatable<TElement>
+        where TElement : class, TList
         where TEditor : INodeEditor<TElement>, new()
     {
         private readonly string _name;
