@@ -7,7 +7,7 @@ NanoByte Structure Editor is a WinForms library that helps you build split-scree
 
 1. a collapsible tree-view of the data structure,
 2. a graphical editor for the currently selected node in the tree (`PropertyGrid` or custom) and
-3. a text editor (based on [ICSharpCode.TextEditor](https://github.com/nano-byte/ICSharpCode.TextEditor)) with a serialized (XML) representation of the currently selected node.
+3. a text editor (based on [ICSharpCode.TextEditor](https://github.com/nano-byte/ICSharpCode.TextEditor)) with a serialized (e.g., XML or JSON) representation of the currently selected node.
 
 This allows you to create an IDE-like experience for your users when editing complex domain specific languages, configuration files, etc..
 
@@ -69,6 +69,23 @@ Use the `Save()` method on the `CommandManager` property to save the editor's co
 ```csharp
 editor.CommandManager.Save(path);
 ```
+
+### Serialization formats
+
+The text editor uses XML by default. To use JSON instead, set the `Serializer` property:
+```csharp
+editor.Serializer = JsonStructureSerializer.Instance; // System.Text.Json, .NET 8.0+ only
+```
+
+To load and save files in the same format, use `SerializingCommandManager<T>`. Passing one to `Open()` also sets the editor's `Serializer`:
+```csharp
+editor.Open(SerializingCommandManager<AddressBook>.Load(path, JsonStructureSerializer.Instance));
+editor.CommandManager.Save(path);
+```
+
+For Newtonsoft.Json (including on .NET Framework), add a reference to the [NanoByte.StructureEditor.NewtonsoftJson](https://www.nuget.org/packages/NanoByte.StructureEditor.NewtonsoftJson/) NuGet package and use `NewtonsoftJsonStructureSerializer`.
+
+Polymorphic lists and properties need extra attributes or settings to round-trip through JSON. See [Serialization formats](https://structure-editor.nano-byte.net/serialization-formats.html) for details.
 
 Take a look a the [sample project](src/Sample) for a more complete setup, including undo/redo functionality.
 

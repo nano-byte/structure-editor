@@ -157,10 +157,27 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public ICommandManager<T> CommandManager { get; private set; }
 
+    private IStructureSerializer _serializer = XmlStructureSerializer.Instance;
+
+    /// <summary>
+    /// The serializer used for the text representation of the selected node. Defaults to <see cref="XmlStructureSerializer"/>.
+    /// </summary>
+    /// <remarks>Set automatically by <see cref="Open"/> when passed a <see cref="SerializingCommandManager{T}"/>.</remarks>
+    [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public IStructureSerializer Serializer
+    {
+        get => _serializer;
+        set
+        {
+            _serializer = value ?? throw new ArgumentNullException(nameof(value));
+            _textEditor.SetContent(GetSerialized(), _serializer);
+        }
+    }
+
     /// <summary>
     /// Opens an object for editing using the specified <see cref="ICommandManager{T}"/>.
     /// </summary>
-    /// <param name="commandManager">Holds the object being edited and manages undo/redo operations on it.</param>
+    /// <param name="commandManager">Holds the object being edited and manages undo/redo operations on it. If this is a <see cref="SerializingCommandManager{T}"/> its <see cref="SerializingCommandManager{T}.Serializer"/> is also applied to <see cref="Serializer"/>.</param>
     public void Open(ICommandManager<T> commandManager)
     {
         if (commandManager == null) throw new ArgumentNullException(nameof(commandManager));
@@ -175,6 +192,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
         CommandManager.TargetUpdated += RebuildOnNextIdle;
 
         RebuildTree();
+        if (commandManager is SerializingCommandManager<T> {Serializer: var serializer}) Serializer = serializer;
     }
 
     private bool _rebuildScheduled;
@@ -382,7 +400,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
             _editingTarget = _selectedTarget;
         }
 
-        if (_selectedTarget != _serializedTarget) _textEditor.SetContent(GetSerialized(), "XML");
+        if (_selectedTarget != _serializedTarget) _textEditor.SetContent(GetSerialized(), Serializer);
         _serializedTarget = null;
 
         SelectionChanged?.Invoke();
@@ -411,15 +429,11 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     /// Returns the serialized representation of the selected <see cref="StructureTreeNode"/>.
     /// </summary>
     protected virtual string GetSerialized()
-        => SelectedNode
-         ?.Node.GetSerialized()
-           // Trim off <?xml> header
-          .GetRightPartAtFirstOccurrence('\n')
-        ?? "";
+        => SelectedNode?.Node.GetSerialized(Serializer) ?? "";
 
     private void TextEditorContentChanged(string text)
     {
-        var command = SelectedNode?.Node.GetUpdateCommand(text);
+        var command = SelectedNode?.Node.GetUpdateCommand(text, Serializer);
         if (command == null) return;
         _serializedTarget = _selectedTarget = command.Value;
         CommandManager.Execute(command);

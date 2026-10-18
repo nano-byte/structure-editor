@@ -2,7 +2,6 @@
 // Licensed under the MIT License
 
 using NanoByte.Common;
-using NanoByte.Common.Storage;
 using NanoByte.Common.Undo;
 
 namespace NanoByte.StructureEditor;
@@ -24,14 +23,14 @@ public class PropertyNode<TContainer, TProperty, TEditor>(string name, TContaine
     where TEditor : INodeEditor<TProperty>, new()
 {
     /// <inheritdoc/>
-    public override string GetSerialized()
-        => pointer.Value?.ToXmlString() ?? "";
+    public override string GetSerialized(IStructureSerializer serializer)
+        => pointer.Value is null ? "" : serializer.Serialize<TProperty>(pointer.Value);
 
     /// <inheritdoc/>
-    public override IValueCommand? GetUpdateCommand(string serializedValue)
+    public override IValueCommand? GetUpdateCommand(string serializedValue, IStructureSerializer serializer)
     {
-        var newValue = XmlStorage.FromXmlString<TProperty>(serializedValue);
-        return newValue.ToXmlString() == GetSerialized() ? null : SetValueCommand.For(pointer, newValue);
+        var newValue = serializer.Deserialize<TProperty>(serializedValue);
+        return serializer.Serialize(newValue) == GetSerialized(serializer) ? null : SetValueCommand.For(pointer, newValue);
     }
 
     /// <inheritdoc/>

@@ -1,6 +1,8 @@
 // Copyright Bastian Eicher
 // Licensed under the MIT License
 
+using System;
+using System.IO;
 using System.Windows.Forms;
 using NanoByte.Common;
 using NanoByte.Common.Controls;
@@ -36,11 +38,26 @@ public class AddressBookEditor : StructureEditor<AddressBook>
            .AddElement("Primary Mobile Number", () => new MobileNumber());
     }
 
+    private const string FileFilter = "XML File (*.xml)|*.xml"
+#if NET
+                                    + "|JSON File (*.json)|*.json"
+#endif
+        ;
+
+    private static IStructureSerializer GetSerializer(string path)
+#if NET
+        => Path.GetExtension(path).Equals(".json", StringComparison.OrdinalIgnoreCase)
+            ? JsonStructureSerializer.Instance
+            : XmlStructureSerializer.Instance;
+#else
+        => XmlStructureSerializer.Instance;
+#endif
+
     public void Open()
     {
-        using var dialog = new OpenFileDialog {Filter = "XML File (*.xml)|*.xml"};
+        using var dialog = new OpenFileDialog {Filter = FileFilter};
         if (dialog.ShowDialog(this) == DialogResult.OK)
-            Open(CommandManager<AddressBook>.Load(dialog.FileName));
+            Open(SerializingCommandManager<AddressBook>.Load(dialog.FileName, GetSerializer(dialog.FileName)));
     }
 
     public bool Save()
@@ -56,9 +73,13 @@ public class AddressBookEditor : StructureEditor<AddressBook>
 
     public bool SaveAs()
     {
-        using var dialog = new SaveFileDialog {Filter = "XML File (*.xml)|*.xml"};
+        using var dialog = new SaveFileDialog {Filter = FileFilter};
         if (dialog.ShowDialog(this) == DialogResult.OK)
         {
+            var serializer = GetSerializer(dialog.FileName);
+            if (CommandManager is not SerializingCommandManager<AddressBook> {Serializer: var current} || current != serializer)
+                Open(new SerializingCommandManager<AddressBook>(CommandManager.Target!, serializer));
+
             CommandManager.Save(dialog.FileName);
             return true;
         }

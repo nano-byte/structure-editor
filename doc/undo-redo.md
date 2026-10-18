@@ -1,6 +1,6 @@
 # Undo, redo and persistence
 
-The structure editor routes every edit (tree changes, property changes, and raw XML edits) through a single <xref:NanoByte.Common.Undo.ICommandManager`1>. The manager owns the root object, records reversible commands, and persists to disk.
+The structure editor routes every edit (tree changes, property changes, and raw text edits) through a single <xref:NanoByte.Common.Undo.ICommandManager`1>. The manager owns the root object, records reversible commands, and persists to disk.
 
 ## The `CommandManager` property
 
@@ -15,7 +15,7 @@ editor.Open(CommandManager.For(SampleData.AddressBook));  // wrap an in-memory o
 
 ## Saving
 
-`ICommandManager<T>` serializes the target to XML via the same machinery the inline editor uses:
+`CommandManager<T>` serializes the target to XML. Use <xref:NanoByte.StructureEditor.SerializingCommandManager`1> to save in another format, such as JSON (see [Serialization formats](serialization-formats.md)):
 
 ```csharp
 editor.CommandManager.Save(path);
@@ -36,7 +36,7 @@ public bool Save()
 
 `StructureEditor<T>` exposes `Undo()` and `Redo()` methods that already do the right thing in two contexts:
 
-- If the embedded XML text editor has its own undo stack populated (i.e., the user is typing), they undo/redo characters there.
+- If the embedded text editor has its own undo stack populated (i.e., the user is typing), they undo/redo characters there.
 - Otherwise they delegate to `CommandManager.Undo()` / `Redo()`, reversing the last structural or property change.
 
 Bind them to menu items or hot-keys:
@@ -73,4 +73,4 @@ if (CommandExecutor == null) pointer.Value = newValue;
 else CommandExecutor.Execute(SetValueCommand.For(pointer, newValue));
 ```
 
-This keeps property edits, tree add/remove, and raw XML edits on one undo stack, so a single Ctrl+Z reverses whichever happened last.
+This keeps property edits, tree add/remove, and raw text edits on one undo stack, so a single Ctrl+Z reverses whichever happened last.

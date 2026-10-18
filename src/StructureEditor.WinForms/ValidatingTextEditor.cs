@@ -5,9 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
-using System.Xml;
 using ICSharpCode.TextEditor;
 using ICSharpCode.TextEditor.Document;
 using NanoByte.Common;
@@ -40,6 +38,8 @@ public class ValidatingTextEditor : UserControl
     /// </summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public TextEditorControl TextEditor { get; private set; } = new();
+
+    private IStructureSerializer? _serializer;
 
     public ValidatingTextEditor()
     {
@@ -77,11 +77,14 @@ public class ValidatingTextEditor : UserControl
     /// Sets a new text to be edited.
     /// </summary>
     /// <param name="text">The text to set.</param>
-    /// <param name="format">The format name used to determine the highlighting scheme (e.g. XML).</param>
-    public void SetContent(string text, string format)
+    /// <param name="serializer">The serializer that produced the text. Determines the highlighting scheme and is used to locate errors.</param>
+    public void SetContent(string text, IStructureSerializer serializer)
     {
         // Discard any validation pending against the previous content
         _timer.Stop();
+
+        _serializer = serializer;
+        string format = serializer.FormatName;
 
         var textEditor = new TextEditorControlEx
         {
@@ -95,6 +98,11 @@ public class ValidatingTextEditor : UserControl
             SyntaxHighlighting = format,
             FoldingStrategy = format
         };
+        if (format == "JSON" && textEditor.Document.TextEditorProperties.EnableFolding)
+        { // TextEditorControlEx only provides built-in folding for XML and C#
+            textEditor.Document.FoldingManager.FoldingStrategy = new JsonFoldingStrategy();
+            textEditor.Document.FoldingManager.UpdateFoldings(null!, null!);
+        }
         textEditor.TextChanged += TextEditor_TextChanged;
         textEditor.Validating += TextEditor_Validating;
 
@@ -180,17 +188,17 @@ public class ValidatingTextEditor : UserControl
 
     private void HandleError(Exception ex)
     {
-        if (ex is InvalidDataException {InnerException: XmlException xmlException})
+        if (_serializer != null && _serializer.TryGetErrorLocation(ex, out int line, out int column, out string message))
         {
-            int lineIndex = Math.Max(0, Math.Min(xmlException.LineNumber - 1, TextEditor.Document.TotalNumberOfLines - 1));
+            int lineIndex = Math.Max(0, Math.Min(line - 1, TextEditor.Document.TotalNumberOfLines - 1));
             var segment = TextEditor.Document.GetLineSegment(lineIndex);
-            int offset = segment.Offset + Math.Max(0, Math.Min(xmlException.LinePosition - 1, segment.Length));
+            int offset = segment.Offset + Math.Max(0, Math.Min(column - 1, segment.Length));
             int length = Math.Min(10, Math.Max(1, TextEditor.Document.TextLength - offset));
             TextEditor.Document.MarkerStrategy.AddMarker(
-                new TextMarker(offset, length, TextMarkerType.WaveLine) {ToolTip = xmlException.Message});
+                new TextMarker(offset, length, TextMarkerType.WaveLine) {ToolTip = message});
             TextEditor.Refresh();
 
-            SetStatus(Images.Error, xmlException.Message);
+            SetStatus(Images.Error, message);
         }
         else
             SetStatus(Images.Error, ex.GetMessageWithInner());

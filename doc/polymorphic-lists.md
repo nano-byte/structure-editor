@@ -27,6 +27,8 @@ public class Contact
 
 The element name passed to `[XmlElement]` is the XML tag that will appear in the serialized output and inside the embedded text editor. It does not have to match the CLR type name, but doing so keeps things obvious.
 
+When using JSON instead of XML, polymorphic types need a type discriminator instead. See [Serialization formats](serialization-formats.md#polymorphism).
+
 ## Describing the list
 
 `AddPolymorphicList()` returns an <xref:NanoByte.StructureEditor.IListDescription`2> on which you call `AddElement()` once per concrete type. The user-facing name and factory you pass here populate the "Add" drop-down menu:

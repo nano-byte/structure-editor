@@ -25,6 +25,7 @@
   <!-- Dependencies -->
   <ItemGroup>
     <ProjectReference Include="..\Sample\Sample.csproj" />
+    <ProjectReference Include="..\StructureEditor.NewtonsoftJson\StructureEditor.NewtonsoftJson.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AwesomeAssertions" Version="9.6.0" />

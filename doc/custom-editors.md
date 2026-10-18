@@ -59,6 +59,6 @@ The `editor` parameter is a dummy instance used solely for type inference of the
 
 - `TargetChanged`: fires when a new `Target` is assigned. Use it to refresh control state that does not flow through `Bind()`.
 - `CommandExecutorChanged`: fires when the undo system is (re)attached.
-- `OnRefresh`: fires from `Refresh()`, both on target change and when external edits (e.g., the XML text editor) mutate the target.
+- `OnRefresh`: fires from `Refresh()`, both on target change and when external edits (e.g., the text editor) mutate the target.
 
 The `Bind()` helpers subscribe to these internally, so you usually only need them when integrating controls that have no matching overload.

@@ -37,13 +37,16 @@ public abstract class Node(string nodeType, string? description, object? target)
     /// <summary>
     /// Returns a serialized representation of the <see cref="Target"/>.
     /// </summary>
-    public abstract string GetSerialized();
+    /// <param name="serializer">The serializer to use.</param>
+    public abstract string GetSerialized(IStructureSerializer serializer);
 
     /// <summary>
     /// Gets a command for updating the node's target with a new value.
     /// </summary>
     /// <param name="serializedValue">A serialized representation of the new value.</param>
-    public abstract IValueCommand? GetUpdateCommand(string serializedValue);
+    /// <param name="serializer">The serializer to use.</param>
+    /// <returns>The command; <c>null</c> if the new value is equivalent to the current one.</returns>
+    public abstract IValueCommand? GetUpdateCommand(string serializedValue, IStructureSerializer serializer);
 
     /// <summary>
     /// Gets a command for removing the node's target from the structure; <c>null</c> if the node cannot be removed.

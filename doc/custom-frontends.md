@@ -20,7 +20,7 @@ The package targets `net45`, `net8.0`, `net9.0`, and `net10.0`. The non-Framewor
 
 The reference frontend. Provides:
 
-- <xref:NanoByte.StructureEditor.WinForms.StructureEditor`1>: the `UserControl` that hosts the tree, per-node editor panel, and XML text editor.
+- <xref:NanoByte.StructureEditor.WinForms.StructureEditor`1>: the `UserControl` that hosts the tree, per-node editor panel, and text editor (see [Serialization formats](serialization-formats.md)).
 - <xref:NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor`1>: default `INodeEditor<T>` based on `PropertyGrid`.
 - <xref:NanoByte.StructureEditor.WinForms.NodeEditorBase`1>: base class for custom editors, with `Bind()` helpers that wire WinForms controls to the undo system.
 
@@ -30,7 +30,7 @@ The reference frontend. Provides:
 2. **Dispatch**: `StructureEditor<T>` stores these descriptions in an `AggregateDispatcher` keyed by container type. To build the tree, it walks the object graph and dispatches each object to the matching description list.
 3. **Node materialization**: each description yields concrete <xref:NanoByte.StructureEditor.Node> instances. The tree control wraps them in `StructureTreeNode`s.
 4. **Editing**: selecting a tree node calls `Node.GetEditorControl(executor)`, which returns an `INodeEditor` bound to the current `CommandManager`. Changes flow as `IUndoCommand`s onto the shared undo stack.
-5. **Serialization**: the XML text editor mirrors `Node.GetSerialized()` for the selected node. Edits there round-trip via `Node.GetUpdateCommand(serializedValue)`, which replaces the target with the deserialized value as an undoable command.
+5. **Serialization**: the text editor mirrors `Node.GetSerialized(serializer)` for the selected node, using an <xref:NanoByte.StructureEditor.IStructureSerializer> such as <xref:NanoByte.StructureEditor.XmlStructureSerializer>. Edits there round-trip via `Node.GetUpdateCommand(serializedValue, serializer)`, which replaces the target with the deserialized value as an undoable command.
 
 ## Building a non-WinForms frontend
 
@@ -41,4 +41,4 @@ Because `IStructureEditor<T>`, `Node`, and `INodeEditor` are toolkit-neutral, a 
 3. Provide a toolkit-specific `INodeEditor<T>` base class (analogous to `NodeEditorBase<T>`) that adapts your toolkit's data-binding to <xref:NanoByte.Common.PropertyPointer`1> and <xref:NanoByte.Common.Undo.ICommandExecutor>.
 4. Populate "Add" menus from `IContainerDescription<T>.GetCandidatesFor(container)` and execute `NodeCandidate.GetCreateCommand()` on the shared `ICommandManager<T>`.
 
-The XML editor pane is optional. The rest of the model works the same whether or not you expose the serialized form.
+The text editor pane is optional. The rest of the model works the same whether or not you expose the serialized form.
