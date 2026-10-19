@@ -1,0 +1,87 @@
+{
+  "Name": "My Address Book",
+  "Groups": [
+    {
+      "Name": "Scientists",
+      "Contacts": [
+        {
+          "FirstName": "Marie",
+          "LastName": "Curie",
+          "HomeAddress": {
+            "Street": null,
+            "City": null,
+            "Country": null
+          },
+          "WorkAddress": {
+            "Street": "1 Rue Victor Cousin",
+            "City": "Paris",
+            "Country": "France"
+          },
+          "PrimaryNumber": null,
+          "PhoneNumbers": []
+        },
+        {
+          "FirstName": "Albert",
+          "LastName": "Einstein",
+          "HomeAddress": {
+            "Street": "112 Mercer Street",
+            "City": "Princeton",
+            "Country": "United States"
+          },
+          "WorkAddress": null,
+          "PrimaryNumber": null,
+          "PhoneNumbers": [
+            {
+              "$type": "LandlineNumber",
+              "CountryCode": "+1",
+              "AreaCode": "555",
+              "LocalNumber": "0200"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Contacts": [
+    {
+      "FirstName": "John",
+      "LastName": "Doe",
+      "HomeAddress": {
+        "Street": "123 Fake Street",
+        "City": "New York",
+        "Country": "United States"
+      },
+      "WorkAddress": {
+        "Street": "456 Fake Street",
+        "City": "New York",
+        "Country": "United States"
+      },
+      "PrimaryNumber": {
+        "$type": "MobileNumber",
+        "CountryCode": "+1",
+        "AreaCode": "555",
+        "LocalNumber": "0102"
+      },
+      "PhoneNumbers": [
+        {
+          "$type": "LandlineNumber",
+          "CountryCode": "+1",
+          "AreaCode": "555",
+          "LocalNumber": "0101"
+        },
+        {
+          "$type": "MobileNumber",
+          "CountryCode": "+1",
+          "AreaCode": "555",
+          "LocalNumber": "0102"
+        },
+        {
+          "$type": "MobileNumber",
+          "CountryCode": "+1",
+          "AreaCode": "555",
+          "LocalNumber": "0103"
+        }
+      ]
+    }
+  ]
+}

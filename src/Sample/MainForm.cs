@@ -2,7 +2,9 @@
 // Licensed under the MIT License
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using NanoByte.Common.Undo;
 using NanoByte.StructureEditor.Sample.Controls;
@@ -24,11 +26,11 @@ public class MainForm : Form
         ResumeLayout(performLayout: false);
 
         _editor.Open(CommandManager.For(SampleData.AddressBook));
+        UpdateCaption();
     }
 
     private void SetupComponents()
     {
-        Text = "Structure Editor Sample";
         AutoScaleDimensions = new SizeF(6F, 13F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 600);
@@ -43,6 +45,18 @@ public class MainForm : Form
             return button;
         }
 
+        void FileAction(Action action)
+        {
+            action();
+            UpdateCaption();
+        }
+
+        var formatMenu = new ToolStripMenuItem("F&ormat");
+        formatMenu.DropDownItems.Add(FormatMenuItem("&XML", XmlStructureSerializer.Instance));
+#if NET
+        formatMenu.DropDownItems.Add(FormatMenuItem("&JSON", JsonStructureSerializer.Instance));
+#endif
+
         Controls.Add(new MenuStrip
         {
             Items =
@@ -51,9 +65,9 @@ public class MainForm : Form
                 {
                     DropDownItems =
                     {
-                        MenuItem("&Open...", _editor.Open, hotKey: Keys.Control | Keys.O),
-                        MenuItem("&Save...", () => _editor.Save(), hotKey: Keys.Control | Keys.S),
-                        MenuItem("Save &As...", () => _editor.SaveAs())
+                        MenuItem("&Open...", () => FileAction(_editor.Open), hotKey: Keys.Control | Keys.O),
+                        MenuItem("&Save...", () => FileAction(() => _editor.Save()), hotKey: Keys.Control | Keys.S),
+                        MenuItem("Save &As...", () => FileAction(() => _editor.SaveAs()))
                     }
                 },
                 new ToolStripMenuItem("&Edit")
@@ -63,8 +77,38 @@ public class MainForm : Form
                         MenuItem("&Undo", _editor.Undo, hotKey: Keys.Control | Keys.Z),
                         MenuItem("&Redo", _editor.Redo, hotKey: Keys.Control | Keys.Y)
                     }
-                }
+                },
+                formatMenu
             }
         });
+    }
+
+    private readonly List<ToolStripMenuItem> _formatMenuItems = [];
+
+    /// <summary>
+    /// Creates a menu item that switches the <see cref="IStructureSerializer"/> used for the text representation.
+    /// </summary>
+    private ToolStripMenuItem FormatMenuItem(string text, IStructureSerializer serializer)
+    {
+        var item = new ToolStripMenuItem {Text = text, Tag = serializer};
+        item.Click += (_, _) =>
+        {
+            _editor.Serializer = serializer;
+            UpdateCaption();
+        };
+        _formatMenuItems.Add(item);
+        return item;
+    }
+
+    /// <summary>
+    /// Shows the current file name and serialization format in the window title and checks the matching format menu item.
+    /// </summary>
+    private void UpdateCaption()
+    {
+        var path = _editor.CommandManager.Path;
+        Text = $"Structure Editor Sample - {(string.IsNullOrEmpty(path) ? "Untitled" : Path.GetFileName(path))} [{_editor.Serializer.FormatName}]";
+
+        foreach (var item in _formatMenuItems)
+            item.Checked = ReferenceEquals(item.Tag, _editor.Serializer);
     }
 }

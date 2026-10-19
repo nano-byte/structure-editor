@@ -1,0 +1,56 @@
+<AddressBook xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="My Address Book">
+  <Group Name="Scientists">
+    <Contact FirstName="Marie" LastName="Curie">
+      <HomeAddress />
+      <WorkAddress>
+        <Street>1 Rue Victor Cousin</Street>
+        <City>Paris</City>
+        <Country>France</Country>
+      </WorkAddress>
+    </Contact>
+    <Contact FirstName="Albert" LastName="Einstein">
+      <HomeAddress>
+        <Street>112 Mercer Street</Street>
+        <City>Princeton</City>
+        <Country>United States</Country>
+      </HomeAddress>
+      <LandlineNumber>
+        <CountryCode>+1</CountryCode>
+        <AreaCode>555</AreaCode>
+        <LocalNumber>0200</LocalNumber>
+      </LandlineNumber>
+    </Contact>
+  </Group>
+  <Contact FirstName="John" LastName="Doe">
+    <HomeAddress>
+      <Street>123 Fake Street</Street>
+      <City>New York</City>
+      <Country>United States</Country>
+    </HomeAddress>
+    <WorkAddress>
+      <Street>456 Fake Street</Street>
+      <City>New York</City>
+      <Country>United States</Country>
+    </WorkAddress>
+    <PrimaryMobileNumber>
+      <CountryCode>+1</CountryCode>
+      <AreaCode>555</AreaCode>
+      <LocalNumber>0102</LocalNumber>
+    </PrimaryMobileNumber>
+    <LandlineNumber>
+      <CountryCode>+1</CountryCode>
+      <AreaCode>555</AreaCode>
+      <LocalNumber>0101</LocalNumber>
+    </LandlineNumber>
+    <MobileNumber>
+      <CountryCode>+1</CountryCode>
+      <AreaCode>555</AreaCode>
+      <LocalNumber>0102</LocalNumber>
+    </MobileNumber>
+    <MobileNumber>
+      <CountryCode>+1</CountryCode>
+      <AreaCode>555</AreaCode>
+      <LocalNumber>0103</LocalNumber>
+    </MobileNumber>
+  </Contact>
+</AddressBook>
