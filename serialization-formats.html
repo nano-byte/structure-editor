@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Serialization formats | NanoByte Structure Editor </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Serialization formats | NanoByte Structure Editor ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/nano-byte/structure-editor/blob/3.0.0/doc/serialization-formats.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="serialization-formats">Serialization formats</h1>
+
+<p>The text editor shows a serialized representation of the selected node. By default this is XML, but you can switch to JSON or plug in your own format.</p>
+<table>
+<thead>
+<tr>
+<th>Serializer</th>
+<th>Package</th>
+<th>Frameworks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="api/NanoByte.StructureEditor.XmlStructureSerializer.html">XmlStructureSerializer</a> (default)</td>
+<td><a href="https://www.nuget.org/packages/NanoByte.StructureEditor/">NanoByte.StructureEditor</a></td>
+<td>.NET Framework 4.5+, .NET 8.0+</td>
+</tr>
+<tr>
+<td><a class="xref" href="api/NanoByte.StructureEditor.JsonStructureSerializer.html">JsonStructureSerializer</a> (System.Text.Json)</td>
+<td><a href="https://www.nuget.org/packages/NanoByte.StructureEditor/">NanoByte.StructureEditor</a></td>
+<td>.NET 8.0+</td>
+</tr>
+<tr>
+<td><a class="xref" href="api/NanoByte.StructureEditor.NewtonsoftJson.NewtonsoftJsonStructureSerializer.html">NewtonsoftJsonStructureSerializer</a> (Newtonsoft.Json)</td>
+<td><a href="https://www.nuget.org/packages/NanoByte.StructureEditor.NewtonsoftJson/">NanoByte.StructureEditor.NewtonsoftJson</a></td>
+<td>.NET Framework 4.5+, .NET 8.0+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="choosing-a-serializer">Choosing a serializer</h2>
+<p>Set the <a class="xref" href="api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html#NanoByte_StructureEditor_WinForms_StructureEditor_1_Serializer">Serializer</a> property to change the format of the text editor:</p>
+<pre><code class="lang-csharp">editor.Serializer = JsonStructureSerializer.Instance;
+</code></pre>
+<p>To load and save files in the same format, use <a class="xref" href="api/NanoByte.StructureEditor.SerializingCommandManager-1.html">SerializingCommandManager&lt;T&gt;</a> instead of <code>CommandManager&lt;T&gt;</code> (which always uses XML). Passing one to <code>Open()</code> also sets the editor's <code>Serializer</code>:</p>
+<pre><code class="lang-csharp">editor.Open(SerializingCommandManager&lt;AddressBook&gt;.Load(path, JsonStructureSerializer.Instance));
+// ...
+editor.CommandManager.Save(path);
+</code></pre>
+<p>Both JSON serializers accept options/settings in their constructors. Start from <code>JsonStructureSerializer.DefaultOptions</code> or <code>NewtonsoftJsonStructureSerializer.DefaultSettings</code> and adjust as needed.</p>
+<h2 id="modeling-the-data-for-json">Modeling the data for JSON</h2>
+<p>XML serialization attributes such as <code>[XmlAttribute]</code>, <code>[XmlElement]</code> and <code>[XmlIgnore]</code> have no effect on JSON. Use the JSON library's own attributes (e.g., <code>[JsonIgnore]</code>, <code>[JsonPropertyName]</code>) where needed.</p>
+<h3 id="get-only-collections">Get-only collections</h3>
+<p>Lists exposed as get-only properties, such as <code>public List&lt;Contact&gt; Contacts { get; } = [];</code>, need to be populated in place rather than replaced:</p>
+<ul>
+<li><code>JsonStructureSerializer.DefaultOptions</code> sets <code>PreferredObjectCreationHandling = JsonObjectCreationHandling.Populate</code> for this. Keep it if you provide your own options.</li>
+<li>Newtonsoft.Json populates existing collections by default.</li>
+</ul>
+<h3 id="polymorphism">Polymorphism</h3>
+<p><a href="polymorphic-lists.html">Polymorphic lists</a> and <a href="polymorphic-properties.html">polymorphic properties</a> need a type discriminator in JSON, so the deserializer knows which concrete type to create.</p>
+<p><strong>System.Text.Json:</strong> annotate the base type with <code>[JsonPolymorphic]</code> and one <code>[JsonDerivedType]</code> per concrete type:</p>
+<pre><code class="lang-csharp">[JsonPolymorphic]
+[JsonDerivedType(typeof(LandlineNumber), nameof(LandlineNumber))]
+[JsonDerivedType(typeof(MobileNumber), nameof(MobileNumber))]
+public abstract class PhoneNumber { /* ... */ }
+</code></pre>
+<p>The discriminator is written as a <code>$type</code> property. By default, it must be the first property of the object. On .NET 9+ you can set <code>AllowOutOfOrderMetadataProperties = true</code> to relax this.</p>
+<p><strong>Newtonsoft.Json:</strong> enable <code>TypeNameHandling.Auto</code>. Always combine it with a <code>SerializationBinder</code> that only allows your own types. Otherwise, loading untrusted JSON can instantiate arbitrary types.</p>
+<pre><code class="lang-csharp">editor.Serializer = new NewtonsoftJsonStructureSerializer(new JsonSerializerSettings
+{
+    Formatting = Formatting.Indented,
+    TypeNameHandling = TypeNameHandling.Auto,
+    SerializationBinder = new KnownTypesBinder(typeof(LandlineNumber), typeof(MobileNumber))
+});
+
+class KnownTypesBinder(params Type[] knownTypes) : ISerializationBinder
+{
+    public Type BindToType(string? assemblyName, string typeName)
+        =&gt; knownTypes.FirstOrDefault(x =&gt; x.Name == typeName)
+        ?? throw new JsonSerializationException($&quot;Unknown type: {typeName}&quot;);
+
+    public void BindToName(Type serializedType, out string? assemblyName, out string? typeName)
+    {
+        assemblyName = null;
+        typeName = serializedType.Name;
+    }
+}
+</code></pre>
+<p>When you select a single list element or property value in the tree, the text editor serializes it as its concrete type. So the discriminator only appears when you view the containing object.</p>
+<h2 id="custom-formats">Custom formats</h2>
+<p>Implement <a class="xref" href="api/NanoByte.StructureEditor.IStructureSerializer.html">IStructureSerializer</a> to support other formats (e.g., YAML):</p>
+<ul>
+<li><code>FormatName</code> selects the syntax highlighting of the text editor (e.g., <code>XML</code>, <code>JSON</code>).</li>
+<li><code>Serialize()</code> and <code>Deserialize()</code> convert between objects and text. <code>Deserialize()</code> should throw on invalid input.</li>
+<li><code>TryGetErrorLocation()</code> extracts a line and column from exceptions thrown by <code>Deserialize()</code>. The text editor uses this to underline the error.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/nano-byte/structure-editor/blob/3.0.0/doc/serialization-formats.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright Bastian Eicher
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
