@@ -19,6 +19,7 @@
     <Authors>Bastian Eicher</Authors>
     <Copyright>Copyright Bastian Eicher</Copyright>
     <RepositoryUrl>https://github.com/nano-byte/structure-editor</RepositoryUrl>
+    <PackageReleaseNotes>https://github.com/nano-byte/structure-editor/releases/tag/$(Version)</PackageReleaseNotes>
     <PackageProjectUrl>https://structure-editor.nano-byte.net/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
