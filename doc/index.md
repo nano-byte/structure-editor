@@ -75,7 +75,7 @@ editor.CommandManager.Save(path);
 
 The text editor uses XML by default. To use JSON instead, set the `Serializer` property:
 ```csharp
-editor.Serializer = JsonStructureSerializer.Instance; // System.Text.Json, .NET 8.0+ only
+editor.Serializer = JsonStructureSerializer.Instance; // System.Text.Json, .NET 10.0+ only
 ```
 
 To load and save files in the same format, use <xref:NanoByte.StructureEditor.SerializingCommandManager`1>. Passing one to `Open()` also sets the editor's `Serializer`:
