@@ -9,7 +9,15 @@ permissions:
 
 jobs:
   build:
-    runs-on: windows-2025-vs2026
+    strategy:
+      matrix:
+        include:
+          - os: windows-2025-vs2026
+            build: .\build.ps1
+          - os: ubuntu-latest
+            build: ./build.sh
+    runs-on: ${{matrix.os}}
+
     steps:
       # Prepare
       - uses: actions/checkout@v7
@@ -26,9 +34,9 @@ jobs:
 
       # Build
       - name: Build
-        run: .\build.ps1 ${{steps.gitversion.outputs.nuGetVersion}}${{github.ref_type != 'tag' && format('-{0}', steps.gitversion.outputs.shortSha) || ''}}
+        run: ${{matrix.build}} ${{steps.gitversion.outputs.nuGetVersion}}${{github.ref_type != 'tag' && format('-{0}', steps.gitversion.outputs.shortSha) || ''}}
       - name: Report test results
-        if: always()
+        if: always() && runner.os == 'Windows'
         uses: dorny/test-reporter@v3
         with:
           name: Test Report
@@ -37,7 +45,7 @@ jobs:
 
       # Release
       - name: Get tag message
-        if: github.ref_type == 'tag'
+        if: runner.os == 'Windows' && github.ref_type == 'tag'
         id: tag_message
         run: |
           "message<<EOF" >> $env:GITHUB_OUTPUT
@@ -45,28 +53,28 @@ jobs:
           git tag --format="%(contents)" -l ${{github.ref_name}} >> $env:GITHUB_OUTPUT
           "EOF" >> $env:GITHUB_OUTPUT
       - name: Create GitHub Release
-        if: github.ref_type == 'tag'
+        if: runner.os == 'Windows' && github.ref_type == 'tag'
         uses: softprops/action-gh-release@v3
         with:
           body: |
-            **[WinForms NuGet package](https://www.nuget.org/packages/NanoByte.StructureEditor.WinForms/${{steps.gitversion.outputs.nuGetVersion}})**
+            **NuGet packages: [WinForms](https://www.nuget.org/packages/NanoByte.StructureEditor.WinForms/${{steps.gitversion.outputs.nuGetVersion}}) | [Eto.Forms](https://www.nuget.org/packages/NanoByte.StructureEditor.EtoForms/${{steps.gitversion.outputs.nuGetVersion}})**
             ## Changes
             ${{steps.tag_message.outputs.message}}
 
       # Publish
       - name: Publish packages (GitHub)
-        if: github.event_name == 'push' && !startsWith(github.ref_name, 'renovate/')
+        if: runner.os == 'Windows' && github.event_name == 'push' && !startsWith(github.ref_name, 'renovate/')
         run: dotnet nuget push artifacts\Release\*.nupkg --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json --api-key ${{github.token}} --no-symbols --skip-duplicate
       - uses: NuGet/login@v1
-        if: github.ref_type == 'tag'
+        if: runner.os == 'Windows' && github.ref_type == 'tag'
         id: nuget_login
         with:
           user: ${{secrets.NUGET_USER}}
       - name: Publish packages (NuGet.org)
-        if: github.ref_type == 'tag'
+        if: runner.os == 'Windows' && github.ref_type == 'tag'
         run: dotnet nuget push artifacts\Release\*.nupkg --source nuget.org --api-key ${{steps.nuget_login.outputs.NUGET_API_KEY}}
       - name: Publish documentation
-        if: github.ref_type == 'tag'
+        if: runner.os == 'Windows' && github.ref_type == 'tag'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{github.token}}

@@ -14,4 +14,9 @@ public interface INodeEditor
     /// An optional undo system to use for editing.
     /// </summary>
     ICommandExecutor? CommandExecutor { get; set; }
+
+    /// <summary>
+    /// Updates the control to reflect the current state of the node being edited, e.g., after it was modified externally.
+    /// </summary>
+    void Refresh();
 }

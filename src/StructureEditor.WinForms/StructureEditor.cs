@@ -4,11 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
-using NanoByte.Common;
-using NanoByte.Common.Collections;
-using NanoByte.Common.Dispatch;
 using NanoByte.Common.Undo;
 using NanoByte.StructureEditor.WinForms.Resources;
 using System.ComponentModel;
@@ -23,7 +19,7 @@ namespace NanoByte.StructureEditor.WinForms;
 public class StructureEditor<T> : UserControl, IStructureEditor<T>
     where T : class
 {
-    private readonly Func<T> _factory;
+    private readonly StructureEditorPresenter<T> _presenter;
 
     /// <summary>
     /// Creates a new structure editor.
@@ -31,8 +27,8 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     /// <param name="factory">Callback to create a new instance of <typeparamref name="T"/>.</param>
     public StructureEditor(Func<T> factory)
     {
-        _factory = factory;
-        CommandManager = new CommandManager<T>(factory());
+        _presenter = new(factory);
+        _presenter.StructureChanged += RebuildOnNextIdle;
 
         SuspendLayout();
         SetupControls();
@@ -119,31 +115,15 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     //--------------------//
 
     #region Describe
-    private readonly AggregateDispatcher<object, Node?> _getNodes = new();
-
-    private readonly AggregateDispatcher<object, NodeCandidate?> _getCandidates = new();
-
     /// <inheritdoc/>
     public IContainerDescription<TContainer> Describe<TContainer>()
         where TContainer : class
-    {
-        var description = new ContainerDescription<TContainer>();
-        _getNodes.Add<TContainer>(container => description.GetNodesIn(container).ToList());
-        _getCandidates.Add<TContainer>(container => description.GetCandidatesFor(container).Concat(new NodeCandidate?[] {null}).ToList());
-        return description;
-    }
+        => _presenter.Describe<TContainer>();
 
     /// <inheritdoc/>
     public IContainerDescription<T> DescribeRoot<TEditor>(string name)
         where TEditor : INodeEditor<T>, new()
-    {
-        // Use CommandManager as root rather than Target, to allow the entire Target to be replaced during editing.
-        // Described as required, so that the root can neither be removed nor re-created.
-        Describe<ICommandManager<T>>()
-           .AddRequiredProperty(name, _ => PropertyPointer.For(() => CommandManager.Target!, value => CommandManager.Target = value), _factory, new TEditor());
-
-        return Describe<T>();
-    }
+        => _presenter.DescribeRoot<TEditor>(name);
 
     /// <inheritdoc/>
     public IContainerDescription<T> DescribeRoot(string name)
@@ -155,9 +135,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     /// Holds the object being edited and manages undo/redo operations on it.
     /// </summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public ICommandManager<T> CommandManager { get; private set; }
-
-    private IStructureSerializer _serializer = XmlStructureSerializer.Instance;
+    public ICommandManager<T> CommandManager => _presenter.CommandManager;
 
     /// <summary>
     /// The serializer used for the text representation of the selected node. Defaults to <see cref="XmlStructureSerializer"/>.
@@ -166,11 +144,11 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public IStructureSerializer Serializer
     {
-        get => _serializer;
+        get => _presenter.Serializer;
         set
         {
-            _serializer = value ?? throw new ArgumentNullException(nameof(value));
-            _textEditor.SetContent(GetSerialized(), _serializer);
+            _presenter.Serializer = value;
+            _textEditor.SetContent(GetSerialized(), value);
         }
     }
 
@@ -182,22 +160,19 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     {
         if (commandManager == null) throw new ArgumentNullException(nameof(commandManager));
 
-        CommandManager.TargetUpdated -= RebuildOnNextIdle;
-
         // Cancel any rebuild that was scheduled against the previous CommandManager
         Application.Idle -= RebuildOnce;
         _rebuildScheduled = false;
 
-        CommandManager = commandManager;
-        CommandManager.TargetUpdated += RebuildOnNextIdle;
+        _presenter.Open(commandManager);
 
         RebuildTree();
-        if (commandManager is SerializingCommandManager<T> {Serializer: var serializer}) Serializer = serializer;
+        if (commandManager is SerializingCommandManager<T>) _textEditor.SetContent(GetSerialized(), Serializer);
     }
 
     private bool _rebuildScheduled;
 
-    private void RebuildOnNextIdle(IUndoCommand command)
+    private void RebuildOnNextIdle()
     {
         if (_rebuildScheduled) return;
         _rebuildScheduled = true;
@@ -220,7 +195,8 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
         {
             if (disposing)
             {
-                CommandManager.TargetUpdated -= RebuildOnNextIdle;
+                _presenter.StructureChanged -= RebuildOnNextIdle;
+                _presenter.Close();
                 Application.Idle -= RebuildOnce;
             }
         }
@@ -241,22 +217,18 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
         var reexpandNodes = new List<TreeNode>();
         TreeNode? reselectNode = null;
 
-        IEnumerable<TreeNode> GetTreeNodes(object? target)
-        {
-            if (target == null) yield break;
-
-            foreach (var node in _getNodes.Dispatch(target).WhereNotNull())
+        TreeNode[] GetTreeNodes(IEnumerable<Node> nodes)
+            => nodes.Select(TreeNode (node) =>
             {
-                var treeNode = new StructureTreeNode(node, GetTreeNodes(node.Target).ToArray());
-                if (node.Target == _selectedTarget) reselectNode = treeNode;
+                var treeNode = new StructureTreeNode(node, GetTreeNodes(_presenter.GetNodes(node.Target)));
+                if (_presenter.ShouldSelect(node)) reselectNode = treeNode;
                 if (node.Target != null && expandedTargets.Contains(node.Target)) reexpandNodes.Add(treeNode);
-                yield return treeNode;
-            }
-        }
+                return treeNode;
+            }).ToArray();
 
         _treeView.BeginUpdate();
         _treeView.Nodes.Clear();
-        _treeView.Nodes.AddRange(GetTreeNodes(CommandManager).ToArray());
+        _treeView.Nodes.AddRange(GetTreeNodes(_presenter.GetRootNodes()));
         foreach (var treeNode in reexpandNodes) treeNode.Expand();
         // ReSharper disable once ConstantNullCoalescingCondition
         _treeView.SelectedNode = reselectNode ?? _treeView.Nodes.Cast<TreeNode>().FirstOrDefault();
@@ -269,7 +241,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     /// </summary>
     private static HashSet<object> GetExpandedTargets(TreeNodeCollection nodes)
     {
-        var targets = new HashSet<object>(ReferenceComparer.Instance);
+        var targets = new HashSet<object>(StructureEditorPresenter<T>.TargetComparer);
 
         void Collect(TreeNodeCollection collection)
         {
@@ -282,18 +254,6 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
 
         Collect(nodes);
         return targets;
-    }
-
-    /// <summary>
-    /// Compares objects by reference, so that <see cref="Node.Target"/>s can be tracked across tree rebuilds.
-    /// </summary>
-    private sealed class ReferenceComparer : IEqualityComparer<object>
-    {
-        public static readonly ReferenceComparer Instance = new();
-
-        public new bool Equals(object? x, object? y) => ReferenceEquals(x, y);
-
-        public int GetHashCode(object obj) => RuntimeHelpers.GetHashCode(obj);
     }
     #endregion
 
@@ -322,37 +282,17 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     #region Add/remove
     private void BuildAddDropDownMenu()
     {
-        ToolStripItem MenuItem(NodeCandidate candidate)
-            => new ToolStripMenuItem(candidate.NodeType, null, (_, _) =>
-            {
-                var command = candidate.GetCreateCommand();
-                _selectedTarget = command.Value;
-                CommandManager.Execute(command);
-            })
-            {ToolTipText = candidate.Description};
+        ToolStripItem MenuItem(NodeCandidate? candidate)
+            => candidate == null
+                ? new ToolStripSeparator()
+                : new ToolStripMenuItem(candidate.NodeType, null, (_, _) => _presenter.Add(candidate)) {ToolTipText = candidate.Description};
 
-        var menu = new List<ToolStripItem>();
-        if (SelectedNode?.Node.Target != null)
-        {
-            foreach (var candidate in _getCandidates.Dispatch(SelectedNode.Node.Target))
-            {
-                // null candidates mark the boundaries between the descriptions of different container types
-                if (candidate == null)
-                {
-                    // Suppress leading and consecutive separators
-                    if (menu is not ([] or [.., ToolStripSeparator])) menu.Add(new ToolStripSeparator());
-                }
-                else menu.Add(MenuItem(candidate));
-            }
-
-            // Suppress trailing separator
-            if (menu is [.., ToolStripSeparator]) menu.RemoveAt(menu.Count - 1);
-        }
+        var menu = _presenter.GetCandidates().Select(MenuItem).ToArray();
 
         _buttonAdd.DropDownItems.Clear();
-        _buttonAdd.DropDownItems.AddRange(menu.ToArray());
+        _buttonAdd.DropDownItems.AddRange(menu);
 
-        _buttonAdd.Enabled = menu is not [];
+        _buttonAdd.Enabled = menu.Length != 0;
     }
 
     /// <summary>
@@ -362,7 +302,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     {
         if (SelectedNode == null || _treeView.SelectedNode == _treeView.Nodes[0]) return;
 
-        var removeCommand = SelectedNode.Node.GetRemoveCommand();
+        var removeCommand = _presenter.GetRemoveCommand();
         if (removeCommand == null) return;
 
         _treeView.SelectedNode = _treeView.SelectedNode?.Parent; // Select parent before deleting
@@ -371,10 +311,6 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     #endregion
 
     #region Selection
-    private object? _selectedTarget;
-    private object? _editingTarget;
-    private object? _serializedTarget;
-
     /// <summary>
     /// The target object of the currently selected node; <c>null</c> if nothing is selected.
     /// </summary>
@@ -389,19 +325,15 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
 
     private void treeView_AfterSelect(object? sender, TreeViewEventArgs e)
     {
+        _presenter.Select(SelectedNode?.Node, out bool editorChanged, out bool textChanged);
+
         BuildAddDropDownMenu();
-        _buttonRemove.Enabled = _treeView.Nodes is [var node, ..] && e.Node != node && SelectedNode?.Node.GetRemoveCommand() != null;
-        _selectedTarget = SelectedNode?.Node.Target;
+        _buttonRemove.Enabled = _treeView.Nodes is [var node, ..] && e.Node != node && _presenter.GetRemoveCommand() != null;
 
-        if (_selectedTarget == _editingTarget) _editorControl?.Refresh();
-        else
-        {
-            UpdateEditorControl();
-            _editingTarget = _selectedTarget;
-        }
+        if (editorChanged) UpdateEditorControl();
+        else _editorControl?.Refresh();
 
-        if (_selectedTarget != _serializedTarget) _textEditor.SetContent(GetSerialized(), Serializer);
-        _serializedTarget = null;
+        if (textChanged) _textEditor.SetContent(GetSerialized(), Serializer);
 
         SelectionChanged?.Invoke();
     }
@@ -417,9 +349,9 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
             _editorControl = null;
         }
 
-        if (SelectedNode != null)
+        if (_presenter.GetEditorControl() is {} editor)
         {
-            _editorControl = (Control)SelectedNode.Node.GetEditorControl(CommandManager);
+            _editorControl = (Control)editor;
             _editorControl.Dock = DockStyle.Fill;
             _editorPanel.Controls.Add(_editorControl);
         }
@@ -429,15 +361,12 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     /// Returns the serialized representation of the selected <see cref="StructureTreeNode"/>.
     /// </summary>
     protected virtual string GetSerialized()
-        => SelectedNode?.Node.GetSerialized(Serializer) ?? "";
+        => _presenter.GetSerialized();
 
     private void TextEditorContentChanged(string text)
     {
-        var command = SelectedNode?.Node.GetUpdateCommand(text, Serializer);
-        if (command == null) return;
-        _serializedTarget = _selectedTarget = command.Value;
-        CommandManager.Execute(command);
-        _textEditor.ClearUndoStack();
+        if (_presenter.UpdateFromText(text))
+            _textEditor.ClearUndoStack();
     }
     #endregion
 }

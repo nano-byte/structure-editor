@@ -3,6 +3,7 @@
   <!-- Build configuration -->
   <PropertyGroup>
     <LangVersion>13.0</LangVersion>
+    <EnableWindowsTargeting>True</EnableWindowsTargeting>
     <Nullable>annotations</Nullable>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <OutputType>Library</OutputType>

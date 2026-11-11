@@ -24,7 +24,7 @@
 
   <!-- Dependencies -->
   <ItemGroup>
-    <ProjectReference Include="..\Sample\Sample.csproj" />
+    <ProjectReference Include="..\Sample.WinForms\Sample.WinForms.csproj" />
     <ProjectReference Include="..\StructureEditor.NewtonsoftJson\StructureEditor.NewtonsoftJson.csproj" />
   </ItemGroup>
   <ItemGroup>

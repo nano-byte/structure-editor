@@ -42,7 +42,7 @@ editor.Describe<Contact>()
 
 Because the property holds at most one value, the editor offers the configured types in the "Add" menu only while the property is unset, and setting one replaces any previous value.
 
-Each `AddElement()` overload accepts an optional editor instance, the same way `AddProperty()` does. Pass a custom <xref:NanoByte.StructureEditor.INodeEditor`1> if the default `PropertyGrid` is not enough:
+Each `AddElement()` overload accepts an optional editor instance, the same way `AddProperty()` does. Pass a custom <xref:NanoByte.StructureEditor.INodeEditor`1> if the default node editor is not enough:
 
 ```csharp
 .AddElement("Primary Landline Number", () => new LandlineNumber(), new LandlineEditor())

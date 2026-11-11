@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Build config -->
+  <PropertyGroup>
+    <AssemblyName>NanoByte.StructureEditor.EtoForms</AssemblyName>
+    <RootNamespace>NanoByte.StructureEditor.EtoForms</RootNamespace>
+    <Description>Cross-platform Eto.Forms controls for building split-screen editors for data structures</Description>
+    <PackageTags>Eto.Forms;cross-platform;split-screen;editor;data structures</PackageTags>
+    <TargetFrameworks>net472;net10.0</TargetFrameworks>
+    <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'!='net472'">
+    <!-- Run nullability analysis only on annotated frameworks -->
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!-- Dependencies -->
+  <ItemGroup>
+    <ProjectReference Include="..\StructureEditor\StructureEditor.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- TODO: Replace with the first released version that contains PropertyValueChangedEventArgs -->
+    <PackageReference Include="NanoByte.Common.EtoForms" Version="3.4.0" />
+  </ItemGroup>
+
+</Project>

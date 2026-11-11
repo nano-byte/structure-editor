@@ -79,6 +79,17 @@ public abstract class NodeEditorBase<T> : UserControl, INodeEditor<T>
     }
 
     /// <summary>
+    /// Sets a new value through the Undo system, if available.
+    /// </summary>
+    /// <param name="pointer">Read/write access to the value.</param>
+    /// <param name="value">The new value.</param>
+    protected void SetValue<TValue>(PropertyPointer<TValue> pointer, TValue value)
+    {
+        if (CommandExecutor == null) pointer.Value = value;
+        else CommandExecutor.Execute(SetValueCommand.For(pointer, value));
+    }
+
+    /// <summary>
     /// Binds a WinForms control to a property through the live editing and Undo system.
     /// </summary>
     /// <param name="control">The control to hook up (is automatically added to <see cref="Control.Controls"/>).</param>
@@ -95,8 +106,7 @@ public abstract class NodeEditorBase<T> : UserControl, INodeEditor<T>
 
             try
             {
-                if (CommandExecutor == null) pointer.Value = text;
-                else CommandExecutor.Execute(SetValueCommand.For(pointer, text));
+                SetValue(pointer, text);
             }
             #region Error handling
             catch (Exception ex)
@@ -142,9 +152,7 @@ public abstract class NodeEditorBase<T> : UserControl, INodeEditor<T>
         control.Validated += (_, _) =>
         {
             if (!control.IsValid || control.Uri == pointer.Value) return;
-
-            if (CommandExecutor == null) pointer.Value = control.Uri;
-            else CommandExecutor.Execute(SetValueCommand.For(pointer, control.Uri));
+            SetValue(pointer, control.Uri);
         };
 
         OnRefresh += () => control.Uri = pointer.Value;
@@ -180,9 +188,7 @@ public abstract class NodeEditorBase<T> : UserControl, INodeEditor<T>
         control.CheckedChanged += (_, _) =>
         {
             if (control.Checked == pointer.Value) return;
-
-            if (CommandExecutor == null) pointer.Value = control.Checked;
-            else CommandExecutor.Execute(SetValueCommand.For(pointer, control.Checked));
+            SetValue(pointer, control.Checked);
         };
 
         OnRefresh += () => control.Checked = pointer.Value;

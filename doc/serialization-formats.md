@@ -2,15 +2,15 @@
 
 The text editor shows a serialized representation of the selected node. By default this is XML, but you can switch to JSON or plug in your own format.
 
-| Serializer                                                                                         | Package                                                                                                            | Frameworks                     |
-| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------ |
-| <xref:NanoByte.StructureEditor.XmlStructureSerializer> (default)                                   | [NanoByte.StructureEditor](https://www.nuget.org/packages/NanoByte.StructureEditor/)                               | .NET Framework 4.5+, .NET 8.0+ |
-| <xref:NanoByte.StructureEditor.JsonStructureSerializer> (System.Text.Json)                         | [NanoByte.StructureEditor](https://www.nuget.org/packages/NanoByte.StructureEditor/)                               | .NET 8.0+                      |
-| <xref:NanoByte.StructureEditor.NewtonsoftJson.NewtonsoftJsonStructureSerializer> (Newtonsoft.Json) | [NanoByte.StructureEditor.NewtonsoftJson](https://www.nuget.org/packages/NanoByte.StructureEditor.NewtonsoftJson/) | .NET Framework 4.5+, .NET 8.0+ |
+| Serializer                                                                                         | Package                                                                                                            | Frameworks                      |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------- |
+| <xref:NanoByte.StructureEditor.XmlStructureSerializer> (default)                                   | [NanoByte.StructureEditor](https://www.nuget.org/packages/NanoByte.StructureEditor/)                               | .NET Framework 4.5+, .NET 10.0+ |
+| <xref:NanoByte.StructureEditor.JsonStructureSerializer> (System.Text.Json)                         | [NanoByte.StructureEditor](https://www.nuget.org/packages/NanoByte.StructureEditor/)                               | .NET 10.0+                      |
+| <xref:NanoByte.StructureEditor.NewtonsoftJson.NewtonsoftJsonStructureSerializer> (Newtonsoft.Json) | [NanoByte.StructureEditor.NewtonsoftJson](https://www.nuget.org/packages/NanoByte.StructureEditor.NewtonsoftJson/) | .NET Framework 4.5+, .NET 10.0+ |
 
 ## Choosing a serializer
 
-Set the [Serializer](xref:NanoByte.StructureEditor.WinForms.StructureEditor`1#NanoByte_StructureEditor_WinForms_StructureEditor_1_Serializer) property to change the format of the text editor:
+Set the `Serializer` property of <xref:NanoByte.StructureEditor.WinForms.StructureEditor`1> or <xref:NanoByte.StructureEditor.EtoForms.StructureEditor`1> to change the format of the text editor:
 
 ```csharp
 editor.Serializer = JsonStructureSerializer.Instance;
@@ -82,6 +82,6 @@ When you select a single list element or property value in the tree, the text ed
 
 Implement <xref:NanoByte.StructureEditor.IStructureSerializer> to support other formats (e.g., YAML):
 
-- `FormatName` selects the syntax highlighting of the text editor (e.g., `XML`, `JSON`).
+- `FormatName` names the format (e.g., `XML`, `JSON`). The WinForms text editor uses it to select syntax highlighting; on Eto.Forms it is passed on to the <xref:NanoByte.StructureEditor.EtoForms.ITextEditor>.
 - `Serialize()` and `Deserialize()` convert between objects and text. `Deserialize()` should throw on invalid input.
 - `TryGetErrorLocation()` extracts a line and column from exceptions thrown by `Deserialize()`. The text editor uses this to underline the error.

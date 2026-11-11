@@ -40,7 +40,7 @@ editor.Describe<Contact>()
       .AddElement("Mobile Number",   () => new MobileNumber());
 ```
 
-Each `AddElement()` overload accepts an optional editor instance, the same way `AddProperty()` does. Pass a custom <xref:NanoByte.StructureEditor.INodeEditor`1> if the default `PropertyGrid` is not enough:
+Each `AddElement()` overload accepts an optional editor instance, the same way `AddProperty()` does. Pass a custom <xref:NanoByte.StructureEditor.INodeEditor`1> if the default node editor is not enough:
 
 ```csharp
 .AddElement("Landline Number", () => new LandlineNumber(), new LandlineEditor())

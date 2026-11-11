@@ -5,6 +5,9 @@
   <Project Path="StructureEditor/StructureEditor.csproj" />
   <Project Path="StructureEditor.NewtonsoftJson/StructureEditor.NewtonsoftJson.csproj" />
   <Project Path="StructureEditor.WinForms/StructureEditor.WinForms.csproj" />
+  <Project Path="StructureEditor.EtoForms/StructureEditor.EtoForms.csproj" />
   <Project Path="UnitTests/UnitTests.csproj" />
   <Project Path="Sample/Sample.csproj" />
+  <Project Path="Sample.WinForms/Sample.WinForms.csproj" />
+  <Project Path="Sample.EtoForms/Sample.EtoForms.csproj" />
 </Solution>
