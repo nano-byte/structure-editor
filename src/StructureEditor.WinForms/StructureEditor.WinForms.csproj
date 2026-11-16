@@ -6,7 +6,7 @@
     <RootNamespace>NanoByte.StructureEditor.WinForms</RootNamespace>
     <Description>WinForms controls for building split-screen editors for data structures</Description>
     <PackageTags>WinForms;split-screen;editor;data structures</PackageTags>
-    <TargetFrameworks>net10.0-windows;net45</TargetFrameworks>
+    <TargetFrameworks>net45;net472;net10.0-windows</TargetFrameworks>
     <UseWindowsForms>True</UseWindowsForms>
     <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
   </PropertyGroup>
@@ -15,7 +15,7 @@
     <TargetFrameworks>net10.0-windows</TargetFrameworks>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)'!='net45'">
+  <PropertyGroup Condition="'$(TargetFramework)'!='net45' And '$(TargetFramework)'!='net472'">
     <!-- Run nullability analysis only on annotated frameworks -->
     <Nullable>enable</Nullable>
   </PropertyGroup>
