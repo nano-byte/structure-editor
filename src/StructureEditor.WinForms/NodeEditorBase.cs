@@ -19,16 +19,14 @@ namespace NanoByte.StructureEditor.WinForms;
 public abstract class NodeEditorBase<T> : UserControl, INodeEditor<T>
     where T : class
 {
-    private T? _target;
-
     /// <inheritdoc/>
     [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public virtual T? Target
     {
-        get => _target;
+        get;
         set
         {
-            _target = value;
+            field = value;
             TargetChanged?.Invoke();
             Refresh();
         }
@@ -40,16 +38,14 @@ public abstract class NodeEditorBase<T> : UserControl, INodeEditor<T>
     [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "Is not really an event but rather a hook.")]
     protected event Action? TargetChanged;
 
-    private ICommandExecutor? _commandExecutor;
-
     /// <inheritdoc/>
     [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public virtual ICommandExecutor? CommandExecutor
     {
-        get => _commandExecutor;
+        get;
         set
         {
-            _commandExecutor = value;
+            field = value;
             CommandExecutorChanged?.Invoke();
         }
     }

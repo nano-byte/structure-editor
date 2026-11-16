@@ -21,15 +21,13 @@ namespace NanoByte.StructureEditor.EtoForms;
 public abstract class NodeEditorBase<T> : Panel, INodeEditor<T>, IPendingChanges
     where T : class
 {
-    private T? _target;
-
     /// <inheritdoc/>
     public virtual T? Target
     {
-        get => _target;
+        get;
         set
         {
-            _target = value;
+            field = value;
             TargetChanged?.Invoke();
             Refresh();
         }
@@ -41,15 +39,13 @@ public abstract class NodeEditorBase<T> : Panel, INodeEditor<T>, IPendingChanges
     [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "Is not really an event but rather a hook.")]
     protected event Action? TargetChanged;
 
-    private ICommandExecutor? _commandExecutor;
-
     /// <inheritdoc/>
     public virtual ICommandExecutor? CommandExecutor
     {
-        get => _commandExecutor;
+        get;
         set
         {
-            _commandExecutor = value;
+            field = value;
             CommandExecutorChanged?.Invoke();
         }
     }

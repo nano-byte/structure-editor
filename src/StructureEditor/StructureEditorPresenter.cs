@@ -72,17 +72,11 @@ public class StructureEditorPresenter<T>
     /// </summary>
     public ICommandManager<T> CommandManager { get; private set; }
 
-    private IStructureSerializer _serializer = XmlStructureSerializer.Instance;
-
     /// <summary>
     /// The serializer used for the text representation of the selected node. Defaults to <see cref="XmlStructureSerializer"/>.
     /// </summary>
     /// <remarks>Set automatically by <see cref="Open"/> when passed a <see cref="SerializingCommandManager{T}"/>.</remarks>
-    public IStructureSerializer Serializer
-    {
-        get => _serializer;
-        set => _serializer = value ?? throw new ArgumentNullException(nameof(value));
-    }
+    public IStructureSerializer Serializer { get; set => field = value ?? throw new ArgumentNullException(nameof(value)); } = XmlStructureSerializer.Instance;
 
     /// <summary>
     /// Raised when the structure was modified and the tree needs to be rebuilt.
