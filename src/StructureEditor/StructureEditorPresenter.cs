@@ -46,9 +46,9 @@ public class StructureEditorPresenter<T>
         where TContainer : class
     {
         var description = new ContainerDescription<TContainer>();
-        _getNodes.Add<TContainer>(container => description.GetNodesIn(container).ToList());
+        _getNodes.Add<TContainer>(container => [..description.GetNodesIn(container)]);
         // null candidates mark the boundaries between the descriptions of different container types
-        _getCandidates.Add<TContainer>(container => description.GetCandidatesFor(container).Concat(new NodeCandidate?[] {null}).ToList());
+        _getCandidates.Add<TContainer>(container => [..description.GetCandidatesFor(container), null]);
         return description;
     }
 
