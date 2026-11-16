@@ -99,10 +99,8 @@ public class StructureEditorPresenter<T>
     /// <remarks>Does not raise <see cref="StructureChanged"/>. The frontend needs to rebuild its tree after calling this.</remarks>
     public void Open(ICommandManager<T> commandManager)
     {
-        if (commandManager == null) throw new ArgumentNullException(nameof(commandManager));
-
         CommandManager.TargetUpdated -= OnTargetUpdated;
-        CommandManager = commandManager;
+        CommandManager = commandManager ?? throw new ArgumentNullException(nameof(commandManager));
         CommandManager.TargetUpdated += OnTargetUpdated;
 
         if (commandManager is SerializingCommandManager<T> {Serializer: var serializer}) Serializer = serializer;
