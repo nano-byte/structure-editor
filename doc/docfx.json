@@ -3,9 +3,8 @@
     {
       "src": [
         {
-          "src": "../src",
-          "files": ["*/*.csproj"],
-          "exclude": ["UnitTests/*", "Sample*/*"]
+          "src": "../artifacts/Release/net472",
+          "files": ["NanoByte.StructureEditor*.dll"]
         }
       ],
       "dest": "api",
