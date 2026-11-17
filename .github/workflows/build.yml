@@ -57,7 +57,7 @@ jobs:
         uses: softprops/action-gh-release@v3
         with:
           body: |
-            **NuGet packages: [WinForms](https://www.nuget.org/packages/NanoByte.StructureEditor.WinForms/${{steps.gitversion.outputs.nuGetVersion}}) | [Eto.Forms](https://www.nuget.org/packages/NanoByte.StructureEditor.EtoForms/${{steps.gitversion.outputs.nuGetVersion}})**
+            **NuGet packages: [WinForms](https://www.nuget.org/packages/NanoByte.StructureEditor.WinForms/${{steps.gitversion.outputs.nuGetVersion}}) | [Eto.Forms](https://www.nuget.org/packages/NanoByte.StructureEditor.EtoForms/${{steps.gitversion.outputs.nuGetVersion}})** | [Json](https://www.nuget.org/packages/NanoByte.StructureEditor.Json/${{steps.gitversion.outputs.nuGetVersion}})** | [NewtonsoftJson](https://www.nuget.org/packages/NanoByte.StructureEditor.NewtonsoftJson/${{steps.gitversion.outputs.nuGetVersion}})**
             ## Changes
             ${{steps.tag_message.outputs.message}}
 
