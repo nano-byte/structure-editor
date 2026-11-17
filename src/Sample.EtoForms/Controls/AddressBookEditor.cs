@@ -7,6 +7,7 @@ using Eto.Forms;
 using NanoByte.Common;
 using NanoByte.Common.EtoControls;
 using NanoByte.StructureEditor.EtoForms;
+using NanoByte.StructureEditor.Json;
 using NanoByte.StructureEditor.Sample.Model;
 
 namespace NanoByte.StructureEditor.Sample.Controls;

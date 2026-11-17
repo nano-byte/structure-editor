@@ -26,6 +26,7 @@
   <!-- Dependencies -->
   <ItemGroup>
     <ProjectReference Include="..\Sample\Sample.csproj" />
+    <ProjectReference Include="..\StructureEditor.Json\StructureEditor.Json.csproj" />
     <ProjectReference Include="..\StructureEditor.EtoForms\StructureEditor.EtoForms.csproj" />
   </ItemGroup>
   <ItemGroup Condition="'$(OS)'=='Windows_NT'">

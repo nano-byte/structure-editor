@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using Eto.Forms;
 using NanoByte.Common.Undo;
+using NanoByte.StructureEditor.Json;
 using NanoByte.StructureEditor.Sample.Controls;
 
 namespace NanoByte.StructureEditor.Sample;

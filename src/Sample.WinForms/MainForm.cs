@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using NanoByte.Common.Undo;
+using NanoByte.StructureEditor.Json;
 using NanoByte.StructureEditor.Sample.Controls;
 
 namespace NanoByte.StructureEditor.Sample;

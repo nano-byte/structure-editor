@@ -18,8 +18,5 @@
   <ItemGroup>
     <PackageReference Include="NanoByte.Common" Version="3.4.0" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)'=='net472'">
-    <PackageReference Include="System.Text.Json" Version="11.0.0" />
-  </ItemGroup>
 
 </Project>

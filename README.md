@@ -97,9 +97,9 @@ With Eto.Forms, input in a control that still has the focus may not have been ap
 
 ### Serialization formats
 
-The text editor uses XML by default. To use JSON instead, set the `Serializer` property:
+The text editor uses XML by default. To use JSON (System.Text.Json) instead, add a reference to the [NanoByte.StructureEditor.Json](https://www.nuget.org/packages/NanoByte.StructureEditor.Json/) NuGet package and set the `Serializer` property:
 ```csharp
-editor.Serializer = JsonStructureSerializer.Instance; // System.Text.Json, .NET 10.0+ only
+editor.Serializer = JsonStructureSerializer.Instance;
 ```
 
 To load and save files in the same format, use `SerializingCommandManager<T>`. Passing one to `Open()` also sets the editor's `Serializer`:
@@ -108,7 +108,7 @@ editor.Open(SerializingCommandManager<AddressBook>.Load(path, JsonStructureSeria
 editor.CommandManager.Save(path);
 ```
 
-For Newtonsoft.Json (including on .NET Framework), add a reference to the [NanoByte.StructureEditor.NewtonsoftJson](https://www.nuget.org/packages/NanoByte.StructureEditor.NewtonsoftJson/) NuGet package and use `NewtonsoftJsonStructureSerializer`.
+For Newtonsoft.Json), add a reference to the [NanoByte.StructureEditor.NewtonsoftJson](https://www.nuget.org/packages/NanoByte.StructureEditor.NewtonsoftJson/) instead and use `NewtonsoftJsonStructureSerializer`.
 
 Polymorphic lists and properties need extra attributes or settings to round-trip through JSON. See [Serialization formats](https://structure-editor.nano-byte.net/serialization-formats.html) for details.
 

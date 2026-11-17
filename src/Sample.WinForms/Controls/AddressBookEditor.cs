@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using NanoByte.Common;
 using NanoByte.Common.Controls;
 using NanoByte.Common.Undo;
+using NanoByte.StructureEditor.Json;
 using NanoByte.StructureEditor.Sample.Model;
 using NanoByte.StructureEditor.WinForms;
 

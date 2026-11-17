@@ -2,11 +2,11 @@
 
 The text editor shows a serialized representation of the selected node. By default this is XML, but you can switch to JSON or plug in your own format.
 
-| Serializer                                                                                         | Package                                                                                                            | Frameworks                      |
-| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------- |
-| <xref:NanoByte.StructureEditor.XmlStructureSerializer> (default)                                   | [NanoByte.StructureEditor](https://www.nuget.org/packages/NanoByte.StructureEditor/)                               | .NET Framework 4.5+, .NET 10.0+ |
-| <xref:NanoByte.StructureEditor.JsonStructureSerializer> (System.Text.Json)                         | [NanoByte.StructureEditor](https://www.nuget.org/packages/NanoByte.StructureEditor/)                               | .NET 10.0+                      |
-| <xref:NanoByte.StructureEditor.NewtonsoftJson.NewtonsoftJsonStructureSerializer> (Newtonsoft.Json) | [NanoByte.StructureEditor.NewtonsoftJson](https://www.nuget.org/packages/NanoByte.StructureEditor.NewtonsoftJson/) | .NET Framework 4.5+, .NET 10.0+ |
+| Serializer                                                                                         | Package                                                                                                            | Frameworks                        |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
+| <xref:NanoByte.StructureEditor.XmlStructureSerializer> (default)                                   | [NanoByte.StructureEditor](https://www.nuget.org/packages/NanoByte.StructureEditor/)                               | .NET Framework 4.5+, .NET 10.0+   |
+| <xref:NanoByte.StructureEditor.Json.JsonStructureSerializer> (System.Text.Json)                    | [NanoByte.StructureEditor.Json](https://www.nuget.org/packages/NanoByte.StructureEditor.Json/)                     | .NET Framework 4.7.2+, .NET 10.0+ |
+| <xref:NanoByte.StructureEditor.NewtonsoftJson.NewtonsoftJsonStructureSerializer> (Newtonsoft.Json) | [NanoByte.StructureEditor.NewtonsoftJson](https://www.nuget.org/packages/NanoByte.StructureEditor.NewtonsoftJson/) | .NET Framework 4.5+, .NET 10.0+   |
 
 ## Choosing a serializer
 

@@ -1,14 +1,13 @@
 // Copyright Bastian Eicher
 // Licensed under the MIT License
 
-#if !NET45
 using System;
 using System.IO;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace NanoByte.StructureEditor;
+namespace NanoByte.StructureEditor.Json;
 
 /// <summary>
 /// Serializes nodes as JSON using <see cref="JsonSerializer"/>.
@@ -64,4 +63,3 @@ public class JsonStructureSerializer(JsonSerializerOptions options) : IStructure
         return false;
     }
 }
-#endif

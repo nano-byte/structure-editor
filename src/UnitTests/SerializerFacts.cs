@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AwesomeAssertions;
 using NanoByte.Common;
+using NanoByte.StructureEditor.Json;
 using NanoByte.StructureEditor.NewtonsoftJson;
 using NanoByte.StructureEditor.Sample;
 using NanoByte.StructureEditor.Sample.Controls;
