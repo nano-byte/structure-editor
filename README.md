@@ -122,7 +122,7 @@ Take a look at the sample projects for a more complete setup, including custom n
 
 The source code is in [`src/`](src/), config for building the API documentation is in [`doc/`](doc/) and generated build artifacts are placed in `artifacts/`. The source code does not contain version numbers. Instead the version is determined during CI using [GitVersion](https://gitversion.net/).
 
-To build install [Visual Studio 2026 v18.0 or newer](https://www.visualstudio.com/downloads/) and run `.\build.ps1`.  
+To build install [Visual Studio 2026 v18.12 or newer](https://www.visualstudio.com/downloads/) and run `.\build.ps1`.  
 On Linux and macOS you can run `./build.sh` to compile the solution with the .NET SDK. This skips the .NET Framework targets that require Visual Studio, the unit tests (which depend on WinForms) and the documentation.
 
 ## Contributing
