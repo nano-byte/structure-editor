@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <!-- TODO: Replace with the first released version that contains PropertyValueChangedEventArgs -->
-    <PackageReference Include="NanoByte.Common.EtoForms" Version="3.4.0" />
+    <PackageReference Include="NanoByte.Common.EtoForms" Version="3.5.3" />
   </ItemGroup>
 
 </Project>
