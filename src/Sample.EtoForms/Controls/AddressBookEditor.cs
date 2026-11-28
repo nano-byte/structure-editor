@@ -51,6 +51,8 @@ public class AddressBookEditor : StructureEditor<AddressBook>
 
     public void Open()
     {
+        if (!Closing()) return;
+
         using var dialog = new OpenFileDialog();
         foreach (var filter in _fileFilters) dialog.Filters.Add(filter);
 

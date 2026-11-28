@@ -56,6 +56,8 @@ public class AddressBookEditor : StructureEditor<AddressBook>
 
     public void Open()
     {
+        if (!Closing()) return;
+
         using var dialog = new OpenFileDialog {Filter = FileFilter};
         if (dialog.ShowDialog(this) == DialogResult.OK)
             Open(SerializingCommandManager<AddressBook>.Load(dialog.FileName, GetSerializer(dialog.FileName)));
