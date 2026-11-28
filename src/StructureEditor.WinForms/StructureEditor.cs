@@ -84,6 +84,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
             Orientation = Orientation.Horizontal,
             SplitterWidth = 9,
             SplitterDistance = 100,
+            TabStop = false,
             Panel1 =
             {
                 Controls =
@@ -94,6 +95,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
                         Orientation = Orientation.Vertical,
                         SplitterWidth = 9,
                         SplitterDistance = 80,
+                        TabStop = false,
                         Panel1 =
                         {
                             Controls =
