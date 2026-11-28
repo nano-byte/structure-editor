@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Home | NanoByte Structure Editor </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Home | NanoByte Structure Editor ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/nano-byte/structure-editor/blob/4.0.2/doc/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="nanobyte-structure-editor">NanoByte Structure Editor</h1>
+
+<p>NanoByte Structure Editor is a .NET library that helps you build split-screen editors for your data structures, consisting of:</p>
+<ol>
+<li>a collapsible tree-view of the data structure,</li>
+<li>a graphical editor for the currently selected node in the tree (auto-generated or <a href="custom-editors.html">custom</a>) and</li>
+<li>a text editor with a serialized (<a href="serialization-formats.html">XML or JSON</a>) representation of the currently selected node.</li>
+</ol>
+<p>This allows you to create an IDE-like experience for your users when editing complex domain specific languages, configuration files, etc..</p>
+<p><img src="screenshot.png" alt=""></p>
+<h2 id="choosing-a-frontend">Choosing a frontend</h2>
+<p>The library is available for two GUI toolkits. Both share the same API for describing your data structure, storage and undo/redo. Add a reference to the NuGet package matching your application:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><a href="https://www.nuget.org/packages/NanoByte.StructureEditor.WinForms/">NanoByte.StructureEditor.WinForms</a></th>
+<th><a href="https://www.nuget.org/packages/NanoByte.StructureEditor.EtoForms/">NanoByte.StructureEditor.EtoForms</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GUI toolkit</td>
+<td>Windows Forms</td>
+<td><a href="https://github.com/picoe/Eto">Eto.Forms</a></td>
+</tr>
+<tr>
+<td>Platforms</td>
+<td>Windows</td>
+<td>Windows, Linux, macOS</td>
+</tr>
+<tr>
+<td>Frameworks</td>
+<td>.NET Framework 4.5+, .NET 10.0+</td>
+<td>.NET Framework 4.7.2+, .NET 10.0+</td>
+</tr>
+<tr>
+<td>Editor control</td>
+<td><a class="xref" href="api/NanoByte.StructureEditor.WinForms.StructureEditor-1.html">StructureEditor&lt;T&gt;</a></td>
+<td><a class="xref" href="api/NanoByte.StructureEditor.EtoForms.StructureEditor-1.html">StructureEditor&lt;T&gt;</a></td>
+</tr>
+<tr>
+<td>Default node editor</td>
+<td><a class="xref" href="api/NanoByte.StructureEditor.WinForms.PropertyGridNodeEditor-1.html">PropertyGridNodeEditor&lt;T&gt;</a></td>
+<td><a class="xref" href="api/NanoByte.StructureEditor.EtoForms.PropertyEditorNodeEditor-1.html">PropertyEditorNodeEditor&lt;T&gt;</a></td>
+</tr>
+<tr>
+<td>Text editor</td>
+<td><a href="https://github.com/nano-byte/ICSharpCode.TextEditor">ICSharpCode.TextEditor</a> with syntax highlighting</td>
+<td>Plain monospaced text box, replaceable via <a class="xref" href="api/NanoByte.StructureEditor.EtoForms.TextEditorFactory.html#NanoByte_StructureEditor_EtoForms_TextEditorFactory_Default">TextEditorFactory.Default</a></td>
+</tr>
+<tr>
+<td>Sample</td>
+<td><a href="https://github.com/nano-byte/structure-editor/tree/master/src/Sample.WinForms">Sample.WinForms</a></td>
+<td><a href="https://github.com/nano-byte/structure-editor/tree/master/src/Sample.EtoForms">Sample.EtoForms</a></td>
+</tr>
+</tbody>
+</table>
+<p>An Eto.Forms application additionally needs an <code>Eto.Platform.*</code> package for each platform it runs on (e.g., <code>Eto.Platform.Windows</code>, <code>Eto.Platform.Gtk</code>, <code>Eto.Platform.Mac64</code>).</p>
+<p>Code snippets in this documentation work with both packages unless shown in separate tabs or marked otherwise. Import the namespace matching your package (<code>NanoByte.StructureEditor.WinForms</code> or <code>NanoByte.StructureEditor.EtoForms</code>).</p>
+<h2 id="usage">Usage</h2>
+<h3 id="initialization">Initialization</h3>
+<p>Create an instance of <code>StructureEditor&lt;T&gt;</code> and add it to your Form:</p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_winforms" role="tab" aria-controls="tabpanel_1_winforms" data-tab="winforms" tabindex="0" aria-selected="true">WinForms</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_etoforms" role="tab" aria-controls="tabpanel_1_etoforms" data-tab="etoforms" tabindex="-1">Eto.Forms</a>
+</li>
+</ul>
+<section id="tabpanel_1_winforms" role="tabpanel" data-tab="winforms">
+
+<pre><code class="lang-csharp">var editor = new StructureEditor&lt;MyData&gt;();
+Controls.Add(editor);
+</code></pre>
+</section>
+<section id="tabpanel_1_etoforms" role="tabpanel" data-tab="etoforms" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-csharp">var editor = new StructureEditor&lt;MyData&gt;();
+form.Content = editor;
+</code></pre>
+</section>
+</div>
+
+<p>Alternatively, you may want to derive your own class from <code>StructureEditor&lt;T&gt;</code>. This lets you keep the description of your data structure in one place and, with WinForms, use the graphical designer in Visual Studio (which does not support generic types) to place the editor on your Form.</p>
+<pre><code class="lang-csharp">public class MyDataEditor : StructureEditor&lt;MyData&gt;
+{}
+</code></pre>
+<p>You need to &quot;describe&quot; your data structure to the editor. You can do this directly after instantiating the editor or in the constructor of your derived class.</p>
+<ul>
+<li>Call <a class="xref" href="api/NanoByte.StructureEditor.IStructureEditor-1.html#NanoByte_StructureEditor_IStructureEditor_1_DescribeRoot_System_String_">DescribeRoot()</a> and then use the fluent API provided as a return value to describe the properties on your main data type.</li>
+<li>Call <a class="xref" href="api/NanoByte.StructureEditor.IStructureEditor-1.html#NanoByte_StructureEditor_IStructureEditor_1_Describe__1">Describe<tcontainer>()</tcontainer></a> to describe the properties on a data type <code>TContainer</code> exposed by another property. You can use multiple calls with different type parameters to describe arbitrarily deep hierarchies.</li>
+</ul>
+<p>The fluent API provides the following methods:</p>
+<ul>
+<li><code>.AddProperty()</code> describes a property.</li>
+<li><code>.AddRequiredProperty()</code> describes a property that cannot be set to <code>null</code>.</li>
+<li><code>.AddPolymorphicProperty()</code> describes a <a href="polymorphic-properties.html">polymorphic property</a>. After calling it you chain <code>.AddElement()</code> calls for each specific type the property can hold.</li>
+<li><code>.AddRequiredPolymorphicProperty()</code> describes a polymorphic property that cannot be set to <code>null</code>.</li>
+<li><code>.AddList()</code> describes a list.</li>
+<li><code>.AddPolymorphicList()</code> describes a <a href="polymorphic-lists.html">polymorphic list</a>. After calling it you need to chain <code>.AddElement()</code> calls for each specific type of element the list can hold.</li>
+</ul>
+<p>There are numerous overloads for each of these methods, e.g., allowing you to specify a <a href="custom-editors.html">custom editor control</a> for a data type or to keep the auto-generated one.</p>
+<pre><code class="lang-csharp">editor.DescribeRoot(&quot;Address Book&quot;)
+      .AddList(&quot;Group&quot;, x =&gt; x.Groups);
+editor.Describe&lt;IContactContainer&gt;()
+      .AddList(&quot;Contact&quot;, x =&gt; x.Contacts);
+editor.Describe&lt;Contact&gt;()
+      .AddRequiredProperty(&quot;Home Address&quot;, x =&gt; PropertyPointer.For(() =&gt; x.HomeAddress))
+      .AddProperty(&quot;Work Address&quot;, x =&gt; PropertyPointer.ForNullable(() =&gt; x.WorkAddress))
+      .AddPolymorphicList(x =&gt; x.PhoneNumbers)
+      .AddElement(&quot;Landline Number&quot;, () =&gt; new LandlineNumber())
+      .AddElement(&quot;Mobile Number&quot;, () =&gt; new MobileNumber());
+</code></pre>
+<h3 id="storage">Storage</h3>
+<p>Use the <code>Open()</code> method to load an XML file into the editor:</p>
+<pre><code class="lang-csharp">editor.Open(CommandManager&lt;AddressBook&gt;.Load(path));
+</code></pre>
+<p>Use the <a class="xref" href="https://common.nano-byte.net/api/NanoByte.Common.Undo.ICommandManager-1.html#NanoByte_Common_Undo_ICommandManager_1_Save_System_String_">Save()</a> method on the <code>CommandManager</code> property to save the editor's content as an XML file:</p>
+<pre><code class="lang-csharp">editor.CommitPendingChanges(); // Eto.Forms only
+editor.CommandManager.Save(path);
+</code></pre>
+<p>With Eto.Forms, input in a control that still has the focus may not have been applied yet. Call <code>CommitPendingChanges()</code> before saving to make sure the latest input is included.</p>
+<p>See <a href="undo-redo.html">Undo, redo and persistence</a> for details.</p>
+<h3 id="serialization-formats">Serialization formats</h3>
+<p>The text editor uses XML by default. To use JSON (System.Text.Json) instead, add a reference to the <a href="https://www.nuget.org/packages/NanoByte.StructureEditor.Json/">NanoByte.StructureEditor.Json</a> NuGet package and set the <code>Serializer</code> property to <a class="xref" href="api/NanoByte.StructureEditor.Json.JsonStructureSerializer.html">JsonStructureSerializer</a>:</p>
+<pre><code class="lang-csharp">editor.Serializer = JsonStructureSerializer.Instance;
+</code></pre>
+<p>To load and save files in the same format, use <a class="xref" href="api/NanoByte.StructureEditor.SerializingCommandManager-1.html">SerializingCommandManager&lt;T&gt;</a>. Passing one to <code>Open()</code> also sets the editor's <code>Serializer</code>:</p>
+<pre><code class="lang-csharp">editor.Open(SerializingCommandManager&lt;AddressBook&gt;.Load(path, JsonStructureSerializer.Instance));
+editor.CommandManager.Save(path);
+</code></pre>
+<p>For Newtonsoft.Json, add a reference to the <a href="https://www.nuget.org/packages/NanoByte.StructureEditor.NewtonsoftJson/">NanoByte.StructureEditor.NewtonsoftJson</a> instead and use <a class="xref" href="api/NanoByte.StructureEditor.NewtonsoftJson.NewtonsoftJsonStructureSerializer.html">NewtonsoftJsonStructureSerializer</a>.</p>
+<p>Polymorphic lists and properties need extra attributes or settings to round-trip through JSON. See <a href="serialization-formats.html">Serialization formats</a> for details.</p>
+<h3 id="samples">Samples</h3>
+<p>Take a look at the sample projects for a more complete setup, including custom node editors and undo/redo functionality. Both use the same data model from <a href="https://github.com/nano-byte/structure-editor/tree/master/src/Sample">Sample</a>:</p>
+<ul>
+<li><a href="https://github.com/nano-byte/structure-editor/tree/master/src/Sample.WinForms">Sample.WinForms</a></li>
+<li><a href="https://github.com/nano-byte/structure-editor/tree/master/src/Sample.EtoForms">Sample.EtoForms</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/nano-byte/structure-editor/blob/4.0.2/doc/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright Bastian Eicher
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

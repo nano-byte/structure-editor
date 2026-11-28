@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class LocalizableTextBox | NanoByte Structure Editor </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class LocalizableTextBox | NanoByte Structure Editor ">
+      
+      <meta name="description" content="Exposes a  as a text box with a drop-down box for language switching.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="NanoByte.StructureEditor.EtoForms.LocalizableTextBox">
+
+
+
+  <h1 id="NanoByte_StructureEditor_EtoForms_LocalizableTextBox" data-uid="NanoByte.StructureEditor.EtoForms.LocalizableTextBox" class="text-break">
+Class LocalizableTextBox  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/4.0.2/src/StructureEditor.EtoForms/LocalizableTextBox.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><span class="xref">NanoByte</span>.<a class="xref" href="NanoByte.StructureEditor.html">StructureEditor</a>.<a class="xref" href="NanoByte.StructureEditor.EtoForms.html">EtoForms</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>NanoByte.StructureEditor.EtoForms.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Exposes a <a class="xref" href="https://common.nano-byte.net/api/NanoByte.Common.Collections.LocalizableStringCollection.html">LocalizableStringCollection</a> as a text box with a drop-down box for language switching.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class LocalizableTextBox : NodeEditorBase&lt;LocalizableStringCollection&gt;, IHandlerSource, IDisposable, IBindable, IMouseInputSource, IKeyboardInputSource, ICallbackSource, IBindableWidgetContainer, INodeEditor&lt;LocalizableStringCollection&gt;, INodeEditor, IPendingChanges</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><span class="xref">object</span></div>
+      <div><span class="xref">Widget</span></div>
+      <div><span class="xref">BindableWidget</span></div>
+      <div><span class="xref">Control</span></div>
+      <div><span class="xref">Container</span></div>
+      <div><span class="xref">Panel</span></div>
+      <div><a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html">NodeEditorBase</a>&lt;<a class="xref" href="https://common.nano-byte.net/api/NanoByte.Common.Collections.LocalizableStringCollection.html">LocalizableStringCollection</a>&gt;</div>
+      <div><span class="xref">LocalizableTextBox</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><span class="xref">IHandlerSource</span></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+      <div><span class="xref">IBindable</span></div>
+      <div><span class="xref">IMouseInputSource</span></div>
+      <div><span class="xref">IKeyboardInputSource</span></div>
+      <div><span class="xref">ICallbackSource</span></div>
+      <div><span class="xref">IBindableWidgetContainer</span></div>
+      <div><a class="xref" href="https://github.com/nano-byte/structure-editor/blob/4.0.2/src/StructureEditor/INodeEditor.Generic.cs">INodeEditor</a>&lt;<a class="xref" href="https://common.nano-byte.net/api/NanoByte.Common.Collections.LocalizableStringCollection.html">LocalizableStringCollection</a>&gt;</div>
+      <div><a class="xref" href="NanoByte.StructureEditor.INodeEditor.html">INodeEditor</a></div>
+      <div><a class="xref" href="NanoByte.StructureEditor.EtoForms.IPendingChanges.html">IPendingChanges</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html#NanoByte_StructureEditor_EtoForms_NodeEditorBase_1_Refresh">NodeEditorBase&lt;LocalizableStringCollection&gt;.Refresh()</a>
+    </div>
+    <div>
+      <a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html#NanoByte_StructureEditor_EtoForms_NodeEditorBase_1_CommitPendingChanges">NodeEditorBase&lt;LocalizableStringCollection&gt;.CommitPendingChanges()</a>
+    </div>
+    <div>
+      <a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html#NanoByte_StructureEditor_EtoForms_NodeEditorBase_1_SetValue__1_NanoByte_Common_PropertyPointer___0____0_">NodeEditorBase&lt;LocalizableStringCollection&gt;.SetValue&lt;TValue&gt;(PropertyPointer&lt;TValue&gt;, TValue)</a>
+    </div>
+    <div>
+      <a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html#NanoByte_StructureEditor_EtoForms_NodeEditorBase_1_Bind__1___0_NanoByte_Common_PropertyPointer_System_String__">NodeEditorBase&lt;LocalizableStringCollection&gt;.Bind&lt;TControl&gt;(TControl, PropertyPointer&lt;string&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html#NanoByte_StructureEditor_EtoForms_NodeEditorBase_1_Bind_Eto_Forms_ComboBox_NanoByte_Common_PropertyPointer_System_String__">NodeEditorBase&lt;LocalizableStringCollection&gt;.Bind(ComboBox, PropertyPointer&lt;string&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html#NanoByte_StructureEditor_EtoForms_NodeEditorBase_1_Bind_NanoByte_Common_EtoControls_UriTextBox_NanoByte_Common_PropertyPointer_System_Uri__">NodeEditorBase&lt;LocalizableStringCollection&gt;.Bind(UriTextBox, PropertyPointer&lt;Uri&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html#NanoByte_StructureEditor_EtoForms_NodeEditorBase_1_Bind_Eto_Forms_CheckBox_NanoByte_Common_PropertyPointer_System_Boolean__">NodeEditorBase&lt;LocalizableStringCollection&gt;.Bind(CheckBox, PropertyPointer&lt;bool&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html#NanoByte_StructureEditor_EtoForms_NodeEditorBase_1_Bind__2___0_System_Func___1__">NodeEditorBase&lt;LocalizableStringCollection&gt;.Bind&lt;TControl, TChild&gt;(TControl, Func&lt;TChild&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html#NanoByte_StructureEditor_EtoForms_NodeEditorBase_1_Target">NodeEditorBase&lt;LocalizableStringCollection&gt;.Target</a>
+    </div>
+    <div>
+      <a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html#NanoByte_StructureEditor_EtoForms_NodeEditorBase_1_CommandExecutor">NodeEditorBase&lt;LocalizableStringCollection&gt;.CommandExecutor</a>
+    </div>
+    <div>
+      <a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html#NanoByte_StructureEditor_EtoForms_NodeEditorBase_1_TargetChanged">NodeEditorBase&lt;LocalizableStringCollection&gt;.TargetChanged</a>
+    </div>
+    <div>
+      <a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html#NanoByte_StructureEditor_EtoForms_NodeEditorBase_1_CommandExecutorChanged">NodeEditorBase&lt;LocalizableStringCollection&gt;.CommandExecutorChanged</a>
+    </div>
+    <div>
+      <a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html#NanoByte_StructureEditor_EtoForms_NodeEditorBase_1_OnRefresh">NodeEditorBase&lt;LocalizableStringCollection&gt;.OnRefresh</a>
+    </div>
+    <div>
+      <a class="xref" href="NanoByte.StructureEditor.EtoForms.NodeEditorBase-1.html#NanoByte_StructureEditor_EtoForms_NodeEditorBase_1_OnCommitPendingChanges">NodeEditorBase&lt;LocalizableStringCollection&gt;.OnCommitPendingChanges</a>
+    </div>
+    <div>
+      <span class="xref">Panel.Remove(Control)</span>
+    </div>
+    <div>
+      <span class="xref">Panel.Controls</span>
+    </div>
+    <div>
+      <span class="xref">Panel.Padding</span>
+    </div>
+    <div>
+      <span class="xref">Panel.MinimumSize</span>
+    </div>
+    <div>
+      <span class="xref">Panel.ContextMenu</span>
+    </div>
+    <div>
+      <span class="xref">Panel.Content</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Container.ApplyStyles(object, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventargs">Container.OnStyleChanged(EventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventargs">Container.OnPreLoad(EventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventargs">Container.OnLoad(EventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventargs">Container.OnLoadComplete(EventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventargs">Container.OnUnLoad(EventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">Container.Remove(IEnumerable&lt;Control&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Container.RemoveAll()</span>
+    </div>
+    <div>
+      <span class="xref">Container.RemoveParent(Control)</span>
+    </div>
+    <div>
+      <span class="xref">Container.SetLogicalParent(Control)</span>
+    </div>
+    <div>
+      <span class="xref">Container.RemoveLogicalParent(Control)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action">Container.SetParent(Control, Action, Control)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Container.FindChild&lt;T&gt;(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Container.FindChild(Type, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Container.FindChild(string)</a>
+    </div>
+    <div>
+      <span class="xref">Container.ClientSize</span>
+    </div>
+    <div>
+      <span class="xref">Container.Children</span>
+    </div>
+    <div>
+      <span class="xref">Container.VisualChildren</span>
+    </div>
+    <div>
+      <span class="xref">Container.StyleProvider</span>
+    </div>
+    <div>
+      <span class="xref">Container.Styles</span>
+    </div>
+    <div>
+      <span class="xref">Control.SizeChangedEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.KeyDownEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.KeyUpEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.TextInputEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseDownEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseUpEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseMoveEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseLeaveEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseEnterEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseDoubleClickEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseWheelEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.GotFocusEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.LostFocusEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.ShownEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.ThemeChangedEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.DragDropEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.DragOverEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.DragEnterEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.DragLeaveEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.DragEndEvent</span>
+    </div>
+    <div>
+      <span class="xref">Control.EnabledChangedEvent</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventargs">Control.OnSizeChanged(EventArgs)</a>
+    </div>
+    <div>
+      <span class="xref">Control.OnKeyDown(KeyEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Control.OnKeyUp(KeyEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Control.OnTextInput(TextInputEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Control.OnMouseDown(MouseEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Control.OnMouseUp(MouseEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Control.OnMouseMove(MouseEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Control.OnMouseLeave(MouseEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Control.OnMouseEnter(MouseEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Control.OnMouseDoubleClick(MouseEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Control.OnMouseWheel(MouseEventArgs)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventargs">Control.OnGotFocus(EventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventargs">Control.OnLostFocus(EventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventargs">Control.OnShown(EventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventargs">Control.OnThemeChanged(EventArgs)</a>
+    </div>
+    <div>
+      <span class="xref">Control.OnDragDrop(DragEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Control.OnDragOver(DragEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Control.OnDragEnter(DragEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Control.OnDragLeave(DragEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Control.OnDragEnd(DragEventArgs)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventargs">Control.OnEnabledChanged(EventArgs)</a>
+    </div>
+    <div>
+      <span class="xref">Control.Invalidate()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Control.Invalidate(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Control.Invalidate(Rectangle)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Control.Invalidate(Rectangle, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Control.UpdateLayout()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetPreferredSize()</span>
+    </div>
+    <div>
+      <span class="xref">Control.GetPreferredSize(SizeF)</span>
+    </div>
+    <div>
+      <span class="xref">Control.CaptureMouse()</span>
+    </div>
+    <div>
+      <span class="xref">Control.ReleaseMouseCapture()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Control.FindParent(Type, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Control.FindParent(string)</a>
+    </div>
+    <div>
+      <span class="xref">Control.Detach()</span>
+    </div>
+    <div>
+      <span class="xref">Control.AttachNative()</span>
+    </div>
+    <div>
+      <span class="xref">Control.DetachNative()</span>
+    </div>
+    <div>
+      <span class="xref">Control.Focus()</span>
+    </div>
+    <div>
+      <span class="xref">Control.SuspendLayout()</span>
+    </div>
+    <div>
+      <span class="xref">Control.ResumeLayout()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Control.MapPlatformCommand(string, Command)</a>
+    </div>
+    <div>
+      <span class="xref">Control.PointFromScreen(PointF)</span>
+    </div>
+    <div>
+      <span class="xref">Control.PointToScreen(PointF)</span>
+    </div>
+    <div>
+      <span class="xref">Control.RectangleToScreen(RectangleF)</span>
+    </div>
+    <div>
+      <span class="xref">Control.RectangleFromScreen(RectangleF)</span>
+    </div>
+    <div>
+      <span class="xref">Control.DoDragDrop(DataObject, DragEffects)</span>
+    </div>
+    <div>
+      <span class="xref">Control.DoDragDrop(DataObject, DragEffects, Image, PointF)</span>
+    </div>
+    <div>
+      <span class="xref">Control.TriggerStyleChanged()</span>
+    </div>
+    <div>
+      <span class="xref">Control.OnApplyCascadingStyles()</span>
+    </div>
+    <div>
+      <span class="xref">Control.Print()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Control.Dispose(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Control.GetCallback()</span>
+    </div>
+    <div>
+      <span class="xref">Control.IsDesignMode</span>
+    </div>
+    <div>
+      <span class="xref">Control.Handler</span>
+    </div>
+    <div>
+      <span class="xref">Control.Gestures</span>
+    </div>
+    <div>
+      <span class="xref">Control.Loaded</span>
+    </div>
+    <div>
+      <span class="xref">Control.VisualControls</span>
+    </div>
+    <div>
+      <span class="xref">Control.Tag</span>
+    </div>
+    <div>
+      <span class="xref">Control.LogicalParent</span>
+    </div>
+    <div>
+      <span class="xref">Control.IsVisualControl</span>
+    </div>
+    <div>
+      <span class="xref">Control.Size</span>
+    </div>
+    <div>
+      <span class="xref">Control.IsMouseCaptured</span>
+    </div>
+    <div>
+      <span class="xref">Control.Width</span>
+    </div>
+    <div>
+      <span class="xref">Control.Height</span>
+    </div>
+    <div>
+      <span class="xref">Control.Enabled</span>
+    </div>
+    <div>
+      <span class="xref">Control.Visible</span>
+    </div>
+    <div>
+      <span class="xref">Control.Parent</span>
+    </div>
+    <div>
+      <span class="xref">Control.VisualParent</span>
+    </div>
+    <div>
+      <span class="xref">Control.IsAttached</span>
+    </div>
+    <div>
+      <span class="xref">Control.BackgroundColor</span>
+    </div>
+    <div>
+      <span class="xref">Control.HasFocus</span>
+    </div>
+    <div>
+      <span class="xref">Control.IsSuspended</span>
+    </div>
+    <div>
+      <span class="xref">Control.ParentWindow</span>
+    </div>
+    <div>
+      <span class="xref">Control.SupportedPlatformCommands</span>
+    </div>
+    <div>
+      <span class="xref">Control.Bounds</span>
+    </div>
+    <div>
+      <span class="xref">Control.Location</span>
+    </div>
+    <div>
+      <span class="xref">Control.Cursor</span>
+    </div>
+    <div>
+      <span class="xref">Control.ToolTip</span>
+    </div>
+    <div>
+      <span class="xref">Control.TabIndex</span>
+    </div>
+    <div>
+      <span class="xref">Control.TabStop</span>
+    </div>
+    <div>
+      <span class="xref">Control.AllowDrop</span>
+    </div>
+    <div>
+      <span class="xref">Control.SizeChanged</span>
+    </div>
+    <div>
+      <span class="xref">Control.KeyDown</span>
+    </div>
+    <div>
+      <span class="xref">Control.KeyUp</span>
+    </div>
+    <div>
+      <span class="xref">Control.TextInput</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseDown</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseUp</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseMove</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseLeave</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseEnter</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseDoubleClick</span>
+    </div>
+    <div>
+      <span class="xref">Control.MouseWheel</span>
+    </div>
+    <div>
+      <span class="xref">Control.GotFocus</span>
+    </div>
+    <div>
+      <span class="xref">Control.LostFocus</span>
+    </div>
+    <div>
+      <span class="xref">Control.Shown</span>
+    </div>
+    <div>
+      <span class="xref">Control.ThemeChanged</span>
+    </div>
+    <div>
+      <span class="xref">Control.PreLoad</span>
+    </div>
+    <div>
+      <span class="xref">Control.Load</span>
+    </div>
+    <div>
+      <span class="xref">Control.LoadComplete</span>
+    </div>
+    <div>
+      <span class="xref">Control.UnLoad</span>
+    </div>
+    <div>
+      <span class="xref">Control.DragDrop</span>
+    </div>
+    <div>
+      <span class="xref">Control.DragOver</span>
+    </div>
+    <div>
+      <span class="xref">Control.DragEnter</span>
+    </div>
+    <div>
+      <span class="xref">Control.DragLeave</span>
+    </div>
+    <div>
+      <span class="xref">Control.DragEnd</span>
+    </div>
+    <div>
+      <span class="xref">Control.EnabledChanged</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventargs">BindableWidget.OnDataContextChanged(EventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">BindableWidget.FindParent&lt;T&gt;(string)</a>
+    </div>
+    <div>
+      <span class="xref">BindableWidget.Unbind()</span>
+    </div>
+    <div>
+      <span class="xref">BindableWidget.UpdateBindings(BindingUpdateMode)</span>
+    </div>
+    <div>
+      <span class="xref">BindableWidget.Parents</span>
+    </div>
+    <div>
+      <span class="xref">BindableWidget.DataContext</span>
+    </div>
+    <div>
+      <span class="xref">BindableWidget.Bindings</span>
+    </div>
+    <div>
+      <span class="xref">BindableWidget.IsDataContextChanging</span>
+    </div>
+    <div>
+      <span class="xref">BindableWidget.DataContextChanged</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Widget.RegisterEvent&lt;T&gt;(Expression&lt;Action&lt;T&gt;&gt;, string)</a>
+    </div>
+    <div>
+      <span class="xref">Widget.Initialize()</span>
+    </div>
+    <div>
+      <span class="xref">Widget.Dispose()</span>
+    </div>
+    <div>
+      <span class="xref">Widget.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">Widget.Platform</span>
+    </div>
+    <div>
+      <span class="xref">Widget.NativeHandle</span>
+    </div>
+    <div>
+      <span class="xref">Widget.Properties</span>
+    </div>
+    <div>
+      <span class="xref">Widget.ID</span>
+    </div>
+    <div>
+      <span class="xref">Widget.Style</span>
+    </div>
+    <div>
+      <span class="xref">Widget.ControlObject</span>
+    </div>
+    <div>
+      <span class="xref">Widget.IsDisposed</span>
+    </div>
+    <div>
+      <span class="xref">Widget.StyleChanged</span>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="NanoByte_StructureEditor_EtoForms_LocalizableTextBox__ctor_" data-uid="NanoByte.StructureEditor.EtoForms.LocalizableTextBox.#ctor*"></a>
+
+  <h3 id="NanoByte_StructureEditor_EtoForms_LocalizableTextBox__ctor" data-uid="NanoByte.StructureEditor.EtoForms.LocalizableTextBox.#ctor">
+  LocalizableTextBox()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/4.0.2/src/StructureEditor.EtoForms/LocalizableTextBox.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new localizable text box that allows multiple lines.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LocalizableTextBox()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="NanoByte_StructureEditor_EtoForms_LocalizableTextBox__ctor_" data-uid="NanoByte.StructureEditor.EtoForms.LocalizableTextBox.#ctor*"></a>
+
+  <h3 id="NanoByte_StructureEditor_EtoForms_LocalizableTextBox__ctor_System_Boolean_" data-uid="NanoByte.StructureEditor.EtoForms.LocalizableTextBox.#ctor(System.Boolean)">
+  LocalizableTextBox(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/4.0.2/src/StructureEditor.EtoForms/LocalizableTextBox.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new localizable text box.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LocalizableTextBox(bool multiline)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>multiline</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Controls whether the text can span more than one line.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="NanoByte_StructureEditor_EtoForms_LocalizableTextBox_PlaceholderText_" data-uid="NanoByte.StructureEditor.EtoForms.LocalizableTextBox.PlaceholderText*"></a>
+
+  <h3 id="NanoByte_StructureEditor_EtoForms_LocalizableTextBox_PlaceholderText" data-uid="NanoByte.StructureEditor.EtoForms.LocalizableTextBox.PlaceholderText">
+  PlaceholderText
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/4.0.2/src/StructureEditor.EtoForms/LocalizableTextBox.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A text to be displayed when the text box is empty. Only supported for single-line text boxes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? PlaceholderText { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="NanoByte_StructureEditor_EtoForms_LocalizableTextBox_TextControl_" data-uid="NanoByte.StructureEditor.EtoForms.LocalizableTextBox.TextControl*"></a>
+
+  <h3 id="NanoByte_StructureEditor_EtoForms_LocalizableTextBox_TextControl" data-uid="NanoByte.StructureEditor.EtoForms.LocalizableTextBox.TextControl">
+  TextControl
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nano-byte/structure-editor/blob/4.0.2/src/StructureEditor.EtoForms/LocalizableTextBox.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The control used to enter the text. A <span class="xref">Eto.Forms.TextArea</span> if multiple lines are allowed, a <span class="xref">Eto.Forms.TextBox</span> otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextControl TextControl { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">TextControl</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/nano-byte/structure-editor/blob/4.0.2/src/StructureEditor.EtoForms/LocalizableTextBox.cs" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright Bastian Eicher
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
