@@ -207,6 +207,7 @@ public class StructureEditor<T> : Panel, IStructureEditor<T>, IPendingChanges
     private void RebuildTree()
     {
         var expandedTargets = GetExpandedTargets();
+        var itemsByTarget = new Dictionary<object, TreeItem>(StructureEditorPresenter<T>.TargetComparer);
         TreeItem? reselectItem = null;
 
         void Add(TreeGridItemCollection collection, IEnumerable<Node> nodes, TreeItem? parent)
@@ -215,6 +216,7 @@ public class StructureEditor<T> : Panel, IStructureEditor<T>, IPendingChanges
             {
                 var item = new TreeItem(node, parent) {Expanded = node.Target != null && expandedTargets.Contains(node.Target)};
                 if (_presenter.ShouldSelect(node)) reselectItem = item;
+                if (node.Target != null) itemsByTarget[node.Target] = item;
                 Add(item.Children, _presenter.GetNodes(node.Target), item);
                 collection.Add(item);
             }
@@ -222,6 +224,10 @@ public class StructureEditor<T> : Panel, IStructureEditor<T>, IPendingChanges
 
         var items = new TreeGridItemCollection();
         Add(items, _presenter.GetRootNodes(), parent: null);
+
+        // The selected node may no longer exist, e.g., after an undo
+        if (reselectItem == null && _presenter.GetFallbackTarget() is {} fallbackTarget)
+            itemsByTarget.TryGetValue(fallbackTarget, out reselectItem);
         reselectItem ??= items.OfType<TreeItem>().FirstOrDefault();
 
         // Ensure the selected item is visible and shows its children

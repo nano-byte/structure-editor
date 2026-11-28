@@ -136,6 +136,39 @@ public class StructureEditorPresenterFacts
     }
 
     [Fact]
+    public void FallsBackToParentAfterUndoingAdd()
+    {
+        var group = _addressBook.Groups[0];
+        Select(_presenter.GetNodes(Root.Target)[0]);
+        _presenter.Add(_presenter.GetCandidates().First(x => x?.NodeType == "Contact")!);
+        Select(_presenter.GetNodes(group).Single(_presenter.ShouldSelect)); // Tree rebuilt
+
+        _presenter.CommandManager.Undo();
+
+        _presenter.GetNodes(group).Should().NotContain(x => _presenter.ShouldSelect(x));
+        _presenter.GetFallbackTarget().Should().BeSameAs(group);
+    }
+
+    [Fact]
+    public void FallsBackToSamePositionAfterUndoingTextChange()
+    {
+        var contact = _addressBook.Contacts[0];
+        Select(_presenter.GetNodes(Root.Target).Single(x => x.Target == contact));
+        _presenter.UpdateFromText(_presenter.GetSerialized().Replace("John", "Jane")).Should().BeTrue();
+        Select(_presenter.GetNodes(Root.Target).Single(_presenter.ShouldSelect)); // Tree rebuilt
+
+        _presenter.CommandManager.Undo();
+
+        _addressBook.Contacts[0].Should().BeSameAs(contact);
+        _presenter.GetNodes(Root.Target).Should().NotContain(x => _presenter.ShouldSelect(x));
+        _presenter.GetFallbackTarget().Should().BeSameAs(contact);
+    }
+
+    [Fact]
+    public void NoFallbackWithoutSelection()
+        => _presenter.GetFallbackTarget().Should().BeNull();
+
+    [Fact]
     public void OpenAdoptsSerializer()
     {
         _presenter.Serializer.Should().BeSameAs(XmlStructureSerializer.Instance);

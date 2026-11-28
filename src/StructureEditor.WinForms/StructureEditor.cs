@@ -215,6 +215,7 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     {
         var expandedTargets = GetExpandedTargets(_treeView.Nodes);
         var reexpandNodes = new List<TreeNode>();
+        var nodesByTarget = new Dictionary<object, TreeNode>(StructureEditorPresenter<T>.TargetComparer);
         TreeNode? reselectNode = null;
 
         TreeNode[] GetTreeNodes(IEnumerable<Node> nodes)
@@ -222,13 +223,23 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
             {
                 var treeNode = new StructureTreeNode(node, GetTreeNodes(_presenter.GetNodes(node.Target)));
                 if (_presenter.ShouldSelect(node)) reselectNode = treeNode;
-                if (node.Target != null && expandedTargets.Contains(node.Target)) reexpandNodes.Add(treeNode);
+                if (node.Target != null)
+                {
+                    if (expandedTargets.Contains(node.Target)) reexpandNodes.Add(treeNode);
+                    nodesByTarget[node.Target] = treeNode;
+                }
                 return treeNode;
             }).ToArray();
 
+        var rootNodes = GetTreeNodes(_presenter.GetRootNodes());
+
+        // The selected node may no longer exist, e.g., after an undo
+        if (reselectNode == null && _presenter.GetFallbackTarget() is {} fallbackTarget)
+            nodesByTarget.TryGetValue(fallbackTarget, out reselectNode);
+
         _treeView.BeginUpdate();
         _treeView.Nodes.Clear();
-        _treeView.Nodes.AddRange(GetTreeNodes(_presenter.GetRootNodes()));
+        _treeView.Nodes.AddRange(rootNodes);
         foreach (var treeNode in reexpandNodes) treeNode.Expand();
         // ReSharper disable once ConstantNullCoalescingCondition
         _treeView.SelectedNode = reselectNode ?? _treeView.Nodes.Cast<TreeNode>().FirstOrDefault();

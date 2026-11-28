@@ -170,12 +170,63 @@ public class StructureEditorPresenter<T>
     {
         SelectedNode = node;
         _selectedTarget = node?.Target;
+        _selectedPath = node == null ? null : FindPath(node);
 
         editorChanged = _selectedTarget != _editingTarget;
         _editingTarget = _selectedTarget;
 
         textChanged = _selectedTarget != _serializedTarget;
         _serializedTarget = null;
+    }
+
+    /// <summary>
+    /// The position of the selected node in the structure, from the root down to the node itself.
+    /// </summary>
+    private List<(object? Target, string NodeType, int Index)>? _selectedPath;
+
+    /// <summary>
+    /// Determines the position of a node in the structure.
+    /// </summary>
+    private List<(object? Target, string NodeType, int Index)>? FindPath(Node node)
+    {
+        var path = new List<(object? Target, string NodeType, int Index)>();
+
+        bool Search(IReadOnlyList<Node> nodes)
+        {
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                var candidate = nodes[i];
+                path.Add((candidate.Target, candidate.NodeType, i));
+                if (ReferenceEquals(candidate.Target, node.Target) && candidate.NodeType == node.NodeType) return true;
+                if (candidate.Target != null && Search(GetNodes(candidate.Target))) return true;
+                path.RemoveAt(path.Count - 1);
+            }
+            return false;
+        }
+
+        return Search(GetRootNodes()) ? path : null;
+    }
+
+    /// <summary>
+    /// Determines which node to select after rebuilding the tree if no node satisfies <see cref="ShouldSelect"/>, e.g., because the selected node was removed by an undo.
+    /// </summary>
+    /// <returns>The <see cref="Node.Target"/> of the node that replaced the selected node at the same position (e.g., after undoing changes made via the text editor) or, failing that, of its closest remaining ancestor; <c>null</c> if none.</returns>
+    public object? GetFallbackTarget()
+    {
+        if (_selectedPath == null) return null;
+
+        object? result = null;
+        var nodes = GetRootNodes();
+        foreach (var (target, nodeType, index) in _selectedPath)
+        {
+            var match = nodes.FirstOrDefault(x => x.Target != null && ReferenceEquals(x.Target, target))
+                     ?? (index < nodes.Count && nodes[index].NodeType == nodeType ? nodes[index] : null);
+            if (match?.Target == null) break;
+
+            result = match.Target;
+            nodes = GetNodes(match.Target);
+        }
+        return result;
     }
 
     /// <summary>
