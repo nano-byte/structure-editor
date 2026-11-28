@@ -147,6 +147,10 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
         get => _presenter.Serializer;
         set
         {
+            // Apply pending text input, which may replace the selected node's target, so rebuild immediately
+            _textEditor.CommitPendingChanges();
+            if (_rebuildScheduled) RebuildOnce(null, EventArgs.Empty);
+
             _presenter.Serializer = value;
             _textEditor.SetContent(GetSerialized(), value);
         }
