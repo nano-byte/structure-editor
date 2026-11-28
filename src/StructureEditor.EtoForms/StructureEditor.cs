@@ -63,7 +63,7 @@ public class StructureEditor<T> : Panel, IStructureEditor<T>, IPendingChanges
         {
             // Ignore transient deselection (e.g., while the tree is being reloaded) and repeated notifications
             if (!_suppressSelectionEvents && _treeView.SelectedItem is TreeItem item && item != _selectedItem)
-                OnSelected(item, commitPending: true);
+                OnUserSelected(item);
         };
 
         _textEditor.ContentChanged += text => _presenter.UpdateFromText(text);
@@ -399,38 +399,62 @@ public class StructureEditor<T> : Panel, IStructureEditor<T>, IPendingChanges
     /// </summary>
     private void SelectItem(TreeItem? item)
     {
-        void SetTreeSelection()
-        {
-            _suppressSelectionEvents = true;
-            try
-            {
-                _treeView.SelectedItem = item;
-
-                // The WinForms backend discards the first selection made after the tree content was replaced, so select another row first
-                if (item != null && !ReferenceEquals(_treeView.SelectedItem, item) && GetVisibleRow(item) is var row and >= 0)
-                {
-                    if (row != 0) _treeView.SelectRow(0);
-                    else if (item is {Expanded: true, Children.Count: > 0}) _treeView.SelectRow(1);
-                    _treeView.SelectRow(row);
-                }
-            }
-            finally
-            {
-                _suppressSelectionEvents = false;
-            }
-        }
-
-        SetTreeSelection();
-        OnSelected(item, commitPending: false);
+        SetTreeSelection(item);
+        OnSelected(item);
 
         // Some platforms only apply the selection once they have finished loading new tree content
         if (item != null && !ReferenceEquals(_treeView.SelectedItem, item))
         {
             Application.Instance.AsyncInvoke(() =>
             {
-                if (_selectedItem == item) SetTreeSelection();
+                if (_selectedItem == item) SetTreeSelection(item);
             });
         }
+    }
+
+    /// <summary>
+    /// Selects an item in the <see cref="_treeView"/> without updating the editor controls.
+    /// </summary>
+    private void SetTreeSelection(TreeItem? item)
+    {
+        _suppressSelectionEvents = true;
+        try
+        {
+            _treeView.SelectedItem = item;
+
+            // The WinForms backend discards the first selection made after the tree content was replaced, so select another row first
+            if (item != null && !ReferenceEquals(_treeView.SelectedItem, item) && GetVisibleRow(item) is var row and >= 0)
+            {
+                if (row != 0) _treeView.SelectRow(0);
+                else if (item is {Expanded: true, Children.Count: > 0}) _treeView.SelectRow(1);
+                _treeView.SelectRow(row);
+            }
+        }
+        finally
+        {
+            _suppressSelectionEvents = false;
+        }
+    }
+
+    /// <summary>
+    /// Handles the user selecting a different item in the <see cref="_treeView"/>.
+    /// </summary>
+    private void OnUserSelected(TreeItem item)
+    {
+        // Apply input for the previously selected node before its editor is replaced
+        CommitPendingChanges();
+
+        if (_textEditor.HasUnappliedChanges)
+        { // The text is invalid, so keep its node selected to allow the user to correct it (or to undo)
+            Application.Instance.AsyncInvoke(() =>
+            {
+                SetTreeSelection(_selectedItem);
+                _textEditor.TextEditor.Control.Focus();
+            });
+            return;
+        }
+
+        OnSelected(item);
     }
 
     /// <summary>
@@ -454,11 +478,8 @@ public class StructureEditor<T> : Panel, IStructureEditor<T>, IPendingChanges
         return Find(_treeItems) ? row : -1;
     }
 
-    private void OnSelected(TreeItem? item, bool commitPending)
+    private void OnSelected(TreeItem? item)
     {
-        // Apply input for the previously selected node before its editor is replaced
-        if (commitPending) CommitPendingChanges();
-
         _selectedItem = item;
         _presenter.Select(item?.Node, out bool editorChanged, out bool textChanged);
 
