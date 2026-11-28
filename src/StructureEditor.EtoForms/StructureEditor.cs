@@ -61,9 +61,16 @@ public class StructureEditor<T> : Panel, IStructureEditor<T>, IPendingChanges
         });
         _treeView.SelectedItemChanged += delegate
         {
-            // Ignore transient deselection (e.g., while the tree is being reloaded) and repeated notifications
-            if (!_suppressSelectionEvents && _treeView.SelectedItem is TreeItem item && item != _selectedItem)
-                OnUserSelected(item);
+            if (_suppressSelectionEvents) return;
+
+            if (_treeView.SelectedItem is TreeItem item)
+            { // Ignore repeated notifications
+                if (item != _selectedItem) OnUserSelected(item);
+            }
+            else
+            { // The user clicked an empty area or collapsed the selected item's parent, but the editor controls still represent an item
+                Application.Instance.AsyncInvoke(RestoreTreeSelection);
+            }
         };
 
         _textEditor.ContentChanged += text => _presenter.UpdateFromText(text);
@@ -433,6 +440,25 @@ public class StructureEditor<T> : Panel, IStructureEditor<T>, IPendingChanges
         finally
         {
             _suppressSelectionEvents = false;
+        }
+    }
+
+    /// <summary>
+    /// Selects the item the editor controls represent again after the <see cref="_treeView"/> lost its selection.
+    /// </summary>
+    private void RestoreTreeSelection()
+    {
+        if (_treeView.SelectedItem != null || _selectedItem == null) return;
+
+        // Fall back to the closest visible ancestor if the item is hidden within a collapsed item
+        var item = _selectedItem;
+        while (item != null && GetVisibleRow(item) < 0) item = item.ParentItem;
+
+        if (item == _selectedItem) SetTreeSelection(item);
+        else if (item != null)
+        {
+            SetTreeSelection(item);
+            OnUserSelected(item);
         }
     }
 
