@@ -41,6 +41,9 @@ public class ValidatingTextEditor : UserControl
 
     private IStructureSerializer? _serializer;
 
+    /// <summary>Indicates that the current text was found to be invalid and could therefore not be applied.</summary>
+    private bool _hasError;
+
     public ValidatingTextEditor()
     {
         SuspendLayout();
@@ -111,6 +114,7 @@ public class ValidatingTextEditor : UserControl
         TextEditor.Dispose();
         TextEditor = textEditor;
 
+        _hasError = false;
         SetStatus(Images.Info, "OK");
     }
     #endregion
@@ -141,6 +145,10 @@ public class ValidatingTextEditor : UserControl
                 HandleError(ex);
                 e.Cancel = true;
             }
+        }
+        else if (_hasError)
+        { // Keep the invalid text from being discarded, e.g., by selecting a different node
+            e.Cancel = true;
         }
     }
 
@@ -199,6 +207,7 @@ public class ValidatingTextEditor : UserControl
         {
             Log.Handler -= HandleLogEntry;
         }
+        _hasError = false;
 
         if (warning == null) SetStatus(Images.Info, "OK");
         else SetStatus(Images.Error, warning);
@@ -206,6 +215,8 @@ public class ValidatingTextEditor : UserControl
 
     private void HandleError(Exception ex)
     {
+        _hasError = true;
+
         if (_serializer != null && _serializer.TryGetErrorLocation(ex, out int line, out int column, out string message))
         {
             int lineIndex = Math.Max(0, Math.Min(line - 1, TextEditor.Document.TotalNumberOfLines - 1));
