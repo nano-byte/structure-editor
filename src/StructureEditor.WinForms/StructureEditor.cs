@@ -56,7 +56,8 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     private readonly TreeView _treeView = new()
     {
         Dock = DockStyle.Fill,
-        ShowNodeToolTips = true
+        ShowNodeToolTips = true,
+        HideSelection = false
     };
 
     private readonly Panel _editorPanel = new()
