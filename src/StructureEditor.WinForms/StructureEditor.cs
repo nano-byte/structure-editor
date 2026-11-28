@@ -44,13 +44,15 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
     private readonly ToolStripDropDownButton _buttonAdd = new()
     {
         Text = "&Add",
-        Image = Images.AddButton
+        Image = Images.AddButton,
+        AutoToolTip = false
     };
 
     private readonly ToolStripButton _buttonRemove = new()
     {
         Text = "&Remove",
-        Image = Images.DeleteButton
+        Image = Images.DeleteButton,
+        AutoToolTip = false
     };
 
     private readonly TreeView _treeView = new()
