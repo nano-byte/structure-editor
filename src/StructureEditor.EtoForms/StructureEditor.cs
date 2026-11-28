@@ -294,6 +294,12 @@ public class StructureEditor<T> : Panel, IStructureEditor<T>, IPendingChanges
     /// </summary>
     public void Undo()
     {
+        if (_textEditor.HasUnappliedChanges)
+        {
+            _textEditor.RevertChanges();
+            return;
+        }
+
         CommitPendingChanges();
         if (CommandManager.UndoEnabled) CommandManager.Undo();
     }

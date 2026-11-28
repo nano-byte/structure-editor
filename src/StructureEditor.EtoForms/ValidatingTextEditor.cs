@@ -38,6 +38,9 @@ public class ValidatingTextEditor : Panel, IPendingChanges
     /// <summary>The location of the error currently displayed in <see cref="_labelStatus"/>, if any.</summary>
     private (int line, int column)? _errorLocation;
 
+    /// <summary>The text that was last set via <see cref="SetContent"/> or successfully passed to <see cref="ContentChanged"/>.</summary>
+    private string _appliedText = "";
+
     /// <summary>
     /// Creates a new validating text editor.
     /// </summary>
@@ -101,7 +104,21 @@ public class ValidatingTextEditor : Panel, IPendingChanges
             _settingContent = false;
         }
 
+        _appliedText = TextEditor.Text;
         SetStatus("OK");
+    }
+
+    /// <summary>
+    /// Indicates whether the text has been changed by the user without being successfully passed to <see cref="ContentChanged"/> yet, e.g., because it is still pending or invalid.
+    /// </summary>
+    public bool HasUnappliedChanges => TextEditor.Text != _appliedText;
+
+    /// <summary>
+    /// Discards any <see cref="HasUnappliedChanges">unapplied changes</see> and restores the text that was last applied.
+    /// </summary>
+    public void RevertChanges()
+    {
+        if (_serializer != null) SetContent(_appliedText, _serializer);
     }
 
     private void TextEditor_TextChanged(object? sender, EventArgs e)
@@ -146,15 +163,17 @@ public class ValidatingTextEditor : Panel, IPendingChanges
                 warning = message ?? exception?.GetMessageWithInner();
         }
 
+        string text = TextEditor.Text;
         Log.Handler += HandleLogEntry;
         try
         {
-            ContentChanged(TextEditor.Text);
+            ContentChanged(text);
         }
         finally
         {
             Log.Handler -= HandleLogEntry;
         }
+        _appliedText = text;
 
         if (warning == null) SetStatus("OK");
         else SetStatus(warning, isError: true);
