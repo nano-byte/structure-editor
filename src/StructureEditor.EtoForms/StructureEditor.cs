@@ -132,7 +132,7 @@ public class StructureEditor<T> : Panel, IStructureEditor<T>, IPendingChanges
         get => _presenter.Serializer;
         set
         {
-            CommitPendingChanges();
+            CommitAndRebuild();
             _presenter.Serializer = value;
             _textEditor.SetContent(_presenter.GetSerialized(), value);
         }
