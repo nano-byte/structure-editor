@@ -65,6 +65,9 @@ public class AddressBookEditor : StructureEditor<AddressBook>
 
     public bool Save()
     {
+        // Apply input from controls that still have the focus
+        CommitPendingChanges();
+
         if (string.IsNullOrEmpty(CommandManager.Path))
             return SaveAs();
         else
@@ -76,6 +79,8 @@ public class AddressBookEditor : StructureEditor<AddressBook>
 
     public bool SaveAs()
     {
+        CommitPendingChanges();
+
         using var dialog = new SaveFileDialog {Filter = FileFilter};
         if (dialog.ShowDialog(this) == DialogResult.OK)
         {
@@ -91,6 +96,7 @@ public class AddressBookEditor : StructureEditor<AddressBook>
 
     public bool Closing()
     {
+        CommitPendingChanges();
         if (!CommandManager.UndoEnabled) return true;
 
         return Msg.YesNoCancel(this, "Save changes?", MsgSeverity.Warn) switch

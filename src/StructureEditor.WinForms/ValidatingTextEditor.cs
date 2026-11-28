@@ -159,6 +159,24 @@ public class ValidatingTextEditor : UserControl
     #endregion
 
     #region Validation
+    /// <summary>
+    /// Validates any changes immediately instead of waiting for a period of no input.
+    /// </summary>
+    [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Invalid user input may cause arbitrary exceptions.")]
+    public void CommitPendingChanges()
+    {
+        if (!_timer.Enabled) return;
+
+        try
+        {
+            ValidateContent();
+        }
+        catch (Exception ex)
+        {
+            HandleError(ex);
+        }
+    }
+
     private void ValidateContent()
     {
         _timer.Stop();

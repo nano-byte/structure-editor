@@ -286,6 +286,25 @@ public class StructureEditor<T> : UserControl, IStructureEditor<T>
         if (_textEditor.EnableRedo) _textEditor.Redo();
         else CommandManager.Redo();
     }
+
+    /// <summary>
+    /// Applies any user input in the node editor or text editor that has not been applied yet (e.g., because the control still has focus).
+    /// </summary>
+    /// <remarks>Call this before reading or saving the <see cref="CommandManager"/>'s target.</remarks>
+    public void CommitPendingChanges()
+    {
+        if (_editorPanel.ContainsFocus)
+        { // Controls (e.g., text boxes bound via validation or the PropertyGrid) apply their input when they lose focus, so move the focus away temporarily
+            Control? focused = _editorControl ?? _editorPanel;
+            while (focused is ContainerControl {ActiveControl: {} next}) focused = next;
+            if (_treeView.Focus())
+            { // Return the focus, falling back to the parent if the control is no longer focusable (e.g., a PropertyGrid's hidden edit box)
+                while (focused != null && focused != _editorPanel && !focused.Focus()) focused = focused.Parent;
+            }
+        }
+
+        _textEditor.CommitPendingChanges();
+    }
     #endregion
 
     //--------------------//
